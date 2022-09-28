@@ -14,6 +14,9 @@ struct ContentView: View {
                 .imageScale(.large)
                 .foregroundColor(.accentColor)
             Text("Hello, world!")
+           Text("text以外の配置が難しいね。")
+            Button("これがボタンですかなるほどわからん") {
+            }
         }
         .padding()
     }

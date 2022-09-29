@@ -10,10 +10,19 @@ import SwiftUI
 struct ContentView: View {
     var body: some View {
         VStack {
-            Image(systemName: "globe")
-                .imageScale(.large)
-                .foregroundColor(.accentColor)
-            Text("Hello, world!")
+            HStack{
+                Image(systemName: "bell.fill")
+                Text("Main Menu")
+            }
+            List {
+                Button("Set new training"){
+//                    Controllerにクラスに移動？
+//                    Viewを変更するには？
+                }
+                Button("Load from iPhone"){
+                }
+                
+            }
         }
         .padding()
     }

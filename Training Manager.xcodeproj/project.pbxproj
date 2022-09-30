@@ -22,6 +22,8 @@
 		78E3FA6928E33BCF002CC7AE /* Training_Manager_Watch_AppTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78E3FA6828E33BCF002CC7AE /* Training_Manager_Watch_AppTests.swift */; };
 		78E3FA7328E33BCF002CC7AE /* Training_Manager_Watch_AppUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78E3FA7228E33BCF002CC7AE /* Training_Manager_Watch_AppUITests.swift */; };
 		78E3FA7528E33BCF002CC7AE /* Training_Manager_Watch_AppUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78E3FA7428E33BCF002CC7AE /* Training_Manager_Watch_AppUITestsLaunchTests.swift */; };
+		78E6F5C228E71BBA00BAEA24 /* Create_New_Training.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78E6F5C128E71BBA00BAEA24 /* Create_New_Training.swift */; };
+		78E6F5C428E71C1D00BAEA24 /* Load_Old_Training.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78E6F5C328E71C1D00BAEA24 /* Load_Old_Training.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -97,6 +99,8 @@
 		78E3FA6E28E33BCF002CC7AE /* Training Manager Watch AppUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Training Manager Watch AppUITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		78E3FA7228E33BCF002CC7AE /* Training_Manager_Watch_AppUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Training_Manager_Watch_AppUITests.swift; sourceTree = "<group>"; };
 		78E3FA7428E33BCF002CC7AE /* Training_Manager_Watch_AppUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Training_Manager_Watch_AppUITestsLaunchTests.swift; sourceTree = "<group>"; };
+		78E6F5C128E71BBA00BAEA24 /* Create_New_Training.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Create_New_Training.swift; sourceTree = "<group>"; };
+		78E6F5C328E71C1D00BAEA24 /* Load_Old_Training.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Load_Old_Training.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -175,7 +179,9 @@
 			isa = PBXGroup;
 			children = (
 				78E3FA2F28E33BCD002CC7AE /* Training_ManagerApp.swift */,
+				78E6F5C128E71BBA00BAEA24 /* Create_New_Training.swift */,
 				78E3FA3128E33BCD002CC7AE /* ContentView.swift */,
+				78E6F5C328E71C1D00BAEA24 /* Load_Old_Training.swift */,
 				78E3FA3328E33BCE002CC7AE /* Assets.xcassets */,
 				78E3FA3528E33BCE002CC7AE /* Preview Content */,
 			);
@@ -466,7 +472,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				78E3FA3228E33BCD002CC7AE /* ContentView.swift in Sources */,
+				78E6F5C228E71BBA00BAEA24 /* Create_New_Training.swift in Sources */,
 				78E3FA3028E33BCD002CC7AE /* Training_ManagerApp.swift in Sources */,
+				78E6F5C428E71C1D00BAEA24 /* Load_Old_Training.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

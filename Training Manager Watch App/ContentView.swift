@@ -8,6 +8,7 @@
 import SwiftUI
 
 struct ContentView: View {
+    @State var str = "string"
     var body: some View {
         VStack {
             HStack{
@@ -18,8 +19,11 @@ struct ContentView: View {
                 Button("Set new training"){
 //                    Controllerにクラスに移動？
 //                    Viewを変更するには？
+                    str = "押したよ"
                 }
-                Button("Load from iPhone"){
+                .accessibilityIdentifier("firstButton")
+                Button(str){
+                    
                 }
                 
             }

@@ -9,14 +9,24 @@ import SwiftUI
 
 struct ContentView: View {
     var body: some View {
-        VStack {
-            Image(systemName: "globe")
-                .imageScale(.large)
-                .foregroundColor(.accentColor)
-            Text("Hello, world!")
-           Text("text以外の配置が難しいね。")
-            Button("これがボタンですかなるほどわからん") {
+        NavigationView{
+            VStack{
+                List{
+                    HStack{
+                        Image(systemName:"square.and.pencil")
+                        NavigationLink(destination: Create_New_Training().navigationTitle("新規")) {
+                                    Text("新規トレーニング")
+                                }
+                    }
+                    HStack{
+                        Image(systemName:"book")
+                        NavigationLink(destination: Load_Old_Training().navigationTitle("参照")) {
+                                    Text("トレーニング履歴を参照")
+                                }
+                    }
+                }
             }
+            .navigationTitle("メインメニュー")
         }
         .padding()
     }

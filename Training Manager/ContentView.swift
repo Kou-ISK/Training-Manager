@@ -10,7 +10,6 @@ import SwiftUI
 struct ContentView: View {
     var body: some View {
         NavigationView{
-            VStack{
                 List{
                     HStack{
                         Image(systemName:"square.and.pencil")
@@ -24,7 +23,6 @@ struct ContentView: View {
                                     Text("トレーニング履歴を参照")
                                 }
                     }
-                }
             }
             .navigationTitle("メインメニュー")
         }

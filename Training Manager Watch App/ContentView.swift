@@ -12,11 +12,11 @@ struct ContentView: View {
     var body: some View {
         NavigationView{
             List{
-                NavigationLink(destination: Create_New_Training_Watch().navigationTitle("新規")) {
+                NavigationLink(destination: Create_New_Training().navigationTitle("新規")) {
                     Image(systemName:"square.and.pencil")
                     Text("新規トレーニング")
                 }
-                NavigationLink(destination:Load_Old_Training_Watch().navigationTitle("参照")) {
+                NavigationLink(destination:Load_Old_Training().navigationTitle("参照")) {
                     Image(systemName:"book")
                     Text("トレーニング履歴を参照")
                 }

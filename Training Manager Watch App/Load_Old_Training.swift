@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct Load_Old_Training_Watch: View {
+struct Load_Old_Training: View {
     var body: some View {
         Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
     }
@@ -15,6 +15,6 @@ struct Load_Old_Training_Watch: View {
 
 struct Load_Old_Training_Previews: PreviewProvider {
     static var previews: some View {
-        Load_Old_Training_Watch()
+        Load_Old_Training()
     }
 }

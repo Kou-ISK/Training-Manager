@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		782CCF0E28F992C10060A69C /* ContentView.swift in Embed Watch Content */ = {isa = PBXBuildFile; fileRef = 78E3FA5928E33BCE002CC7AE /* ContentView.swift */; };
+		782CCF1228F995B10060A69C /* Start_Training.swift in Sources */ = {isa = PBXBuildFile; fileRef = 782CCF1128F995B10060A69C /* Start_Training.swift */; };
 		78E3FA3028E33BCD002CC7AE /* Training_ManagerApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78E3FA2F28E33BCD002CC7AE /* Training_ManagerApp.swift */; };
 		78E3FA3228E33BCD002CC7AE /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78E3FA3128E33BCD002CC7AE /* ContentView.swift */; };
 		78E3FA3428E33BCE002CC7AE /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 78E3FA3328E33BCE002CC7AE /* Assets.xcassets */; };
@@ -14,9 +16,8 @@
 		78E3FA4128E33BCE002CC7AE /* Training_ManagerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78E3FA4028E33BCE002CC7AE /* Training_ManagerTests.swift */; };
 		78E3FA4B28E33BCE002CC7AE /* Training_ManagerUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78E3FA4A28E33BCE002CC7AE /* Training_ManagerUITests.swift */; };
 		78E3FA4D28E33BCE002CC7AE /* Training_ManagerUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78E3FA4C28E33BCE002CC7AE /* Training_ManagerUITestsLaunchTests.swift */; };
-		78E3FA5328E33BCE002CC7AE /* Training Manager Watch App.app in Embed Watch Content */ = {isa = PBXBuildFile; fileRef = 78E3FA5228E33BCE002CC7AE /* Training Manager Watch App.app */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
-		78E3FA5828E33BCE002CC7AE /* Training_Manager_WatchApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78E3FA5728E33BCE002CC7AE /* Training_Manager_WatchApp.swift */; };
-		78E3FA5A28E33BCE002CC7AE /* WatchContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78E3FA5928E33BCE002CC7AE /* WatchContentView.swift */; };
+		78E3FA5828E33BCE002CC7AE /* Training_ManagerApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78E3FA5728E33BCE002CC7AE /* Training_ManagerApp.swift */; };
+		78E3FA5A28E33BCE002CC7AE /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78E3FA5928E33BCE002CC7AE /* ContentView.swift */; };
 		78E3FA5C28E33BCF002CC7AE /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 78E3FA5B28E33BCF002CC7AE /* Assets.xcassets */; };
 		78E3FA5F28E33BCF002CC7AE /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 78E3FA5E28E33BCF002CC7AE /* Preview Assets.xcassets */; };
 		78E3FA6928E33BCF002CC7AE /* Training_Manager_Watch_AppTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78E3FA6828E33BCF002CC7AE /* Training_Manager_Watch_AppTests.swift */; };
@@ -24,11 +25,18 @@
 		78E3FA7528E33BCF002CC7AE /* Training_Manager_Watch_AppUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78E3FA7428E33BCF002CC7AE /* Training_Manager_Watch_AppUITestsLaunchTests.swift */; };
 		78E6F5C228E71BBA00BAEA24 /* Create_New_Training.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78E6F5C128E71BBA00BAEA24 /* Create_New_Training.swift */; };
 		78E6F5C428E71C1D00BAEA24 /* Load_Old_Training.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78E6F5C328E71C1D00BAEA24 /* Load_Old_Training.swift */; };
-		78E6F5C628E9685600BAEA24 /* Create_New_Training_Watch.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78E6F5C528E9685600BAEA24 /* Create_New_Training_Watch.swift */; };
-		78E6F5C828E9686800BAEA24 /* Load_Old_Training_Watch.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78E6F5C728E9686800BAEA24 /* Load_Old_Training_Watch.swift */; };
+		78E6F5C628E9685600BAEA24 /* Create_New_Training.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78E6F5C528E9685600BAEA24 /* Create_New_Training.swift */; };
+		78E6F5C828E9686800BAEA24 /* Load_Old_Training.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78E6F5C728E9686800BAEA24 /* Load_Old_Training.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
+		782CCF0F28F9935E0060A69C /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 78E3FA2428E33BCD002CC7AE /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 78E3FA5128E33BCE002CC7AE;
+			remoteInfo = "Training Manager Watch App";
+		};
 		78E3FA3D28E33BCE002CC7AE /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 78E3FA2428E33BCD002CC7AE /* Project object */;
@@ -42,13 +50,6 @@
 			proxyType = 1;
 			remoteGlobalIDString = 78E3FA2B28E33BCD002CC7AE;
 			remoteInfo = "Training Manager";
-		};
-		78E3FA5428E33BCE002CC7AE /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 78E3FA2428E33BCD002CC7AE /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = 78E3FA5128E33BCE002CC7AE;
-			remoteInfo = "Training Manager Watch App";
 		};
 		78E3FA6528E33BCF002CC7AE /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
@@ -69,11 +70,11 @@
 /* Begin PBXCopyFilesBuildPhase section */
 		78E3FA7B28E33BCF002CC7AE /* Embed Watch Content */ = {
 			isa = PBXCopyFilesBuildPhase;
-			buildActionMask = 2147483647;
+			buildActionMask = 12;
 			dstPath = "$(CONTENTS_FOLDER_PATH)/Watch";
 			dstSubfolderSpec = 16;
 			files = (
-				78E3FA5328E33BCE002CC7AE /* Training Manager Watch App.app in Embed Watch Content */,
+				782CCF0E28F992C10060A69C /* ContentView.swift in Embed Watch Content */,
 			);
 			name = "Embed Watch Content";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -81,6 +82,7 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		782CCF1128F995B10060A69C /* Start_Training.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Start_Training.swift; sourceTree = "<group>"; };
 		78E3FA2C28E33BCD002CC7AE /* Training Manager.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Training Manager.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		78E3FA2F28E33BCD002CC7AE /* Training_ManagerApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Training_ManagerApp.swift; sourceTree = "<group>"; };
 		78E3FA3128E33BCD002CC7AE /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -92,8 +94,8 @@
 		78E3FA4A28E33BCE002CC7AE /* Training_ManagerUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Training_ManagerUITests.swift; sourceTree = "<group>"; };
 		78E3FA4C28E33BCE002CC7AE /* Training_ManagerUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Training_ManagerUITestsLaunchTests.swift; sourceTree = "<group>"; };
 		78E3FA5228E33BCE002CC7AE /* Training Manager Watch App.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Training Manager Watch App.app"; sourceTree = BUILT_PRODUCTS_DIR; };
-		78E3FA5728E33BCE002CC7AE /* Training_Manager_WatchApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Training_Manager_WatchApp.swift; sourceTree = "<group>"; };
-		78E3FA5928E33BCE002CC7AE /* WatchContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WatchContentView.swift; sourceTree = "<group>"; };
+		78E3FA5728E33BCE002CC7AE /* Training_ManagerApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Training_ManagerApp.swift; sourceTree = "<group>"; };
+		78E3FA5928E33BCE002CC7AE /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		78E3FA5B28E33BCF002CC7AE /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		78E3FA5E28E33BCF002CC7AE /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		78E3FA6428E33BCF002CC7AE /* Training Manager Watch AppTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Training Manager Watch AppTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -103,8 +105,8 @@
 		78E3FA7428E33BCF002CC7AE /* Training_Manager_Watch_AppUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Training_Manager_Watch_AppUITestsLaunchTests.swift; sourceTree = "<group>"; };
 		78E6F5C128E71BBA00BAEA24 /* Create_New_Training.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Create_New_Training.swift; sourceTree = "<group>"; };
 		78E6F5C328E71C1D00BAEA24 /* Load_Old_Training.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Load_Old_Training.swift; sourceTree = "<group>"; };
-		78E6F5C528E9685600BAEA24 /* Create_New_Training_Watch.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Create_New_Training_Watch.swift; sourceTree = "<group>"; };
-		78E6F5C728E9686800BAEA24 /* Load_Old_Training_Watch.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Load_Old_Training_Watch.swift; sourceTree = "<group>"; };
+		78E6F5C528E9685600BAEA24 /* Create_New_Training.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Create_New_Training.swift; sourceTree = "<group>"; };
+		78E6F5C728E9686800BAEA24 /* Load_Old_Training.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Load_Old_Training.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -186,6 +188,7 @@
 				78E6F5C128E71BBA00BAEA24 /* Create_New_Training.swift */,
 				78E3FA3128E33BCD002CC7AE /* ContentView.swift */,
 				78E6F5C328E71C1D00BAEA24 /* Load_Old_Training.swift */,
+				782CCF1128F995B10060A69C /* Start_Training.swift */,
 				78E3FA3328E33BCE002CC7AE /* Assets.xcassets */,
 				78E3FA3528E33BCE002CC7AE /* Preview Content */,
 			);
@@ -220,10 +223,10 @@
 		78E3FA5628E33BCE002CC7AE /* Training Manager Watch App */ = {
 			isa = PBXGroup;
 			children = (
-				78E3FA5728E33BCE002CC7AE /* Training_Manager_WatchApp.swift */,
-				78E3FA5928E33BCE002CC7AE /* WatchContentView.swift */,
-				78E6F5C528E9685600BAEA24 /* Create_New_Training_Watch.swift */,
-				78E6F5C728E9686800BAEA24 /* Load_Old_Training_Watch.swift */,
+				78E3FA5728E33BCE002CC7AE /* Training_ManagerApp.swift */,
+				78E3FA5928E33BCE002CC7AE /* ContentView.swift */,
+				78E6F5C528E9685600BAEA24 /* Create_New_Training.swift */,
+				78E6F5C728E9686800BAEA24 /* Load_Old_Training.swift */,
 				78E3FA5B28E33BCF002CC7AE /* Assets.xcassets */,
 				78E3FA5D28E33BCF002CC7AE /* Preview Content */,
 			);
@@ -270,7 +273,7 @@
 			buildRules = (
 			);
 			dependencies = (
-				78E3FA5528E33BCE002CC7AE /* PBXTargetDependency */,
+				782CCF1028F9935E0060A69C /* PBXTargetDependency */,
 			);
 			name = "Training Manager";
 			productName = "Training Manager";
@@ -481,6 +484,7 @@
 				78E6F5C228E71BBA00BAEA24 /* Create_New_Training.swift in Sources */,
 				78E3FA3028E33BCD002CC7AE /* Training_ManagerApp.swift in Sources */,
 				78E6F5C428E71C1D00BAEA24 /* Load_Old_Training.swift in Sources */,
+				782CCF1228F995B10060A69C /* Start_Training.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -505,10 +509,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				78E3FA5A28E33BCE002CC7AE /* WatchContentView.swift in Sources */,
-				78E6F5C628E9685600BAEA24 /* Create_New_Training_Watch.swift in Sources */,
-				78E3FA5828E33BCE002CC7AE /* Training_Manager_WatchApp.swift in Sources */,
-				78E6F5C828E9686800BAEA24 /* Load_Old_Training_Watch.swift in Sources */,
+				78E3FA5A28E33BCE002CC7AE /* ContentView.swift in Sources */,
+				78E6F5C628E9685600BAEA24 /* Create_New_Training.swift in Sources */,
+				78E3FA5828E33BCE002CC7AE /* Training_ManagerApp.swift in Sources */,
+				78E6F5C828E9686800BAEA24 /* Load_Old_Training.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -532,6 +536,11 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
+		782CCF1028F9935E0060A69C /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 78E3FA5128E33BCE002CC7AE /* Training Manager Watch App */;
+			targetProxy = 782CCF0F28F9935E0060A69C /* PBXContainerItemProxy */;
+		};
 		78E3FA3E28E33BCE002CC7AE /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = 78E3FA2B28E33BCD002CC7AE /* Training Manager */;
@@ -541,11 +550,6 @@
 			isa = PBXTargetDependency;
 			target = 78E3FA2B28E33BCD002CC7AE /* Training Manager */;
 			targetProxy = 78E3FA4728E33BCE002CC7AE /* PBXContainerItemProxy */;
-		};
-		78E3FA5528E33BCE002CC7AE /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = 78E3FA5128E33BCE002CC7AE /* Training Manager Watch App */;
-			targetProxy = 78E3FA5428E33BCE002CC7AE /* PBXContainerItemProxy */;
 		};
 		78E3FA6628E33BCF002CC7AE /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;

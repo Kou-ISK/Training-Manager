@@ -13,13 +13,13 @@ struct ContentView: View {
                 List{
                     HStack{
                         Image(systemName:"square.and.pencil")
-                        NavigationLink(destination: Create_New_Training().navigationTitle("新規")) {
+                        NavigationLink(destination: Create_New_Training()) {
                                     Text("新規トレーニング")
                                 }
                     }
                     HStack{
                         Image(systemName:"book")
-                        NavigationLink(destination: Load_Old_Training().navigationTitle("参照")) {
+                        NavigationLink(destination: Load_Old_Training()) {
                                     Text("トレーニング履歴を参照")
                                 }
                     }

@@ -11,9 +11,13 @@ struct Create_New_Training: View {
     @State var menuTimeList:[String]=[""]
     @State var count : Int = 0
     @State var show: Bool = false
+    var trainingMenu: [[String]] = []
     var body: some View {
         NavigationView{
             VStack{
+                NavigationLink(destination: Start_Training(menuList:menuList,menuTimeList: menuTimeList)){
+                    Text("開始")
+                }
                 HStack(spacing:60){
                     Button(action: {
                         count = count+1
@@ -33,19 +37,14 @@ struct Create_New_Training: View {
                         }
                     }).foregroundColor(.red)
                 }
-                Button(action: {self.show.toggle()}) {Text("開始")}
-            }
-        }
-            ForEach(menuList.indices, id: \.self) {i in
-                HStack{
-                    TextField("新規メニュー", text: $menuList[i])
-                    TextField("時間(mm:ss)", text: $menuTimeList[i]).keyboardType(.numberPad)
+                ForEach(menuList.indices, id: \.self) {i in
+                    HStack{
+                        TextField("新規メニュー", text: $menuList[i])
+                        TextField("時間(mm:ss)", text: $menuTimeList[i]).keyboardType(.numberPad)
+                    }
                 }
             }
-        NavigationLink(destination: Start_Training(),
-                                       isActive: $show) {
-                                        EmptyView()
-                        }
+        }
     }
 }
 

@@ -10,7 +10,7 @@ import SwiftUI
 struct Create_New_Training: View {
     @State var menuList:[String] = [""]
     @State var menuTimeList:[String]=[""]
-    @State var count : Int = 0
+    @State var count : Int = 2
     var body: some View {
         HStack{
             Button(action: {

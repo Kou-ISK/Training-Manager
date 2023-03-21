@@ -10,23 +10,22 @@ import SwiftUI
 struct Start_Training: View {
     let menuList:[String]
     @Binding var menuTimeList:[Int]
+    @State var time:Int = 0
     var body: some View {
         VStack{
+            Text("残り"+String(time)).foregroundColor(Color.orange).font(Font.title)
                     ForEach(menuTimeList.indices, id: \.self) {i in
-                        VStack{
                             HStack{
                                 Text(menuList[i])
                                 Button(action:{
-                                    var time = menuTimeList[i]*60
+                                    time = menuTimeList[i]*60
                                             Timer.scheduledTimer(withTimeInterval: 1.0, repeats: true) { _ in
                                                 if time > -1 {
                                                     time -= 1
-                                                    print(time)
                                                 }
                                             }
                                 }, label:{Text(String(menuTimeList[i]))})
                             }
-                        }
                     }
         }.navigationBarTitle("トレーニング中")
     }

@@ -11,6 +11,7 @@ struct Create_New_Training: View {
     @State var menuTimeList:[Int] = []
     @State var count : Int = 0
     @State var show: Bool = false
+    @State var time:Int = 1
     var trainingMenu: [[String]] = []
     var body: some View {
         NavigationView{
@@ -47,8 +48,7 @@ struct Create_New_Training: View {
                                             Text("10").tag(10).font(.title2)
                                             Text("15").tag(15).font(.title2)
                                             Text("20").tag(20).font(.title2)
-                        }
-//                        TextField("時間(mm:ss)", text: $menuTimeList[i]).keyboardType(.numberPad)
+                        }.pickerStyle(WheelPickerStyle())
                     }
                 }
             }

@@ -24,9 +24,14 @@ struct Start_Training: View {
                                                     time -= 1
                                                 }
                                             }
-                                }, label:{Text(String(menuTimeList[i]))})
+                                }, label:{Text("開始")}).foregroundColor(Color.white).padding().background(Color.blue)
+                                Text(String(menuTimeList[i])+"min")
                             }
                     }
+            Button(action:{time = 1
+            },label:{
+                Text("終了")
+            })
         }.navigationBarTitle("トレーニング中")
     }
 }

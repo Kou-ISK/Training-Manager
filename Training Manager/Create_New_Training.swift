@@ -27,7 +27,7 @@ struct Create_New_Training: View {
                     }, label: {
                         VStack{Text("追加")
                             Image(systemName: "plus").frame(height: 30.0)
-                        }
+                        }.background(.gray.opacity(0.3)).containerShape(RoundedRectangle(cornerRadius: 10)).padding(10)
                     })
                     Button(action: {
                         menuList.removeLast()

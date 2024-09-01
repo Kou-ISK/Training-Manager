@@ -15,6 +15,13 @@ struct CreateTrainingSessionView: View {
     
     var body: some View {
         VStack {
+            ForEach(trainingMenuList, id: \.self) { menu in
+                Text("メニュー名: \(menu.name ?? "")")
+                Text("重点1: \(menu.keyFocus1 ?? "")")
+                Text("目標: \(menu.goal ?? "")")
+            }
+                
+                
             Button(action: {
                 trainingMenuList.append(TrainingMenu())
             }, label: {
@@ -42,6 +49,7 @@ struct CreateTrainingSessionView: View {
                 
                 Button(action:{
                     modelContext.insert(trainingMenuList[index])
+                    print("training Menu List is INSERTED: \(trainingMenuList)")
                 },label: {Text("追加")})
             }
         }

@@ -23,12 +23,14 @@
 		78E3FA6928E33BCF002CC7AE /* Training_Manager_Watch_AppTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78E3FA6828E33BCF002CC7AE /* Training_Manager_Watch_AppTests.swift */; };
 		78E3FA7328E33BCF002CC7AE /* Training_Manager_Watch_AppUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78E3FA7228E33BCF002CC7AE /* Training_Manager_Watch_AppUITests.swift */; };
 		78E3FA7528E33BCF002CC7AE /* Training_Manager_Watch_AppUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78E3FA7428E33BCF002CC7AE /* Training_Manager_Watch_AppUITestsLaunchTests.swift */; };
-		78E6F5C228E71BBA00BAEA24 /* CreateTrainingSessionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78E6F5C128E71BBA00BAEA24 /* CreateTrainingSessionView.swift */; };
+		78E6F5C228E71BBA00BAEA24 /* TodaySessionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78E6F5C128E71BBA00BAEA24 /* TodaySessionView.swift */; };
 		78E6F5C428E71C1D00BAEA24 /* Load_Old_Training.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78E6F5C328E71C1D00BAEA24 /* Load_Old_Training.swift */; };
 		78E6F5C628E9685600BAEA24 /* Create_New_Training.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78E6F5C528E9685600BAEA24 /* Create_New_Training.swift */; };
 		78E6F5C828E9686800BAEA24 /* Load_Old_Training.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78E6F5C728E9686800BAEA24 /* Load_Old_Training.swift */; };
 		78E8D35D2C8343AD00C23C5A /* TrainingMenu.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78E8D35B2C8343AD00C23C5A /* TrainingMenu.swift */; };
 		78E8D35E2C8343AD00C23C5A /* TrainingSession.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78E8D35C2C8343AD00C23C5A /* TrainingSession.swift */; };
+		78E8D37E2C845D5500C23C5A /* CreateTrainingMenuView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78E8D37D2C845D5500C23C5A /* CreateTrainingMenuView.swift */; };
+		78E8D3812C8466B700C23C5A /* CreateTrainingSessionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78E8D3802C8466B700C23C5A /* CreateTrainingSessionView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -105,12 +107,14 @@
 		78E3FA6E28E33BCF002CC7AE /* Training Manager Watch AppUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Training Manager Watch AppUITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		78E3FA7228E33BCF002CC7AE /* Training_Manager_Watch_AppUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Training_Manager_Watch_AppUITests.swift; sourceTree = "<group>"; };
 		78E3FA7428E33BCF002CC7AE /* Training_Manager_Watch_AppUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Training_Manager_Watch_AppUITestsLaunchTests.swift; sourceTree = "<group>"; };
-		78E6F5C128E71BBA00BAEA24 /* CreateTrainingSessionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateTrainingSessionView.swift; sourceTree = "<group>"; };
+		78E6F5C128E71BBA00BAEA24 /* TodaySessionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodaySessionView.swift; sourceTree = "<group>"; };
 		78E6F5C328E71C1D00BAEA24 /* Load_Old_Training.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Load_Old_Training.swift; sourceTree = "<group>"; };
 		78E6F5C528E9685600BAEA24 /* Create_New_Training.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Create_New_Training.swift; sourceTree = "<group>"; };
 		78E6F5C728E9686800BAEA24 /* Load_Old_Training.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Load_Old_Training.swift; sourceTree = "<group>"; };
 		78E8D35B2C8343AD00C23C5A /* TrainingMenu.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrainingMenu.swift; sourceTree = "<group>"; };
 		78E8D35C2C8343AD00C23C5A /* TrainingSession.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrainingSession.swift; sourceTree = "<group>"; };
+		78E8D37D2C845D5500C23C5A /* CreateTrainingMenuView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateTrainingMenuView.swift; sourceTree = "<group>"; };
+		78E8D3802C8466B700C23C5A /* CreateTrainingSessionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateTrainingSessionView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -264,7 +268,9 @@
 		78E8D37B2C83F0F000C23C5A /* View */ = {
 			isa = PBXGroup;
 			children = (
-				78E6F5C128E71BBA00BAEA24 /* CreateTrainingSessionView.swift */,
+				78E6F5C128E71BBA00BAEA24 /* TodaySessionView.swift */,
+				78E8D3802C8466B700C23C5A /* CreateTrainingSessionView.swift */,
+				78E8D37D2C845D5500C23C5A /* CreateTrainingMenuView.swift */,
 				78E3FA3128E33BCD002CC7AE /* ContentView.swift */,
 				782CCF1128F995B10060A69C /* Start_Training.swift */,
 				78E6F5C328E71C1D00BAEA24 /* Load_Old_Training.swift */,
@@ -495,12 +501,14 @@
 			buildActionMask = 2147483647;
 			files = (
 				78E3FA3228E33BCD002CC7AE /* ContentView.swift in Sources */,
-				78E6F5C228E71BBA00BAEA24 /* CreateTrainingSessionView.swift in Sources */,
+				78E8D3812C8466B700C23C5A /* CreateTrainingSessionView.swift in Sources */,
+				78E6F5C228E71BBA00BAEA24 /* TodaySessionView.swift in Sources */,
 				78E8D35D2C8343AD00C23C5A /* TrainingMenu.swift in Sources */,
 				78E8D35E2C8343AD00C23C5A /* TrainingSession.swift in Sources */,
 				78E3FA3028E33BCD002CC7AE /* Training_ManagerApp.swift in Sources */,
 				78E6F5C428E71C1D00BAEA24 /* Load_Old_Training.swift in Sources */,
 				782CCF1228F995B10060A69C /* Start_Training.swift in Sources */,
+				78E8D37E2C845D5500C23C5A /* CreateTrainingMenuView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

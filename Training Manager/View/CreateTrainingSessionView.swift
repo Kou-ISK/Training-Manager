@@ -1,64 +1,57 @@
+//
 //  CreateTrainingSessionView.swift
 //  Training Manager
 //
-//  Created by 井坂航 on 2022/09/30.
+//  Created by 井坂航 on 2024/09/01.
 //
 
 import SwiftUI
-import SwiftData
 
 struct CreateTrainingSessionView: View {
-    @State var trainingSessionList: [TrainingSession]
-    @State private var trainingMenuList: [TrainingMenu] = []
-    
+    @Environment(\.dismiss) private var dismiss
     @Environment(\.modelContext) private var modelContext
     
+    @State private var newSession = TrainingSession()
+    @State private var duration: Int64 = 0
+    
+    var onSave: (TrainingSession) -> Void
+    
     var body: some View {
-        VStack {
-            ForEach(trainingMenuList, id: \.self) { menu in
-                Text("メニュー名: \(menu.name ?? "")")
-                Text("重点1: \(menu.keyFocus1 ?? "")")
-                Text("目標: \(menu.goal ?? "")")
+        NavigationStack {
+            Form {
+                DatePicker("セッション日付", selection: Binding(
+                    get: { newSession.sessionDate ?? Date() },
+                    set: { newSession.sessionDate = $0 }
+                ), displayedComponents: [.date])
+                TextField("テーマ", text: Binding(
+                    get: { newSession.theme ?? "" },
+                    set: { newSession.theme = $0 }
+                ))
+                TextField("備考", text: Binding(
+                    get: { newSession.sessionDescription ?? "" },
+                    set: { newSession.sessionDescription = $0 }
+                ))
+                
             }
-                
-                
-            Button(action: {
-                trainingMenuList.append(TrainingMenu())
-            }, label: {
-                VStack {
-                    Text("追加")
-                    Image(systemName: "plus").frame(height: 30.0)
+            .toolbar {
+                ToolbarItem(placement: .primaryAction) {
+                    Button("保存") {
+                        modelContext.insert(newSession)
+                        onSave(newSession)
+                        dismiss()
+                    }
                 }
-            })
-            
-            ForEach(trainingMenuList.indices, id: \.self) { index in
-                TextField("メニュー名", text: Binding(
-                    get: { trainingMenuList[index].name ?? "" },
-                    set: { trainingMenuList[index].name = $0 }
-                ))
                 
-                TextField("重点1", text: Binding(
-                    get: { trainingMenuList[index].keyFocus1 ?? "" },
-                    set: { trainingMenuList[index].keyFocus1 = $0 }
-                ))
-                
-                TextField("目標", text: Binding(
-                    get: { trainingMenuList[index].goal ?? "" },
-                    set: { trainingMenuList[index].goal = $0 }
-                ))
-                
-                Button(action:{
-                    modelContext.insert(trainingMenuList[index])
-                    print("training Menu List is INSERTED: \(trainingMenuList)")
-                },label: {Text("追加")})
+                ToolbarItem(placement: .cancellationAction) {
+                    Button("キャンセル", role: .cancel) {
+                        dismiss()
+                    }
+                }
             }
         }
     }
 }
 
-struct CreateNewTrainingSessionPreviews: PreviewProvider {
-    static var previews: some View {
-        // プレビュー用にデフォルトの引数を渡す
-        CreateTrainingSessionView(trainingSessionList: [])
-    }
+#Preview {
+    CreateTrainingSessionView(onSave: { _ in })
 }

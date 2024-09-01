@@ -11,13 +11,14 @@ import SwiftData
 
 
 @Model public class TrainingSession {
-    public var id: UUID?
-    var menuId: String?
-    var sessionId: String?
+    var theme: String?
+    var sessionDescription: String?
     var sessionDate: Date?
-    var duration: Int64?
     var createdAt: Date?
     var updatedAt: Date?
+    
+    // 多対多のリレーションシップ
+    @Relationship var menus: [TrainingMenu] = []
     
     public init() {
 

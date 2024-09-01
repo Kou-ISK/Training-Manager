@@ -10,10 +10,10 @@ import SwiftData
 
 struct ContentView: View {
     @Query private var trainingSessionList: [TrainingSession]
-    @Query private var trainingMenuList: [TrainingMenu]
+
     var body: some View {
         TabView{
-            CreateTrainingSessionView(trainingSessionList: trainingSessionList)
+            TodaySessionView(trainingSessionList: trainingSessionList)
                 .tabItem {
                     Label("新規トレーニング", systemImage: "tray.and.arrow.down.fill")
                 }

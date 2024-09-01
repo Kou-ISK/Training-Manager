@@ -12,7 +12,6 @@ import SwiftData
 
 @Model public class TrainingMenu {
     var goal: String?
-    public var id: UUID?
     var keyFocus1: String?
     var keyFocus2: String?
     var keyFocus3: String?
@@ -20,6 +19,11 @@ import SwiftData
     var name: String?
     var createdAt: Date?
     var updatedAt: Date?
+    var duration: Int64? // durationを追加
+    
+    // TrainingMenu は複数の TrainingSession に属することができる
+    @Relationship var sessions: [TrainingSession] = []
+    
     public init() {
 
     }

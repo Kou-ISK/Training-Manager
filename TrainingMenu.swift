@@ -19,7 +19,7 @@ import SwiftData
     var name: String?
     var createdAt: Date?
     var updatedAt: Date?
-    var duration: Int64? // durationを追加
+    var duration: TimeInterval? // durationを追加
     
     // TrainingMenu は複数の TrainingSession に属することができる
     @Relationship var sessions: [TrainingSession] = []

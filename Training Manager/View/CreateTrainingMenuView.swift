@@ -14,6 +14,14 @@ struct CreateTrainingMenuView: View {
     @State var session: TrainingSession
     @State private var trainingMenu = TrainingMenu()
     
+    // 分と秒を選択するための State プロパティ
+    @State private var selectedMinutes = 0
+    @State private var selectedSeconds = 0
+    
+    // 選択できる範囲のデータ
+    let minutesRange = Array(0...59)
+    let secondsRange = Array(0...59)
+    
     var body: some View {
         NavigationStack {
             Form {
@@ -31,11 +39,30 @@ struct CreateTrainingMenuView: View {
                     get: { trainingMenu.goal ?? "" },
                     set: { trainingMenu.goal = $0 }
                 ))
+                HStack{
+                    // ドラムロール形式のPickerで分を選択
+                    Picker("Duration (分)", selection: $selectedMinutes) {
+                        ForEach(minutesRange, id: \.self) { minute in
+                            Text("\(minute) 分").tag(minute)
+                        }
+                    }
+                    .pickerStyle(WheelPickerStyle())
+                    
+                    // ドラムロール形式のPickerで秒を選択
+                    Picker("Duration (秒)", selection: $selectedSeconds) {
+                        ForEach(secondsRange, id: \.self) { second in
+                            Text("\(second) 秒").tag(second)
+                        }
+                    }
+                    .pickerStyle(WheelPickerStyle())
+                }
             }
             .navigationTitle("メニューの追加")
             .toolbar {
                 ToolbarItem(placement: .primaryAction) {
                     Button("追加") {
+                        // 分と秒を TimeInterval に変換
+                        trainingMenu.duration = TimeInterval(selectedMinutes * 60 + selectedSeconds)
                         // 新しいメニューを追加してセッションに保存
                         session.menus.append(trainingMenu)
                         modelContext.insert(trainingMenu)

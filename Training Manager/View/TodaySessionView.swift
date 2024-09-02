@@ -15,25 +15,58 @@ struct TodaySessionView: View {
     
     @Environment(\.modelContext) private var modelContext
     
+    @State private var currentTrainingMenu: TrainingMenu? = nil
+    
     var body: some View {
         NavigationStack {
             VStack {
                 if let session = currentTrainingSession {
-                    VStack(alignment: .leading) {
+                    VStack(alignment: .center) {
+                        Text(session.sessionDate ?? Date(), formatter: DateFormatter())
+                            .font(.title)
                         Text(session.theme ?? "")
                             .font(.headline)
                         
-                        Text(session.sessionDate ?? Date(), formatter: DateFormatter())
-                            .font(.subheadline)
+                        
+                            if currentTrainingMenu != nil{
+                                // 実施中のmenuを表示
+                                HStack(alignment: .center){
+                                VStack{
+                                    Text(currentTrainingMenu?.name ??  "N/A").font(.title)
+                                        .padding(5)
+                                    Text("フォーカスポイント: ")
+                                    Text(currentTrainingMenu?.keyFocus1 ?? "")
+                                    Text(currentTrainingMenu?.keyFocus2 ?? "")
+                                    Text(currentTrainingMenu?.keyFocus3 ?? "")
+                                }
+                                    TimerView(viewModel: TimerViewModel(), countDownTime: currentTrainingMenu?.duration ?? 60)
+                            }
+                        }
                         
                         List(session.menus) { menu in
-                            VStack(alignment: .leading) {
-                                Text(menu.name ?? "")
-                                    .font(.title3)
-                                Text(menu.goal ?? "")
-                                    .font(.body)
-                                Text(menu.keyFocus1 ?? "")
-                                    .font(.body)
+                            let isCurrentTraining = currentTrainingMenu == menu
+                            HStack{
+                                VStack(alignment: .leading) {
+                                    HStack{
+                                        Text(menu.name ?? "")
+                                            .font(.title)
+                                        Text(formatDuration(duration: menu.duration ?? 60))
+                                    }
+                                    Text(menu.goal ?? "")
+                                        .font(.title2)
+                                    Text(menu.keyFocus1 ?? "")
+                                        .font(.body)
+                                    Text(menu.keyFocus2 ?? "")
+                                        .font(.body)
+                                    Text(menu.keyFocus3 ?? "")
+                                        .font(.body)
+                                }
+                                Spacer()
+                                Button(action:{
+                                    currentTrainingMenu = menu
+                                },label:{
+                                    Text(isCurrentTraining ? "実施中" :"開始").fontWeight(.bold)
+                                }).buttonStyle(.borderedProminent)
                             }
                         }
                     }
@@ -85,6 +118,14 @@ struct TodaySessionView: View {
         } else {
             currentTrainingSession = nil
         }
+    }
+    
+    // 時間をmm:ss形式で表示
+    func formatDuration(duration: TimeInterval)->String{
+        let minutes = Int(duration) / 60
+        let seconds = Int(duration) % 60
+        // 分が1桁の場合も2桁で表示するためにフォーマット
+        return String(format: "%02d:%02d", minutes, seconds)
     }
 }
 

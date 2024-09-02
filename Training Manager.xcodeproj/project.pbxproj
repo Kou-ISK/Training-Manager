@@ -31,6 +31,8 @@
 		78E8D35E2C8343AD00C23C5A /* TrainingSession.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78E8D35C2C8343AD00C23C5A /* TrainingSession.swift */; };
 		78E8D37E2C845D5500C23C5A /* CreateTrainingMenuView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78E8D37D2C845D5500C23C5A /* CreateTrainingMenuView.swift */; };
 		78E8D3812C8466B700C23C5A /* CreateTrainingSessionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78E8D3802C8466B700C23C5A /* CreateTrainingSessionView.swift */; };
+		78E8D3832C85CBE100C23C5A /* TimerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78E8D3822C85CBE100C23C5A /* TimerView.swift */; };
+		78E8D3852C85CC3200C23C5A /* TimerViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78E8D3842C85CC3200C23C5A /* TimerViewModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -115,6 +117,8 @@
 		78E8D35C2C8343AD00C23C5A /* TrainingSession.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrainingSession.swift; sourceTree = "<group>"; };
 		78E8D37D2C845D5500C23C5A /* CreateTrainingMenuView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateTrainingMenuView.swift; sourceTree = "<group>"; };
 		78E8D3802C8466B700C23C5A /* CreateTrainingSessionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateTrainingSessionView.swift; sourceTree = "<group>"; };
+		78E8D3822C85CBE100C23C5A /* TimerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimerView.swift; sourceTree = "<group>"; };
+		78E8D3842C85CC3200C23C5A /* TimerViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimerViewModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -274,6 +278,8 @@
 				78E3FA3128E33BCD002CC7AE /* ContentView.swift */,
 				782CCF1128F995B10060A69C /* Start_Training.swift */,
 				78E6F5C328E71C1D00BAEA24 /* Load_Old_Training.swift */,
+				78E8D3822C85CBE100C23C5A /* TimerView.swift */,
+				78E8D3842C85CC3200C23C5A /* TimerViewModel.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -500,6 +506,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				78E8D3832C85CBE100C23C5A /* TimerView.swift in Sources */,
 				78E3FA3228E33BCD002CC7AE /* ContentView.swift in Sources */,
 				78E8D3812C8466B700C23C5A /* CreateTrainingSessionView.swift in Sources */,
 				78E6F5C228E71BBA00BAEA24 /* TodaySessionView.swift in Sources */,
@@ -507,6 +514,7 @@
 				78E8D35E2C8343AD00C23C5A /* TrainingSession.swift in Sources */,
 				78E3FA3028E33BCD002CC7AE /* Training_ManagerApp.swift in Sources */,
 				78E6F5C428E71C1D00BAEA24 /* Load_Old_Training.swift in Sources */,
+				78E8D3852C85CC3200C23C5A /* TimerViewModel.swift in Sources */,
 				782CCF1228F995B10060A69C /* Start_Training.swift in Sources */,
 				78E8D37E2C845D5500C23C5A /* CreateTrainingMenuView.swift in Sources */,
 			);

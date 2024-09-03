@@ -21,7 +21,12 @@ import SwiftData
     @Relationship var menus: [TrainingMenu] = []
     
     public init() {
-
+    }
+    
+    public init(theme: String, sessionDescription: String, sessionDate: Date) {
+        self.theme = theme
+        self.sessionDescription = sessionDescription
+        self.sessionDate = sessionDate
     }
     
 }

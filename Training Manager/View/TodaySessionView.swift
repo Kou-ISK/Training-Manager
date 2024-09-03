@@ -17,15 +17,26 @@ struct TodaySessionView: View {
     
     @State private var currentTrainingMenu: TrainingMenu? = nil
     
+    // カスタムDateFormatterを定義
+     private var dateFormatter: DateFormatter {
+         let formatter = DateFormatter()
+         formatter.dateStyle = .short // 日付スタイルを指定
+         formatter.timeStyle = .none // 時間は表示しない
+         return formatter
+     }
+    
     var body: some View {
         NavigationStack {
             VStack {
                 if let session = currentTrainingSession {
                     VStack(alignment: .center) {
-                        Text(session.sessionDate ?? Date(), formatter: DateFormatter())
+                        Spacer()
+                        Text(session.sessionDate ?? Date(), formatter: dateFormatter)
                             .font(.title)
                         Text(session.theme ?? "")
-                            .font(.headline)
+                            .font(.title2)
+                        Text(session.sessionDescription ?? "")
+                            .font(.title3)
                         
                         
                             if currentTrainingMenu != nil{
@@ -39,7 +50,7 @@ struct TodaySessionView: View {
                                     Text(currentTrainingMenu?.keyFocus2 ?? "")
                                     Text(currentTrainingMenu?.keyFocus3 ?? "")
                                 }
-                                    TimerView(viewModel: TimerViewModel(), countDownTime: currentTrainingMenu?.duration ?? 60)
+                                    TimerView(viewModel: TimerViewModel(), countDownTime: currentTrainingMenu?.duration ?? 0)
                             }
                         }
                         
@@ -50,7 +61,7 @@ struct TodaySessionView: View {
                                     HStack{
                                         Text(menu.name ?? "")
                                             .font(.title)
-                                        Text(formatDuration(duration: menu.duration ?? 60))
+                                        Text(formatDuration(duration: menu.duration ?? 0))
                                     }
                                     Text(menu.goal ?? "")
                                         .font(.title2)
@@ -130,5 +141,5 @@ struct TodaySessionView: View {
 }
 
 #Preview {
-    TodaySessionView(trainingSessionList: [])
+    TodaySessionView(trainingSessionList: [TrainingSession(theme: "テーマ", sessionDescription: "備考", sessionDate: Date())])
 }

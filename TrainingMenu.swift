@@ -25,7 +25,16 @@ import SwiftData
     @Relationship var sessions: [TrainingSession] = []
     
     public init() {
-
+    }
+    
+    public init(name: String, goal: String, duration: TimeInterval, keyFocus1: String, keyFocus2:String, keyFocus3: String, menuDescription:String) {
+        self.name = name
+        self.goal = goal
+        self.duration = duration
+        self.keyFocus1 = keyFocus1
+        self.keyFocus2 = keyFocus2
+        self.keyFocus3 = keyFocus3
+        self.menuDescription = menuDescription
     }
     
 }

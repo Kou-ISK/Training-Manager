@@ -24,7 +24,7 @@
 		78E3FA7328E33BCF002CC7AE /* Training_Manager_Watch_AppUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78E3FA7228E33BCF002CC7AE /* Training_Manager_Watch_AppUITests.swift */; };
 		78E3FA7528E33BCF002CC7AE /* Training_Manager_Watch_AppUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78E3FA7428E33BCF002CC7AE /* Training_Manager_Watch_AppUITestsLaunchTests.swift */; };
 		78E6F5C228E71BBA00BAEA24 /* TodaySessionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78E6F5C128E71BBA00BAEA24 /* TodaySessionView.swift */; };
-		78E6F5C428E71C1D00BAEA24 /* Load_Old_Training.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78E6F5C328E71C1D00BAEA24 /* Load_Old_Training.swift */; };
+		78E6F5C428E71C1D00BAEA24 /* TrainingMenuHistory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78E6F5C328E71C1D00BAEA24 /* TrainingMenuHistory.swift */; };
 		78E6F5C628E9685600BAEA24 /* Create_New_Training.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78E6F5C528E9685600BAEA24 /* Create_New_Training.swift */; };
 		78E6F5C828E9686800BAEA24 /* Load_Old_Training.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78E6F5C728E9686800BAEA24 /* Load_Old_Training.swift */; };
 		78E8D35D2C8343AD00C23C5A /* TrainingMenu.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78E8D35B2C8343AD00C23C5A /* TrainingMenu.swift */; };
@@ -110,7 +110,7 @@
 		78E3FA7228E33BCF002CC7AE /* Training_Manager_Watch_AppUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Training_Manager_Watch_AppUITests.swift; sourceTree = "<group>"; };
 		78E3FA7428E33BCF002CC7AE /* Training_Manager_Watch_AppUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Training_Manager_Watch_AppUITestsLaunchTests.swift; sourceTree = "<group>"; };
 		78E6F5C128E71BBA00BAEA24 /* TodaySessionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodaySessionView.swift; sourceTree = "<group>"; };
-		78E6F5C328E71C1D00BAEA24 /* Load_Old_Training.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Load_Old_Training.swift; sourceTree = "<group>"; };
+		78E6F5C328E71C1D00BAEA24 /* TrainingMenuHistory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrainingMenuHistory.swift; sourceTree = "<group>"; };
 		78E6F5C528E9685600BAEA24 /* Create_New_Training.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Create_New_Training.swift; sourceTree = "<group>"; };
 		78E6F5C728E9686800BAEA24 /* Load_Old_Training.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Load_Old_Training.swift; sourceTree = "<group>"; };
 		78E8D35B2C8343AD00C23C5A /* TrainingMenu.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrainingMenu.swift; sourceTree = "<group>"; };
@@ -277,7 +277,7 @@
 				78E8D37D2C845D5500C23C5A /* CreateTrainingMenuView.swift */,
 				78E3FA3128E33BCD002CC7AE /* ContentView.swift */,
 				782CCF1128F995B10060A69C /* Start_Training.swift */,
-				78E6F5C328E71C1D00BAEA24 /* Load_Old_Training.swift */,
+				78E6F5C328E71C1D00BAEA24 /* TrainingMenuHistory.swift */,
 				78E8D3822C85CBE100C23C5A /* TimerView.swift */,
 				78E8D3842C85CC3200C23C5A /* TimerViewModel.swift */,
 			);
@@ -403,7 +403,7 @@
 			attributes = {
 				BuildIndependentTargetsInParallel = 1;
 				LastSwiftUpdateCheck = 1400;
-				LastUpgradeCheck = 1400;
+				LastUpgradeCheck = 1540;
 				TargetAttributes = {
 					78E3FA2B28E33BCD002CC7AE = {
 						CreatedOnToolsVersion = 14.0;
@@ -513,7 +513,7 @@
 				78E8D35D2C8343AD00C23C5A /* TrainingMenu.swift in Sources */,
 				78E8D35E2C8343AD00C23C5A /* TrainingSession.swift in Sources */,
 				78E3FA3028E33BCD002CC7AE /* Training_ManagerApp.swift in Sources */,
-				78E6F5C428E71C1D00BAEA24 /* Load_Old_Training.swift in Sources */,
+				78E6F5C428E71C1D00BAEA24 /* TrainingMenuHistory.swift in Sources */,
 				78E8D3852C85CC3200C23C5A /* TimerViewModel.swift in Sources */,
 				782CCF1228F995B10060A69C /* Start_Training.swift in Sources */,
 				78E8D37E2C845D5500C23C5A /* CreateTrainingMenuView.swift in Sources */,
@@ -600,6 +600,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
@@ -629,9 +630,12 @@
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				COPY_PHASE_STRIP = NO;
+				DEAD_CODE_STRIPPING = YES;
 				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_PREVIEWS = YES;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				ENABLE_TESTABILITY = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu11;
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_NO_COMMON_BLOCKS = YES;
@@ -646,12 +650,13 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.5;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				WATCHOS_DEPLOYMENT_TARGET = 10.5;
 			};
 			name = Debug;
 		};
@@ -659,6 +664,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
@@ -688,9 +694,12 @@
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				COPY_PHASE_STRIP = NO;
-				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				DEAD_CODE_STRIPPING = YES;
+				DEBUG_INFORMATION_FORMAT = dwarf;
 				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_PREVIEWS = YES;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu11;
 				GCC_NO_COMMON_BLOCKS = YES;
 				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
@@ -699,11 +708,12 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.5;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				SWIFT_COMPILATION_MODE = wholemodule;
 				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				WATCHOS_DEPLOYMENT_TARGET = 10.5;
 			};
 			name = Release;
 		};
@@ -732,7 +742,7 @@
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 4;
-				WATCHOS_DEPLOYMENT_TARGET = 9.0;
+				WATCHOS_DEPLOYMENT_TARGET = 10.5;
 			};
 			name = Debug;
 		};
@@ -762,7 +772,7 @@
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 4;
 				VALIDATE_PRODUCT = YES;
-				WATCHOS_DEPLOYMENT_TARGET = 9.0;
+				WATCHOS_DEPLOYMENT_TARGET = 10.5;
 			};
 			name = Release;
 		};
@@ -839,7 +849,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				GENERATE_INFOPLIST_FILE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.5;
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = "Kou-Isaka.Training-ManagerTests";
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -859,7 +869,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				GENERATE_INFOPLIST_FILE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.5;
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = "Kou-Isaka.Training-ManagerTests";
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -879,7 +889,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				GENERATE_INFOPLIST_FILE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.5;
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = "Kou-Isaka.Training-ManagerUITests";
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -898,7 +908,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				GENERATE_INFOPLIST_FILE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.5;
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = "Kou-Isaka.Training-ManagerUITests";
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -927,7 +937,7 @@
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 4;
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Training Manager Watch App.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/Training Manager Watch App";
-				WATCHOS_DEPLOYMENT_TARGET = 9.0;
+				WATCHOS_DEPLOYMENT_TARGET = 10.5;
 			};
 			name = Debug;
 		};
@@ -948,7 +958,7 @@
 				TARGETED_DEVICE_FAMILY = 4;
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Training Manager Watch App.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/Training Manager Watch App";
 				VALIDATE_PRODUCT = YES;
-				WATCHOS_DEPLOYMENT_TARGET = 9.0;
+				WATCHOS_DEPLOYMENT_TARGET = 10.5;
 			};
 			name = Release;
 		};
@@ -967,7 +977,7 @@
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 4;
 				TEST_TARGET_NAME = "Training Manager Watch App";
-				WATCHOS_DEPLOYMENT_TARGET = 9.0;
+				WATCHOS_DEPLOYMENT_TARGET = 10.5;
 			};
 			name = Debug;
 		};
@@ -987,7 +997,7 @@
 				TARGETED_DEVICE_FAMILY = 4;
 				TEST_TARGET_NAME = "Training Manager Watch App";
 				VALIDATE_PRODUCT = YES;
-				WATCHOS_DEPLOYMENT_TARGET = 9.0;
+				WATCHOS_DEPLOYMENT_TARGET = 10.5;
 			};
 			name = Release;
 		};
@@ -1001,7 +1011,7 @@
 				78E3FA7728E33BCF002CC7AE /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
+			defaultConfigurationName = Debug;
 		};
 		78E3FA7828E33BCF002CC7AE /* Build configuration list for PBXNativeTarget "Training Manager Watch App" */ = {
 			isa = XCConfigurationList;
@@ -1010,7 +1020,7 @@
 				78E3FA7A28E33BCF002CC7AE /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
+			defaultConfigurationName = Debug;
 		};
 		78E3FA7C28E33BCF002CC7AE /* Build configuration list for PBXNativeTarget "Training Manager" */ = {
 			isa = XCConfigurationList;
@@ -1019,7 +1029,7 @@
 				78E3FA7E28E33BCF002CC7AE /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
+			defaultConfigurationName = Debug;
 		};
 		78E3FA7F28E33BCF002CC7AE /* Build configuration list for PBXNativeTarget "Training ManagerTests" */ = {
 			isa = XCConfigurationList;
@@ -1028,7 +1038,7 @@
 				78E3FA8128E33BCF002CC7AE /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
+			defaultConfigurationName = Debug;
 		};
 		78E3FA8228E33BCF002CC7AE /* Build configuration list for PBXNativeTarget "Training ManagerUITests" */ = {
 			isa = XCConfigurationList;
@@ -1037,7 +1047,7 @@
 				78E3FA8428E33BCF002CC7AE /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
+			defaultConfigurationName = Debug;
 		};
 		78E3FA8528E33BCF002CC7AE /* Build configuration list for PBXNativeTarget "Training Manager Watch AppTests" */ = {
 			isa = XCConfigurationList;
@@ -1046,7 +1056,7 @@
 				78E3FA8728E33BCF002CC7AE /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
+			defaultConfigurationName = Debug;
 		};
 		78E3FA8828E33BCF002CC7AE /* Build configuration list for PBXNativeTarget "Training Manager Watch AppUITests" */ = {
 			isa = XCConfigurationList;
@@ -1055,7 +1065,7 @@
 				78E3FA8A28E33BCF002CC7AE /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
+			defaultConfigurationName = Debug;
 		};
 /* End XCConfigurationList section */
 	};

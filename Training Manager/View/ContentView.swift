@@ -10,23 +10,22 @@ import SwiftData
 
 struct ContentView: View {
     @Query private var trainingSessionList: [TrainingSession]
-
+    @Query private var trainingMenuList: [TrainingMenu]
+    
     var body: some View {
         TabView{
             TodaySessionView(trainingSessionList: trainingSessionList)
                 .tabItem {
                     Label("新規トレーニング", systemImage: "tray.and.arrow.down.fill")
                 }
-            Load_Old_Training()
+            TrainingMenuHistory(trainingMenuList: trainingMenuList)
                 .tabItem {
-                    Label("トレーニング履歴", systemImage: "book")
+                    Label("トレーニングメニュー履歴", systemImage: "book")
                 }
         }
     }
 }
 
-struct ContentView_Previews: PreviewProvider {
-    static var previews: some View {
-        ContentView()
-    }
+#Preview {
+    ContentView()
 }

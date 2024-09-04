@@ -18,19 +18,18 @@ struct TodaySessionView: View {
     @State private var currentTrainingMenu: TrainingMenu? = nil
     
     // カスタムDateFormatterを定義
-     private var dateFormatter: DateFormatter {
-         let formatter = DateFormatter()
-         formatter.dateStyle = .short // 日付スタイルを指定
-         formatter.timeStyle = .none // 時間は表示しない
-         return formatter
-     }
+    private var dateFormatter: DateFormatter {
+        let formatter = DateFormatter()
+        formatter.dateStyle = .short // 日付スタイルを指定
+        formatter.timeStyle = .none // 時間は表示しない
+        return formatter
+    }
     
     var body: some View {
         NavigationStack {
             VStack {
                 if let session = currentTrainingSession {
                     VStack(alignment: .center) {
-                        Spacer()
                         Text(session.sessionDate ?? Date(), formatter: dateFormatter)
                             .font(.title)
                         Text(session.theme ?? "")
@@ -39,10 +38,10 @@ struct TodaySessionView: View {
                             .font(.title3)
                         
                         
-                            if currentTrainingMenu != nil{
-                                // 実施中のmenuを表示
-                                HStack(alignment: .center){
-                                VStack{
+                        if currentTrainingMenu != nil{
+                            // 実施中のmenuを表示
+                            HStack(alignment: .center){
+                                VStack(alignment: .center){
                                     Text(currentTrainingMenu?.name ??  "N/A").font(.title)
                                         .padding(5)
                                     Text("フォーカスポイント: ")
@@ -50,7 +49,9 @@ struct TodaySessionView: View {
                                     Text(currentTrainingMenu?.keyFocus2 ?? "")
                                     Text(currentTrainingMenu?.keyFocus3 ?? "")
                                 }
-                                    TimerView(viewModel: TimerViewModel(), countDownTime: currentTrainingMenu?.duration ?? 0)
+                                
+                                // TODO 実施中メニューが変更された場合にタイマーが初期化されない問題に対処する
+                                TimerView(viewModel: TimerViewModel(), countDownTime: currentTrainingMenu?.duration ?? 0)
                             }
                         }
                         
@@ -119,11 +120,10 @@ struct TodaySessionView: View {
     
     func filterTodaySessions() {
         let today = Calendar.current.startOfDay(for: Date())
-        
         if let session = trainingSessionList.first(where: { session in
             guard let sessionDate = session.sessionDate else { return false }
-            let sessionDay = Calendar.current.startOfDay(for: sessionDate)
-            return sessionDay == today
+            let isSameDay = Calendar.current.isDate(sessionDate, inSameDayAs: today)
+            return isSameDay
         }) {
             currentTrainingSession = session
         } else {
@@ -141,5 +141,5 @@ struct TodaySessionView: View {
 }
 
 #Preview {
-    TodaySessionView(trainingSessionList: [TrainingSession(theme: "テーマ", sessionDescription: "備考", sessionDate: Date())])
+    TodaySessionView(trainingSessionList: [TrainingSession(theme: "テーマ", sessionDescription: "備考",sessionDate: Date())])
 }

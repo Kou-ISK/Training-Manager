@@ -23,6 +23,10 @@ import SwiftData
     public init() {
     }
     
+    public init(sessionDate: Date) {
+        self.sessionDate = sessionDate
+    }
+    
     public init(theme: String, sessionDescription: String, sessionDate: Date) {
         self.theme = theme
         self.sessionDescription = sessionDescription

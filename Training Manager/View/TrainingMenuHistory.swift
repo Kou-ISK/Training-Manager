@@ -10,20 +10,21 @@ import SwiftUI
 struct TrainingMenuHistory: View {
     @State var trainingMenuList: [TrainingMenu]
     var body: some View {
-        Text("メニュー履歴").font(.title)
-        List(trainingMenuList){menu in
-            VStack(alignment: .leading) {
-                HStack{
-                    Text(menu.name ?? "").font(.title2)
-                    Spacer()
-                    Text(formatDuration(duration: menu.duration ?? 0)).bold()
+        VStack{
+            Text("メニュー履歴").font(.title)
+            List(trainingMenuList){menu in
+                VStack(alignment: .leading) {
+                    HStack{
+                        Text(menu.name ?? "").font(.title2)
+                        Spacer()
+                        Text(formatDuration(duration: menu.duration ?? 0)).bold()
+                    }
+                    Text(menu.goal ?? "").font(.headline)
+                    Text(menu.keyFocus1 ?? "")
+                    Text(menu.keyFocus2 ?? "")
+                    Text(menu.keyFocus3 ?? "")
+                    
                 }
-                Text(menu.goal ?? "").font(.headline)
-                Text(menu.keyFocus1 ?? "")
-                Text(menu.keyFocus2 ?? "")
-                Text(menu.keyFocus3 ?? "")
-                
-                
             }
         }
     }

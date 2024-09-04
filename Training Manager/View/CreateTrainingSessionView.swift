@@ -11,7 +11,7 @@ struct CreateTrainingSessionView: View {
     @Environment(\.dismiss) private var dismiss
     @Environment(\.modelContext) private var modelContext
     
-    @State private var newSession = TrainingSession()
+    @State private var newSession = TrainingSession(sessionDate: Date())
     @State private var duration: Int64 = 0
     
     var onSave: (TrainingSession) -> Void

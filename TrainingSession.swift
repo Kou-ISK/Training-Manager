@@ -33,4 +33,11 @@ import SwiftData
         self.sessionDate = sessionDate
     }
     
+    public init(theme: String, sessionDescription: String, sessionDate: Date, menus: [TrainingMenu]) {
+        self.theme = theme
+        self.sessionDescription = sessionDescription
+        self.sessionDate = sessionDate
+        self.menus = menus
+    }
+    
 }

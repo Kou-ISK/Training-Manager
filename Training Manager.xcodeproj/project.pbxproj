@@ -10,6 +10,9 @@
 		782CCF0E28F992C10060A69C /* ContentView.swift in Embed Watch Content */ = {isa = PBXBuildFile; fileRef = 78E3FA5928E33BCE002CC7AE /* ContentView.swift */; };
 		782CCF1228F995B10060A69C /* Start_Training.swift in Sources */ = {isa = PBXBuildFile; fileRef = 782CCF1128F995B10060A69C /* Start_Training.swift */; };
 		78C20A0C2C87D0A100AF77ED /* CircleProgressBarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78C20A0B2C87D0A100AF77ED /* CircleProgressBarView.swift */; };
+		78C20A0E2C89C4B100AF77ED /* TrainingSessionListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78C20A0D2C89C4B100AF77ED /* TrainingSessionListView.swift */; };
+		78C20A102C89C64000AF77ED /* SessionDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78C20A0F2C89C64000AF77ED /* SessionDetailView.swift */; };
+		78C20A122C89C6EE00AF77ED /* customDateFormatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78C20A112C89C6EE00AF77ED /* customDateFormatter.swift */; };
 		78E3FA3028E33BCD002CC7AE /* Training_ManagerApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78E3FA2F28E33BCD002CC7AE /* Training_ManagerApp.swift */; };
 		78E3FA3228E33BCD002CC7AE /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78E3FA3128E33BCD002CC7AE /* ContentView.swift */; };
 		78E3FA3428E33BCE002CC7AE /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 78E3FA3328E33BCE002CC7AE /* Assets.xcassets */; };
@@ -91,6 +94,9 @@
 /* Begin PBXFileReference section */
 		782CCF1128F995B10060A69C /* Start_Training.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Start_Training.swift; sourceTree = "<group>"; };
 		78C20A0B2C87D0A100AF77ED /* CircleProgressBarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CircleProgressBarView.swift; sourceTree = "<group>"; };
+		78C20A0D2C89C4B100AF77ED /* TrainingSessionListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrainingSessionListView.swift; sourceTree = "<group>"; };
+		78C20A0F2C89C64000AF77ED /* SessionDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SessionDetailView.swift; sourceTree = "<group>"; };
+		78C20A112C89C6EE00AF77ED /* customDateFormatter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = customDateFormatter.swift; sourceTree = "<group>"; };
 		78E3FA2C28E33BCD002CC7AE /* Training Manager.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Training Manager.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		78E3FA2F28E33BCD002CC7AE /* Training_ManagerApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Training_ManagerApp.swift; sourceTree = "<group>"; };
 		78E3FA3128E33BCD002CC7AE /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -275,7 +281,10 @@
 			isa = PBXGroup;
 			children = (
 				78E6F5C128E71BBA00BAEA24 /* TodaySessionView.swift */,
+				78C20A112C89C6EE00AF77ED /* customDateFormatter.swift */,
 				78E8D3802C8466B700C23C5A /* CreateTrainingSessionView.swift */,
+				78C20A0D2C89C4B100AF77ED /* TrainingSessionListView.swift */,
+				78C20A0F2C89C64000AF77ED /* SessionDetailView.swift */,
 				78E8D37D2C845D5500C23C5A /* CreateTrainingMenuView.swift */,
 				78E3FA3128E33BCD002CC7AE /* ContentView.swift */,
 				782CCF1128F995B10060A69C /* Start_Training.swift */,
@@ -510,14 +519,17 @@
 			buildActionMask = 2147483647;
 			files = (
 				78E8D3832C85CBE100C23C5A /* TimerView.swift in Sources */,
+				78C20A122C89C6EE00AF77ED /* customDateFormatter.swift in Sources */,
 				78E3FA3228E33BCD002CC7AE /* ContentView.swift in Sources */,
 				78E8D3812C8466B700C23C5A /* CreateTrainingSessionView.swift in Sources */,
 				78E6F5C228E71BBA00BAEA24 /* TodaySessionView.swift in Sources */,
+				78C20A102C89C64000AF77ED /* SessionDetailView.swift in Sources */,
 				78E8D35D2C8343AD00C23C5A /* TrainingMenu.swift in Sources */,
 				78C20A0C2C87D0A100AF77ED /* CircleProgressBarView.swift in Sources */,
 				78E8D35E2C8343AD00C23C5A /* TrainingSession.swift in Sources */,
 				78E3FA3028E33BCD002CC7AE /* Training_ManagerApp.swift in Sources */,
 				78E6F5C428E71C1D00BAEA24 /* TrainingMenuHistory.swift in Sources */,
+				78C20A0E2C89C4B100AF77ED /* TrainingSessionListView.swift in Sources */,
 				78E8D3852C85CC3200C23C5A /* TimerViewModel.swift in Sources */,
 				782CCF1228F995B10060A69C /* Start_Training.swift in Sources */,
 				78E8D37E2C845D5500C23C5A /* CreateTrainingMenuView.swift in Sources */,

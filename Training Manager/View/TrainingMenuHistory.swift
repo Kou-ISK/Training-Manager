@@ -14,10 +14,15 @@ struct TrainingMenuHistory: View {
             Text("メニュー履歴").font(.title)
             List(trainingMenuList){menu in
                 VStack(alignment: .leading) {
-                    HStack{
+                    HStack(alignment: .center){
                         Text(menu.name ?? "").font(.title2)
-                        Spacer()
                         Text(formatDuration(duration: menu.duration ?? 0)).bold()
+                        Spacer()
+                        // セッションに追加できるようにする
+                        Button(action: {
+                            // 追加先セッションを選択(カレンダー？picker？)
+                            // セッションに追加する処理を実行
+                        }, label: {Text("追加").bold()}).buttonStyle(.borderedProminent)
                     }
                     Text(menu.goal ?? "").font(.headline)
                     Text(menu.keyFocus1 ?? "")

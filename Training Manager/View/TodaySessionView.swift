@@ -17,14 +17,6 @@ struct TodaySessionView: View {
     
     @State private var currentTrainingMenu: TrainingMenu? = nil
     
-    // カスタムDateFormatterを定義
-    private var dateFormatter: DateFormatter {
-        let formatter = DateFormatter()
-        formatter.dateStyle = .short // 日付スタイルを指定
-        formatter.timeStyle = .none // 時間は表示しない
-        return formatter
-    }
-    
     var body: some View {
         NavigationStack {
             VStack {

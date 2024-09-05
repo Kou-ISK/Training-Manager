@@ -35,7 +35,6 @@ struct TodaySessionView: View {
                         Text(session.theme ?? "")
                             .font(.title2)
                         Text(session.sessionDescription ?? "")
-                            .font(.title3)
                         
                         
                         if currentTrainingMenu != nil{
@@ -50,8 +49,13 @@ struct TodaySessionView: View {
                                     Text(currentTrainingMenu?.keyFocus3 ?? "")
                                 }
                                 
-                                // TODO 実施中メニューが変更された場合にタイマーが初期化されない問題に対処する
-                                TimerView(viewModel: TimerViewModel(), countDownTime: currentTrainingMenu?.duration ?? 0)
+                                // バインディングでTimerViewに値を渡す
+                                TimerView(viewModel: TimerViewModel(),
+                                          countDownTime: Binding(
+                                            get: { currentTrainingMenu?.duration ?? 0 },
+                                            set: { newValue in
+                                                currentTrainingMenu?.duration = newValue
+                                            }))
                             }
                         }
                         
@@ -67,11 +71,8 @@ struct TodaySessionView: View {
                                     Text(menu.goal ?? "")
                                         .font(.title2)
                                     Text(menu.keyFocus1 ?? "")
-                                        .font(.body)
                                     Text(menu.keyFocus2 ?? "")
-                                        .font(.body)
                                     Text(menu.keyFocus3 ?? "")
-                                        .font(.body)
                                 }
                                 Spacer()
                                 Button(action:{
@@ -85,6 +86,8 @@ struct TodaySessionView: View {
                 } else {
                     Text("本日の日付のセッションが見つかりません")
                         .font(.headline)
+                    Text("右上のボタンからセッションを追加")
+                        .font(.subheadline)
                 }
             }
             .onAppear {
@@ -142,4 +145,8 @@ struct TodaySessionView: View {
 
 #Preview {
     TodaySessionView(trainingSessionList: [TrainingSession(theme: "テーマ", sessionDescription: "備考",sessionDate: Date())])
+}
+
+#Preview {
+    TodaySessionView(trainingSessionList: [])
 }

@@ -9,7 +9,7 @@ import SwiftUI
 
 struct TimerView: View {
     @StateObject var viewModel:TimerViewModel
-    var countDownTime: TimeInterval
+    @Binding var countDownTime: TimeInterval
     
     var body: some View {
         ZStack{
@@ -32,9 +32,13 @@ struct TimerView: View {
             }
             CircleProgressBarView(progress: $viewModel.progress).padding(50)
         }.onAppear(perform: {viewModel.setRemainingTime(time: countDownTime)})
+            .onChange(of: countDownTime) { oldValue, newValue in
+                viewModel.stop()
+                viewModel.setRemainingTime(time: newValue) // TrainingMenu変更時にリセット
+            }
     }
 }
 
 #Preview {
-    TimerView(viewModel: TimerViewModel(),countDownTime: TimeInterval(355))
+    TimerView(viewModel: TimerViewModel(),countDownTime: .constant(TimeInterval(355)))
 }

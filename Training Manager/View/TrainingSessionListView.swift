@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct TrainingSessionListView: View {
-    @State var trainingSessionList: [TrainingSession]
+    var trainingSessionList: [TrainingSession]
     
     var body: some View {
         NavigationStack{

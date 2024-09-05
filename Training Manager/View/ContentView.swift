@@ -18,7 +18,7 @@ struct ContentView: View {
                 .tabItem {
                     Label("新規セッション", systemImage: "tray.and.arrow.down.fill")
                 }
-            TrainingMenuHistory(trainingMenuList: trainingMenuList)
+            TrainingMenuHistory(trainingMenuList: trainingMenuList, trainingSessionList: trainingSessionList)
                 .tabItem {
                     Label("メニュー履歴", systemImage: "doc.text")
                 }

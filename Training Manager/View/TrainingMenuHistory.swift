@@ -9,6 +9,10 @@ import SwiftUI
 
 struct TrainingMenuHistory: View {
     @State var trainingMenuList: [TrainingMenu]
+    @State var trainingSessionList: [TrainingSession]
+    @State private var isAddingToSession: Bool = false
+    @State private var currentMenu: TrainingMenu?
+    
     var body: some View {
         VStack{
             Text("メニュー履歴").font(.title)
@@ -20,8 +24,9 @@ struct TrainingMenuHistory: View {
                         Spacer()
                         // セッションに追加できるようにする
                         Button(action: {
-                            // 追加先セッションを選択(カレンダー？picker？)
-                            // セッションに追加する処理を実行
+                            // TODO 追加先セッションを選択
+                            currentMenu = menu
+                            isAddingToSession = true
                         }, label: {Text("追加").bold()}).buttonStyle(.borderedProminent)
                     }
                     Text(menu.goal ?? "").font(.headline)
@@ -31,8 +36,13 @@ struct TrainingMenuHistory: View {
                     
                 }
             }
+        }.sheet(isPresented: $isAddingToSession) {
+            // TODO セッションに追加する処理をどこかで実行
+            TrainingSessionListView(trainingSessionList: trainingSessionList)
         }
     }
+    
+    
     
     // 時間をmm:ss形式で表示
     func formatDuration(duration: TimeInterval) -> String {
@@ -43,5 +53,5 @@ struct TrainingMenuHistory: View {
 }
 
 #Preview {
-    TrainingMenuHistory(trainingMenuList: [TrainingMenu(name: "メニュー1", goal: "ゴール1", duration: 300, keyFocus1: "ポイント1-1", keyFocus2: "ポイント1-2", keyFocus3: "ポイント1-3", menuDescription: "備考1"),TrainingMenu(name: "メニュー2", goal: "ゴール2", duration: 300, keyFocus1: "ポイント2-1", keyFocus2: "ポイント2-2", keyFocus3: "ポイント2-3", menuDescription: "備考2")])
+    TrainingMenuHistory(trainingMenuList: [TrainingMenu(name: "メニュー1", goal: "ゴール1", duration: 300, keyFocus1: "ポイント1-1", keyFocus2: "ポイント1-2", keyFocus3: "ポイント1-3", menuDescription: "備考1"),TrainingMenu(name: "メニュー2", goal: "ゴール2", duration: 300, keyFocus1: "ポイント2-1", keyFocus2: "ポイント2-2", keyFocus3: "ポイント2-3", menuDescription: "備考2")], trainingSessionList: [TrainingSession(theme: "テーマ", sessionDescription: "備考",sessionDate: Date())])
 }

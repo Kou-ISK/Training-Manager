@@ -180,6 +180,7 @@
 			children = (
 				78E8D35B2C8343AD00C23C5A /* TrainingMenu.swift */,
 				78E8D35C2C8343AD00C23C5A /* TrainingSession.swift */,
+				78C20A112C89C6EE00AF77ED /* customDateFormatter.swift */,
 				78E3FA2E28E33BCD002CC7AE /* Training Manager */,
 				78E3FA3F28E33BCE002CC7AE /* Training ManagerTests */,
 				78E3FA4928E33BCE002CC7AE /* Training ManagerUITests */,
@@ -281,7 +282,6 @@
 			isa = PBXGroup;
 			children = (
 				78E6F5C128E71BBA00BAEA24 /* TodaySessionView.swift */,
-				78C20A112C89C6EE00AF77ED /* customDateFormatter.swift */,
 				78E8D3802C8466B700C23C5A /* CreateTrainingSessionView.swift */,
 				78C20A0D2C89C4B100AF77ED /* TrainingSessionListView.swift */,
 				78C20A0F2C89C64000AF77ED /* SessionDetailView.swift */,

@@ -83,12 +83,21 @@ class TimerViewModel: ObservableObject {
         content.sound = UNNotificationSound.default
         
         // seconds後に起動するトリガーを保持
-        let trigger = UNTimeIntervalNotificationTrigger(timeInterval: 2,
-                                                        repeats: true)
+        let trigger = UNTimeIntervalNotificationTrigger(timeInterval: 1,
+                                                        repeats: false)
         // 識別子とともに通知の表示内容とトリガーをrequestに内包する
         let request = UNNotificationRequest(identifier: "Timer",
                                             content: content,
                                             trigger: trigger)
+        
+        UNUserNotificationCenter.current().add(request) { error in
+            if let error = error {
+                print("Error adding notification: \(error.localizedDescription)")
+            } else {
+                print("Notification added successfully.")
+            }
+        }
+
         
         // UNUserNotificationCenterにrequest
         UNUserNotificationCenter.current().add(request) { (error) in

@@ -10,6 +10,8 @@ import SwiftData
 
 @main
 struct Training_ManagerApp: App {
+    @UIApplicationDelegateAdaptor(AppDelegate.self) var appDelegate
+    
     var sharedModelContainer: ModelContainer = {
         let schema = Schema([
             TrainingSession.self,

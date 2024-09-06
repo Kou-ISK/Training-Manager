@@ -14,10 +14,10 @@ struct ContentView: View {
     
     var body: some View {
         TabView{
-            TodaySessionView(trainingSessionList: trainingSessionList)
-                .tabItem {
-                    Label("新規セッション", systemImage: "tray.and.arrow.down.fill")
-                }
+            TodaySessionView(viewModel: TodaySessionViewModel(trainingSessionList: trainingSessionList))
+                 .tabItem {
+                     Label("新規セッション", systemImage: "tray.and.arrow.down.fill")
+                 }
             TrainingMenuHistory(trainingMenuList: trainingMenuList, trainingSessionList: trainingSessionList)
                 .tabItem {
                     Label("メニュー履歴", systemImage: "doc.text")

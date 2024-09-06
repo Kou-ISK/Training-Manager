@@ -16,8 +16,13 @@ struct TrainingSessionListView: View {
             List(trainingSessionList) { session in
                 NavigationLink(destination: SessionDetailView(session: session)) {
                     VStack(alignment: .leading) {
-                        Text(session.sessionDate ?? Date(), formatter: dateFormatter)
-                            .font(.headline)
+                        if session.sessionDate != nil{
+                            Text(session.sessionDate ?? Date(), formatter: dateFormatter)
+                                .font(.headline)
+                        }else{
+                            Text("日付なし")
+                                .font(.headline)
+                        }
                         Text(session.theme ?? "")
                             .font(.subheadline)
                         Text(session.sessionDescription ?? "")

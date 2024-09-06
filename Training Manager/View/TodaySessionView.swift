@@ -5,22 +5,16 @@
 //
 
 import SwiftUI
-import SwiftData
 
 struct TodaySessionView: View {
-    @State var trainingSessionList: [TrainingSession]
-    @State private var currentTrainingSession: TrainingSession?
-    @State private var isShowAddView = false
-    @State private var isShowNewSessionView = false
+    @StateObject var viewModel: TodaySessionViewModel
     
     @Environment(\.modelContext) private var modelContext
-    
-    @State private var currentTrainingMenu: TrainingMenu? = nil
     
     var body: some View {
         NavigationStack {
             VStack {
-                if let session = currentTrainingSession {
+                if let session = viewModel.currentTrainingSession {
                     VStack(alignment: .center) {
                         Text(session.sessionDate ?? Date(), formatter: dateFormatter)
                             .font(.title)
@@ -28,37 +22,30 @@ struct TodaySessionView: View {
                             .font(.title2)
                         Text(session.sessionDescription ?? "")
                         
-                        
-                        if currentTrainingMenu != nil{
-                            // 実施中のmenuを表示
-                            HStack(alignment: .center){
-                                VStack(alignment: .center){
-                                    Text(currentTrainingMenu?.name ??  "N/A").font(.title)
+                        if let menu = viewModel.currentTrainingMenu {
+                            HStack(alignment: .center) {
+                                VStack(alignment: .center) {
+                                    Text(menu.name ?? "N/A").font(.title)
                                         .padding(5)
                                     Text("フォーカスポイント: ")
-                                    Text(currentTrainingMenu?.keyFocus1 ?? "")
-                                    Text(currentTrainingMenu?.keyFocus2 ?? "")
-                                    Text(currentTrainingMenu?.keyFocus3 ?? "")
+                                    Text(menu.keyFocus1 ?? "")
+                                    Text(menu.keyFocus2 ?? "")
+                                    Text(menu.keyFocus3 ?? "")
                                 }
-                                
-                                // バインディングでTimerViewに値を渡す
-                                TimerView(viewModel: TimerViewModel(),
-                                          countDownTime: Binding(
-                                            get: { currentTrainingMenu?.duration ?? 0 },
-                                            set: { newValue in
-                                                currentTrainingMenu?.duration = newValue
-                                            }))
+                                if let timerVM = viewModel.timerViewModel {
+                                    TimerView(viewModel: timerVM)
+                                }
                             }
                         }
                         
                         List(session.menus) { menu in
-                            let isCurrentTraining = currentTrainingMenu == menu
-                            HStack{
+                            let isCurrentTraining = viewModel.currentTrainingMenu == menu
+                            HStack {
                                 VStack(alignment: .leading) {
-                                    HStack{
+                                    HStack {
                                         Text(menu.name ?? "")
                                             .font(.title)
-                                        Text(formatDuration(duration: menu.duration ?? 0))
+                                        Text(viewModel.formatDuration(duration: menu.duration ?? 0))
                                     }
                                     Text(menu.goal ?? "")
                                         .font(.title2)
@@ -67,10 +54,10 @@ struct TodaySessionView: View {
                                     Text(menu.keyFocus3 ?? "")
                                 }
                                 Spacer()
-                                Button(action:{
-                                    currentTrainingMenu = menu
-                                },label:{
-                                    Text(isCurrentTraining ? "実施中" :"開始").fontWeight(.bold)
+                                Button(action: {
+                                    viewModel.selectMenu(menu: menu)
+                                }, label: {
+                                    Text(isCurrentTraining ? "実施中" : "開始").fontWeight(.bold)
                                 }).buttonStyle(.borderedProminent)
                             }
                         }
@@ -82,28 +69,23 @@ struct TodaySessionView: View {
                         .font(.subheadline)
                 }
             }
-            .onAppear {
-                filterTodaySessions()
-            }
-            .sheet(isPresented: $isShowAddView) {
-                if let todaySession = currentTrainingSession {
+            .sheet(isPresented: $viewModel.isShowAddView) {
+                if let todaySession = viewModel.currentTrainingSession {
                     CreateTrainingMenuView(session: todaySession)
                 }
             }
-            .sheet(isPresented: $isShowNewSessionView) {
+            .sheet(isPresented: $viewModel.isShowNewSessionView) {
                 CreateTrainingSessionView(onSave: { newSession in
-                    currentTrainingSession = newSession
-                    trainingSessionList.append(newSession)
-                    isShowNewSessionView = false
+                    viewModel.addSession(newSession: newSession)
                 })
             }
             .toolbar {
                 ToolbarItem(placement: .topBarTrailing) {
                     Button {
-                        if currentTrainingSession == nil {
-                            isShowNewSessionView = true
+                        if viewModel.currentTrainingSession == nil {
+                            viewModel.showNewSessionView()
                         } else {
-                            isShowAddView = true
+                            viewModel.showAddView()
                         }
                     } label: {
                         Image(systemName: "plus")
@@ -112,33 +94,12 @@ struct TodaySessionView: View {
             }
         }
     }
-    
-    func filterTodaySessions() {
-        let today = Calendar.current.startOfDay(for: Date())
-        if let session = trainingSessionList.first(where: { session in
-            guard let sessionDate = session.sessionDate else { return false }
-            let isSameDay = Calendar.current.isDate(sessionDate, inSameDayAs: today)
-            return isSameDay
-        }) {
-            currentTrainingSession = session
-        } else {
-            currentTrainingSession = nil
-        }
-    }
-    
-    // 時間をmm:ss形式で表示
-    func formatDuration(duration: TimeInterval)->String{
-        let minutes = Int(duration) / 60
-        let seconds = Int(duration) % 60
-        // 分が1桁の場合も2桁で表示するためにフォーマット
-        return String(format: "%02d:%02d", minutes, seconds)
-    }
 }
 
 #Preview {
-    TodaySessionView(trainingSessionList: [TrainingSession(theme: "テーマ", sessionDescription: "備考",sessionDate: Date())])
+    TodaySessionView(viewModel: TodaySessionViewModel(trainingSessionList: [TrainingSession(theme: "テーマ", sessionDescription: "備考", sessionDate: Date())]))
 }
 
 #Preview {
-    TodaySessionView(trainingSessionList: [])
+    TodaySessionView(viewModel: TodaySessionViewModel(trainingSessionList: []))
 }

@@ -8,37 +8,31 @@
 import SwiftUI
 
 struct TimerView: View {
-    @StateObject var viewModel:TimerViewModel
-    @Binding var countDownTime: TimeInterval
+    @ObservedObject var viewModel:TimerViewModel
     
     var body: some View {
         ZStack{
             VStack(alignment: .center) {
-                // mm:ss形式でタイマー表示
-                Text(viewModel.timeString)
-                    .font(.title)
-                    .fontWeight(.bold)
-                    .padding(5)
-                // Start/Stop Timer Button
-                Button(action: {
-                    if viewModel.timer == nil {
-                        viewModel.start(time: countDownTime) // 1分間のカウントダウンを開始
-                    } else {
-                        viewModel.stop()
-                    }
-                }) {
-                    Text(viewModel.timer == nil ? "開始" : "停止").fontWeight(.bold)
-                }.buttonStyle(.borderedProminent)
-            }
+                  Text(viewModel.timeString)
+                      .font(.title)
+                      .fontWeight(.bold)
+                      .padding(5)
+                  Button(action: {
+                      if viewModel.timer == nil {
+                          viewModel.start() // タイマー開始
+                      } else {
+                          viewModel.stop() // タイマー停止
+                      }
+                  }) {
+                      Text(viewModel.timer == nil ? "開始" : "停止").fontWeight(.bold)
+                  }.buttonStyle(.borderedProminent)
+              }.onReceive(viewModel.$timeString) { newValue in
+              }
             CircleProgressBarView(progress: $viewModel.progress).padding(50)
-        }.onAppear(perform: {viewModel.setRemainingTime(time: countDownTime)})
-            .onChange(of: countDownTime) { oldValue, newValue in
-                viewModel.stop()
-                viewModel.setRemainingTime(time: newValue) // TrainingMenu変更時にリセット
-            }
+        }
     }
 }
 
 #Preview {
-    TimerView(viewModel: TimerViewModel(),countDownTime: .constant(TimeInterval(355)))
+    TimerView(viewModel: TimerViewModel(initialTime: 355, menuName: "3v2"))
 }

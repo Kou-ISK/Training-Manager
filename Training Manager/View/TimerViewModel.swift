@@ -8,6 +8,7 @@
 import Foundation
 import Combine
 import AudioToolbox
+import AVFoundation
 import UserNotifications
 
 class TimerViewModel: ObservableObject {
@@ -18,7 +19,9 @@ class TimerViewModel: ObservableObject {
     @Published var timeString: String = "00:00"
     
     private var initialTime: TimeInterval
+    private var audioPlayer: AVAudioPlayer?
     private let soundId: SystemSoundID = 1320
+    @Published var isAlarmActive = false
     
     // イニシャライザで初期化
     init(initialTime: TimeInterval, menuName: String) {
@@ -41,7 +44,6 @@ class TimerViewModel: ObservableObject {
     // タイマーの開始
     func start() {
         timer?.cancel()
-        
         timer = Timer.publish(every: 1.0, on: .main, in: .common)
             .autoconnect()
             .sink { _ in
@@ -50,7 +52,8 @@ class TimerViewModel: ObservableObject {
                     self.timeString = self.formatTime(self.remainingTime) // 更新
                     self.updateProgress()
                 } else {
-                    self.push()
+                    self.startAlarm()
+                    self.pushNotice()
                     self.stop()
                 }
             }
@@ -74,13 +77,13 @@ class TimerViewModel: ObservableObject {
         progress = CGFloat((initialTime - remainingTime) / initialTime)
     }
     
-    private func push(){
+    private func pushNotice(){
         // タイトル、本文、サウンド設定の保持
         let content = UNMutableNotificationContent()
         content.title = "メニュー終了"
         content.subtitle = self.menuName
         content.body = "タップしてアプリを開いてください"
-        content.sound = UNNotificationSound.default
+        content.sound = UNNotificationSound.defaultCritical
         
         // seconds後に起動するトリガーを保持
         let trigger = UNTimeIntervalNotificationTrigger(timeInterval: 1,
@@ -97,7 +100,7 @@ class TimerViewModel: ObservableObject {
                 print("Notification added successfully.")
             }
         }
-
+        
         
         // UNUserNotificationCenterにrequest
         UNUserNotificationCenter.current().add(request) { (error) in
@@ -106,4 +109,29 @@ class TimerViewModel: ObservableObject {
             }
         }
     }
+    
+    private func startAlarm() {
+        // アラーム音のループ再生を開始
+        isAlarmActive = true
+        guard let soundURL = Bundle.main.url(forResource: "alarm_sound", withExtension: "mp3") else {
+            print("Alarm sound file not found.")
+            return
+        }
+        
+        do {
+            audioPlayer = try AVAudioPlayer(contentsOf: soundURL)
+            audioPlayer?.numberOfLoops = -1 // ループ再生
+            audioPlayer?.play()
+        } catch {
+            print("Failed to play alarm sound: \(error.localizedDescription)")
+        }
+    }
+    
+    func stopAlarm() {
+        // アラーム音の停止
+        isAlarmActive = false
+        audioPlayer?.stop()
+        audioPlayer = nil
+    }
 }
+

@@ -17,6 +17,8 @@ class TodaySessionViewModel: ObservableObject {
     
     @Published var isShowAddView: Bool = false
     @Published var isShowNewSessionView: Bool = false
+    @Published var isShowSelectMenuView: Bool = false
+
     
     init(trainingSessionList: [TrainingSession], trainingMenuList: [TrainingMenu]) {
         self.trainingSessionList = trainingSessionList

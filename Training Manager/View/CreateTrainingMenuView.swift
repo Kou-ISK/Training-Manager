@@ -57,9 +57,16 @@ struct CreateTrainingMenuView: View {
                     }
                     .pickerStyle(WheelPickerStyle())
                 }
-                NavigationLink("既存のメニューから追加", destination: SelectExistingMenu(trainingMenuList: trainingMenuList))
+                NavigationLink("既存のメニューから追加", destination: SelectExistingMenu(trainingMenu: trainingMenu, trainingMenuList: trainingMenuList))
             }
             .navigationTitle("メニューの追加")
+            .onAppear {
+                // trainingMenu.duration を分と秒に分割して初期値を設定
+                if let duration = trainingMenu.duration {
+                    selectedMinutes = Int(duration) / 60
+                    selectedSeconds = Int(duration) % 60
+                }
+            }
             .toolbar {
                 ToolbarItem(placement: .primaryAction) {
                     Button("追加") {

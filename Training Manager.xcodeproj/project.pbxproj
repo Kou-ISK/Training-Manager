@@ -10,6 +10,7 @@
 		781C081D2C8B3900007FF5E3 /* TodaySessionViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 781C081C2C8B3900007FF5E3 /* TodaySessionViewModel.swift */; };
 		781C081F2C8BB20F007FF5E3 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 781C081E2C8BB20F007FF5E3 /* AppDelegate.swift */; };
 		781C08212C8D985B007FF5E3 /* alarm_sound.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 781C08202C8D985B007FF5E3 /* alarm_sound.mp3 */; };
+		781C08272C8F34E8007FF5E3 /* SelectExistingMenu.swift in Sources */ = {isa = PBXBuildFile; fileRef = 781C08262C8F34E8007FF5E3 /* SelectExistingMenu.swift */; };
 		782CCF0E28F992C10060A69C /* ContentView.swift in Embed Watch Content */ = {isa = PBXBuildFile; fileRef = 78E3FA5928E33BCE002CC7AE /* ContentView.swift */; };
 		782CCF1228F995B10060A69C /* Start_Training.swift in Sources */ = {isa = PBXBuildFile; fileRef = 782CCF1128F995B10060A69C /* Start_Training.swift */; };
 		78C20A0C2C87D0A100AF77ED /* CircleProgressBarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78C20A0B2C87D0A100AF77ED /* CircleProgressBarView.swift */; };
@@ -98,6 +99,7 @@
 		781C081C2C8B3900007FF5E3 /* TodaySessionViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodaySessionViewModel.swift; sourceTree = "<group>"; };
 		781C081E2C8BB20F007FF5E3 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		781C08202C8D985B007FF5E3 /* alarm_sound.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = alarm_sound.mp3; sourceTree = "<group>"; };
+		781C08262C8F34E8007FF5E3 /* SelectExistingMenu.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectExistingMenu.swift; sourceTree = "<group>"; };
 		782CCF1128F995B10060A69C /* Start_Training.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Start_Training.swift; sourceTree = "<group>"; };
 		78C20A0B2C87D0A100AF77ED /* CircleProgressBarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CircleProgressBarView.swift; sourceTree = "<group>"; };
 		78C20A0D2C89C4B100AF77ED /* TrainingSessionListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrainingSessionListView.swift; sourceTree = "<group>"; };
@@ -293,6 +295,7 @@
 				781C081C2C8B3900007FF5E3 /* TodaySessionViewModel.swift */,
 				78E8D3802C8466B700C23C5A /* CreateTrainingSessionView.swift */,
 				78C20A0D2C89C4B100AF77ED /* TrainingSessionListView.swift */,
+				781C08262C8F34E8007FF5E3 /* SelectExistingMenu.swift */,
 				78C20A0F2C89C64000AF77ED /* SessionDetailView.swift */,
 				78E8D37D2C845D5500C23C5A /* CreateTrainingMenuView.swift */,
 				78E3FA3128E33BCD002CC7AE /* ContentView.swift */,
@@ -545,6 +548,7 @@
 				782CCF1228F995B10060A69C /* Start_Training.swift in Sources */,
 				781C081F2C8BB20F007FF5E3 /* AppDelegate.swift in Sources */,
 				78E8D37E2C845D5500C23C5A /* CreateTrainingMenuView.swift in Sources */,
+				781C08272C8F34E8007FF5E3 /* SelectExistingMenu.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

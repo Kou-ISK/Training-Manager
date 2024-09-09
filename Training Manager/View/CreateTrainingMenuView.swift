@@ -13,6 +13,7 @@ struct CreateTrainingMenuView: View {
     
     @State var session: TrainingSession
     @State private var trainingMenu = TrainingMenu()
+    @State var trainingMenuList: [TrainingMenu]
     
     // 分と秒を選択するための State プロパティ
     @State private var selectedMinutes = 0
@@ -56,6 +57,7 @@ struct CreateTrainingMenuView: View {
                     }
                     .pickerStyle(WheelPickerStyle())
                 }
+                NavigationLink("既存のメニューから追加", destination: SelectExistingMenu(trainingMenuList: trainingMenuList))
             }
             .navigationTitle("メニューの追加")
             .toolbar {
@@ -81,5 +83,5 @@ struct CreateTrainingMenuView: View {
 }
 
 #Preview {
-    CreateTrainingMenuView(session: TrainingSession())
+    CreateTrainingMenuView(session: TrainingSession(), trainingMenuList: [])
 }

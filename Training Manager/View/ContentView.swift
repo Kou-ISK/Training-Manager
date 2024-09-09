@@ -14,7 +14,7 @@ struct ContentView: View {
     
     var body: some View {
         TabView{
-            TodaySessionView(viewModel: TodaySessionViewModel(trainingSessionList: trainingSessionList))
+            TodaySessionView(viewModel: TodaySessionViewModel(trainingSessionList: trainingSessionList, trainingMenuList: trainingMenuList))
                  .tabItem {
                      Label("新規セッション", systemImage: "tray.and.arrow.down.fill")
                  }

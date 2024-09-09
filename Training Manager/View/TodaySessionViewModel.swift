@@ -13,12 +13,14 @@ class TodaySessionViewModel: ObservableObject {
     @Published var currentTrainingSession: TrainingSession?
     @Published var currentTrainingMenu: TrainingMenu?
     @Published var timerViewModel: TimerViewModel? = nil
+    @Published var trainingMenuList: [TrainingMenu]
     
     @Published var isShowAddView: Bool = false
     @Published var isShowNewSessionView: Bool = false
     
-    init(trainingSessionList: [TrainingSession]) {
+    init(trainingSessionList: [TrainingSession], trainingMenuList: [TrainingMenu]) {
         self.trainingSessionList = trainingSessionList
+        self.trainingMenuList = trainingMenuList
         filterTodaySessions()
     }
     

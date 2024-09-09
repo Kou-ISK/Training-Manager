@@ -71,7 +71,7 @@ struct TodaySessionView: View {
             }
             .sheet(isPresented: $viewModel.isShowAddView) {
                 if let todaySession = viewModel.currentTrainingSession {
-                    CreateTrainingMenuView(session: todaySession)
+                    CreateTrainingMenuView(session: todaySession, trainingMenuList: viewModel.trainingMenuList)
                 }
             }
             .sheet(isPresented: $viewModel.isShowNewSessionView) {
@@ -97,9 +97,9 @@ struct TodaySessionView: View {
 }
 
 #Preview {
-    TodaySessionView(viewModel: TodaySessionViewModel(trainingSessionList: [TrainingSession(theme: "テーマ", sessionDescription: "備考", sessionDate: Date())]))
+    TodaySessionView(viewModel: TodaySessionViewModel(trainingSessionList: [TrainingSession(theme: "テーマ", sessionDescription: "備考", sessionDate: Date())], trainingMenuList: [TrainingMenu(name: "Name", goal: "Goal", duration: TimeInterval(600), keyFocus1: "kf1", keyFocus2: "kf2", keyFocus3: "kf3", menuDescription: "description")]))
 }
 
 #Preview {
-    TodaySessionView(viewModel: TodaySessionViewModel(trainingSessionList: []))
+    TodaySessionView(viewModel: TodaySessionViewModel(trainingSessionList: [], trainingMenuList: []))
 }

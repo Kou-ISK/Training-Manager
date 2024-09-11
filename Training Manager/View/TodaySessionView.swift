@@ -43,9 +43,15 @@ struct TodaySessionView: View {
                             HStack {
                                 if(viewModel.isEditMode){
                                     Button(action: {
-                                        // TODO 削除確認モーダルを出す
-                                        viewModel.deleteMenu(menu: menu)
+                                        viewModel.isShowDeleteAlart.toggle()
+                                        
                                     }, label:{ Image(systemName: "minus.circle.fill").foregroundStyle(.red)})
+                                    .alert("メニューの削除", isPresented: $viewModel.isShowDeleteAlart, actions: {
+                                        Button("削除", role: .destructive) {
+                                            viewModel.deleteMenu(menu: menu)
+                                        }
+                                        Button("キャンセル", role: .cancel) {}
+                                    })
                                 }
                                 
                                 VStack(alignment: .leading) {

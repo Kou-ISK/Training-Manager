@@ -9,6 +9,8 @@ import SwiftUI
 import Combine
 
 class TodaySessionViewModel: ObservableObject {
+    @Environment(\.modelContext) private var modelContext
+    
     @Published var trainingSessionList: [TrainingSession]
     @Published var currentTrainingSession: TrainingSession?
     @Published var currentTrainingMenu: TrainingMenu?
@@ -18,6 +20,7 @@ class TodaySessionViewModel: ObservableObject {
     @Published var isShowAddView: Bool = false
     @Published var isShowNewSessionView: Bool = false
     @Published var isShowSelectMenuView: Bool = false
+    @Published var isEditMode: Bool = false
 
     
     init(trainingSessionList: [TrainingSession], trainingMenuList: [TrainingMenu]) {
@@ -76,4 +79,14 @@ class TodaySessionViewModel: ObservableObject {
     func dismissNewSessionView() {
         isShowNewSessionView = false
     }
+    
+    func deleteMenu(menu: TrainingMenu) {
+            // モデルから削除
+            modelContext.delete(menu)
+            
+            // 現在のセッションからメニューを削除
+            if let index = currentTrainingSession?.menus.firstIndex(of: menu) {
+                currentTrainingSession?.menus.remove(at: index)
+            }
+        }
 }

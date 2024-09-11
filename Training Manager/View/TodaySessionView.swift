@@ -41,6 +41,13 @@ struct TodaySessionView: View {
                         List(session.menus) { menu in
                             let isCurrentTraining = viewModel.currentTrainingMenu == menu
                             HStack {
+                                if(viewModel.isEditMode){
+                                    Button(action: {
+                                        // TODO 削除確認モーダルを出す
+                                        viewModel.deleteMenu(menu: menu)
+                                    }, label:{ Image(systemName: "minus.circle.fill").foregroundStyle(.red)})
+                                }
+                                
                                 VStack(alignment: .leading) {
                                     HStack {
                                         Text(menu.name ?? "")
@@ -54,11 +61,16 @@ struct TodaySessionView: View {
                                     Text(menu.keyFocus3 ?? "")
                                 }
                                 Spacer()
-                                Button(action: {
-                                    viewModel.selectMenu(menu: menu)
-                                }, label: {
-                                    Text(isCurrentTraining ? "実施中" : "開始").fontWeight(.bold)
-                                }).buttonStyle(.borderedProminent)
+                                if(viewModel.isEditMode){
+                                    // TODO ドラッグして並び順を変更できるようにする
+                                    Image(systemName: "line.horizontal.3")
+                                }else{
+                                    Button(action: {
+                                        viewModel.selectMenu(menu: menu)
+                                    }, label: {
+                                        Text(isCurrentTraining ? "実施中" : "開始").fontWeight(.bold)
+                                    }).buttonStyle(.borderedProminent)
+                                }
                             }
                         }
                     }
@@ -89,6 +101,13 @@ struct TodaySessionView: View {
                         }
                     } label: {
                         Image(systemName: "plus")
+                    }
+                }
+                ToolbarItem(placement: .topBarTrailing) {
+                    Button {
+                        viewModel.isEditMode.toggle()
+                    } label: {
+                        Text(viewModel.isEditMode ? "キャンセル" : "編集")
                     }
                 }
             }

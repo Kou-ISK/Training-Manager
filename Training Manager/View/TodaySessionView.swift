@@ -38,46 +38,48 @@ struct TodaySessionView: View {
                             }
                         }
                         
-                        List(session.menus) { menu in
-                            let isCurrentTraining = viewModel.currentTrainingMenu == menu
-                            HStack {
-                                if(viewModel.isEditMode){
-                                    Button(action: {
-                                        viewModel.isShowDeleteAlart.toggle()
-                                        
-                                    }, label:{ Image(systemName: "minus.circle.fill").foregroundStyle(.red)})
-                                    .alert("メニューの削除", isPresented: $viewModel.isShowDeleteAlart, actions: {
-                                        Button("削除", role: .destructive) {
-                                            viewModel.deleteMenu(menu: menu)
-                                        }
-                                        Button("キャンセル", role: .cancel) {}
-                                    })
-                                }
-                                
-                                VStack(alignment: .leading) {
-                                    HStack {
-                                        Text(menu.name ?? "")
-                                            .font(.title)
-                                        Text(viewModel.formatDuration(duration: menu.duration ?? 0))
+                        List{
+                            ForEach(session.menus.sorted(by: { $0.orderIndex < $1.orderIndex })) { menu in
+                                let isCurrentTraining = viewModel.currentTrainingMenu == menu
+                                HStack {
+                                    if(viewModel.isEditMode){
+                                        Button(action: {
+                                            viewModel.isShowDeleteAlart.toggle()
+                                            
+                                        }, label:{ Image(systemName: "minus.circle.fill").foregroundStyle(.red)})
+                                        .alert("メニューの削除", isPresented: $viewModel.isShowDeleteAlart, actions: {
+                                            Button("削除", role: .destructive) {
+                                                viewModel.deleteMenu(menu: menu)
+                                            }
+                                            Button("キャンセル", role: .cancel) {}
+                                        })
                                     }
-                                    Text(menu.goal ?? "")
-                                        .font(.title2)
-                                    Text(menu.keyFocus1 ?? "")
-                                    Text(menu.keyFocus2 ?? "")
-                                    Text(menu.keyFocus3 ?? "")
+                                    
+                                    VStack(alignment: .leading) {
+                                        HStack {
+                                            Text(menu.name ?? "")
+                                                .font(.title)
+                                            Text(viewModel.formatDuration(duration: menu.duration ?? 0))
+                                        }
+                                        Text(menu.goal ?? "")
+                                            .font(.title2)
+                                        Text(menu.keyFocus1 ?? "")
+                                        Text(menu.keyFocus2 ?? "")
+                                        Text(menu.keyFocus3 ?? "")
+                                    }
+                                    Spacer()
+                                    if(viewModel.isEditMode){
+                                        // TODO ドラッグして並び順を変更できるようにする
+                                        Image(systemName: "line.horizontal.3")
+                                    }else{
+                                        Button(action: {
+                                            viewModel.selectMenu(menu: menu)
+                                        }, label: {
+                                            Text(isCurrentTraining ? "実施中" : "開始").fontWeight(.bold)
+                                        }).buttonStyle(.borderedProminent)
+                                    }
                                 }
-                                Spacer()
-                                if(viewModel.isEditMode){
-                                    // TODO ドラッグして並び順を変更できるようにする
-                                    Image(systemName: "line.horizontal.3")
-                                }else{
-                                    Button(action: {
-                                        viewModel.selectMenu(menu: menu)
-                                    }, label: {
-                                        Text(isCurrentTraining ? "実施中" : "開始").fontWeight(.bold)
-                                    }).buttonStyle(.borderedProminent)
-                                }
-                            }
+                            }.onMove(perform: viewModel.moveMenu)
                         }
                     }
                 } else {
@@ -122,7 +124,7 @@ struct TodaySessionView: View {
 }
 
 #Preview {
-    TodaySessionView(viewModel: TodaySessionViewModel(trainingSessionList: [TrainingSession(theme: "テーマ", sessionDescription: "備考", sessionDate: Date())], trainingMenuList: [TrainingMenu(name: "Name", goal: "Goal", duration: TimeInterval(600), keyFocus1: "kf1", keyFocus2: "kf2", keyFocus3: "kf3", menuDescription: "description")]))
+    TodaySessionView(viewModel: TodaySessionViewModel(trainingSessionList: [TrainingSession(theme: "テーマ", sessionDescription: "備考", sessionDate: Date())], trainingMenuList: [TrainingMenu(name: "Name", goal: "Goal", duration: TimeInterval(600), keyFocus1: "kf1", keyFocus2: "kf2", keyFocus3: "kf3", menuDescription: "description", orderIndex: 0)]))
 }
 
 #Preview {

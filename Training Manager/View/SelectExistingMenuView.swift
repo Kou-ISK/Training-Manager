@@ -52,5 +52,5 @@ struct SelectExistingMenu: View {
 
 #Preview {
     SelectExistingMenu(trainingMenu: TrainingMenu(),
-                       trainingMenuList: [TrainingMenu(name: "3v2", goal: "Goal", duration: TimeInterval(600), keyFocus1: "kf1", keyFocus2: "kf2", keyFocus3: "kf3", menuDescription: "頑張る")])
+                       trainingMenuList: [TrainingMenu(name: "3v2", goal: "Goal", duration: TimeInterval(600), keyFocus1: "kf1", keyFocus2: "kf2", keyFocus3: "kf3", menuDescription: "頑張る", orderIndex: 0)])
 }

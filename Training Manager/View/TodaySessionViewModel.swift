@@ -22,6 +22,11 @@ class TodaySessionViewModel: ObservableObject {
     @Published var isShowSelectMenuView: Bool = false
     @Published var isEditMode: Bool = false
     @Published var isShowDeleteAlart: Bool = false
+    
+//    // メニューを orderIndex の順にソートする
+//    var sortedMenus: [TrainingMenu] {
+//        currentTrainingSession?.menus.sorted(by: { $0.orderIndex < $1.orderIndex }) ?? []
+//    }
 
     
     init(trainingSessionList: [TrainingSession], trainingMenuList: [TrainingMenu]) {
@@ -90,4 +95,23 @@ class TodaySessionViewModel: ObservableObject {
                 currentTrainingSession?.menus.remove(at: index)
             }
         }
+    
+    // メニューを並び替えるロジック
+    func moveMenu(from source: IndexSet, to destination: Int) {
+        guard let session = currentTrainingSession else { return }
+        
+        // メニューのリストをソートされた順序で取得
+        var menus = session.menus.sorted(by: { $0.orderIndex < $1.orderIndex })
+
+        // 並べ替えを適用
+        menus.move(fromOffsets: source, toOffset: destination)
+        
+        // 新しい順序に基づいて orderIndex を再設定
+        for (newIndex, menu) in menus.enumerated() {
+            menu.orderIndex = newIndex
+        }
+        
+        // トレーニングセッションに新しい順序を適用
+        session.menus = menus
+    }
 }

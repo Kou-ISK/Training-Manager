@@ -41,5 +41,5 @@ struct TrainingMenuHistory: View {
 }
 
 #Preview {
-    TrainingMenuHistory(trainingMenuList: [TrainingMenu(name: "メニュー1", goal: "ゴール1", duration: 300, keyFocus1: "ポイント1-1", keyFocus2: "ポイント1-2", keyFocus3: "ポイント1-3", menuDescription: "備考1"),TrainingMenu(name: "メニュー2", goal: "ゴール2", duration: 300, keyFocus1: "ポイント2-1", keyFocus2: "ポイント2-2", keyFocus3: "ポイント2-3", menuDescription: "備考2")], trainingSessionList: [TrainingSession(theme: "テーマ", sessionDescription: "備考",sessionDate: Date())])
+    TrainingMenuHistory(trainingMenuList: [TrainingMenu(name: "メニュー1", goal: "ゴール1", duration: 300, keyFocus1: "ポイント1-1", keyFocus2: "ポイント1-2", keyFocus3: "ポイント1-3", menuDescription: "備考1", orderIndex: 1),TrainingMenu(name: "メニュー2", goal: "ゴール2", duration: 300, keyFocus1: "ポイント2-1", keyFocus2: "ポイント2-2", keyFocus3: "ポイント2-3", menuDescription: "備考2", orderIndex: 2)], trainingSessionList: [TrainingSession(theme: "テーマ", sessionDescription: "備考",sessionDate: Date())])
 }

@@ -106,7 +106,7 @@
 		78C20A0F2C89C64000AF77ED /* SessionDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SessionDetailView.swift; sourceTree = "<group>"; };
 		78C20A112C89C6EE00AF77ED /* customDateFormatter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = customDateFormatter.swift; sourceTree = "<group>"; };
 		78E3FA2C28E33BCD002CC7AE /* Training Manager.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Training Manager.app"; sourceTree = BUILT_PRODUCTS_DIR; };
-		78E3FA2F28E33BCD002CC7AE /* Training_ManagerApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Training_ManagerApp.swift; sourceTree = "<group>"; };
+		78E3FA2F28E33BCD002CC7AE /* Training_ManagerApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Training_ManagerApp.swift; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
 		78E3FA3128E33BCD002CC7AE /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		78E3FA3328E33BCE002CC7AE /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		78E3FA3628E33BCE002CC7AE /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };

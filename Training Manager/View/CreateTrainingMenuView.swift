@@ -72,6 +72,7 @@ struct CreateTrainingMenuView: View {
                     Button("追加") {
                         // 分と秒を TimeInterval に変換
                         trainingMenu.duration = TimeInterval(selectedMinutes * 60 + selectedSeconds)
+                        trainingMenu.orderIndex = trainingMenuList.count
                         // 新しいメニューを追加してセッションに保存
                         session.menus.append(trainingMenu)
                         modelContext.insert(trainingMenu)

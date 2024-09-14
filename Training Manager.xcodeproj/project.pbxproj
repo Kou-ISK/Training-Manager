@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		780E76C22C9586EF006129B9 /* EditTrainingMenuView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 780E76C12C9586EF006129B9 /* EditTrainingMenuView.swift */; };
 		781C081D2C8B3900007FF5E3 /* TodaySessionViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 781C081C2C8B3900007FF5E3 /* TodaySessionViewModel.swift */; };
 		781C081F2C8BB20F007FF5E3 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 781C081E2C8BB20F007FF5E3 /* AppDelegate.swift */; };
 		781C08212C8D985B007FF5E3 /* alarm_sound.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 781C08202C8D985B007FF5E3 /* alarm_sound.mp3 */; };
@@ -96,6 +97,7 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		780E76C12C9586EF006129B9 /* EditTrainingMenuView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditTrainingMenuView.swift; sourceTree = "<group>"; };
 		781C081C2C8B3900007FF5E3 /* TodaySessionViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodaySessionViewModel.swift; sourceTree = "<group>"; };
 		781C081E2C8BB20F007FF5E3 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		781C08202C8D985B007FF5E3 /* alarm_sound.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = alarm_sound.mp3; sourceTree = "<group>"; };
@@ -106,7 +108,7 @@
 		78C20A0F2C89C64000AF77ED /* SessionDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SessionDetailView.swift; sourceTree = "<group>"; };
 		78C20A112C89C6EE00AF77ED /* customDateFormatter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = customDateFormatter.swift; sourceTree = "<group>"; };
 		78E3FA2C28E33BCD002CC7AE /* Training Manager.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Training Manager.app"; sourceTree = BUILT_PRODUCTS_DIR; };
-		78E3FA2F28E33BCD002CC7AE /* Training_ManagerApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Training_ManagerApp.swift; sourceTree = "<group>"; };
+		78E3FA2F28E33BCD002CC7AE /* Training_ManagerApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Training_ManagerApp.swift; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
 		78E3FA3128E33BCD002CC7AE /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		78E3FA3328E33BCE002CC7AE /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		78E3FA3628E33BCE002CC7AE /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
@@ -296,6 +298,7 @@
 				78E8D3802C8466B700C23C5A /* CreateTrainingSessionView.swift */,
 				78C20A0D2C89C4B100AF77ED /* TrainingSessionListView.swift */,
 				781C08262C8F34E8007FF5E3 /* SelectExistingMenuView.swift */,
+				780E76C12C9586EF006129B9 /* EditTrainingMenuView.swift */,
 				78C20A0F2C89C64000AF77ED /* SessionDetailView.swift */,
 				78E8D37D2C845D5500C23C5A /* CreateTrainingMenuView.swift */,
 				78E3FA3128E33BCD002CC7AE /* ContentView.swift */,
@@ -536,6 +539,7 @@
 				78E3FA3228E33BCD002CC7AE /* ContentView.swift in Sources */,
 				78E8D3812C8466B700C23C5A /* CreateTrainingSessionView.swift in Sources */,
 				78E6F5C228E71BBA00BAEA24 /* TodaySessionView.swift in Sources */,
+				780E76C22C9586EF006129B9 /* EditTrainingMenuView.swift in Sources */,
 				78C20A102C89C64000AF77ED /* SessionDetailView.swift in Sources */,
 				78E8D35D2C8343AD00C23C5A /* TrainingMenu.swift in Sources */,
 				781C081D2C8B3900007FF5E3 /* TodaySessionViewModel.swift in Sources */,
@@ -814,6 +818,7 @@
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				ASSETCATALOG_COMPILER_INCLUDE_ALL_APPICON_ASSETS = NO;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"Training Manager/Preview Content\"";
@@ -846,6 +851,7 @@
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				ASSETCATALOG_COMPILER_INCLUDE_ALL_APPICON_ASSETS = NO;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"Training Manager/Preview Content\"";

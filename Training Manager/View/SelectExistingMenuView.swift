@@ -24,18 +24,18 @@ struct SelectExistingMenu: View {
                             Text(formatDuration(duration: menu.duration ?? 0)).bold()
                         }
                         Text(menu.goal ?? "").font(.headline)
-                        Text(menu.keyFocus1 ?? "")
-                        Text(menu.keyFocus2 ?? "")
-                        Text(menu.keyFocus3 ?? "")
+                        List{
+                            ForEach(menu.focusPoints, id: \.self){point in
+                                Text(point)
+                            }
+                        }
                     }
                     Spacer()
                     Button("追加") {
                         trainingMenu.name = menu.name
                         trainingMenu.duration = menu.duration
                         trainingMenu.goal = menu.goal
-                        trainingMenu.keyFocus1 = menu.keyFocus1
-                        trainingMenu.keyFocus2 = menu.keyFocus2
-                        trainingMenu.keyFocus3 = menu.keyFocus3
+                        trainingMenu.focusPoints = menu.focusPoints
                         dismiss()
                     }.buttonStyle(.borderedProminent)
                 }
@@ -52,5 +52,5 @@ struct SelectExistingMenu: View {
 
 #Preview {
     SelectExistingMenu(trainingMenu: TrainingMenu(),
-                       trainingMenuList: [TrainingMenu(name: "3v2", goal: "Goal", duration: TimeInterval(600), keyFocus1: "kf1", keyFocus2: "kf2", keyFocus3: "kf3", menuDescription: "頑張る")])
+                       trainingMenuList: [TrainingMenu(name: "3v2", goal: "Goal", duration: TimeInterval(600), focusPoints: ["kf1", "kf2", "kf3"], menuDescription: "頑張る", orderIndex: 0)])
 }

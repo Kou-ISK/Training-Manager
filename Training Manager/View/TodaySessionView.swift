@@ -9,6 +9,8 @@ import SwiftUI
 struct TodaySessionView: View {
     @StateObject var viewModel: TodaySessionViewModel
     
+    @State private var editingMenu: TrainingMenu? // 編集中のメニューを保持
+    
     @Environment(\.modelContext) private var modelContext
     
     var body: some View {
@@ -26,58 +28,83 @@ struct TodaySessionView: View {
                             HStack(alignment: .center) {
                                 VStack(alignment: .center) {
                                     Text(menu.name ?? "N/A").font(.title)
-                                        .padding(5)
-                                    Text("フォーカスポイント: ")
-                                    Text(menu.keyFocus1 ?? "")
-                                    Text(menu.keyFocus2 ?? "")
-                                    Text(menu.keyFocus3 ?? "")
-                                }
+                                        .padding(1)
+                                    Section(header: Text("フォーカスポイント")){
+                                        ForEach(menu.focusPoints, id:\.self){point in
+                                            Text(point)
+                                        }
+                                    }
+                                }.padding(5)
                                 if let timerVM = viewModel.timerViewModel {
                                     TimerView(viewModel: timerVM)
                                 }
                             }
                         }
                         
-                        List(session.menus) { menu in
-                            let isCurrentTraining = viewModel.currentTrainingMenu == menu
-                            HStack {
-                                if(viewModel.isEditMode){
-                                    Button(action: {
-                                        viewModel.isShowDeleteAlart.toggle()
-                                        
-                                    }, label:{ Image(systemName: "minus.circle.fill").foregroundStyle(.red)})
-                                    .alert("メニューの削除", isPresented: $viewModel.isShowDeleteAlart, actions: {
-                                        Button("削除", role: .destructive) {
-                                            viewModel.deleteMenu(menu: menu)
+                        List{
+                            ForEach(session.menus.sorted(by: { $0.orderIndex < $1.orderIndex }), id: \.self) { menu in
+                                let isCurrentTraining = viewModel.currentTrainingMenu == menu
+                                HStack {
+                                    if viewModel.isEditMode {
+                                        HStack{
+                                            Button(action: {
+                                                print("Delete button pressed")
+                                                viewModel.isShowDeleteAlart.toggle()
+                                            }, label:{
+                                                Image(systemName: "minus.circle.fill").foregroundStyle(.red)
+                                            }).buttonStyle(.bordered)
+                                                .alert("メニューの削除", isPresented: $viewModel.isShowDeleteAlart, actions: {
+                                                    Button("削除", role: .destructive) {
+                                                        print(menu)
+                                                        viewModel.deleteMenu(menu: menu)
+                                                    }
+                                                    Button("キャンセル", role: .cancel) {}
+                                                })
                                         }
-                                        Button("キャンセル", role: .cancel) {}
-                                    })
-                                }
-                                
-                                VStack(alignment: .leading) {
-                                    HStack {
-                                        Text(menu.name ?? "")
-                                            .font(.title)
-                                        Text(viewModel.formatDuration(duration: menu.duration ?? 0))
                                     }
-                                    Text(menu.goal ?? "")
-                                        .font(.title2)
-                                    Text(menu.keyFocus1 ?? "")
-                                    Text(menu.keyFocus2 ?? "")
-                                    Text(menu.keyFocus3 ?? "")
+                                    
+                                    VStack(alignment: .leading) {
+                                        HStack {
+                                            Text(menu.name ?? "")
+                                                .font(.title)
+                                            Text(viewModel.formatDuration(duration: menu.duration ?? 0))
+                                        }
+                                        Text(menu.goal ?? "")
+                                            .font(.title2)
+                                        ForEach(menu.focusPoints, id:\.self){point in
+                                            Text(point)
+                                        }
+                                    }
+                                    Spacer()
+                                    if(viewModel.isEditMode){
+                                        HStack{
+                                            Button(action: {
+                                                print("Edit button pressed")
+                                                editingMenu = menu // 編集するメニューを設定
+                                            }, label: {
+                                                Text("編集")
+                                                    .fontWeight(.bold)
+                                                    .foregroundColor(.blue)
+                                            })
+                                            .buttonStyle(.bordered)
+                                            .sheet(item: $editingMenu) { menuToEdit in
+                                                EditTrainingMenuView(menu: menuToEdit, onSave: {
+                                                    // onSave クロージャー内で保存処理を実行
+                                                    viewModel.updateMenu(menu: menuToEdit)
+                                                })
+                                            }
+                                            
+                                            Image(systemName: "line.horizontal.3")
+                                        }
+                                    }else{
+                                        Button(action: {
+                                            viewModel.selectMenu(menu: menu)
+                                        }, label: {
+                                            Text(isCurrentTraining ? "実施中" : "開始").fontWeight(.bold)
+                                        }).buttonStyle(.borderedProminent)
+                                    }
                                 }
-                                Spacer()
-                                if(viewModel.isEditMode){
-                                    // TODO ドラッグして並び順を変更できるようにする
-                                    Image(systemName: "line.horizontal.3")
-                                }else{
-                                    Button(action: {
-                                        viewModel.selectMenu(menu: menu)
-                                    }, label: {
-                                        Text(isCurrentTraining ? "実施中" : "開始").fontWeight(.bold)
-                                    }).buttonStyle(.borderedProminent)
-                                }
-                            }
+                            }.onMove(perform: viewModel.isEditMode ? viewModel.moveMenu : nil)
                         }
                     }
                 } else {
@@ -113,7 +140,7 @@ struct TodaySessionView: View {
                     Button {
                         viewModel.isEditMode.toggle()
                     } label: {
-                        Text(viewModel.isEditMode ? "キャンセル" : "編集")
+                        Text(viewModel.isEditMode ? "完了" : "編集")
                     }
                 }
             }
@@ -122,9 +149,26 @@ struct TodaySessionView: View {
 }
 
 #Preview {
-    TodaySessionView(viewModel: TodaySessionViewModel(trainingSessionList: [TrainingSession(theme: "テーマ", sessionDescription: "備考", sessionDate: Date())], trainingMenuList: [TrainingMenu(name: "Name", goal: "Goal", duration: TimeInterval(600), keyFocus1: "kf1", keyFocus2: "kf2", keyFocus3: "kf3", menuDescription: "description")]))
+    TodaySessionView(viewModel: TodaySessionViewModel(
+        trainingSessionList: [TrainingSession(
+            theme: "テーマ",
+            sessionDescription: "備考",
+            sessionDate: Date()
+        )],
+        trainingMenuList: [TrainingMenu(
+            name: "Name",
+            goal: "Goal",
+            duration: TimeInterval(600),
+            focusPoints: ["kf1", "kf2", "kf3"],
+            menuDescription: "description",
+            orderIndex: 0
+        )]
+    ))
 }
 
 #Preview {
-    TodaySessionView(viewModel: TodaySessionViewModel(trainingSessionList: [], trainingMenuList: []))
+    TodaySessionView(viewModel: TodaySessionViewModel(
+        trainingSessionList: [],
+        trainingMenuList: []
+    ))
 }

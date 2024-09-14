@@ -22,8 +22,7 @@ class TodaySessionViewModel: ObservableObject {
     @Published var isShowSelectMenuView: Bool = false
     @Published var isEditMode: Bool = false
     @Published var isShowDeleteAlart: Bool = false
-
-    
+        
     init(trainingSessionList: [TrainingSession], trainingMenuList: [TrainingMenu]) {
         self.trainingSessionList = trainingSessionList
         self.trainingMenuList = trainingMenuList
@@ -81,13 +80,62 @@ class TodaySessionViewModel: ObservableObject {
         isShowNewSessionView = false
     }
     
-    func deleteMenu(menu: TrainingMenu) {
-            // モデルから削除
-            modelContext.delete(menu)
+    // メニューを削除する処理
+     func deleteMenu(menu: TrainingMenu) {
+         guard let session = currentTrainingSession else { return }
+         
+         // session からメニューを削除
+         if let index = session.menus.firstIndex(where: { $0.id == menu.id }) {
+             session.menus.remove(at: index)
+             
+             // データベースから削除
+             modelContext.delete(menu)
+             
+             // 現在のメニューが削除されたメニューなら、別のメニューを選択する
+             if currentTrainingMenu == menu {
+                 currentTrainingMenu = session.menus.first
+             }
+         }
+     }
+    
+    func updateMenu(menu: TrainingMenu) {
+        guard let session = currentTrainingSession else { return }
+
+        // session から該当のメニューを探す
+        if let index = session.menus.firstIndex(where: { $0.id == menu.id }) {
+            // メニューの更新
+            session.menus[index] = menu
             
-            // 現在のセッションからメニューを削除
-            if let index = currentTrainingSession?.menus.firstIndex(of: menu) {
-                currentTrainingSession?.menus.remove(at: index)
+            // データベースに保存
+            do {
+                try modelContext.save() // 変更を保存
+            } catch {
+                print("Failed to save context: \(error)")
+            }
+            
+            // 現在のメニューが更新されたメニューなら、最新の情報を反映
+            if currentTrainingMenu?.id == menu.id {
+                currentTrainingMenu = menu
             }
         }
+    }
+
+    // メニューを並び替えるロジック
+    func moveMenu(from source: IndexSet, to destination: Int) {
+        guard let session = currentTrainingSession else { return }
+        
+        // メニューのリストをソートされた順序で取得
+        var menus = session.menus.sorted(by: { $0.orderIndex < $1.orderIndex })
+
+        // 並べ替えを適用
+        menus.move(fromOffsets: source, toOffset: destination)
+        
+        // 新しい順序に基づいて orderIndex を再設定
+        for (newIndex, menu) in menus.enumerated() {
+            menu.orderIndex = newIndex
+        }
+        
+        // トレーニングセッションに新しい順序を適用
+        session.menus = menus
+    }
 }

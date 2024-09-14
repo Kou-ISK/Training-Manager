@@ -14,6 +14,8 @@ struct CreateTrainingMenuView: View {
     @State var session: TrainingSession
     @State private var trainingMenu = TrainingMenu()
     @State var trainingMenuList: [TrainingMenu]
+
+    @State private var newFocusPoint: String = ""
     
     // 分と秒を選択するための State プロパティ
     @State private var selectedMinutes = 0
@@ -26,20 +28,41 @@ struct CreateTrainingMenuView: View {
     var body: some View {
         NavigationStack {
             Form {
-                TextField("メニュー名", text: Binding(
-                    get: { trainingMenu.name ?? "" },
-                    set: { trainingMenu.name = $0 }
-                ))
+                Section(header: Text("メニュー名")){
+                    TextField("メニュー名", text: Binding(
+                        get: { trainingMenu.name ?? "" },
+                        set: { trainingMenu.name = $0 }
+                    ))
+                }
                 
-                TextField("重点1", text: Binding(
-                    get: { trainingMenu.keyFocus1 ?? "" },
-                    set: { trainingMenu.keyFocus1 = $0 }
-                ))
-                
-                TextField("目標", text: Binding(
-                    get: { trainingMenu.goal ?? "" },
-                    set: { trainingMenu.goal = $0 }
-                ))
+                Section(header: Text("フォーカスポイント")) {
+                    ForEach(trainingMenu.focusPoints, id: \.self) { point in
+                        HStack {
+                            Text(point)
+                            Spacer()
+                            Button(action: {
+                                removeFocusPoint(point)
+                            }) {
+                                Image(systemName: "minus.circle.fill").foregroundColor(.red)
+                            }
+                        }
+                    }
+                    
+                    HStack {
+                        TextField("新しいフォーカスポイント", text: $newFocusPoint)
+                        Button(action: {
+                            addFocusPoint()
+                        }) {
+                            Image(systemName: "plus.circle.fill").foregroundColor(.green)
+                        }
+                    }
+                }
+                Section(header: Text("練習のゴール")){
+                    TextField("ゴール", text: Binding(
+                        get: { trainingMenu.goal ?? "" },
+                        set: { trainingMenu.goal = $0 }
+                    ))
+                }
                 HStack{
                     // ドラムロール形式のPickerで分を選択
                     Picker("Duration (分)", selection: $selectedMinutes) {
@@ -70,13 +93,7 @@ struct CreateTrainingMenuView: View {
             .toolbar {
                 ToolbarItem(placement: .primaryAction) {
                     Button("追加") {
-                        // 分と秒を TimeInterval に変換
-                        trainingMenu.duration = TimeInterval(selectedMinutes * 60 + selectedSeconds)
-                        trainingMenu.orderIndex = trainingMenuList.count
-                        // 新しいメニューを追加してセッションに保存
-                        session.menus.append(trainingMenu)
-                        modelContext.insert(trainingMenu)
-                        dismiss()
+                        saveAndDismiss()
                     }
                 }
                 
@@ -88,6 +105,37 @@ struct CreateTrainingMenuView: View {
             }
         }
     }
+    
+    private func addFocusPoint() {
+        if !newFocusPoint.isEmpty {
+            trainingMenu.focusPoints.append(newFocusPoint)  // 直接TrainingMenuに追加
+            newFocusPoint = "" // 追加後にテキストフィールドをクリア
+        }
+    }
+    
+    private func removeFocusPoint(_ point: String) {
+        trainingMenu.focusPoints.removeAll { $0 == point }
+    }
+    
+    private func saveAndDismiss() {
+         // 最後のフォーカスポイントの追加がまだなら追加
+         if !newFocusPoint.isEmpty {
+             addFocusPoint()
+         }
+         
+         // 分と秒を TimeInterval に変換して保存
+         trainingMenu.duration = TimeInterval(selectedMinutes * 60 + selectedSeconds)
+         trainingMenu.orderIndex = trainingMenuList.count
+         
+         // 新しいメニューをセッションに追加
+         session.menus.append(trainingMenu)
+         
+         // データベースに挿入
+         modelContext.insert(trainingMenu)
+         
+         // ビューを閉じる
+         dismiss()
+     }
 }
 
 #Preview {

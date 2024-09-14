@@ -12,9 +12,7 @@ import SwiftData
 
 @Model public class TrainingMenu {
     var goal: String?
-    var keyFocus1: String?
-    var keyFocus2: String?
-    var keyFocus3: String?
+    var focusPoints: [String]
     var menuDescription: String?
     var name: String?
     var createdAt: Date
@@ -29,16 +27,15 @@ import SwiftData
         public init() {
             self.createdAt = Date()
             self.updatedAt = Date()
+            self.focusPoints = []
             self.orderIndex = 0 // 初期値として 0 を設定
         }
     
-    public init(name: String, goal: String, duration: TimeInterval, keyFocus1: String, keyFocus2:String, keyFocus3: String, menuDescription:String, orderIndex: Int) {
+    public init(name: String, goal: String, duration: TimeInterval, focusPoints: [String], menuDescription:String, orderIndex: Int) {
         self.name = name
         self.goal = goal
         self.duration = duration
-        self.keyFocus1 = keyFocus1
-        self.keyFocus2 = keyFocus2
-        self.keyFocus3 = keyFocus3
+        self.focusPoints = []
         self.menuDescription = menuDescription
         self.orderIndex = orderIndex
         self.createdAt = Date() // 初期値として現在日時を設定

@@ -26,12 +26,13 @@ struct TodaySessionView: View {
                             HStack(alignment: .center) {
                                 VStack(alignment: .center) {
                                     Text(menu.name ?? "N/A").font(.title)
-                                        .padding(5)
-                                    Text("フォーカスポイント: ")
-                                    Text(menu.keyFocus1 ?? "")
-                                    Text(menu.keyFocus2 ?? "")
-                                    Text(menu.keyFocus3 ?? "")
-                                }
+                                        .padding(1)
+                                    Section(header: Text("フォーカスポイント")){
+                                            ForEach(menu.focusPoints, id:\.self){point in
+                                                Text(point)
+                                            }
+                                    }
+                                }.padding(5)
                                 if let timerVM = viewModel.timerViewModel {
                                     TimerView(viewModel: timerVM)
                                 }
@@ -39,7 +40,7 @@ struct TodaySessionView: View {
                         }
                         
                         List{
-                            ForEach(session.menus.sorted(by: { $0.orderIndex < $1.orderIndex })) { menu in
+                            ForEach(session.menus.sorted(by: { $0.orderIndex < $1.orderIndex }), id: \.self) { menu in
                                 let isCurrentTraining = viewModel.currentTrainingMenu == menu
                                 HStack {
                                     if(viewModel.isEditMode){
@@ -49,6 +50,7 @@ struct TodaySessionView: View {
                                         }, label:{ Image(systemName: "minus.circle.fill").foregroundStyle(.red)})
                                         .alert("メニューの削除", isPresented: $viewModel.isShowDeleteAlart, actions: {
                                             Button("削除", role: .destructive) {
+                                                print(menu)
                                                 viewModel.deleteMenu(menu: menu)
                                             }
                                             Button("キャンセル", role: .cancel) {}
@@ -63,13 +65,12 @@ struct TodaySessionView: View {
                                         }
                                         Text(menu.goal ?? "")
                                             .font(.title2)
-                                        Text(menu.keyFocus1 ?? "")
-                                        Text(menu.keyFocus2 ?? "")
-                                        Text(menu.keyFocus3 ?? "")
+                                        ForEach(menu.focusPoints, id:\.self){point in
+                                            Text(point)
+                                        }
                                     }
                                     Spacer()
                                     if(viewModel.isEditMode){
-                                        // TODO ドラッグして並び順を変更できるようにする
                                         Image(systemName: "line.horizontal.3")
                                     }else{
                                         Button(action: {
@@ -79,7 +80,7 @@ struct TodaySessionView: View {
                                         }).buttonStyle(.borderedProminent)
                                     }
                                 }
-                            }.onMove(perform: viewModel.moveMenu)
+                            }.onMove(perform: viewModel.isEditMode ? viewModel.moveMenu : nil)
                         }
                     }
                 } else {
@@ -115,7 +116,7 @@ struct TodaySessionView: View {
                     Button {
                         viewModel.isEditMode.toggle()
                     } label: {
-                        Text(viewModel.isEditMode ? "キャンセル" : "編集")
+                        Text(viewModel.isEditMode ? "完了" : "編集")
                     }
                 }
             }
@@ -124,7 +125,7 @@ struct TodaySessionView: View {
 }
 
 #Preview {
-    TodaySessionView(viewModel: TodaySessionViewModel(trainingSessionList: [TrainingSession(theme: "テーマ", sessionDescription: "備考", sessionDate: Date())], trainingMenuList: [TrainingMenu(name: "Name", goal: "Goal", duration: TimeInterval(600), keyFocus1: "kf1", keyFocus2: "kf2", keyFocus3: "kf3", menuDescription: "description", orderIndex: 0)]))
+    TodaySessionView(viewModel: TodaySessionViewModel(trainingSessionList: [TrainingSession(theme: "テーマ", sessionDescription: "備考", sessionDate: Date())], trainingMenuList: [TrainingMenu(name: "Name", goal: "Goal", duration: TimeInterval(600), focusPoints:  ["kf1", "kf2", "kf3"], menuDescription: "description", orderIndex: 0)]))
 }
 
 #Preview {

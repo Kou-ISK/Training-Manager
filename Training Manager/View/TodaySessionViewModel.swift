@@ -22,13 +22,7 @@ class TodaySessionViewModel: ObservableObject {
     @Published var isShowSelectMenuView: Bool = false
     @Published var isEditMode: Bool = false
     @Published var isShowDeleteAlart: Bool = false
-    
-//    // メニューを orderIndex の順にソートする
-//    var sortedMenus: [TrainingMenu] {
-//        currentTrainingSession?.menus.sorted(by: { $0.orderIndex < $1.orderIndex }) ?? []
-//    }
-
-    
+        
     init(trainingSessionList: [TrainingSession], trainingMenuList: [TrainingMenu]) {
         self.trainingSessionList = trainingSessionList
         self.trainingMenuList = trainingMenuList
@@ -86,15 +80,23 @@ class TodaySessionViewModel: ObservableObject {
         isShowNewSessionView = false
     }
     
-    func deleteMenu(menu: TrainingMenu) {
-            // モデルから削除
-            modelContext.delete(menu)
-            
-            // 現在のセッションからメニューを削除
-            if let index = currentTrainingSession?.menus.firstIndex(of: menu) {
-                currentTrainingSession?.menus.remove(at: index)
-            }
-        }
+    // メニューを削除する処理
+     func deleteMenu(menu: TrainingMenu) {
+         guard let session = currentTrainingSession else { return }
+         
+         // session からメニューを削除
+         if let index = session.menus.firstIndex(where: { $0.id == menu.id }) {
+             session.menus.remove(at: index)
+             
+             // データベースから削除
+             modelContext.delete(menu)
+             
+             // 現在のメニューが削除されたメニューなら、別のメニューを選択する
+             if currentTrainingMenu == menu {
+                 currentTrainingMenu = session.menus.first
+             }
+         }
+     }
     
     // メニューを並び替えるロジック
     func moveMenu(from source: IndexSet, to destination: Int) {

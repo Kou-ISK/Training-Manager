@@ -19,24 +19,31 @@ struct TodaySessionView: View {
                 if let session = viewModel.currentTrainingSession {
                     VStack(alignment: .center) {
                         Text(session.sessionDate ?? Date(), formatter: dateFormatter)
-                            .font(.title)
+                            .font(.headline)
                         Text(session.theme ?? "")
-                            .font(.title2)
+                            .font(.subheadline)
                         Text(session.sessionDescription ?? "")
                         
                         if let menu = viewModel.currentTrainingMenu {
-                            HStack(alignment: .center) {
-                                VStack(alignment: .center) {
-                                    Text(menu.name ?? "N/A").font(.title)
-                                        .padding(1)
-                                    Section(header: Text("フォーカスポイント")){
+                            Divider()
+                            VStack(alignment: .center){
+                                HStack{
+                                    Text(menu.name ?? "N/A").font(.headline)
+                                    Button(action: {
+                                        viewModel.currentTrainingMenu = nil
+                                    }, label: {Text("完了").fontWeight(.bold)}).buttonStyle(.borderedProminent)
+                                }
+                                
+                                HStack(alignment: .center){
+                                    VStack(alignment:.leading){
                                         ForEach(menu.focusPoints, id:\.self){point in
                                             Text(point)
                                         }
+                                    }.padding(.horizontal, 20)
+                                    
+                                    if let timerVM = viewModel.timerViewModel {
+                                        TimerView(viewModel: timerVM).padding(.trailing, 20)
                                     }
-                                }.padding(5)
-                                if let timerVM = viewModel.timerViewModel {
-                                    TimerView(viewModel: timerVM)
                                 }
                             }
                         }
@@ -48,11 +55,10 @@ struct TodaySessionView: View {
                                     if viewModel.isEditMode {
                                         HStack{
                                             Button(action: {
-                                                print("Delete button pressed")
                                                 viewModel.isShowDeleteAlart.toggle()
                                             }, label:{
                                                 Image(systemName: "minus.circle.fill").foregroundStyle(.red)
-                                            }).buttonStyle(.bordered)
+                                            }).buttonStyle(.bordered).background(.clear)
                                                 .alert("メニューの削除", isPresented: $viewModel.isShowDeleteAlart, actions: {
                                                     Button("削除", role: .destructive) {
                                                         print(menu)
@@ -66,14 +72,14 @@ struct TodaySessionView: View {
                                     VStack(alignment: .leading) {
                                         HStack {
                                             Text(menu.name ?? "")
-                                                .font(.title)
-                                            Text(viewModel.formatDuration(duration: menu.duration ?? 0))
+                                                .font(.headline)
                                         }
                                         Text(menu.goal ?? "")
-                                            .font(.title2)
+                                            .font(.subheadline).underline()
                                         ForEach(menu.focusPoints, id:\.self){point in
-                                            Text(point)
+                                            Text("・\(point)")
                                         }
+                                        
                                     }
                                     Spacer()
                                     if(viewModel.isEditMode){
@@ -97,11 +103,18 @@ struct TodaySessionView: View {
                                             Image(systemName: "line.horizontal.3")
                                         }
                                     }else{
-                                        Button(action: {
-                                            viewModel.selectMenu(menu: menu)
-                                        }, label: {
-                                            Text(isCurrentTraining ? "実施中" : "開始").fontWeight(.bold)
-                                        }).buttonStyle(.borderedProminent)
+                                        VStack{
+                                            HStack{
+                                                Image(systemName: "stopwatch")
+                                                Text(viewModel.formatDuration(duration: menu.duration ?? 0))
+                                            }.foregroundStyle(.white).fontWeight(/*@START_MENU_TOKEN@*/.bold/*@END_MENU_TOKEN@*/).padding(10).background(.green).cornerRadius(30)
+                                            
+                                            Button(action: {
+                                                viewModel.selectMenu(menu: menu)
+                                            }, label: {
+                                                Text(isCurrentTraining ? "実施中" : "開始").fontWeight(.bold)
+                                            }).buttonStyle(.borderedProminent)
+                                        }
                                     }
                                 }
                             }.onMove(perform: viewModel.isEditMode ? viewModel.moveMenu : nil)

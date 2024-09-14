@@ -8,14 +8,16 @@
 import SwiftUI
 
 struct CircleProgressBarView: View {
+    let lineWidth:CGFloat = 15
+    
     @Binding var progress: CGFloat
     
     var body: some View {
         ZStack{
-            Circle().stroke(lineWidth: 20).opacity(0.3).foregroundStyle(.blue)
+            Circle().stroke(lineWidth: lineWidth).opacity(0.3).foregroundStyle(.blue)
             
             Circle().trim(from: 0.0, to: min(progress, 1.0))
-                .stroke(style: StrokeStyle(lineWidth: 20, lineCap: .round, lineJoin: .round)).foregroundStyle(.blue)
+                .stroke(style: StrokeStyle(lineWidth: lineWidth, lineCap: .round, lineJoin: .round)).foregroundStyle(.blue)
                 .rotationEffect(Angle(degrees: 270.0))
         }}
 }

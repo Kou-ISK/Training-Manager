@@ -15,16 +15,14 @@ struct TimerView: View {
             if(viewModel.isAlarmActive){
                 VStack{
                     Button(action: {viewModel.stopAlarm()}, label: {
-                        Text("アラーム停止").bold().padding(20)
-                            .foregroundColor(.black)
-                        .background(.yellow,in: RoundedRectangle(cornerRadius: 12))})
+                        Text("アラーム停止").bold().padding(10)
+                            .foregroundColor(.white)
+                        .background(.orange,in: RoundedRectangle(cornerRadius: 12))})
                 }
             }else{
                 VStack(alignment: .center) {
-                    
                     Text(viewModel.timeString)
-                        .font(.title)
-                        .fontWeight(.bold)
+                        .font(.headline)
                         .padding(5)
                     Button(action: {
                         if viewModel.timer == nil {
@@ -36,7 +34,7 @@ struct TimerView: View {
                         Text(viewModel.timer == nil ? "開始" : "停止").fontWeight(.bold)
                     }.buttonStyle(.borderedProminent)
                 }.onReceive(viewModel.$timeString) { newValue in}
-                CircleProgressBarView(progress: $viewModel.progress).padding(50)
+                CircleProgressBarView(progress: $viewModel.progress).frame(maxWidth: 120)
             }
         }
     }

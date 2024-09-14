@@ -98,6 +98,28 @@ class TodaySessionViewModel: ObservableObject {
          }
      }
     
+    func updateMenu(menu: TrainingMenu) {
+        guard let session = currentTrainingSession else { return }
+
+        // session から該当のメニューを探す
+        if let index = session.menus.firstIndex(where: { $0.id == menu.id }) {
+            // メニューの更新
+            session.menus[index] = menu
+            
+            // データベースに保存
+            do {
+                try modelContext.save() // 変更を保存
+            } catch {
+                print("Failed to save context: \(error)")
+            }
+            
+            // 現在のメニューが更新されたメニューなら、最新の情報を反映
+            if currentTrainingMenu?.id == menu.id {
+                currentTrainingMenu = menu
+            }
+        }
+    }
+
     // メニューを並び替えるロジック
     func moveMenu(from source: IndexSet, to destination: Int) {
         guard let session = currentTrainingSession else { return }

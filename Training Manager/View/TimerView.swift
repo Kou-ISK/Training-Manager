@@ -32,11 +32,11 @@ struct TimerView: View {
                         }
                     }) {
                         Text(viewModel.timer == nil ? "開始" : "停止").fontWeight(.bold)
-                    }.buttonStyle(.borderedProminent)
+                    }.buttonStyle(.bordered)
                 }.onReceive(viewModel.$timeString) { newValue in}
-                CircleProgressBarView(progress: $viewModel.progress).frame(maxWidth: 120)
+                CircleProgressBarView(progress: $viewModel.progress).frame(maxWidth: 80)
             }
-        }
+        }.padding(5)
     }
 }
 

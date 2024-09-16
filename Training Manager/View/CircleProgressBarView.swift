@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct CircleProgressBarView: View {
-    let lineWidth:CGFloat = 15
+    let lineWidth:CGFloat = 12
     
     @Binding var progress: CGFloat
     

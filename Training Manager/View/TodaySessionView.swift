@@ -31,7 +31,8 @@ struct TodaySessionView: View {
                                     Text(menu.name ?? "N/A").font(.headline)
                                     Button(action: {
                                         viewModel.currentTrainingMenu = nil
-                                    }, label: {Text("完了").fontWeight(.bold)}).buttonStyle(.borderedProminent)
+                                    }, label: {Text("完了").fontWeight(.bold)}
+                                    ).buttonStyle(.bordered)
                                 }
                                 
                                 HStack(alignment: .center){
@@ -107,7 +108,7 @@ struct TodaySessionView: View {
                                             HStack{
                                                 Image(systemName: "stopwatch")
                                                 Text(viewModel.formatDuration(duration: menu.duration ?? 0))
-                                            }.foregroundStyle(.white).fontWeight(/*@START_MENU_TOKEN@*/.bold/*@END_MENU_TOKEN@*/).padding(10).background(.green).cornerRadius(30)
+                                            }.foregroundStyle(.white).fontWeight(/*@START_MENU_TOKEN@*/.bold/*@END_MENU_TOKEN@*/).padding(5).background(.green).cornerRadius(30)
                                             
                                             Button(action: {
                                                 viewModel.selectMenu(menu: menu)

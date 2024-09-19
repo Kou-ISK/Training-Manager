@@ -181,8 +181,8 @@
 		78E8D37B2C83F0F000C23C5A /* View */ = {
 			isa = PBXGroup;
 			children = (
-				78FE2A182C9BA1C3009BFDD3 /* TrainingMenuHistory */,
 				78E3FA3128E33BCD002CC7AE /* ContentView.swift */,
+				78FE2A182C9BA1C3009BFDD3 /* TrainingMenuHistory */,
 				78FE2A162C9BA091009BFDD3 /* SessionList */,
 				78FE2A152C9BA02E009BFDD3 /* TodaySession */,
 				781C081E2C8BB20F007FF5E3 /* AppDelegate.swift */,

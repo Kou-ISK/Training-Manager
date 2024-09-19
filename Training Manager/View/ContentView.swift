@@ -16,9 +16,9 @@ struct ContentView: View {
         TabView{
             TodaySessionView(viewModel: TodaySessionViewModel(trainingSessionList: trainingSessionList, trainingMenuList: trainingMenuList))
                  .tabItem {
-                     Label("新規セッション", systemImage: "tray.and.arrow.down.fill")
+                     Label("今日のセッション", systemImage: "calendar.circle")
                  }
-            TrainingMenuHistory(trainingMenuList: trainingMenuList, trainingSessionList: trainingSessionList)
+            TrainingMenuHistory(trainingMenuList: trainingMenuList)
                 .tabItem {
                     Label("メニュー履歴", systemImage: "doc.text")
                 }

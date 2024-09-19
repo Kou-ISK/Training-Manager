@@ -8,10 +8,7 @@
 import SwiftUI
 
 struct TrainingMenuHistory: View {
-    @State var trainingMenuList: [TrainingMenu]
-    @State var trainingSessionList: [TrainingSession]
-    @State private var isAddingToSession: Bool = false
-    @State private var currentMenu: TrainingMenu?
+    var trainingMenuList: [TrainingMenu]
     
     var body: some View {
         VStack{
@@ -43,5 +40,5 @@ struct TrainingMenuHistory: View {
 }
 
 #Preview {
-    TrainingMenuHistory(trainingMenuList: [TrainingMenu(name: "メニュー1", goal: "ゴール1", duration: 300, focusPoints: ["ポイント1-1", "ポイント1-2", "ポイント1-3"], menuDescription: "備考1", orderIndex: 1),TrainingMenu(name: "メニュー2", goal: "ゴール2", duration: 300, focusPoints: ["ポイント2-1", "ポイント2-2", "ポイント2-3"], menuDescription: "備考2", orderIndex: 2)], trainingSessionList: [TrainingSession(theme: "テーマ", sessionDescription: "備考",sessionDate: Date())])
+    TrainingMenuHistory(trainingMenuList: [TrainingMenu(name: "メニュー1", goal: "ゴール1", duration: 300, focusPoints: ["ポイント1-1", "ポイント1-2", "ポイント1-3"], menuDescription: "備考1", orderIndex: 1),TrainingMenu(name: "メニュー2", goal: "ゴール2", duration: 300, focusPoints: ["ポイント2-1", "ポイント2-2", "ポイント2-3"], menuDescription: "備考2", orderIndex: 2)])
 }

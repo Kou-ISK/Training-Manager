@@ -13,7 +13,6 @@
 		781C08212C8D985B007FF5E3 /* alarm_sound.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 781C08202C8D985B007FF5E3 /* alarm_sound.mp3 */; };
 		781C08272C8F34E8007FF5E3 /* SelectExistingMenuView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 781C08262C8F34E8007FF5E3 /* SelectExistingMenuView.swift */; };
 		782CCF0E28F992C10060A69C /* ContentView.swift in Embed Watch Content */ = {isa = PBXBuildFile; fileRef = 78E3FA5928E33BCE002CC7AE /* ContentView.swift */; };
-		782CCF1228F995B10060A69C /* Start_Training.swift in Sources */ = {isa = PBXBuildFile; fileRef = 782CCF1128F995B10060A69C /* Start_Training.swift */; };
 		78C20A0C2C87D0A100AF77ED /* CircleProgressBarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78C20A0B2C87D0A100AF77ED /* CircleProgressBarView.swift */; };
 		78C20A0E2C89C4B100AF77ED /* TrainingSessionListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78C20A0D2C89C4B100AF77ED /* TrainingSessionListView.swift */; };
 		78C20A102C89C64000AF77ED /* SessionDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78C20A0F2C89C64000AF77ED /* SessionDetailView.swift */; };
@@ -102,7 +101,6 @@
 		781C081E2C8BB20F007FF5E3 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		781C08202C8D985B007FF5E3 /* alarm_sound.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = alarm_sound.mp3; sourceTree = "<group>"; };
 		781C08262C8F34E8007FF5E3 /* SelectExistingMenuView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectExistingMenuView.swift; sourceTree = "<group>"; };
-		782CCF1128F995B10060A69C /* Start_Training.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Start_Training.swift; sourceTree = "<group>"; };
 		78C20A0B2C87D0A100AF77ED /* CircleProgressBarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CircleProgressBarView.swift; sourceTree = "<group>"; };
 		78C20A0D2C89C4B100AF77ED /* TrainingSessionListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrainingSessionListView.swift; sourceTree = "<group>"; };
 		78C20A0F2C89C64000AF77ED /* SessionDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SessionDetailView.swift; sourceTree = "<group>"; };
@@ -188,9 +186,6 @@
 		78E3FA2328E33BCD002CC7AE = {
 			isa = PBXGroup;
 			children = (
-				78E8D35B2C8343AD00C23C5A /* TrainingMenu.swift */,
-				78E8D35C2C8343AD00C23C5A /* TrainingSession.swift */,
-				78C20A112C89C6EE00AF77ED /* customDateFormatter.swift */,
 				78E3FA2E28E33BCD002CC7AE /* Training Manager */,
 				78E3FA3F28E33BCE002CC7AE /* Training ManagerTests */,
 				78E3FA4928E33BCE002CC7AE /* Training ManagerUITests */,
@@ -218,6 +213,9 @@
 			isa = PBXGroup;
 			children = (
 				78E3FA2F28E33BCD002CC7AE /* Training_ManagerApp.swift */,
+				78C20A112C89C6EE00AF77ED /* customDateFormatter.swift */,
+				78FE2A192C9BA1DC009BFDD3 /* Model */,
+				78FE2A172C9BA13A009BFDD3 /* ViewModel */,
 				78E8D37B2C83F0F000C23C5A /* View */,
 				78E3FA3328E33BCE002CC7AE /* Assets.xcassets */,
 				781C08202C8D985B007FF5E3 /* alarm_sound.mp3 */,
@@ -292,23 +290,62 @@
 		78E8D37B2C83F0F000C23C5A /* View */ = {
 			isa = PBXGroup;
 			children = (
-				78E6F5C128E71BBA00BAEA24 /* TodaySessionView.swift */,
-				781C081E2C8BB20F007FF5E3 /* AppDelegate.swift */,
-				781C081C2C8B3900007FF5E3 /* TodaySessionViewModel.swift */,
-				78E8D3802C8466B700C23C5A /* CreateTrainingSessionView.swift */,
-				78C20A0D2C89C4B100AF77ED /* TrainingSessionListView.swift */,
-				781C08262C8F34E8007FF5E3 /* SelectExistingMenuView.swift */,
-				780E76C12C9586EF006129B9 /* EditTrainingMenuView.swift */,
-				78C20A0F2C89C64000AF77ED /* SessionDetailView.swift */,
-				78E8D37D2C845D5500C23C5A /* CreateTrainingMenuView.swift */,
+				78FE2A182C9BA1C3009BFDD3 /* TrainingMenuHistory */,
 				78E3FA3128E33BCD002CC7AE /* ContentView.swift */,
-				782CCF1128F995B10060A69C /* Start_Training.swift */,
-				78E6F5C328E71C1D00BAEA24 /* TrainingMenuHistory.swift */,
-				78E8D3822C85CBE100C23C5A /* TimerView.swift */,
-				78C20A0B2C87D0A100AF77ED /* CircleProgressBarView.swift */,
-				78E8D3842C85CC3200C23C5A /* TimerViewModel.swift */,
+				78FE2A162C9BA091009BFDD3 /* SessionList */,
+				78FE2A152C9BA02E009BFDD3 /* TodaySession */,
+				781C081E2C8BB20F007FF5E3 /* AppDelegate.swift */,
 			);
 			path = View;
+			sourceTree = "<group>";
+		};
+		78FE2A152C9BA02E009BFDD3 /* TodaySession */ = {
+			isa = PBXGroup;
+			children = (
+				78E8D3822C85CBE100C23C5A /* TimerView.swift */,
+				78C20A0B2C87D0A100AF77ED /* CircleProgressBarView.swift */,
+				780E76C12C9586EF006129B9 /* EditTrainingMenuView.swift */,
+				78E6F5C128E71BBA00BAEA24 /* TodaySessionView.swift */,
+				781C08262C8F34E8007FF5E3 /* SelectExistingMenuView.swift */,
+				78E8D37D2C845D5500C23C5A /* CreateTrainingMenuView.swift */,
+				78E8D3802C8466B700C23C5A /* CreateTrainingSessionView.swift */,
+			);
+			path = TodaySession;
+			sourceTree = "<group>";
+		};
+		78FE2A162C9BA091009BFDD3 /* SessionList */ = {
+			isa = PBXGroup;
+			children = (
+				78C20A0F2C89C64000AF77ED /* SessionDetailView.swift */,
+				78C20A0D2C89C4B100AF77ED /* TrainingSessionListView.swift */,
+			);
+			path = SessionList;
+			sourceTree = "<group>";
+		};
+		78FE2A172C9BA13A009BFDD3 /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				781C081C2C8B3900007FF5E3 /* TodaySessionViewModel.swift */,
+				78E8D3842C85CC3200C23C5A /* TimerViewModel.swift */,
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		78FE2A182C9BA1C3009BFDD3 /* TrainingMenuHistory */ = {
+			isa = PBXGroup;
+			children = (
+				78E6F5C328E71C1D00BAEA24 /* TrainingMenuHistory.swift */,
+			);
+			path = TrainingMenuHistory;
+			sourceTree = "<group>";
+		};
+		78FE2A192C9BA1DC009BFDD3 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				78E8D35C2C8343AD00C23C5A /* TrainingSession.swift */,
+				78E8D35B2C8343AD00C23C5A /* TrainingMenu.swift */,
+			);
+			path = Model;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -549,7 +586,6 @@
 				78E6F5C428E71C1D00BAEA24 /* TrainingMenuHistory.swift in Sources */,
 				78C20A0E2C89C4B100AF77ED /* TrainingSessionListView.swift in Sources */,
 				78E8D3852C85CC3200C23C5A /* TimerViewModel.swift in Sources */,
-				782CCF1228F995B10060A69C /* Start_Training.swift in Sources */,
 				781C081F2C8BB20F007FF5E3 /* AppDelegate.swift in Sources */,
 				78E8D37E2C845D5500C23C5A /* CreateTrainingMenuView.swift in Sources */,
 				781C08272C8F34E8007FF5E3 /* SelectExistingMenuView.swift in Sources */,

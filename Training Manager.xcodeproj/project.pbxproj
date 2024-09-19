@@ -12,7 +12,6 @@
 		781C081F2C8BB20F007FF5E3 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 781C081E2C8BB20F007FF5E3 /* AppDelegate.swift */; };
 		781C08212C8D985B007FF5E3 /* alarm_sound.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 781C08202C8D985B007FF5E3 /* alarm_sound.mp3 */; };
 		781C08272C8F34E8007FF5E3 /* SelectExistingMenuView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 781C08262C8F34E8007FF5E3 /* SelectExistingMenuView.swift */; };
-		782CCF0E28F992C10060A69C /* ContentView.swift in Embed Watch Content */ = {isa = PBXBuildFile; fileRef = 78E3FA5928E33BCE002CC7AE /* ContentView.swift */; };
 		78C20A0C2C87D0A100AF77ED /* CircleProgressBarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78C20A0B2C87D0A100AF77ED /* CircleProgressBarView.swift */; };
 		78C20A0E2C89C4B100AF77ED /* TrainingSessionListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78C20A0D2C89C4B100AF77ED /* TrainingSessionListView.swift */; };
 		78C20A102C89C64000AF77ED /* SessionDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78C20A0F2C89C64000AF77ED /* SessionDetailView.swift */; };
@@ -24,17 +23,8 @@
 		78E3FA4128E33BCE002CC7AE /* Training_ManagerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78E3FA4028E33BCE002CC7AE /* Training_ManagerTests.swift */; };
 		78E3FA4B28E33BCE002CC7AE /* Training_ManagerUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78E3FA4A28E33BCE002CC7AE /* Training_ManagerUITests.swift */; };
 		78E3FA4D28E33BCE002CC7AE /* Training_ManagerUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78E3FA4C28E33BCE002CC7AE /* Training_ManagerUITestsLaunchTests.swift */; };
-		78E3FA5828E33BCE002CC7AE /* Training_ManagerApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78E3FA5728E33BCE002CC7AE /* Training_ManagerApp.swift */; };
-		78E3FA5A28E33BCE002CC7AE /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78E3FA5928E33BCE002CC7AE /* ContentView.swift */; };
-		78E3FA5C28E33BCF002CC7AE /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 78E3FA5B28E33BCF002CC7AE /* Assets.xcassets */; };
-		78E3FA5F28E33BCF002CC7AE /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 78E3FA5E28E33BCF002CC7AE /* Preview Assets.xcassets */; };
-		78E3FA6928E33BCF002CC7AE /* Training_Manager_Watch_AppTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78E3FA6828E33BCF002CC7AE /* Training_Manager_Watch_AppTests.swift */; };
-		78E3FA7328E33BCF002CC7AE /* Training_Manager_Watch_AppUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78E3FA7228E33BCF002CC7AE /* Training_Manager_Watch_AppUITests.swift */; };
-		78E3FA7528E33BCF002CC7AE /* Training_Manager_Watch_AppUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78E3FA7428E33BCF002CC7AE /* Training_Manager_Watch_AppUITestsLaunchTests.swift */; };
 		78E6F5C228E71BBA00BAEA24 /* TodaySessionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78E6F5C128E71BBA00BAEA24 /* TodaySessionView.swift */; };
 		78E6F5C428E71C1D00BAEA24 /* TrainingMenuHistory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78E6F5C328E71C1D00BAEA24 /* TrainingMenuHistory.swift */; };
-		78E6F5C628E9685600BAEA24 /* Create_New_Training.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78E6F5C528E9685600BAEA24 /* Create_New_Training.swift */; };
-		78E6F5C828E9686800BAEA24 /* Load_Old_Training.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78E6F5C728E9686800BAEA24 /* Load_Old_Training.swift */; };
 		78E8D35D2C8343AD00C23C5A /* TrainingMenu.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78E8D35B2C8343AD00C23C5A /* TrainingMenu.swift */; };
 		78E8D35E2C8343AD00C23C5A /* TrainingSession.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78E8D35C2C8343AD00C23C5A /* TrainingSession.swift */; };
 		78E8D37E2C845D5500C23C5A /* CreateTrainingMenuView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78E8D37D2C845D5500C23C5A /* CreateTrainingMenuView.swift */; };
@@ -44,13 +34,6 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
-		782CCF0F28F9935E0060A69C /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 78E3FA2428E33BCD002CC7AE /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = 78E3FA5128E33BCE002CC7AE;
-			remoteInfo = "Training Manager Watch App";
-		};
 		78E3FA3D28E33BCE002CC7AE /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 78E3FA2428E33BCD002CC7AE /* Project object */;
@@ -65,20 +48,6 @@
 			remoteGlobalIDString = 78E3FA2B28E33BCD002CC7AE;
 			remoteInfo = "Training Manager";
 		};
-		78E3FA6528E33BCF002CC7AE /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 78E3FA2428E33BCD002CC7AE /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = 78E3FA5128E33BCE002CC7AE;
-			remoteInfo = "Training Manager Watch App";
-		};
-		78E3FA6F28E33BCF002CC7AE /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 78E3FA2428E33BCD002CC7AE /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = 78E3FA5128E33BCE002CC7AE;
-			remoteInfo = "Training Manager Watch App";
-		};
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -88,7 +57,6 @@
 			dstPath = "$(CONTENTS_FOLDER_PATH)/Watch";
 			dstSubfolderSpec = 16;
 			files = (
-				782CCF0E28F992C10060A69C /* ContentView.swift in Embed Watch Content */,
 			);
 			name = "Embed Watch Content";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -115,20 +83,8 @@
 		78E3FA4628E33BCE002CC7AE /* Training ManagerUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Training ManagerUITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		78E3FA4A28E33BCE002CC7AE /* Training_ManagerUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Training_ManagerUITests.swift; sourceTree = "<group>"; };
 		78E3FA4C28E33BCE002CC7AE /* Training_ManagerUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Training_ManagerUITestsLaunchTests.swift; sourceTree = "<group>"; };
-		78E3FA5228E33BCE002CC7AE /* Training Manager Watch App.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Training Manager Watch App.app"; sourceTree = BUILT_PRODUCTS_DIR; };
-		78E3FA5728E33BCE002CC7AE /* Training_ManagerApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Training_ManagerApp.swift; sourceTree = "<group>"; };
-		78E3FA5928E33BCE002CC7AE /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
-		78E3FA5B28E33BCF002CC7AE /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
-		78E3FA5E28E33BCF002CC7AE /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
-		78E3FA6428E33BCF002CC7AE /* Training Manager Watch AppTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Training Manager Watch AppTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
-		78E3FA6828E33BCF002CC7AE /* Training_Manager_Watch_AppTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Training_Manager_Watch_AppTests.swift; sourceTree = "<group>"; };
-		78E3FA6E28E33BCF002CC7AE /* Training Manager Watch AppUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Training Manager Watch AppUITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
-		78E3FA7228E33BCF002CC7AE /* Training_Manager_Watch_AppUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Training_Manager_Watch_AppUITests.swift; sourceTree = "<group>"; };
-		78E3FA7428E33BCF002CC7AE /* Training_Manager_Watch_AppUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Training_Manager_Watch_AppUITestsLaunchTests.swift; sourceTree = "<group>"; };
 		78E6F5C128E71BBA00BAEA24 /* TodaySessionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodaySessionView.swift; sourceTree = "<group>"; };
 		78E6F5C328E71C1D00BAEA24 /* TrainingMenuHistory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrainingMenuHistory.swift; sourceTree = "<group>"; };
-		78E6F5C528E9685600BAEA24 /* Create_New_Training.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Create_New_Training.swift; sourceTree = "<group>"; };
-		78E6F5C728E9686800BAEA24 /* Load_Old_Training.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Load_Old_Training.swift; sourceTree = "<group>"; };
 		78E8D35B2C8343AD00C23C5A /* TrainingMenu.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrainingMenu.swift; sourceTree = "<group>"; };
 		78E8D35C2C8343AD00C23C5A /* TrainingSession.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrainingSession.swift; sourceTree = "<group>"; };
 		78E8D37D2C845D5500C23C5A /* CreateTrainingMenuView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateTrainingMenuView.swift; sourceTree = "<group>"; };
@@ -159,27 +115,6 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		78E3FA4F28E33BCE002CC7AE /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		78E3FA6128E33BCF002CC7AE /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		78E3FA6B28E33BCF002CC7AE /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
@@ -189,9 +124,6 @@
 				78E3FA2E28E33BCD002CC7AE /* Training Manager */,
 				78E3FA3F28E33BCE002CC7AE /* Training ManagerTests */,
 				78E3FA4928E33BCE002CC7AE /* Training ManagerUITests */,
-				78E3FA5628E33BCE002CC7AE /* Training Manager Watch App */,
-				78E3FA6728E33BCF002CC7AE /* Training Manager Watch AppTests */,
-				78E3FA7128E33BCF002CC7AE /* Training Manager Watch AppUITests */,
 				78E3FA2D28E33BCD002CC7AE /* Products */,
 			);
 			sourceTree = "<group>";
@@ -202,9 +134,6 @@
 				78E3FA2C28E33BCD002CC7AE /* Training Manager.app */,
 				78E3FA3C28E33BCE002CC7AE /* Training ManagerTests.xctest */,
 				78E3FA4628E33BCE002CC7AE /* Training ManagerUITests.xctest */,
-				78E3FA5228E33BCE002CC7AE /* Training Manager Watch App.app */,
-				78E3FA6428E33BCF002CC7AE /* Training Manager Watch AppTests.xctest */,
-				78E3FA6E28E33BCF002CC7AE /* Training Manager Watch AppUITests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -247,44 +176,6 @@
 				78E3FA4C28E33BCE002CC7AE /* Training_ManagerUITestsLaunchTests.swift */,
 			);
 			path = "Training ManagerUITests";
-			sourceTree = "<group>";
-		};
-		78E3FA5628E33BCE002CC7AE /* Training Manager Watch App */ = {
-			isa = PBXGroup;
-			children = (
-				78E3FA5728E33BCE002CC7AE /* Training_ManagerApp.swift */,
-				78E3FA5928E33BCE002CC7AE /* ContentView.swift */,
-				78E6F5C528E9685600BAEA24 /* Create_New_Training.swift */,
-				78E6F5C728E9686800BAEA24 /* Load_Old_Training.swift */,
-				78E3FA5B28E33BCF002CC7AE /* Assets.xcassets */,
-				78E3FA5D28E33BCF002CC7AE /* Preview Content */,
-			);
-			path = "Training Manager Watch App";
-			sourceTree = "<group>";
-		};
-		78E3FA5D28E33BCF002CC7AE /* Preview Content */ = {
-			isa = PBXGroup;
-			children = (
-				78E3FA5E28E33BCF002CC7AE /* Preview Assets.xcassets */,
-			);
-			path = "Preview Content";
-			sourceTree = "<group>";
-		};
-		78E3FA6728E33BCF002CC7AE /* Training Manager Watch AppTests */ = {
-			isa = PBXGroup;
-			children = (
-				78E3FA6828E33BCF002CC7AE /* Training_Manager_Watch_AppTests.swift */,
-			);
-			path = "Training Manager Watch AppTests";
-			sourceTree = "<group>";
-		};
-		78E3FA7128E33BCF002CC7AE /* Training Manager Watch AppUITests */ = {
-			isa = PBXGroup;
-			children = (
-				78E3FA7228E33BCF002CC7AE /* Training_Manager_Watch_AppUITests.swift */,
-				78E3FA7428E33BCF002CC7AE /* Training_Manager_Watch_AppUITestsLaunchTests.swift */,
-			);
-			path = "Training Manager Watch AppUITests";
 			sourceTree = "<group>";
 		};
 		78E8D37B2C83F0F000C23C5A /* View */ = {
@@ -363,7 +254,6 @@
 			buildRules = (
 			);
 			dependencies = (
-				782CCF1028F9935E0060A69C /* PBXTargetDependency */,
 			);
 			name = "Training Manager";
 			productName = "Training Manager";
@@ -406,59 +296,6 @@
 			productReference = 78E3FA4628E33BCE002CC7AE /* Training ManagerUITests.xctest */;
 			productType = "com.apple.product-type.bundle.ui-testing";
 		};
-		78E3FA5128E33BCE002CC7AE /* Training Manager Watch App */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = 78E3FA7828E33BCF002CC7AE /* Build configuration list for PBXNativeTarget "Training Manager Watch App" */;
-			buildPhases = (
-				78E3FA4E28E33BCE002CC7AE /* Sources */,
-				78E3FA4F28E33BCE002CC7AE /* Frameworks */,
-				78E3FA5028E33BCE002CC7AE /* Resources */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-			);
-			name = "Training Manager Watch App";
-			productName = "Training Manager Watch App";
-			productReference = 78E3FA5228E33BCE002CC7AE /* Training Manager Watch App.app */;
-			productType = "com.apple.product-type.application";
-		};
-		78E3FA6328E33BCF002CC7AE /* Training Manager Watch AppTests */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = 78E3FA8528E33BCF002CC7AE /* Build configuration list for PBXNativeTarget "Training Manager Watch AppTests" */;
-			buildPhases = (
-				78E3FA6028E33BCF002CC7AE /* Sources */,
-				78E3FA6128E33BCF002CC7AE /* Frameworks */,
-				78E3FA6228E33BCF002CC7AE /* Resources */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-				78E3FA6628E33BCF002CC7AE /* PBXTargetDependency */,
-			);
-			name = "Training Manager Watch AppTests";
-			productName = "Training Manager Watch AppTests";
-			productReference = 78E3FA6428E33BCF002CC7AE /* Training Manager Watch AppTests.xctest */;
-			productType = "com.apple.product-type.bundle.unit-test";
-		};
-		78E3FA6D28E33BCF002CC7AE /* Training Manager Watch AppUITests */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = 78E3FA8828E33BCF002CC7AE /* Build configuration list for PBXNativeTarget "Training Manager Watch AppUITests" */;
-			buildPhases = (
-				78E3FA6A28E33BCF002CC7AE /* Sources */,
-				78E3FA6B28E33BCF002CC7AE /* Frameworks */,
-				78E3FA6C28E33BCF002CC7AE /* Resources */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-				78E3FA7028E33BCF002CC7AE /* PBXTargetDependency */,
-			);
-			name = "Training Manager Watch AppUITests";
-			productName = "Training Manager Watch AppUITests";
-			productReference = 78E3FA6E28E33BCF002CC7AE /* Training Manager Watch AppUITests.xctest */;
-			productType = "com.apple.product-type.bundle.ui-testing";
-		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -480,17 +317,6 @@
 						CreatedOnToolsVersion = 14.0;
 						TestTargetID = 78E3FA2B28E33BCD002CC7AE;
 					};
-					78E3FA5128E33BCE002CC7AE = {
-						CreatedOnToolsVersion = 14.0;
-					};
-					78E3FA6328E33BCF002CC7AE = {
-						CreatedOnToolsVersion = 14.0;
-						TestTargetID = 78E3FA5128E33BCE002CC7AE;
-					};
-					78E3FA6D28E33BCF002CC7AE = {
-						CreatedOnToolsVersion = 14.0;
-						TestTargetID = 78E3FA5128E33BCE002CC7AE;
-					};
 				};
 			};
 			buildConfigurationList = 78E3FA2728E33BCD002CC7AE /* Build configuration list for PBXProject "Training Manager" */;
@@ -509,9 +335,6 @@
 				78E3FA2B28E33BCD002CC7AE /* Training Manager */,
 				78E3FA3B28E33BCE002CC7AE /* Training ManagerTests */,
 				78E3FA4528E33BCE002CC7AE /* Training ManagerUITests */,
-				78E3FA5128E33BCE002CC7AE /* Training Manager Watch App */,
-				78E3FA6328E33BCF002CC7AE /* Training Manager Watch AppTests */,
-				78E3FA6D28E33BCF002CC7AE /* Training Manager Watch AppUITests */,
 			);
 		};
 /* End PBXProject section */
@@ -535,29 +358,6 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 		78E3FA4428E33BCE002CC7AE /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		78E3FA5028E33BCE002CC7AE /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				78E3FA5F28E33BCF002CC7AE /* Preview Assets.xcassets in Resources */,
-				78E3FA5C28E33BCF002CC7AE /* Assets.xcassets in Resources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		78E3FA6228E33BCF002CC7AE /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		78E3FA6C28E33BCF002CC7AE /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -609,42 +409,9 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		78E3FA4E28E33BCE002CC7AE /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				78E3FA5A28E33BCE002CC7AE /* ContentView.swift in Sources */,
-				78E6F5C628E9685600BAEA24 /* Create_New_Training.swift in Sources */,
-				78E3FA5828E33BCE002CC7AE /* Training_ManagerApp.swift in Sources */,
-				78E6F5C828E9686800BAEA24 /* Load_Old_Training.swift in Sources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		78E3FA6028E33BCF002CC7AE /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				78E3FA6928E33BCF002CC7AE /* Training_Manager_Watch_AppTests.swift in Sources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		78E3FA6A28E33BCF002CC7AE /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				78E3FA7528E33BCF002CC7AE /* Training_Manager_Watch_AppUITestsLaunchTests.swift in Sources */,
-				78E3FA7328E33BCF002CC7AE /* Training_Manager_Watch_AppUITests.swift in Sources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
-		782CCF1028F9935E0060A69C /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = 78E3FA5128E33BCE002CC7AE /* Training Manager Watch App */;
-			targetProxy = 782CCF0F28F9935E0060A69C /* PBXContainerItemProxy */;
-		};
 		78E3FA3E28E33BCE002CC7AE /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = 78E3FA2B28E33BCD002CC7AE /* Training Manager */;
@@ -654,16 +421,6 @@
 			isa = PBXTargetDependency;
 			target = 78E3FA2B28E33BCD002CC7AE /* Training Manager */;
 			targetProxy = 78E3FA4728E33BCE002CC7AE /* PBXContainerItemProxy */;
-		};
-		78E3FA6628E33BCF002CC7AE /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = 78E3FA5128E33BCE002CC7AE /* Training Manager Watch App */;
-			targetProxy = 78E3FA6528E33BCF002CC7AE /* PBXContainerItemProxy */;
-		};
-		78E3FA7028E33BCF002CC7AE /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = 78E3FA5128E33BCE002CC7AE /* Training Manager Watch App */;
-			targetProxy = 78E3FA6F28E33BCF002CC7AE /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
@@ -703,7 +460,7 @@
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				COPY_PHASE_STRIP = NO;
 				DEAD_CODE_STRIPPING = YES;
-				DEBUG_INFORMATION_FORMAT = dwarf;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				ENABLE_PREVIEWS = YES;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				ENABLE_TESTABILITY = YES;
@@ -728,7 +485,6 @@
 				ONLY_ACTIVE_ARCH = YES;
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
-				WATCHOS_DEPLOYMENT_TARGET = 10.5;
 			};
 			name = Debug;
 		};
@@ -767,7 +523,7 @@
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				COPY_PHASE_STRIP = NO;
 				DEAD_CODE_STRIPPING = YES;
-				DEBUG_INFORMATION_FORMAT = dwarf;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				ENABLE_NS_ASSERTIONS = NO;
 				ENABLE_PREVIEWS = YES;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
@@ -785,66 +541,6 @@
 				MTL_FAST_MATH = YES;
 				SWIFT_COMPILATION_MODE = wholemodule;
 				SWIFT_OPTIMIZATION_LEVEL = "-O";
-				WATCHOS_DEPLOYMENT_TARGET = 10.5;
-			};
-			name = Release;
-		};
-		78E3FA7928E33BCF002CC7AE /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
-				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_ASSET_PATHS = "\"Training Manager Watch App/Preview Content\"";
-				ENABLE_PREVIEWS = YES;
-				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_KEY_CFBundleDisplayName = "Training Manager";
-				INFOPLIST_KEY_UISupportedInterfaceOrientations = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
-				INFOPLIST_KEY_WKCompanionAppBundleIdentifier = "Kou-Isaka.Training-Manager";
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-				);
-				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = "Kou-Isaka.Training-Manager.watchkitapp";
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SDKROOT = watchos;
-				SKIP_INSTALL = YES;
-				SWIFT_EMIT_LOC_STRINGS = YES;
-				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = 4;
-				WATCHOS_DEPLOYMENT_TARGET = 10.5;
-			};
-			name = Debug;
-		};
-		78E3FA7A28E33BCF002CC7AE /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
-				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_ASSET_PATHS = "\"Training Manager Watch App/Preview Content\"";
-				ENABLE_PREVIEWS = YES;
-				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_KEY_CFBundleDisplayName = "Training Manager";
-				INFOPLIST_KEY_UISupportedInterfaceOrientations = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
-				INFOPLIST_KEY_WKCompanionAppBundleIdentifier = "Kou-Isaka.Training-Manager";
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-				);
-				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = "Kou-Isaka.Training-Manager.watchkitapp";
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SDKROOT = watchos;
-				SKIP_INSTALL = YES;
-				SWIFT_EMIT_LOC_STRINGS = YES;
-				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = 4;
-				VALIDATE_PRODUCT = YES;
-				WATCHOS_DEPLOYMENT_TARGET = 10.5;
 			};
 			name = Release;
 		};
@@ -855,9 +551,11 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				ASSETCATALOG_COMPILER_INCLUDE_ALL_APPICON_ASSETS = NO;
+				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"Training Manager/Preview Content\"";
+				DEVELOPMENT_TEAM = WALU6ZJGAF;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_CFBundleDisplayName = "Training Manager";
@@ -874,6 +572,7 @@
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = "Kou-Isaka.Training-Manager";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SDKROOT = iphoneos;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
@@ -888,9 +587,11 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				ASSETCATALOG_COMPILER_INCLUDE_ALL_APPICON_ASSETS = NO;
+				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"Training Manager/Preview Content\"";
+				DEVELOPMENT_TEAM = WALU6ZJGAF;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_CFBundleDisplayName = "Training Manager";
@@ -907,6 +608,7 @@
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = "Kou-Isaka.Training-Manager";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SDKROOT = iphoneos;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
@@ -995,86 +697,6 @@
 			};
 			name = Release;
 		};
-		78E3FA8628E33BCF002CC7AE /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
-				BUNDLE_LOADER = "$(TEST_HOST)";
-				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
-				GENERATE_INFOPLIST_FILE = YES;
-				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = "Kou-Isaka.Training-Manager-Watch-AppTests";
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SDKROOT = watchos;
-				SWIFT_EMIT_LOC_STRINGS = NO;
-				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = 4;
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Training Manager Watch App.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/Training Manager Watch App";
-				WATCHOS_DEPLOYMENT_TARGET = 10.5;
-			};
-			name = Debug;
-		};
-		78E3FA8728E33BCF002CC7AE /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
-				BUNDLE_LOADER = "$(TEST_HOST)";
-				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
-				GENERATE_INFOPLIST_FILE = YES;
-				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = "Kou-Isaka.Training-Manager-Watch-AppTests";
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SDKROOT = watchos;
-				SWIFT_EMIT_LOC_STRINGS = NO;
-				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = 4;
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Training Manager Watch App.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/Training Manager Watch App";
-				VALIDATE_PRODUCT = YES;
-				WATCHOS_DEPLOYMENT_TARGET = 10.5;
-			};
-			name = Release;
-		};
-		78E3FA8928E33BCF002CC7AE /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
-				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
-				GENERATE_INFOPLIST_FILE = YES;
-				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = "Kou-Isaka.Training-Manager-Watch-AppUITests";
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SDKROOT = watchos;
-				SWIFT_EMIT_LOC_STRINGS = NO;
-				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = 4;
-				TEST_TARGET_NAME = "Training Manager Watch App";
-				WATCHOS_DEPLOYMENT_TARGET = 10.5;
-			};
-			name = Debug;
-		};
-		78E3FA8A28E33BCF002CC7AE /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
-				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
-				GENERATE_INFOPLIST_FILE = YES;
-				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = "Kou-Isaka.Training-Manager-Watch-AppUITests";
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SDKROOT = watchos;
-				SWIFT_EMIT_LOC_STRINGS = NO;
-				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = 4;
-				TEST_TARGET_NAME = "Training Manager Watch App";
-				VALIDATE_PRODUCT = YES;
-				WATCHOS_DEPLOYMENT_TARGET = 10.5;
-			};
-			name = Release;
-		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -1083,15 +705,6 @@
 			buildConfigurations = (
 				78E3FA7628E33BCF002CC7AE /* Debug */,
 				78E3FA7728E33BCF002CC7AE /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Debug;
-		};
-		78E3FA7828E33BCF002CC7AE /* Build configuration list for PBXNativeTarget "Training Manager Watch App" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				78E3FA7928E33BCF002CC7AE /* Debug */,
-				78E3FA7A28E33BCF002CC7AE /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Debug;
@@ -1119,24 +732,6 @@
 			buildConfigurations = (
 				78E3FA8328E33BCF002CC7AE /* Debug */,
 				78E3FA8428E33BCF002CC7AE /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Debug;
-		};
-		78E3FA8528E33BCF002CC7AE /* Build configuration list for PBXNativeTarget "Training Manager Watch AppTests" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				78E3FA8628E33BCF002CC7AE /* Debug */,
-				78E3FA8728E33BCF002CC7AE /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Debug;
-		};
-		78E3FA8828E33BCF002CC7AE /* Build configuration list for PBXNativeTarget "Training Manager Watch AppUITests" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				78E3FA8928E33BCF002CC7AE /* Debug */,
-				78E3FA8A28E33BCF002CC7AE /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Debug;

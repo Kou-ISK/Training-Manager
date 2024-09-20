@@ -12,6 +12,7 @@
 		781C081F2C8BB20F007FF5E3 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 781C081E2C8BB20F007FF5E3 /* AppDelegate.swift */; };
 		781C08212C8D985B007FF5E3 /* alarm_sound.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 781C08202C8D985B007FF5E3 /* alarm_sound.mp3 */; };
 		781C08272C8F34E8007FF5E3 /* SelectExistingMenuView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 781C08262C8F34E8007FF5E3 /* SelectExistingMenuView.swift */; };
+		78927F552C9CEB04005964EC /* SelectExistingSessionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78927F542C9CEB04005964EC /* SelectExistingSessionView.swift */; };
 		78C20A0C2C87D0A100AF77ED /* CircleProgressBarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78C20A0B2C87D0A100AF77ED /* CircleProgressBarView.swift */; };
 		78C20A0E2C89C4B100AF77ED /* TrainingSessionListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78C20A0D2C89C4B100AF77ED /* TrainingSessionListView.swift */; };
 		78C20A102C89C64000AF77ED /* SessionDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78C20A0F2C89C64000AF77ED /* SessionDetailView.swift */; };
@@ -69,6 +70,7 @@
 		781C081E2C8BB20F007FF5E3 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		781C08202C8D985B007FF5E3 /* alarm_sound.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = alarm_sound.mp3; sourceTree = "<group>"; };
 		781C08262C8F34E8007FF5E3 /* SelectExistingMenuView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectExistingMenuView.swift; sourceTree = "<group>"; };
+		78927F542C9CEB04005964EC /* SelectExistingSessionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectExistingSessionView.swift; sourceTree = "<group>"; };
 		78C20A0B2C87D0A100AF77ED /* CircleProgressBarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CircleProgressBarView.swift; sourceTree = "<group>"; };
 		78C20A0D2C89C4B100AF77ED /* TrainingSessionListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrainingSessionListView.swift; sourceTree = "<group>"; };
 		78C20A0F2C89C64000AF77ED /* SessionDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SessionDetailView.swift; sourceTree = "<group>"; };
@@ -198,6 +200,7 @@
 				780E76C12C9586EF006129B9 /* EditTrainingMenuView.swift */,
 				78E6F5C128E71BBA00BAEA24 /* TodaySessionView.swift */,
 				781C08262C8F34E8007FF5E3 /* SelectExistingMenuView.swift */,
+				78927F542C9CEB04005964EC /* SelectExistingSessionView.swift */,
 				78E8D37D2C845D5500C23C5A /* CreateTrainingMenuView.swift */,
 				78E8D3802C8466B700C23C5A /* CreateTrainingSessionView.swift */,
 			);
@@ -304,7 +307,7 @@
 			attributes = {
 				BuildIndependentTargetsInParallel = 1;
 				LastSwiftUpdateCheck = 1400;
-				LastUpgradeCheck = 1540;
+				LastUpgradeCheck = 1600;
 				TargetAttributes = {
 					78E3FA2B28E33BCD002CC7AE = {
 						CreatedOnToolsVersion = 14.0;
@@ -321,11 +324,11 @@
 			};
 			buildConfigurationList = 78E3FA2728E33BCD002CC7AE /* Build configuration list for PBXProject "Training Manager" */;
 			compatibilityVersion = "Xcode 15.3";
-			developmentRegion = en;
+			developmentRegion = ja;
 			hasScannedForEncodings = 0;
 			knownRegions = (
-				en,
 				Base,
+				ja,
 			);
 			mainGroup = 78E3FA2328E33BCD002CC7AE;
 			productRefGroup = 78E3FA2D28E33BCD002CC7AE /* Products */;
@@ -373,6 +376,7 @@
 			files = (
 				78E8D3832C85CBE100C23C5A /* TimerView.swift in Sources */,
 				78C20A122C89C6EE00AF77ED /* customDateFormatter.swift in Sources */,
+				78927F552C9CEB04005964EC /* SelectExistingSessionView.swift in Sources */,
 				78E3FA3228E33BCD002CC7AE /* ContentView.swift in Sources */,
 				78E8D3812C8466B700C23C5A /* CreateTrainingSessionView.swift in Sources */,
 				78E6F5C228E71BBA00BAEA24 /* TodaySessionView.swift in Sources */,
@@ -547,7 +551,6 @@
 		78E3FA7D28E33BCF002CC7AE /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				ASSETCATALOG_COMPILER_INCLUDE_ALL_APPICON_ASSETS = NO;
@@ -583,7 +586,6 @@
 		78E3FA7E28E33BCF002CC7AE /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				ASSETCATALOG_COMPILER_INCLUDE_ALL_APPICON_ASSETS = NO;
@@ -620,7 +622,6 @@
 		78E3FA8028E33BCF002CC7AE /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
@@ -640,7 +641,6 @@
 		78E3FA8128E33BCF002CC7AE /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
@@ -661,7 +661,6 @@
 		78E3FA8328E33BCF002CC7AE /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				GENERATE_INFOPLIST_FILE = YES;
@@ -680,7 +679,6 @@
 		78E3FA8428E33BCF002CC7AE /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				GENERATE_INFOPLIST_FILE = YES;

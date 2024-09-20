@@ -23,6 +23,6 @@ struct CircleProgressBarView: View {
 }
 
 #Preview {
-     @State var progress: CGFloat = 0.5
+    @Previewable @State var progress: CGFloat = 0.5
      return CircleProgressBarView(progress: $progress)
 }

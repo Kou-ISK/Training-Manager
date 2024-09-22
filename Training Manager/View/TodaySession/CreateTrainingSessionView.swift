@@ -40,6 +40,12 @@ struct CreateTrainingSessionView: View {
                 ToolbarItem(placement: .primaryAction) {
                     Button("保存") {
                         modelContext.insert(newSession)
+                        // データベースに保存
+                        do {
+                            try modelContext.save() // 変更を保存
+                        } catch {
+                            print("Failed to save context: \(error)")
+                        }
                         onSave(newSession)
                         dismiss()
                     }

@@ -18,11 +18,29 @@ struct TodaySessionView: View {
             VStack {
                 if let session = viewModel.currentTrainingSession {
                     VStack(alignment: .center) {
-                        Text(session.sessionDate ?? Date(), formatter: dateFormatter)
-                            .font(.headline)
-                        Text(session.theme ?? "")
-                            .font(.subheadline)
-                        Text(session.sessionDescription ?? "")
+                        HStack{
+                            // セッションの削除
+                            if viewModel.isEditMode {
+                                    Button(action: {
+                                        viewModel.isShowDeleteSessionAlert.toggle()
+                                    }, label:{
+                                        Image(systemName: "minus.circle.fill").foregroundStyle(.red)
+                                    }).buttonStyle(.borderless).background(.clear)
+                                        .alert("セッションの削除", isPresented: $viewModel.isShowDeleteSessionAlert, actions: {
+                                            Button("削除", role: .destructive) {
+                                                viewModel.deleteSession(session: session, modelContext: modelContext)
+                                            }
+                                            Button("キャンセル", role: .cancel) {}
+                                        })
+                            }
+                            VStack{
+                                Text(session.sessionDate ?? Date(), formatter: dateFormatter)
+                                    .font(.headline)
+                                Text(session.theme ?? "")
+                                    .font(.subheadline)
+                                Text(session.sessionDescription ?? "")
+                            }
+                        }
                         
                         if let menu = viewModel.currentTrainingMenu {
                             Divider()
@@ -63,7 +81,7 @@ struct TodaySessionView: View {
                                                 .alert("メニューの削除", isPresented: $viewModel.isShowDeleteAlart, actions: {
                                                     Button("削除", role: .destructive) {
                                                         print(menu)
-                                                        viewModel.deleteMenu(menu: menu)
+                                                        viewModel.deleteMenu(menu: menu, modelContext: modelContext)
                                                     }
                                                     Button("キャンセル", role: .cancel) {}
                                                 })
@@ -97,7 +115,7 @@ struct TodaySessionView: View {
                                             .sheet(item: $editingMenu) { menuToEdit in
                                                 EditTrainingMenuView(menu: menuToEdit, onSave: {
                                                     // onSave クロージャー内で保存処理を実行
-                                                    viewModel.updateMenu(menu: menuToEdit)
+                                                    viewModel.updateMenu(menu: menuToEdit, modelContext: modelContext)
                                                 })
                                             }
                                             
@@ -118,7 +136,11 @@ struct TodaySessionView: View {
                                         }
                                     }
                                 }
-                            }.onMove(perform: viewModel.isEditMode ? viewModel.moveMenu : nil)
+                            }.onMove { source, destination in
+                                if viewModel.isEditMode {
+                                    viewModel.moveMenu(from: source, to: destination, modelContext: modelContext)
+                                }
+                            }
                         }
                     }
                 } else {

@@ -7,10 +7,9 @@
 
 import SwiftUI
 import Combine
+import SwiftData
 
 class TodaySessionViewModel: ObservableObject {
-    @Environment(\.modelContext) private var modelContext
-    
     @Published var trainingSessionList: [TrainingSession]
     @Published var currentTrainingSession: TrainingSession?
     @Published var currentTrainingMenu: TrainingMenu?
@@ -22,7 +21,8 @@ class TodaySessionViewModel: ObservableObject {
     @Published var isShowSelectMenuView: Bool = false
     @Published var isEditMode: Bool = false
     @Published var isShowDeleteAlart: Bool = false
-        
+    @Published var isShowDeleteSessionAlert: Bool = false
+    
     init(trainingSessionList: [TrainingSession], trainingMenuList: [TrainingMenu]) {
         self.trainingSessionList = trainingSessionList
         self.trainingMenuList = trainingMenuList
@@ -81,26 +81,31 @@ class TodaySessionViewModel: ObservableObject {
     }
     
     // メニューを削除する処理
-     func deleteMenu(menu: TrainingMenu) {
-         guard let session = currentTrainingSession else { return }
-         
-         // session からメニューを削除
-         if let index = session.menus.firstIndex(where: { $0.id == menu.id }) {
-             session.menus.remove(at: index)
-             
-             // データベースから削除
-             modelContext.delete(menu)
-             
-             // 現在のメニューが削除されたメニューなら、別のメニューを選択する
-             if currentTrainingMenu == menu {
-                 currentTrainingMenu = session.menus.first
-             }
-         }
-     }
-    
-    func updateMenu(menu: TrainingMenu) {
+    func deleteMenu(menu: TrainingMenu, modelContext: ModelContext) {
         guard let session = currentTrainingSession else { return }
-
+        
+        // session からメニューを削除
+        if let index = session.menus.firstIndex(where: { $0.id == menu.id }) {
+            session.menus.remove(at: index)
+            
+            // データベースから削除
+            modelContext.delete(menu)
+            // データベースに保存
+            do {
+                try modelContext.save() // 変更を保存
+            } catch {
+                print("Failed to save context: \(error)")
+            }
+            // 現在のメニューが削除されたメニューなら、別のメニューを選択する
+            if currentTrainingMenu == menu {
+                currentTrainingMenu = session.menus.first
+            }
+        }
+    }
+    
+    func updateMenu(menu: TrainingMenu, modelContext: ModelContext) {
+        guard let session = currentTrainingSession else { return }
+        
         // session から該当のメニューを探す
         if let index = session.menus.firstIndex(where: { $0.id == menu.id }) {
             // メニューの更新
@@ -119,14 +124,14 @@ class TodaySessionViewModel: ObservableObject {
             }
         }
     }
-
+    
     // メニューを並び替えるロジック
-    func moveMenu(from source: IndexSet, to destination: Int) {
+    func moveMenu(from source: IndexSet, to destination: Int, modelContext: ModelContext) {
         guard let session = currentTrainingSession else { return }
         
         // メニューのリストをソートされた順序で取得
         var menus = session.menus.sorted(by: { $0.orderIndex < $1.orderIndex })
-
+        
         // 並べ替えを適用
         menus.move(fromOffsets: source, toOffset: destination)
         
@@ -137,5 +142,25 @@ class TodaySessionViewModel: ObservableObject {
         
         // トレーニングセッションに新しい順序を適用
         session.menus = menus
+        
+        // データベースに保存
+        do {
+            try modelContext.save() // 変更を保存
+        } catch {
+            print("Failed to save context: \(error)")
+        }
+    }
+    
+    // セッションを削除する処理
+    func deleteSession(session: TrainingSession, modelContext: ModelContext) {
+        modelContext.delete(session.self)
+        // データベースに保存
+        do {
+            try modelContext.save() // 変更を保存
+        } catch {
+            print("Failed to save context: \(error)")
+        }
+        currentTrainingSession = nil
     }
 }
+

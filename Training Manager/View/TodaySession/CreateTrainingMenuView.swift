@@ -14,7 +14,7 @@ struct CreateTrainingMenuView: View {
     @State var session: TrainingSession
     @State private var trainingMenu = TrainingMenu()
     @State var trainingMenuList: [TrainingMenu]
-
+    
     @State private var newFocusPoint: String = ""
     
     // 分と秒を選択するための State プロパティ
@@ -118,24 +118,30 @@ struct CreateTrainingMenuView: View {
     }
     
     private func saveAndDismiss() {
-         // 最後のフォーカスポイントの追加がまだなら追加
-         if !newFocusPoint.isEmpty {
-             addFocusPoint()
-         }
-         
-         // 分と秒を TimeInterval に変換して保存
-         trainingMenu.duration = TimeInterval(selectedMinutes * 60 + selectedSeconds)
-         trainingMenu.orderIndex = trainingMenuList.count
-         
-         // 新しいメニューをセッションに追加
-         session.menus.append(trainingMenu)
-         
-         // データベースに挿入
-         modelContext.insert(trainingMenu)
-         
-         // ビューを閉じる
-         dismiss()
-     }
+        // 最後のフォーカスポイントの追加がまだなら追加
+        if !newFocusPoint.isEmpty {
+            addFocusPoint()
+        }
+        
+        // 分と秒を TimeInterval に変換して保存
+        trainingMenu.duration = TimeInterval(selectedMinutes * 60 + selectedSeconds)
+        trainingMenu.orderIndex = trainingMenuList.count
+        
+        // 新しいメニューをセッションに追加
+        session.menus.append(trainingMenu)
+        
+        // データベースに挿入
+        modelContext.insert(trainingMenu)
+        // データベースに保存
+        do {
+            try modelContext.save() // 変更を保存
+        } catch {
+            print("Failed to save context: \(error)")
+        }
+        
+        // ビューを閉じる
+        dismiss()
+    }
 }
 
 #Preview {

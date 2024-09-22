@@ -44,7 +44,7 @@ struct CreateTrainingMenuView: View {
                                 removeFocusPoint(point)
                             }) {
                                 Image(systemName: "minus.circle.fill").foregroundColor(.red)
-                            }
+                            }.buttonStyle(.borderless)
                         }
                     }
                     

@@ -71,6 +71,7 @@
 		781C08202C8D985B007FF5E3 /* alarm_sound.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = alarm_sound.mp3; sourceTree = "<group>"; };
 		781C08262C8F34E8007FF5E3 /* SelectExistingMenuView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectExistingMenuView.swift; sourceTree = "<group>"; };
 		78927F542C9CEB04005964EC /* SelectExistingSessionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectExistingSessionView.swift; sourceTree = "<group>"; };
+		78A877E82CA0289400BAACA6 /* EnhancePlan.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = EnhancePlan.md; sourceTree = "<group>"; };
 		78C20A0B2C87D0A100AF77ED /* CircleProgressBarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CircleProgressBarView.swift; sourceTree = "<group>"; };
 		78C20A0D2C89C4B100AF77ED /* TrainingSessionListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrainingSessionListView.swift; sourceTree = "<group>"; };
 		78C20A0F2C89C64000AF77ED /* SessionDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SessionDetailView.swift; sourceTree = "<group>"; };
@@ -120,9 +121,25 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		78A877E32CA0260700BAACA6 /* Components */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Components;
+			sourceTree = "<group>";
+		};
+		78A877E72CA0288C00BAACA6 /* docs */ = {
+			isa = PBXGroup;
+			children = (
+				78A877E82CA0289400BAACA6 /* EnhancePlan.md */,
+			);
+			path = docs;
+			sourceTree = "<group>";
+		};
 		78E3FA2328E33BCD002CC7AE = {
 			isa = PBXGroup;
 			children = (
+				78A877E72CA0288C00BAACA6 /* docs */,
 				78E3FA2E28E33BCD002CC7AE /* Training Manager */,
 				78E3FA3F28E33BCE002CC7AE /* Training ManagerTests */,
 				78E3FA4928E33BCE002CC7AE /* Training ManagerUITests */,
@@ -183,6 +200,7 @@
 		78E8D37B2C83F0F000C23C5A /* View */ = {
 			isa = PBXGroup;
 			children = (
+				78A877E32CA0260700BAACA6 /* Components */,
 				78E3FA3128E33BCD002CC7AE /* ContentView.swift */,
 				78FE2A182C9BA1C3009BFDD3 /* TrainingMenuHistory */,
 				78FE2A162C9BA091009BFDD3 /* SessionList */,

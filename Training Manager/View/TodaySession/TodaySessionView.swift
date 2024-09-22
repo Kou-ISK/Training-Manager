@@ -32,7 +32,7 @@ struct TodaySessionView: View {
                                     Button(action: {
                                         viewModel.currentTrainingMenu = nil
                                     }, label: {Text("完了").fontWeight(.bold)}
-                                    ).buttonStyle(.bordered)
+                                    ).buttonStyle(.borderless)
                                 }
                                 
                                 HStack(alignment: .center){
@@ -59,7 +59,7 @@ struct TodaySessionView: View {
                                                 viewModel.isShowDeleteAlart.toggle()
                                             }, label:{
                                                 Image(systemName: "minus.circle.fill").foregroundStyle(.red)
-                                            }).buttonStyle(.bordered).background(.clear)
+                                            }).buttonStyle(.borderless).background(.clear)
                                                 .alert("メニューの削除", isPresented: $viewModel.isShowDeleteAlart, actions: {
                                                     Button("削除", role: .destructive) {
                                                         print(menu)
@@ -93,7 +93,7 @@ struct TodaySessionView: View {
                                                     .fontWeight(.bold)
                                                     .foregroundColor(.blue)
                                             })
-                                            .buttonStyle(.bordered)
+                                            .buttonStyle(.borderless)
                                             .sheet(item: $editingMenu) { menuToEdit in
                                                 EditTrainingMenuView(menu: menuToEdit, onSave: {
                                                     // onSave クロージャー内で保存処理を実行

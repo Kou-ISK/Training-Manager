@@ -29,16 +29,7 @@ struct EditTrainingMenuView: View {
     @State private var focusPoints: [String] = []
     
     var body: some View {
-        VStack(alignment: .trailing) {
-            Button("保存") {
-                addFocusPoint()
-                menu.name = name
-                menu.goal = goal
-                menu.focusPoints = focusPoints
-                menu.duration = TimeInterval(selectedMinutes * 60 + selectedSeconds)
-                onSave() // 保存アクションを実行
-                dismiss() // 画面を閉じる
-            }
+        NavigationStack{
             Form {
                 Section(header: Text("メニュー名")){
                     TextField("メニュー名", text: $name)
@@ -59,7 +50,7 @@ struct EditTrainingMenuView: View {
                                 removeFocusPoint(point)
                             }) {
                                 Image(systemName: "minus.circle.fill").foregroundColor(.red)
-                            }
+                            }.buttonStyle(.borderless)
                         }
                     }
                     
@@ -104,8 +95,25 @@ struct EditTrainingMenuView: View {
                     selectedSeconds = Int(duration) % 60
                 }
             }
+            .toolbar{
+                ToolbarItem(placement: .cancellationAction){
+                    Button("キャンセル"){
+                        dismiss()
+                    }
+                }
+                ToolbarItem(placement: .primaryAction){
+                    Button("保存") {
+                        addFocusPoint()
+                        menu.name = name
+                        menu.goal = goal
+                        menu.focusPoints = focusPoints
+                        menu.duration = TimeInterval(selectedMinutes * 60 + selectedSeconds)
+                        onSave() // 保存アクションを実行
+                        dismiss() // 画面を閉じる
+                    }
+                }
+            }
         }
-        .padding()
     }
     
     private func addFocusPoint() {

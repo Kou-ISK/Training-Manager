@@ -18,11 +18,11 @@ struct SessionDetailView: View {
             List{
                 ForEach(session.menus){menu in
                     Section(header: Text("メニュー:")) {
-                        Text(menu.name ?? "").font(.title)
+                        Text(menu.name).font(.title)
                     }
                     
                     Section(header: Text("練習のゴール:")) {
-                        Text(menu.goal ?? "")
+                        Text(menu.goal)
                     }
                     
                     Section(header: Text("フォーカスポイント:")) {

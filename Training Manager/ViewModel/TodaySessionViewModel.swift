@@ -49,7 +49,7 @@ class TodaySessionViewModel: ObservableObject {
         timerViewModel?.stop()
         
         // 新しいメニューに基づいて TimerViewModel を再初期化
-        timerViewModel = TimerViewModel(initialTime: menu.duration ?? 0, menuName: menu.name ?? "")
+        timerViewModel = TimerViewModel(initialTime: menu.duration ?? 0, menuName: menu.name)
     }
     
     func formatDuration(duration: TimeInterval) -> String {

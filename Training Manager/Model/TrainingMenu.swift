@@ -11,10 +11,10 @@ import SwiftData
 
 
 @Model public class TrainingMenu {
-    var goal: String?
+    var goal: String
     var focusPoints: [String]
     var menuDescription: String?
-    var name: String?
+    var name: String
     var createdAt: Date
     var updatedAt: Date
     var duration: TimeInterval?
@@ -25,6 +25,8 @@ import SwiftData
     
     // 必須のイニシャライザ
         public init() {
+            self.name = ""
+            self.goal = ""
             self.createdAt = Date()
             self.updatedAt = Date()
             self.focusPoints = []

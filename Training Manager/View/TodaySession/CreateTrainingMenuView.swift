@@ -30,7 +30,7 @@ struct CreateTrainingMenuView: View {
             Form {
                 Section(header: Text("メニュー名")){
                     TextField("メニュー名", text: Binding(
-                        get: { trainingMenu.name ?? "" },
+                        get: { trainingMenu.name },
                         set: { trainingMenu.name = $0 }
                     ))
                 }
@@ -59,7 +59,7 @@ struct CreateTrainingMenuView: View {
                 }
                 Section(header: Text("練習のゴール")){
                     TextField("ゴール", text: Binding(
-                        get: { trainingMenu.goal ?? "" },
+                        get: { trainingMenu.goal },
                         set: { trainingMenu.goal = $0 }
                     ))
                 }

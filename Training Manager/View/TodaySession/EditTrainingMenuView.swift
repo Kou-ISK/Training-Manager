@@ -85,8 +85,8 @@ struct EditTrainingMenuView: View {
             }
             .onAppear {
                 // 編集中のメニューの情報をセット
-                name = menu.name ?? ""
-                goal = menu.goal ?? ""
+                name = menu.name
+                goal = menu.goal
                 focusPoints = menu.focusPoints
                 
                 // trainingMenu.duration を分と秒に分割して初期値を設定
@@ -129,7 +129,7 @@ struct EditTrainingMenuView: View {
 }
 
 #Preview {
-    EditTrainingMenuView(menu: TrainingMenu(), onSave: {
+    EditTrainingMenuView(menu: TrainingMenu(name: "メニュー名", goal: "ゴール", duration: TimeInterval(120), focusPoints: ["FP1", "FP2"], menuDescription: "備考", orderIndex: 0), onSave: {
         // onSave クロージャー内で保存処理を実行
         // ここで何かアクションを実行するか、何も処理しないかを決めることができます
         print("Menu has been saved")

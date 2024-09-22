@@ -16,13 +16,13 @@ struct TrainingMenuHistory: View {
             List(trainingMenuList){menu in
                 VStack(alignment: .leading) {
                     HStack(alignment: .center){
-                        Text(menu.name ?? "").font(.headline)
+                        Text(menu.name).font(.headline)
                         HStack{
                             Image(systemName: "stopwatch")
                             Text(formatDuration(duration: menu.duration ?? 0))
                         }.foregroundStyle(.white).fontWeight(.bold).padding(5).background(.green).cornerRadius(30)
                     }
-                    Text(menu.goal ?? "").font(.subheadline).underline()
+                    Text(menu.goal).font(.subheadline).underline()
                     ForEach(menu.focusPoints, id: \.self){point in
                         Text(point).font(.caption)
                     }

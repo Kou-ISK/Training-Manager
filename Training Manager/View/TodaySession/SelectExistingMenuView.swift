@@ -20,10 +20,10 @@ struct SelectExistingMenu: View {
                 HStack{
                     VStack(alignment: .leading) {
                         HStack(alignment: .center){
-                            Text(menu.name ?? "").font(.title2)
+                            Text(menu.name).font(.title2)
                             Text(formatDuration(duration: menu.duration ?? 0)).bold()
                         }
-                        Text(menu.goal ?? "").font(.headline)
+                        Text(menu.goal).font(.headline)
                         List{
                             ForEach(menu.focusPoints, id: \.self){point in
                                 Text(point)
@@ -51,6 +51,6 @@ struct SelectExistingMenu: View {
 }
 
 #Preview {
-    SelectExistingMenu(trainingMenu: TrainingMenu(),
-                       trainingMenuList: [TrainingMenu(name: "3v2", goal: "Goal", duration: TimeInterval(600), focusPoints: ["kf1", "kf2", "kf3"], menuDescription: "頑張る", orderIndex: 0)])
+    SelectExistingMenu(trainingMenu: TrainingMenu(name: "3v2", goal: "Goal", duration: TimeInterval(600), focusPoints: ["kf1", "kf2", "kf3"], menuDescription: "備考", orderIndex: 0),
+                       trainingMenuList: [TrainingMenu(name: "3v2", goal: "Goal", duration: TimeInterval(600), focusPoints: ["kf1", "kf2", "kf3"], menuDescription: "備考", orderIndex: 0)])
 }

@@ -46,7 +46,7 @@ struct TodaySessionView: View {
                             Divider()
                             VStack(alignment: .center){
                                 HStack{
-                                    Text(menu.name ?? "N/A").font(.headline)
+                                    Text(menu.name).font(.headline)
                                     Button(action: {
                                         viewModel.currentTrainingMenu = nil
                                     }, label: {Text("完了").fontWeight(.bold)}
@@ -90,10 +90,10 @@ struct TodaySessionView: View {
                                     
                                     VStack(alignment: .leading) {
                                         HStack {
-                                            Text(menu.name ?? "")
+                                            Text(menu.name)
                                                 .font(.headline)
                                         }
-                                        Text(menu.goal ?? "")
+                                        Text(menu.goal)
                                             .font(.subheadline).underline()
                                         ForEach(menu.focusPoints, id:\.self){point in
                                             Text("・\(point)")

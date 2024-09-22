@@ -25,7 +25,7 @@ struct SelectExistingSessionView: View {
                                 Text(session.sessionDate ?? Date(), formatter: dateFormatter)
                                 Text(session.theme ?? "")
                                 Button("追加") {
-                                    trainingSession.sessionDate = session.sessionDate
+                                    trainingSession.sessionDate = Date()
                                     trainingSession.sessionDescription = session.sessionDescription
                                     trainingSession.theme = session.theme
                                     trainingSession.createdAt = Date()

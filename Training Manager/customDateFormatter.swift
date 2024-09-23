@@ -14,3 +14,10 @@ public var dateFormatter: DateFormatter {
     formatter.timeStyle = .none // 時間は表示しない
     return formatter
 }
+
+public var yearMonthFormatter: DateFormatter {
+    let formatter = DateFormatter()
+    formatter.dateFormat = "yyyy年MM月" // カスタムフォーマットを指定
+    return formatter
+}
+

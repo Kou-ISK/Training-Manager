@@ -8,9 +8,13 @@
 import SwiftUI
 
 struct TrainingSessionListView: View {
-    var trainingSessionList: [TrainingSession]
+    @State var trainingSessionList: [TrainingSession]
+    
+    @Environment(\.dismiss) private var dismiss
+    @Environment(\.modelContext) private var modelContext
     
     @State private var selectedDate = Date()
+    @State private var isShowNewSessionView:Bool = false
     
     // セッションがある日付を抽出
     var sessionDates: [Date] {
@@ -25,18 +29,37 @@ struct TrainingSessionListView: View {
         }
     }
     
+    // 新規セッション追加
+    func addSession(newSession: TrainingSession) {
+        trainingSessionList.append(newSession)
+        // データベースに保存
+        do {
+            try modelContext.save() // 変更を保存
+        } catch {
+            print("Failed to save context: \(error)")
+        }
+        isShowNewSessionView = false
+    }
+    
+    // セッション削除後にリストを更新
+    func removeSession(_ session: TrainingSession) {
+        if let index = trainingSessionList.firstIndex(of: session) {
+            trainingSessionList.remove(at: index)
+        }
+    }
+    
     var body: some View {
         NavigationStack{
             VStack{
-                Text("セッション一覧").font(.title)
-                
                 // カスタムカレンダーを表示
                 CustomCalendarView(selectedDate: $selectedDate, sessionDates: sessionDates)
                 
                 // 選択された日付のセッションを表示する部分
                 if !filteredSessions.isEmpty {
                     List(filteredSessions, id: \.self) { session in
-                        NavigationLink(destination: SessionDetailView(session: session)) {
+                        NavigationLink(destination: SessionDetailView(session: session, onDelete: {
+                            removeSession(session)
+                        })) {
                             VStack(alignment: .leading) {
                                 Text(session.theme ?? "")
                                     .font(.headline)
@@ -48,12 +71,23 @@ struct TrainingSessionListView: View {
                     .frame(maxHeight: .infinity)  // リストの高さを最大にする
                 } else {
                     Spacer()  // 上下のレイアウト調整のために Spacer を追加
-                    Text("選択された日にセッションはありません")
-                        .font(.subheadline)
-                        .foregroundColor(.gray)
+                    VStack{
+                        Text("選択された日にセッションはありません")
+                            .font(.subheadline)
+                            .foregroundColor(.gray)
+                        Button("追加"){
+                            isShowNewSessionView.toggle()
+                        }
+                    }
+                    
                     Spacer()  // 下にも Spacer を追加して、テキストを中央に配置
                 }
             }
+        }.sheet(isPresented: $isShowNewSessionView) {
+            CreateTrainingSessionView(sessionDate: selectedDate,
+                trainingSessionList: trainingSessionList, onSave: { newSession in
+                addSession(newSession: newSession)
+            })
         }
     }
 }

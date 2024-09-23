@@ -11,6 +11,7 @@ struct CreateTrainingSessionView: View {
     @Environment(\.dismiss) private var dismiss
     @Environment(\.modelContext) private var modelContext
     
+    var sessionDate: Date
     @State private var newSession = TrainingSession(sessionDate: Date())
     @State private var duration: Int64 = 0
     @State var trainingSessionList: [TrainingSession]
@@ -57,12 +58,15 @@ struct CreateTrainingSessionView: View {
                     }
                 }
             }
+            .onAppear{
+                newSession.sessionDate = sessionDate
+            }
         }
     }
 }
 
 #Preview {
-    CreateTrainingSessionView(trainingSessionList:  [
+    CreateTrainingSessionView(sessionDate: Date(), trainingSessionList:  [
         TrainingSession(theme: "テーマ1", sessionDescription: "備考1", sessionDate: Date(), menus:
                             [TrainingMenu(name: "メニュー1", goal: "ゴール1", duration: TimeInterval(500), focusPoints: ["FP1", "FP2"], menuDescription: "マーカーを置いておく", orderIndex: 0)
                             ]

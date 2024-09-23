@@ -17,7 +17,7 @@ public var dateFormatter: DateFormatter {
 
 public var yearMonthFormatter: DateFormatter {
     let formatter = DateFormatter()
-    formatter.dateFormat = "yyyy年MM月" // カスタムフォーマットを指定
+    formatter.dateFormat = "yyyy年M月" // カスタムフォーマットを指定
     return formatter
 }
 

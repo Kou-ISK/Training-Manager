@@ -10,6 +10,11 @@ import SwiftUI
 struct SessionDetailView: View {
     var session: TrainingSession
     
+    @Environment(\.dismiss) private var dismiss
+    @Environment(\.modelContext) private var modelContext
+    
+    var onDelete: (() -> Void)?  // 削除時のコールバック
+    
     var body: some View {
         VStack{
             Text(session.sessionDate ?? Date(), formatter: dateFormatter)
@@ -32,8 +37,30 @@ struct SessionDetailView: View {
                     }
                 }
             }
+        }.toolbar{
+            ToolbarItem(placement: .topBarTrailing) {
+                Button("削除"){
+                    deleteSession()
+                }
+            }
         }
     }
+    
+    private func deleteSession() {
+            
+            
+            // データベースに保存し、エラーを処理
+            do {
+                dismiss()
+                try modelContext.save() // 変更を保存
+                // モデルコンテキストからセッションを削除
+                modelContext.delete(session)
+                onDelete?()
+            } catch {
+                print("Failed to save context: \(error)")
+                // エラー処理が必要な場合はここで行う
+            }
+        }
 }
 
 #Preview {

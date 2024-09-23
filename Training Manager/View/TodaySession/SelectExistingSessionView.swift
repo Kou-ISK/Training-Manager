@@ -24,15 +24,28 @@ struct SelectExistingSessionView: View {
                             HStack(alignment: .center){
                                 Text(session.sessionDate ?? Date(), formatter: dateFormatter)
                                 Text(session.theme ?? "")
+
                                 Button("追加") {
                                     trainingSession.sessionDate = Date()
                                     trainingSession.sessionDescription = session.sessionDescription
                                     trainingSession.theme = session.theme
                                     trainingSession.createdAt = Date()
                                     trainingSession.updatedAt = Date()
-                                    trainingSession.menus = session.menus
+                                    
+                                    // menus のディープコピー
+                                    let copiedMenus = session.menus.map { originalMenu in
+                                        TrainingMenu(
+                                            name: originalMenu.name,
+                                            goal: originalMenu.goal,
+                                            duration: originalMenu.duration ?? TimeInterval(0),
+                                            focusPoints: originalMenu.focusPoints,
+                                            menuDescription: originalMenu.menuDescription ??  "",
+                                            orderIndex: originalMenu.orderIndex)
+                                    }
+                                    
+                                    trainingSession.menus = copiedMenus
                                     dismiss()
-                                }.buttonStyle(.borderedProminent)
+                                }.buttonStyle(.borderless)
                             }
                         }
                     }

@@ -65,8 +65,8 @@ struct CustomCalendarView: View {
                             let sessionCount = sessionDates.filter { calendar.isDate($0, inSameDayAs: day) }.count
                             ForEach(0..<sessionCount, id: \.self) { index in
                                 Circle()
-                                    .fill(Color.red)
-                                    .frame(width: 6, height: 6) // 丸のサイズを小さく
+                                    .stroke(.red)
+                                    .frame(width: 6, height: 6)
                                     .offset(x: sessionCount == 1 ? 0 : CGFloat(index) * 8 - (CGFloat(sessionCount) * 4), y: 15) // オフセットを調整
                             }
                             

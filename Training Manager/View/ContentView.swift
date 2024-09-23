@@ -16,14 +16,14 @@ struct ContentView: View {
         TabView{
             TodaySessionView(viewModel: TodaySessionViewModel(trainingSessionList: trainingSessionList, trainingMenuList: trainingMenuList))
                  .tabItem {
-                     Label("今日のセッション", systemImage: "calendar.circle")
+                     Label("今日のセッション", systemImage: "figure.run.circle.fill")
                  }
             TrainingMenuHistory(trainingMenuList: trainingMenuList)
                 .tabItem {
                     Label("メニュー履歴", systemImage: "doc.text")
                 }
             TrainingSessionListView(trainingSessionList: trainingSessionList).tabItem {
-                Label("セッション一覧", systemImage: "book.closed.fill")
+                Label("セッション管理", systemImage: "calendar.circle")
             }
         }
     }

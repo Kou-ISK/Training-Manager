@@ -157,7 +157,8 @@ struct TodaySessionView: View {
                 }
             }
             .sheet(isPresented: $viewModel.isShowNewSessionView) {
-                CreateTrainingSessionView(trainingSessionList: viewModel.trainingSessionList, onSave: { newSession in
+                CreateTrainingSessionView(sessionDate: Date(),
+                    trainingSessionList: viewModel.trainingSessionList, onSave: { newSession in
                     viewModel.addSession(newSession: newSession)
                 })
             }

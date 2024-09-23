@@ -99,6 +99,7 @@ struct TodaySessionView: View {
                                         ForEach(menu.focusPoints, id:\.self){point in
                                             Text("・\(point)")
                                         }
+                                        Text(menu.menuDescription ?? "").font(.caption).foregroundStyle(.gray)
                                         
                                     }
                                     Spacer()

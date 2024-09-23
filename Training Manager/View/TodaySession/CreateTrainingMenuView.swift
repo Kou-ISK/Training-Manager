@@ -63,6 +63,13 @@ struct CreateTrainingMenuView: View {
                         set: { trainingMenu.goal = $0 }
                     ))
                 }
+                
+                Section(header: Text("備考")){
+                    TextField("備考", text: Binding(
+                        get: { trainingMenu.menuDescription ?? "" },
+                        set: { trainingMenu.menuDescription = $0 }
+                    ))
+                }
                 HStack{
                     // ドラムロール形式のPickerで分を選択
                     Picker("Duration (分)", selection: $selectedMinutes) {

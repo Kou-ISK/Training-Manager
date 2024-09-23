@@ -24,11 +24,9 @@ struct SelectExistingMenu: View {
                             Text(formatDuration(duration: menu.duration ?? 0)).bold()
                         }
                         Text(menu.goal).font(.headline)
-                        List{
                             ForEach(menu.focusPoints, id: \.self){point in
-                                Text(point)
+                                Text("・\(point)")
                             }
-                        }
                     }
                     Spacer()
                     Button("追加") {

@@ -35,6 +35,10 @@ struct SessionDetailView: View {
                             Text(point)
                         }
                     }
+                    
+                    Section(header: Text("備考")){
+                        Text(menu.menuDescription ?? "")
+                    }
                 }
             }
         }.toolbar{

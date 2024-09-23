@@ -27,6 +27,7 @@ struct EditTrainingMenuView: View {
     @State private var goal: String = ""
     
     @State private var focusPoints: [String] = []
+    @State private var menuDescription: String = ""
     
     var body: some View {
         NavigationStack{
@@ -63,6 +64,10 @@ struct EditTrainingMenuView: View {
                         }
                     }
                 }
+                
+                Section(header: Text("備考")){
+                    TextField("備考", text: $menuDescription)
+                }
                 Section(header: Text("練習時間")){
                     HStack{
                         // ドラムロール形式のPickerで分を選択
@@ -88,6 +93,7 @@ struct EditTrainingMenuView: View {
                 name = menu.name
                 goal = menu.goal
                 focusPoints = menu.focusPoints
+                menuDescription = menu.menuDescription ?? ""
                 
                 // trainingMenu.duration を分と秒に分割して初期値を設定
                 if let duration = menu.duration {
@@ -108,6 +114,7 @@ struct EditTrainingMenuView: View {
                         menu.goal = goal
                         menu.focusPoints = focusPoints
                         menu.duration = TimeInterval(selectedMinutes * 60 + selectedSeconds)
+                        menu.menuDescription = menuDescription
                         onSave() // 保存アクションを実行
                         dismiss() // 画面を閉じる
                     }

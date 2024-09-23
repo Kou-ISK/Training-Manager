@@ -26,6 +26,7 @@ struct TrainingMenuHistory: View {
                     ForEach(menu.focusPoints, id: \.self){point in
                         Text(point).font(.caption)
                     }
+                    Text(menu.menuDescription ?? "").font(.caption).foregroundStyle(.gray)
                 }
             }
         }

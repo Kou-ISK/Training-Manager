@@ -17,7 +17,6 @@ struct TodaySessionView: View {
         NavigationStack {
             VStack {
                 if let session = viewModel.currentTrainingSession {
-                    VStack(alignment: .center) {
                         HStack{
                             // セッションの削除
                             if viewModel.isEditMode {
@@ -33,7 +32,7 @@ struct TodaySessionView: View {
                                             Button("キャンセル", role: .cancel) {}
                                         })
                             }
-                            VStack{
+                            VStack(alignment: .center) {
                                 Text(session.sessionDate ?? Date(), formatter: dateFormatter)
                                     .font(.headline)
                                 Text(session.theme ?? "")
@@ -44,17 +43,19 @@ struct TodaySessionView: View {
                         
                         if let menu = viewModel.currentTrainingMenu {
                             Divider()
-                            VStack(alignment: .center){
-                                HStack{
-                                    Text(menu.name).font(.headline)
+                            VStack(alignment: .trailing){
+                                    
                                     Button(action: {
                                         viewModel.currentTrainingMenu = nil
-                                    }, label: {Text("完了").fontWeight(.bold)}
+                                    }, label: {
+                                        Image(systemName: "xmark.circle")
+                                    }
                                     ).buttonStyle(.borderless)
-                                }
                                 
-                                HStack(alignment: .center){
+                                HStack(alignment: .top){
                                     VStack(alignment:.leading){
+                                        Text(menu.name).font(.headline)
+                                        Text(menu.goal)
                                         ForEach(menu.focusPoints, id:\.self){point in
                                             Text(point)
                                         }
@@ -142,7 +143,7 @@ struct TodaySessionView: View {
                                 }
                             }
                         }
-                    }
+                    
                 } else {
                     Text("本日の日付のセッションが見つかりません")
                         .font(.headline)
@@ -189,7 +190,15 @@ struct TodaySessionView: View {
         trainingSessionList: [TrainingSession(
             theme: "テーマ",
             sessionDescription: "備考",
-            sessionDate: Date()
+            sessionDate: Date(),
+            menus: [TrainingMenu(
+                name: "Name",
+                goal: "Goal",
+                duration: TimeInterval(600),
+                focusPoints: ["kf1", "kf2", "kf3"],
+                menuDescription: "description",
+                orderIndex: 0
+            )]
         )],
         trainingMenuList: [TrainingMenu(
             name: "Name",

@@ -147,8 +147,9 @@ struct TodaySessionView: View {
                 } else {
                     Text("本日の日付のセッションが見つかりません")
                         .font(.headline)
-                    Text("右上のボタンからセッションを追加")
-                        .font(.subheadline)
+                    Button("新規作成"){
+                        viewModel.showNewSessionView()
+                    }.buttonStyle(.borderless)
                 }
             }
             .sheet(isPresented: $viewModel.isShowAddView) {
@@ -165,11 +166,7 @@ struct TodaySessionView: View {
             .toolbar {
                 ToolbarItem(placement: .topBarTrailing) {
                     Button {
-                        if viewModel.currentTrainingSession == nil {
-                            viewModel.showNewSessionView()
-                        } else {
                             viewModel.showAddView()
-                        }
                     } label: {
                         Image(systemName: "plus")
                     }

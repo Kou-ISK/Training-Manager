@@ -4,7 +4,7 @@
 <dict>
 	<key>SchemeUserState</key>
 	<dict>
-		<key>Training Manager Watch App.xcscheme_^#shared#^_</key>
+		<key>Training Manager Watch Watch App.xcscheme_^#shared#^_</key>
 		<dict>
 			<key>orderHint</key>
 			<integer>1</integer>
@@ -17,11 +17,26 @@
 		<key>Watch Training Manager Watch App.xcscheme_^#shared#^_</key>
 		<dict>
 			<key>orderHint</key>
-			<integer>2</integer>
+			<integer>1</integer>
 		</dict>
 	</dict>
 	<key>SuppressBuildableAutocreation</key>
 	<dict>
+		<key>78A878282CA3821900BAACA6</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>78A878372CA3821A00BAACA6</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>78A878412CA3821A00BAACA6</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
 		<key>78E3FA2B28E33BCD002CC7AE</key>
 		<dict>
 			<key>primary</key>

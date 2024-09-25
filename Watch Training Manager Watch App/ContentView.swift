@@ -6,17 +6,12 @@
 //
 
 import SwiftUI
-import _SwiftData_SwiftUI
 
 struct ContentView: View {
-    
-    @Query private var trainingSessionList: [TrainingSession]
-    
-    var todayTrainingSession: TrainingSession? { trainingSessionList.first{$0.sessionDate == Date()} ?? nil
-    }
-    
+    @EnvironmentObject var viewModel: TrainingSessionViewModel // EnvironmentObjectとして使用
+
     var body: some View {
-        TodaySessionView(todayTrainingSession: todayTrainingSession)
+        TodaySessionView() // ViewModelはEnvironmentObjectから自動的に取得
     }
 }
 

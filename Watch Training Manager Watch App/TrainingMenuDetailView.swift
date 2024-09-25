@@ -29,5 +29,5 @@ struct TrainingMenuDetailView: View {
 }
 
 #Preview {
-    TrainingMenuDetailView()
+    TrainingMenuDetailView(menu: TrainingMenu(name: "メニュー", goal: "ゴール", duration: TimeInterval(600), focusPoints: ["FP1", "FP2"], menuDescription: "備考", orderIndex: 0))
 }

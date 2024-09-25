@@ -28,7 +28,9 @@ struct Training_ManagerApp: App {
     
     var body: some Scene {
         WindowGroup {
-            ContentView().modelContainer(sharedModelContainer)
+            ContentView().onAppear {
+                let connectivityManager = iPhoneConnectivityManager.shared
+            }.modelContainer(sharedModelContainer)
         }
     }
 }

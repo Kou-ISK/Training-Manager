@@ -77,6 +77,7 @@ class iPhoneConnectivityManager: NSObject, WCSessionDelegate {
     func session(_ session: WCSession, didReceiveMessage message: [String: Any], replyHandler: @escaping ([String: Any]) -> Void) {
         // ここでiPhoneから送信するデータを準備する
         if message["request"] as? String == "getTrainingData" {
+            print("watchOSからのメッセージを受信しました")
             if let todaySession = getTodaySession() {
                 do {
                     let jsonData = try JSONEncoder().encode(todaySession)

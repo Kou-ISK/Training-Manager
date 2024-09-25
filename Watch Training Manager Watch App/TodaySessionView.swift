@@ -21,10 +21,13 @@ struct TodaySessionView: View {
                     }
                 }else{
                     Text("本日のセッションデータがありません")
+                    Button("リクエスト"){
+                        viewModel.sendMessage()
+                    }
                 }
             }
         }.onAppear{
-            viewModel.requestTrainingData()
+            viewModel.sendMessage()
             print("アクセスはしてみた")
         }
         

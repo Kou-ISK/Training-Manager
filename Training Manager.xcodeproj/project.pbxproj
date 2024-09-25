@@ -224,6 +224,7 @@
 		78E3FA2E28E33BCD002CC7AE /* Training Manager */ = {
 			isa = PBXGroup;
 			children = (
+				781C081E2C8BB20F007FF5E3 /* AppDelegate.swift */,
 				78E3FA2F28E33BCD002CC7AE /* Training_ManagerApp.swift */,
 				78C20A112C89C6EE00AF77ED /* customDateFormatter.swift */,
 				78FE2A192C9BA1DC009BFDD3 /* Model */,
@@ -269,7 +270,6 @@
 				78FE2A182C9BA1C3009BFDD3 /* TrainingMenuHistory */,
 				78FE2A162C9BA091009BFDD3 /* SessionList */,
 				78FE2A152C9BA02E009BFDD3 /* TodaySession */,
-				781C081E2C8BB20F007FF5E3 /* AppDelegate.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";

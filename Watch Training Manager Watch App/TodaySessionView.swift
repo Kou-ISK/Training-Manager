@@ -26,11 +26,7 @@ struct TodaySessionView: View {
                     }
                 }
             }
-        }.onAppear{
-            viewModel.sendMessage()
-            print("アクセスはしてみた")
         }
-        
     }
 }
 

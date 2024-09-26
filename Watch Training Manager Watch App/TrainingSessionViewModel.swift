@@ -11,6 +11,7 @@ import WatchConnectivity
 
 class TrainingSessionViewModel: NSObject, ObservableObject{
     @Published var todayTrainingSession: TrainingSession?
+    @Published var timerViewModel: TimerViewModel? = nil
     
     var session: WCSession
     
@@ -24,6 +25,21 @@ class TrainingSessionViewModel: NSObject, ObservableObject{
     
     func updateTodayTrainingSession(session: TrainingSession){
         todayTrainingSession = session
+    }
+    
+    func selectMenu(menu: TrainingMenu) {
+        
+        // もし TimerViewModel が存在している場合は停止する
+        timerViewModel?.stop()
+        
+        // 新しいメニューに基づいて TimerViewModel を再初期化
+        timerViewModel = TimerViewModel(initialTime: menu.duration ?? 0, menuName: menu.name)
+    }
+    
+    func formatDuration(duration: TimeInterval) -> String {
+        let minutes = Int(duration) / 60
+        let seconds = Int(duration) % 60
+        return String(format: "%02d:%02d", minutes, seconds)
     }
     
     func sendMessage() {

@@ -18,9 +18,10 @@
 		78C20A0E2C89C4B100AF77ED /* TrainingSessionListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78C20A0D2C89C4B100AF77ED /* TrainingSessionListView.swift */; };
 		78C20A102C89C64000AF77ED /* SessionDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78C20A0F2C89C64000AF77ED /* SessionDetailView.swift */; };
 		78C20A122C89C6EE00AF77ED /* customDateFormatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78C20A112C89C6EE00AF77ED /* customDateFormatter.swift */; };
-		78CAE39F2CA44EDF00804F53 /* Watch Training Manager Watch App.app in Embed Watch Content */ = {isa = PBXBuildFile; fileRef = 78CAE37C2CA44EDE00804F53 /* Watch Training Manager Watch App.app */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
-		78CAE3B52CA44F2A00804F53 /* TrainingMenu.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78E8D35B2C8343AD00C23C5A /* TrainingMenu.swift */; };
-		78CAE3B62CA44F2A00804F53 /* TrainingSession.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78E8D35C2C8343AD00C23C5A /* TrainingSession.swift */; };
+		78CAE39F2CA44EDF00804F53 /* Training Manager Watch App.app in Embed Watch Content */ = {isa = PBXBuildFile; fileRef = 78CAE37C2CA44EDE00804F53 /* Training Manager Watch App.app */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		78CAE3B72CA5695400804F53 /* TrainingMenu.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78E8D35B2C8343AD00C23C5A /* TrainingMenu.swift */; };
+		78CAE3B82CA5695400804F53 /* TrainingSession.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78E8D35C2C8343AD00C23C5A /* TrainingSession.swift */; };
+		78CAE3C22CA56DF700804F53 /* alarm_sound.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 781C08202C8D985B007FF5E3 /* alarm_sound.mp3 */; };
 		78E3FA3028E33BCD002CC7AE /* Training_ManagerApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78E3FA2F28E33BCD002CC7AE /* Training_ManagerApp.swift */; };
 		78E3FA3228E33BCD002CC7AE /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78E3FA3128E33BCD002CC7AE /* ContentView.swift */; };
 		78E3FA3428E33BCE002CC7AE /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 78E3FA3328E33BCE002CC7AE /* Assets.xcassets */; };
@@ -83,7 +84,7 @@
 			dstPath = "$(CONTENTS_FOLDER_PATH)/Watch";
 			dstSubfolderSpec = 16;
 			files = (
-				78CAE39F2CA44EDF00804F53 /* Watch Training Manager Watch App.app in Embed Watch Content */,
+				78CAE39F2CA44EDF00804F53 /* Training Manager Watch App.app in Embed Watch Content */,
 			);
 			name = "Embed Watch Content";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -103,7 +104,7 @@
 		78C20A0D2C89C4B100AF77ED /* TrainingSessionListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrainingSessionListView.swift; sourceTree = "<group>"; };
 		78C20A0F2C89C64000AF77ED /* SessionDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SessionDetailView.swift; sourceTree = "<group>"; };
 		78C20A112C89C6EE00AF77ED /* customDateFormatter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = customDateFormatter.swift; sourceTree = "<group>"; };
-		78CAE37C2CA44EDE00804F53 /* Watch Training Manager Watch App.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Watch Training Manager Watch App.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		78CAE37C2CA44EDE00804F53 /* Training Manager Watch App.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Training Manager Watch App.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		78CAE38B2CA44EDF00804F53 /* Watch Training Manager Watch AppTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Watch Training Manager Watch AppTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		78CAE3952CA44EDF00804F53 /* Watch Training Manager Watch AppUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Watch Training Manager Watch AppUITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		78E3FA2C28E33BCD002CC7AE /* Training Manager.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Training Manager.app"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -214,7 +215,7 @@
 				78E3FA2C28E33BCD002CC7AE /* Training Manager.app */,
 				78E3FA3C28E33BCE002CC7AE /* Training ManagerTests.xctest */,
 				78E3FA4628E33BCE002CC7AE /* Training ManagerUITests.xctest */,
-				78CAE37C2CA44EDE00804F53 /* Watch Training Manager Watch App.app */,
+				78CAE37C2CA44EDE00804F53 /* Training Manager Watch App.app */,
 				78CAE38B2CA44EDF00804F53 /* Watch Training Manager Watch AppTests.xctest */,
 				78CAE3952CA44EDF00804F53 /* Watch Training Manager Watch AppUITests.xctest */,
 			);
@@ -327,9 +328,9 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		78CAE37B2CA44EDE00804F53 /* Watch Training Manager Watch App */ = {
+		78CAE37B2CA44EDE00804F53 /* Training Manager Watch App */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 78CAE3A62CA44EDF00804F53 /* Build configuration list for PBXNativeTarget "Watch Training Manager Watch App" */;
+			buildConfigurationList = 78CAE3A62CA44EDF00804F53 /* Build configuration list for PBXNativeTarget "Training Manager Watch App" */;
 			buildPhases = (
 				78CAE3782CA44EDE00804F53 /* Sources */,
 				78CAE3792CA44EDE00804F53 /* Frameworks */,
@@ -342,11 +343,11 @@
 			fileSystemSynchronizedGroups = (
 				78CAE37D2CA44EDE00804F53 /* Watch Training Manager Watch App */,
 			);
-			name = "Watch Training Manager Watch App";
+			name = "Training Manager Watch App";
 			packageProductDependencies = (
 			);
 			productName = "Watch Training Manager Watch App";
-			productReference = 78CAE37C2CA44EDE00804F53 /* Watch Training Manager Watch App.app */;
+			productReference = 78CAE37C2CA44EDE00804F53 /* Training Manager Watch App.app */;
 			productType = "com.apple.product-type.application";
 		};
 		78CAE38A2CA44EDF00804F53 /* Watch Training Manager Watch AppTests */ = {
@@ -502,7 +503,7 @@
 				78E3FA2B28E33BCD002CC7AE /* Training Manager */,
 				78E3FA3B28E33BCE002CC7AE /* Training ManagerTests */,
 				78E3FA4528E33BCE002CC7AE /* Training ManagerUITests */,
-				78CAE37B2CA44EDE00804F53 /* Watch Training Manager Watch App */,
+				78CAE37B2CA44EDE00804F53 /* Training Manager Watch App */,
 				78CAE38A2CA44EDF00804F53 /* Watch Training Manager Watch AppTests */,
 				78CAE3942CA44EDF00804F53 /* Watch Training Manager Watch AppUITests */,
 			);
@@ -514,6 +515,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				78CAE3C22CA56DF700804F53 /* alarm_sound.mp3 in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -562,8 +564,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				78CAE3B52CA44F2A00804F53 /* TrainingMenu.swift in Sources */,
-				78CAE3B62CA44F2A00804F53 /* TrainingSession.swift in Sources */,
+				78CAE3B72CA5695400804F53 /* TrainingMenu.swift in Sources */,
+				78CAE3B82CA5695400804F53 /* TrainingSession.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -630,17 +632,17 @@
 /* Begin PBXTargetDependency section */
 		78CAE38D2CA44EDF00804F53 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = 78CAE37B2CA44EDE00804F53 /* Watch Training Manager Watch App */;
+			target = 78CAE37B2CA44EDE00804F53 /* Training Manager Watch App */;
 			targetProxy = 78CAE38C2CA44EDF00804F53 /* PBXContainerItemProxy */;
 		};
 		78CAE3972CA44EDF00804F53 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = 78CAE37B2CA44EDE00804F53 /* Watch Training Manager Watch App */;
+			target = 78CAE37B2CA44EDE00804F53 /* Training Manager Watch App */;
 			targetProxy = 78CAE3962CA44EDF00804F53 /* PBXContainerItemProxy */;
 		};
 		78CAE39E2CA44EDF00804F53 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = 78CAE37B2CA44EDE00804F53 /* Watch Training Manager Watch App */;
+			target = 78CAE37B2CA44EDE00804F53 /* Training Manager Watch App */;
 			targetProxy = 78CAE39D2CA44EDF00804F53 /* PBXContainerItemProxy */;
 		};
 		78E3FA3E28E33BCE002CC7AE /* PBXTargetDependency */ = {
@@ -664,13 +666,13 @@
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEBUG_INFORMATION_FORMAT = dwarf;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				DEVELOPMENT_ASSET_PATHS = "\"Watch Training Manager Watch App/Preview Content\"";
 				DEVELOPMENT_TEAM = WALU6ZJGAF;
 				ENABLE_PREVIEWS = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu17;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_KEY_CFBundleDisplayName = "Watch Training Manager";
+				INFOPLIST_KEY_CFBundleDisplayName = "Training Manager";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
 				INFOPLIST_KEY_WKCompanionAppBundleIdentifier = "Kou-Isaka.Training-Manager";
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -678,7 +680,7 @@
 					"@executable_path/Frameworks",
 				);
 				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
-				MARKETING_VERSION = 1.0;
+				MARKETING_VERSION = 2.0;
 				PRODUCT_BUNDLE_IDENTIFIER = "Kou-Isaka.Training-Manager.watchkitapp";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = watchos;
@@ -704,7 +706,7 @@
 				ENABLE_PREVIEWS = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu17;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_KEY_CFBundleDisplayName = "Watch Training Manager";
+				INFOPLIST_KEY_CFBundleDisplayName = "Training Manager";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
 				INFOPLIST_KEY_WKCompanionAppBundleIdentifier = "Kou-Isaka.Training-Manager";
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -712,7 +714,7 @@
 					"@executable_path/Frameworks",
 				);
 				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
-				MARKETING_VERSION = 1.0;
+				MARKETING_VERSION = 2.0;
 				PRODUCT_BUNDLE_IDENTIFIER = "Kou-Isaka.Training-Manager.watchkitapp";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = watchos;
@@ -961,7 +963,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.4;
+				MARKETING_VERSION = 2.0;
 				PRODUCT_BUNDLE_IDENTIFIER = "Kou-Isaka.Training-Manager";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
@@ -997,7 +999,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.4;
+				MARKETING_VERSION = 2.0;
 				PRODUCT_BUNDLE_IDENTIFIER = "Kou-Isaka.Training-Manager";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
@@ -1088,7 +1090,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		78CAE3A62CA44EDF00804F53 /* Build configuration list for PBXNativeTarget "Watch Training Manager Watch App" */ = {
+		78CAE3A62CA44EDF00804F53 /* Build configuration list for PBXNativeTarget "Training Manager Watch App" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				78CAE3A02CA44EDF00804F53 /* Debug */,

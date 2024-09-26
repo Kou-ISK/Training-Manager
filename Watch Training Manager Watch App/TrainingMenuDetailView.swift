@@ -17,14 +17,14 @@ struct TrainingMenuDetailView: View {
     }
     
     var body: some View {
-        VStack{
-            Text(menu.name)
-            Text(menu.goal)
-            Text(formatDuration(duration: menu.duration ?? 0))
-            List(menu.focusPoints, id:\.self){point in
-                Text(point)
+
+            VStack{
+                Text(menu.name)
+                Text(menu.goal)
+                ForEach(menu.focusPoints, id:\.self){point in
+                    Text("・\(point)")
+                }
             }
-        }
     }
 }
 

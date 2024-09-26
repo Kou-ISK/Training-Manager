@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct CircleProgressBarView: View {
-    let lineWidth:CGFloat = 12
+    let lineWidth:CGFloat = 2
     
     @Binding var progress: CGFloat
     
@@ -17,7 +17,7 @@ struct CircleProgressBarView: View {
             Circle().stroke(lineWidth: lineWidth).opacity(0.3).foregroundStyle(.blue)
             
             Circle().trim(from: 0.0, to: min(progress, 1.0))
-                .stroke(style: StrokeStyle(lineWidth: lineWidth, lineCap: .round, lineJoin: .round)).foregroundStyle(.blue)
+                .stroke(style: StrokeStyle(lineWidth: lineWidth, lineCap: .round, lineJoin: .round)).foregroundStyle(.blue).opacity(0.9)
                 .rotationEffect(Angle(degrees: 270.0))
         }}
 }

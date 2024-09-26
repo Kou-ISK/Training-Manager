@@ -9,26 +9,58 @@ import SwiftUI
 
 struct TodaySessionView: View {
     @EnvironmentObject var viewModel: TrainingSessionViewModel
+    @StateObject var timerViewModel = TimerViewModel(initialTime: 0, menuName: "")
     
+    @State var currentMenu: TrainingMenu? = nil
+
     var body: some View {
-        VStack{
-            NavigationStack{
+        VStack {
                 if let session = viewModel.todayTrainingSession {
-                    Text("本日のセッション")
-                    Text(session.theme ?? "")
-                    ForEach(session.menus){menu in
-                        NavigationLink(menu.name, destination: TrainingMenuDetailView(menu: menu))
+                        if (currentMenu != nil){
+                            VStack{
+                                HStack{
+                                    VStack{
+                                        Text(currentMenu!.name)
+                                    }
+                                    TimerView(viewModel: timerViewModel)
+                                }
+                                ScrollView{
+                                    Text(currentMenu!.goal)
+                                    ForEach(currentMenu!.focusPoints, id:\.self){point in
+                                        Text("・\(point)")
+                                    }
+                                }.frame(height: 40)
+                            }.frame(height: 80)
+                        }
+                    
+                    List(session.menus, id:\.self.id) { menu in
+                        HStack{
+                            HStack{
+                                Image(systemName: "stopwatch")
+                                Text(viewModel.formatDuration(duration: menu.duration ?? 0))
+                            }.foregroundStyle(.white).fontWeight(.bold).padding(5).background(.green).cornerRadius(30)
+                            Button(action: {
+                                currentMenu = menu
+                                // メニューを選択したらタイマーをセット
+                                timerViewModel.setRemainingTime(time: menu.duration ?? 0, menuName: menu.name)
+                            }) {
+                                Text(menu.name)
+                            }
+                        }
                     }
-                }else{
+                } else {
                     Text("本日のセッションデータがありません")
-                    Button("リクエスト"){
+                    Button("iPhone/iPadから取得") {
                         viewModel.sendMessage()
                     }
                 }
             }
+        .onAppear {
+            viewModel.sendMessage()
         }
     }
 }
+
 
 #Preview {
     TodaySessionView()

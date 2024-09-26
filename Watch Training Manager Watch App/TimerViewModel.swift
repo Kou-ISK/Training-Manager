@@ -7,12 +7,23 @@
 
 import Foundation
 import Combine
-import AudioToolbox
 import AVFoundation
 import UserNotifications
 
 class TimerViewModel: ObservableObject {
-    @Published var remainingTime: TimeInterval // 残り時間（秒単位）
+    @Published var remainingTime: TimeInterval {
+            didSet {
+                UserDefaults.standard.set(remainingTime, forKey: "remainingTime")
+            }
+        }
+        
+    init(menuName: String, initialTime: TimeInterval) {
+            // UserDefaultsからタイマーの残り時間を読み込み
+            self.remainingTime = UserDefaults.standard.double(forKey: "remainingTime")
+            self.menuName = menuName
+        self.initialTime = initialTime
+        }
+    
     @Published var timer: AnyCancellable? // タイマー
     @Published var progress: CGFloat = 0.0 // プログレスバーの進行度
     @Published var menuName: String
@@ -20,7 +31,6 @@ class TimerViewModel: ObservableObject {
     
     private var initialTime: TimeInterval
     private var audioPlayer: AVAudioPlayer?
-    private let soundId: SystemSoundID = 1320
     @Published var isAlarmActive = false
     
     // イニシャライザで初期化
@@ -132,6 +142,8 @@ class TimerViewModel: ObservableObject {
         isAlarmActive = false
         audioPlayer?.stop()
         audioPlayer = nil
+        self.remainingTime = initialTime
+        self.timeString = self.formatTime(self.remainingTime)
     }
 }
 

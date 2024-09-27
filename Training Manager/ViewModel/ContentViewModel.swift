@@ -17,4 +17,13 @@ class ContentViewModel: ObservableObject {
         self.trainingSessionList = trainingSessionList
         self.trainingMenuList = trainingMenuList
     }
+
+    func addMenuToSession(newMenu: TrainingMenu, session: TrainingSession){
+        session.menus.append(newMenu)
+        trainingMenuList.append(newMenu)
+    }
+    
+    func addSession(newSession: TrainingSession) {
+        trainingSessionList.append(newSession)
+    }
 }

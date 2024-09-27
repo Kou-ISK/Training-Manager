@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct TrainingMenuHistory: View {
-    @State var contentViewModel: ContentViewModel
+    @ObservedObject var contentViewModel: ContentViewModel
     
     var body: some View {
         VStack{
@@ -29,9 +29,6 @@ struct TrainingMenuHistory: View {
                     Text(menu.menuDescription ?? "").font(.caption).foregroundStyle(.gray)
                 }
             }
-        }.onAppear{
-            print("====表示中====")
-            print(contentViewModel.trainingMenuList)
         }
     }
     

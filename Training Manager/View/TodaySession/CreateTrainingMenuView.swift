@@ -25,8 +25,6 @@ struct CreateTrainingMenuView: View {
     let minutesRange = Array(0...59)
     let secondsRange = Array(0...59)
     
-    var onSave: (TrainingMenu) -> Void
-    
     var body: some View {
         NavigationStack {
             Form {
@@ -137,12 +135,8 @@ struct CreateTrainingMenuView: View {
         trainingMenu.orderIndex = trainingMenuList.count
         
         // 新しいメニューをセッションに追加
-        session.menus.append(trainingMenu)
-        trainingMenuList.append(trainingMenu)
-        onSave(trainingMenu)
+        session.menus.append(trainingMenu)  // TrainingSessionにメニューを追加
         
-        // データベースに挿入
-        modelContext.insert(trainingMenu)
         // データベースに保存
         do {
             try modelContext.save() // 変更を保存
@@ -150,14 +144,12 @@ struct CreateTrainingMenuView: View {
             print("Failed to save context: \(error)")
         }
         
-        print("===保存中===")
-        print(session.menus.self)
-        print(trainingMenu.self)
         // ビューを閉じる
         dismiss()
     }
+    
 }
 
 #Preview {
-    CreateTrainingMenuView(session: TrainingSession(), trainingMenuList: [], onSave: { _ in })
+    CreateTrainingMenuView(session: TrainingSession(), trainingMenuList: [])
 }

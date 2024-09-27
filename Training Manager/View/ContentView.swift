@@ -12,19 +12,26 @@ struct ContentView: View {
     @Query private var trainingSessionList: [TrainingSession]
     @Query private var trainingMenuList: [TrainingMenu]
     
+    // ContentViewModel を @StateObject として宣言
+    @StateObject private var contentViewModel = ContentViewModel(trainingSessionList: [], trainingMenuList: [])
+    
     var body: some View {
         TabView{
-            TodaySessionView(viewModel: TodaySessionViewModel(trainingSessionList: trainingSessionList, trainingMenuList: trainingMenuList))
-                 .tabItem {
-                     Label("今日のセッション", systemImage: "figure.run.circle.fill")
-                 }
-            TrainingMenuHistory(trainingMenuList: trainingMenuList)
+            TodaySessionView(viewModel: TodaySessionViewModel(contentViewModel: contentViewModel))
+                .tabItem {
+                    Label("今日のセッション", systemImage: "figure.run.circle.fill")
+                }
+            TrainingMenuHistory(contentViewModel: contentViewModel)
                 .tabItem {
                     Label("メニュー履歴", systemImage: "doc.text")
                 }
-            TrainingSessionListView(trainingSessionList: trainingSessionList).tabItem {
+            TrainingSessionListView(contentViewModel: contentViewModel).tabItem {
                 Label("セッション管理", systemImage: "calendar.circle")
             }
+        }.onAppear {
+            // 初期データを ViewModel にセット
+            contentViewModel.trainingSessionList = trainingSessionList
+            contentViewModel.trainingMenuList = trainingMenuList
         }
     }
 }

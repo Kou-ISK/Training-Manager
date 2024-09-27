@@ -8,12 +8,12 @@
 import SwiftUI
 
 struct TrainingMenuHistory: View {
-    var trainingMenuList: [TrainingMenu]
+    @State var contentViewModel: ContentViewModel
     
     var body: some View {
         VStack{
             Text("メニュー履歴").font(.title)
-            List(trainingMenuList){menu in
+            List(contentViewModel.trainingMenuList){menu in
                 VStack(alignment: .leading) {
                     HStack(alignment: .center){
                         Text(menu.name).font(.headline)
@@ -29,6 +29,9 @@ struct TrainingMenuHistory: View {
                     Text(menu.menuDescription ?? "").font(.caption).foregroundStyle(.gray)
                 }
             }
+        }.onAppear{
+            print("====表示中====")
+            print(contentViewModel.trainingMenuList)
         }
     }
     
@@ -41,5 +44,7 @@ struct TrainingMenuHistory: View {
 }
 
 #Preview {
-    TrainingMenuHistory(trainingMenuList: [TrainingMenu(name: "メニュー1", goal: "ゴール1", duration: 300, focusPoints: ["ポイント1-1", "ポイント1-2", "ポイント1-3"], menuDescription: "備考1", orderIndex: 1),TrainingMenu(name: "メニュー2", goal: "ゴール2", duration: 300, focusPoints: ["ポイント2-1", "ポイント2-2", "ポイント2-3"], menuDescription: "備考2", orderIndex: 2)])
+    TrainingMenuHistory(contentViewModel: ContentViewModel(
+        trainingSessionList: [],
+        trainingMenuList: [TrainingMenu(name: "メニュー1", goal: "ゴール1", duration: 300, focusPoints: ["ポイント1-1", "ポイント1-2", "ポイント1-3"], menuDescription: "備考1", orderIndex: 1),TrainingMenu(name: "メニュー2", goal: "ゴール2", duration: 300, focusPoints: ["ポイント2-1", "ポイント2-2", "ポイント2-3"], menuDescription: "備考2", orderIndex: 2)]))
 }

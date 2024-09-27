@@ -152,15 +152,19 @@ struct TodaySessionView: View {
                         viewModel.showNewSessionView()
                     }.buttonStyle(.borderless)
                 }
+            }.onAppear{
+                viewModel.filterTodaySessions()
             }
             .sheet(isPresented: $viewModel.isShowAddView) {
                 if let todaySession = viewModel.currentTrainingSession {
-                    CreateTrainingMenuView(session: todaySession, trainingMenuList: viewModel.trainingMenuList)
+                    CreateTrainingMenuView(
+                        session: todaySession, trainingMenuList: viewModel.contentViewModel.trainingMenuList, onSave:{newMenu in
+                            viewModel.addMenu(newMenu: newMenu)})
                 }
             }
             .sheet(isPresented: $viewModel.isShowNewSessionView) {
                 CreateTrainingSessionView(sessionDate: Date(),
-                    trainingSessionList: viewModel.trainingSessionList, onSave: { newSession in
+                                          trainingSessionList: viewModel.contentViewModel.trainingSessionList, onSave: { newSession in
                     viewModel.addSession(newSession: newSession)
                 })
             }
@@ -186,7 +190,7 @@ struct TodaySessionView: View {
 
 #Preview {
     TodaySessionView(viewModel: TodaySessionViewModel(
-        trainingSessionList: [TrainingSession(
+        contentViewModel: ContentViewModel(trainingSessionList: [TrainingSession(
             theme: "テーマ",
             sessionDescription: "備考",
             sessionDate: Date(),
@@ -206,13 +210,14 @@ struct TodaySessionView: View {
             focusPoints: ["kf1", "kf2", "kf3"],
             menuDescription: "description",
             orderIndex: 0
-        )]
+        )])
     ))
 }
 
 #Preview {
-    TodaySessionView(viewModel: TodaySessionViewModel(
+    TodaySessionView(viewModel: TodaySessionViewModel(contentViewModel: ContentViewModel(
         trainingSessionList: [],
         trainingMenuList: []
+        )
     ))
 }

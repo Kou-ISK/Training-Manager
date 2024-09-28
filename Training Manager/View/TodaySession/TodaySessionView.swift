@@ -100,7 +100,9 @@ struct TodaySessionView: View {
                                         ForEach(menu.focusPoints, id:\.self){point in
                                             Text("・\(point)")
                                         }
-                                        Text(menu.menuDescription ?? "").font(.caption).foregroundStyle(.gray)
+                                        if(menu.menuDescription != "" || menu.menuDescription != nil){
+                                            Text(menu.menuDescription ?? "").font(.caption).foregroundStyle(.gray)
+                                        }
                                         
                                     }
                                     Spacer()
@@ -162,7 +164,7 @@ struct TodaySessionView: View {
                 }
             }
             .sheet(isPresented: $viewModel.isShowNewSessionView) {
-                CreateTrainingSessionView(sessionDate: Date(),
+                CreateTrainingSessionView(contentViewModel: viewModel.contentViewModel, sessionDate: Date(),
                                           trainingSessionList: viewModel.contentViewModel.trainingSessionList, onSave: { newSession in
                     viewModel.addSession(newSession: newSession)
                 })

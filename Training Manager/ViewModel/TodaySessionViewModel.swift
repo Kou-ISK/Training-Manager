@@ -10,11 +10,11 @@ import Combine
 import SwiftData
 
 class TodaySessionViewModel: ObservableObject {
-    @Published var trainingSessionList: [TrainingSession]
+    @State var contentViewModel: ContentViewModel
+    
     @Published var currentTrainingSession: TrainingSession?
     @Published var currentTrainingMenu: TrainingMenu?
     @Published var timerViewModel: TimerViewModel? = nil
-    @Published var trainingMenuList: [TrainingMenu]
     
     @Published var isShowAddView: Bool = false
     @Published var isShowNewSessionView: Bool = false
@@ -23,15 +23,14 @@ class TodaySessionViewModel: ObservableObject {
     @Published var isShowDeleteAlart: Bool = false
     @Published var isShowDeleteSessionAlert: Bool = false
     
-    init(trainingSessionList: [TrainingSession], trainingMenuList: [TrainingMenu]) {
-        self.trainingSessionList = trainingSessionList
-        self.trainingMenuList = trainingMenuList
+    init(contentViewModel: ContentViewModel) {
+        self.contentViewModel = contentViewModel
         filterTodaySessions()
     }
     
     func filterTodaySessions() {
         let today = Calendar.current.startOfDay(for: Date())
-        if let session = trainingSessionList.first(where: { session in
+        if let session = contentViewModel.trainingSessionList.first(where: { session in
             guard let sessionDate = session.sessionDate else { return false }
             let isSameDay = Calendar.current.isDate(sessionDate, inSameDayAs: today)
             return isSameDay
@@ -59,9 +58,18 @@ class TodaySessionViewModel: ObservableObject {
     }
     
     func addSession(newSession: TrainingSession) {
-        trainingSessionList.append(newSession)
+        contentViewModel.trainingSessionList.append(newSession)
+        if(!newSession.menus.isEmpty){
+            for menu in newSession.menus {
+                contentViewModel.trainingMenuList.append(menu)
+            }
+        }
         currentTrainingSession = newSession
         isShowNewSessionView = false
+    }
+    
+    func addMenu(newMenu: TrainingMenu) {
+        contentViewModel.trainingMenuList.append(newMenu)
     }
     
     func showAddView() {
@@ -82,7 +90,8 @@ class TodaySessionViewModel: ObservableObject {
     
     // メニューを削除する処理
     func deleteMenu(menu: TrainingMenu, modelContext: ModelContext) {
-        guard let session = currentTrainingSession else { return }
+        guard let session = contentViewModel.trainingSessionList.first(where: {$0.id == currentTrainingSession?.id}) else { return }
+        
         
         // session からメニューを削除
         if let index = session.menus.firstIndex(where: { $0.id == menu.id }) {
@@ -104,7 +113,7 @@ class TodaySessionViewModel: ObservableObject {
     }
     
     func updateMenu(menu: TrainingMenu, modelContext: ModelContext) {
-        guard let session = currentTrainingSession else { return }
+        guard let session = contentViewModel.trainingSessionList.first(where: {$0.id == currentTrainingSession?.id}) else { return }
         
         // session から該当のメニューを探す
         if let index = session.menus.firstIndex(where: { $0.id == menu.id }) {
@@ -127,7 +136,8 @@ class TodaySessionViewModel: ObservableObject {
     
     // メニューを並び替えるロジック
     func moveMenu(from source: IndexSet, to destination: Int, modelContext: ModelContext) {
-        guard let session = currentTrainingSession else { return }
+        guard let session = contentViewModel.trainingSessionList.first(where: {$0.id == currentTrainingSession?.id}) else { return }
+        
         
         // メニューのリストをソートされた順序で取得
         var menus = session.menus.sorted(by: { $0.orderIndex < $1.orderIndex })
@@ -153,6 +163,7 @@ class TodaySessionViewModel: ObservableObject {
     
     // セッションを削除する処理
     func deleteSession(session: TrainingSession, modelContext: ModelContext) {
+        contentViewModel.trainingSessionList.removeAll(where: {$0.id == session.id})
         modelContext.delete(session.self)
         // データベースに保存
         do {

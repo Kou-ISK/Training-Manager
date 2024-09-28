@@ -13,7 +13,8 @@ struct CreateTrainingMenuView: View {
     
     @State var session: TrainingSession
     @State private var trainingMenu = TrainingMenu()
-    @State var trainingMenuList: [TrainingMenu]
+    
+    @ObservedObject var contentViewModel: ContentViewModel  // ContentViewModelを注入
     
     @State private var newFocusPoint: String = ""
     
@@ -87,7 +88,7 @@ struct CreateTrainingMenuView: View {
                     }
                     .pickerStyle(WheelPickerStyle())
                 }
-                NavigationLink("既存のメニューから追加", destination: SelectExistingMenu(trainingMenu: trainingMenu, trainingMenuList: trainingMenuList))
+                NavigationLink("既存のメニューから追加", destination: SelectExistingMenu(trainingMenu: trainingMenu, trainingMenuList: contentViewModel.trainingMenuList))
             }
             .navigationTitle("メニューの追加")
             .onAppear {
@@ -132,16 +133,27 @@ struct CreateTrainingMenuView: View {
         
         // 分と秒を TimeInterval に変換して保存
         trainingMenu.duration = TimeInterval(selectedMinutes * 60 + selectedSeconds)
-        trainingMenu.orderIndex = trainingMenuList.count
+        trainingMenu.orderIndex = session.menus.count
+        
+        // contentViewModelに保存
+        contentViewModel.trainingMenuList.append(trainingMenu)
+        
+        // データベースに挿入して、まず trainingMenu を保存
+        modelContext.insert(trainingMenu)
+        
+        do {
+            try modelContext.save() // まず trainingMenu を保存
+        } catch {
+            print("Failed to save trainingMenu: \(error)")
+            return
+        }
         
         // 新しいメニューをセッションに追加
-        session.menus.append(trainingMenu)
+        session.menus.append(trainingMenu)  // TrainingSessionにメニューを追加
         
-        // データベースに挿入
-        modelContext.insert(trainingMenu)
         // データベースに保存
         do {
-            try modelContext.save() // 変更を保存
+            try modelContext.save() // TrainingSession の変更を保存
         } catch {
             print("Failed to save context: \(error)")
         }
@@ -152,5 +164,5 @@ struct CreateTrainingMenuView: View {
 }
 
 #Preview {
-    CreateTrainingMenuView(session: TrainingSession(), trainingMenuList: [])
+    CreateTrainingMenuView(session: TrainingSession(), contentViewModel: ContentViewModel(trainingSessionList: [], trainingMenuList: []))
 }

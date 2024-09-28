@@ -10,6 +10,7 @@ import SwiftUI
 struct SelectExistingSessionView: View {
     @Environment(\.dismiss) private var dismiss
     @Environment(\.modelContext) private var modelContext
+    @State var contentViewModel: ContentViewModel
     
     var trainingSession: TrainingSession
     var trainingSessionList: [TrainingSession]
@@ -18,7 +19,7 @@ struct SelectExistingSessionView: View {
         VStack{
             Text("セッション履歴").font(.title)
             List(trainingSessionList){session in
-                NavigationLink(destination: SessionDetailView(session: session)) {
+                NavigationLink(destination: SessionDetailView(session: session, contentViewModel: contentViewModel)) {
                     HStack{
                         VStack(alignment: .leading){
                             HStack(alignment: .center){
@@ -58,7 +59,7 @@ struct SelectExistingSessionView: View {
 
 #Preview {
     SelectExistingSessionView(
-        trainingSession: TrainingSession(),
+        contentViewModel: ContentViewModel(trainingSessionList: [], trainingMenuList: []), trainingSession: TrainingSession(),
         trainingSessionList:
             [
                 TrainingSession(theme: "テーマ1", sessionDescription: "備考1", sessionDate: Date(), menus:

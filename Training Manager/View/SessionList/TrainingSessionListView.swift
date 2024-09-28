@@ -57,7 +57,7 @@ struct TrainingSessionListView: View {
                 // 選択された日付のセッションを表示する部分
                 if !filteredSessions.isEmpty {
                     List(filteredSessions, id: \.self) { session in
-                        NavigationLink(destination: SessionDetailView(session: session, onDelete: {
+                        NavigationLink(destination: SessionDetailView(session: session, contentViewModel: contentViewModel, onDelete: {
                             removeSession(session)
                         })) {
                             VStack(alignment: .leading) {
@@ -84,7 +84,7 @@ struct TrainingSessionListView: View {
                 }
             }
         }.sheet(isPresented: $isShowNewSessionView) {
-            CreateTrainingSessionView(sessionDate: selectedDate,
+            CreateTrainingSessionView(contentViewModel: contentViewModel, sessionDate: selectedDate,
                                       trainingSessionList: contentViewModel.trainingSessionList, onSave: { newSession in
                 addSession(newSession: newSession)
             })

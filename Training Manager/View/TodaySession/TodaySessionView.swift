@@ -28,6 +28,7 @@ struct TodaySessionView: View {
                                         .alert("セッションの削除", isPresented: $viewModel.isShowDeleteSessionAlert, actions: {
                                             Button("削除", role: .destructive) {
                                                 viewModel.deleteSession(session: session, modelContext: modelContext)
+                                                viewModel.isEditMode.toggle()
                                             }
                                             Button("キャンセル", role: .cancel) {}
                                         })
@@ -108,7 +109,6 @@ struct TodaySessionView: View {
                                     if(viewModel.isEditMode){
                                         HStack{
                                             Button(action: {
-                                                print("Edit button pressed")
                                                 editingMenu = menu // 編集するメニューを設定
                                             }, label: {
                                                 Text("編集")
@@ -144,7 +144,7 @@ struct TodaySessionView: View {
                                 if viewModel.isEditMode {
                                     viewModel.moveMenu(from: source, to: destination, modelContext: modelContext)
                                 }
-                            }
+                            }.moveDisabled(!viewModel.isEditMode)// 編集モードでない場合はリスト項目を移動できないようにする
                         }
                     
                 } else {
@@ -170,13 +170,13 @@ struct TodaySessionView: View {
                 })
             }
             .toolbar {
-                ToolbarItem(placement: .topBarTrailing) {
-                    Button {
+                    ToolbarItem(placement: .topBarTrailing) {
+                        Button {
                             viewModel.showAddView()
-                    } label: {
-                        Image(systemName: "plus")
+                        } label: {
+                            Image(systemName: "plus")
+                        }.disabled(viewModel.currentTrainingSession == nil)
                     }
-                }
                 ToolbarItem(placement: .topBarTrailing) {
                     Button {
                         viewModel.isEditMode.toggle()

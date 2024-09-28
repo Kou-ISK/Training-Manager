@@ -13,7 +13,7 @@ struct TrainingMenuHistory: View {
     var body: some View {
         VStack{
             Text("メニュー履歴").font(.title)
-            List(contentViewModel.trainingMenuList){menu in
+            List(contentViewModel.trainingMenuList.sorted(by: { $0.orderIndex < $1.orderIndex })){menu in
                 VStack(alignment: .leading) {
                     HStack(alignment: .center){
                         Text(menu.name).font(.headline)
@@ -26,7 +26,9 @@ struct TrainingMenuHistory: View {
                     ForEach(menu.focusPoints, id: \.self){point in
                         Text(point).font(.caption)
                     }
-                    Text(menu.menuDescription ?? "").font(.caption).foregroundStyle(.gray)
+                    if(menu.menuDescription != "" || menu.menuDescription != nil){
+                        Text(menu.menuDescription ?? "").font(.caption).foregroundStyle(.gray)
+                    }
                 }
             }
         }

@@ -158,7 +158,7 @@ struct TodaySessionView: View {
             .sheet(isPresented: $viewModel.isShowAddView) {
                 if let todaySession = viewModel.currentTrainingSession {
                     CreateTrainingMenuView(
-                        session: todaySession, trainingMenuList: viewModel.contentViewModel.trainingMenuList)
+                        session: todaySession, contentViewModel: viewModel.contentViewModel)
                 }
             }
             .sheet(isPresented: $viewModel.isShowNewSessionView) {

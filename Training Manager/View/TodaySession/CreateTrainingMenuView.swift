@@ -13,7 +13,8 @@ struct CreateTrainingMenuView: View {
     
     @State var session: TrainingSession
     @State private var trainingMenu = TrainingMenu()
-    @State var trainingMenuList: [TrainingMenu]
+    
+    @ObservedObject var contentViewModel: ContentViewModel  // ContentViewModelを注入
     
     @State private var newFocusPoint: String = ""
     
@@ -87,7 +88,7 @@ struct CreateTrainingMenuView: View {
                     }
                     .pickerStyle(WheelPickerStyle())
                 }
-                NavigationLink("既存のメニューから追加", destination: SelectExistingMenu(trainingMenu: trainingMenu, trainingMenuList: trainingMenuList))
+                NavigationLink("既存のメニューから追加", destination: SelectExistingMenu(trainingMenu: trainingMenu, trainingMenuList: contentViewModel.trainingMenuList))
             }
             .navigationTitle("メニューの追加")
             .onAppear {
@@ -132,11 +133,11 @@ struct CreateTrainingMenuView: View {
         
         // 分と秒を TimeInterval に変換して保存
         trainingMenu.duration = TimeInterval(selectedMinutes * 60 + selectedSeconds)
-        trainingMenu.orderIndex = trainingMenuList.count
+        trainingMenu.orderIndex = session.menus.count
         
         // contentViewModelに保存
-        trainingMenuList.append(trainingMenu)
-
+        contentViewModel.trainingMenuList.append(trainingMenu)
+        
         // データベースに挿入して、まず trainingMenu を保存
         modelContext.insert(trainingMenu)
         
@@ -146,7 +147,7 @@ struct CreateTrainingMenuView: View {
             print("Failed to save trainingMenu: \(error)")
             return
         }
-
+        
         // 新しいメニューをセッションに追加
         session.menus.append(trainingMenu)  // TrainingSessionにメニューを追加
         
@@ -160,10 +161,8 @@ struct CreateTrainingMenuView: View {
         // ビューを閉じる
         dismiss()
     }
-
-    
 }
 
 #Preview {
-    CreateTrainingMenuView(session: TrainingSession(), trainingMenuList: [])
+    CreateTrainingMenuView(session: TrainingSession(), contentViewModel: ContentViewModel(trainingSessionList: [], trainingMenuList: []))
 }

@@ -8,27 +8,53 @@
 import Foundation
 import Combine
 import WatchConnectivity
+import SwiftData
 
-class TrainingSessionViewModel: NSObject, ObservableObject{
+class TrainingSessionViewModel: NSObject, ObservableObject {
     @Published var todayTrainingSession: TrainingSession?
     @Published var timerViewModel: TimerViewModel? = nil
     
     var session: WCSession
     
-    init(session: WCSession  = .default) {
+    init(session: WCSession = .default) {
         self.session = session
         super.init()
         self.session.delegate = self
         session.activate()
     }
     
+    // 当日の日付以外のTrainingSessionを削除するメソッド
+    func deleteOldSessions(modelContext: ModelContext) {
+        let today = Date()
+        let calendar = Calendar.current
+        
+        do {
+            // `TrainingSession` の全データを取得
+            let sessions: [TrainingSession] = try modelContext.fetch(
+                FetchDescriptor<TrainingSession>()
+            )
+            
+            // 今日の日付でないセッションを削除
+            for session in sessions {
+                if let sessionDate = session.sessionDate,
+                   !calendar.isDate(sessionDate, inSameDayAs: today) {
+                    // 今日の日付でない場合は削除
+                    modelContext.delete(session)
+                }
+            }
+            
+            // モデルコンテキストの保存
+            try modelContext.save()
+        } catch {
+            print("Error deleting old sessions or saving context: \(error)")
+        }
+    }
     
-    func updateTodayTrainingSession(session: TrainingSession){
+    func updateTodayTrainingSession(session: TrainingSession) {
         todayTrainingSession = session
     }
     
     func selectMenu(menu: TrainingMenu) {
-        
         // もし TimerViewModel が存在している場合は停止する
         timerViewModel?.stop()
         
@@ -42,49 +68,56 @@ class TrainingSessionViewModel: NSObject, ObservableObject{
         return String(format: "%02d:%02d", minutes, seconds)
     }
     
+    // iPhone/iPadからのデータ取得を要求
     func sendMessage() {
-        let messages: [String: Any] =
-        ["request": "getTrainingData"]
-        self.session.sendMessage(messages, replyHandler: {
-            response in
-            if let trainingSessionData = response["trainingSession"] as? String {
-                print("Received training session data: \(trainingSessionData)")
-                
-                // JSONをデコードしてViewModelに格納
-                self.decodeTrainingSession(from: trainingSessionData)
+        let messages: [String: Any] = ["request": "getTrainingData"]
+        
+        // エラーハンドリングを追加
+        if session.activationState == .activated {
+            self.session.sendMessage(messages, replyHandler: { response in
+                if let trainingSessionData = response["trainingSession"] as? String {
+                    print("Received training session data: \(trainingSessionData)")
+                    
+                    // JSONをデコードしてViewModelに格納
+                    self.decodeTrainingSession(from: trainingSessionData)
+                } else {
+                    print("Error: No valid training session data in response.")
+                }
+            }) { error in
+                print("Error sending message: \(error.localizedDescription)")
             }
-        }) { (error) in
-            print(error.localizedDescription)
+        } else {
+            print("WCSession is not activated, unable to send message.")
         }
     }
     
-    // TODO このメソッドの中でエラーが発生していそうなので確認
+    // JSONデータをデコード
     func decodeTrainingSession(from jsonString: String) {
         guard let jsonData = jsonString.data(using: .utf8) else {
-            print("Failed to convert JSON string to Data")
+            print("Error: Failed to convert JSON string to Data.")
             return
         }
         
         do {
             let decoder = JSONDecoder()
-            // この辺でエラー？
             let session = try decoder.decode(TrainingSession.self, from: jsonData)
             DispatchQueue.main.async {
                 // ViewModelを更新
                 self.updateTodayTrainingSession(session: session)
             }
         } catch {
-            print("Error decoding JSON: \(error)")
+            print("Error decoding JSON: \(error.localizedDescription)")
         }
     }
 }
 
 extension TrainingSessionViewModel: WCSessionDelegate {
+    // セッションのアクティベーション完了時に呼び出される
     func session(_ session: WCSession, activationDidCompleteWith activationState: WCSessionActivationState, error: Error?) {
         if let error = error {
-            print(error.localizedDescription)
+            print("WCSession activation error: \(error.localizedDescription)")
         } else {
-            print("The session has completed activation.")
+            print("WCSession activated successfully.")
         }
     }
 }

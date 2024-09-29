@@ -8,6 +8,7 @@
 import Foundation
 import Combine
 import WatchConnectivity
+import SwiftData
 
 class TrainingSessionViewModel: NSObject, ObservableObject{
     @Published var todayTrainingSession: TrainingSession?
@@ -21,6 +22,33 @@ class TrainingSessionViewModel: NSObject, ObservableObject{
         self.session.delegate = self
         session.activate()
     }
+    
+    // 当日の日付以外のTrainingSessionを削除するメソッド
+     func deleteOldSessions(modelContext: ModelContext) {
+         let today = Date()
+         let calendar = Calendar.current
+         
+         // `TrainingSession` の全データを取得
+         let sessions: [TrainingSession] = try! modelContext.fetch(
+             FetchDescriptor<TrainingSession>()
+         )
+         
+         // 今日の日付でないセッションを削除
+         for session in sessions {
+             if let sessionDate = session.sessionDate,
+                !calendar.isDate(sessionDate, inSameDayAs: today) {
+                 // 今日の日付でない場合は削除
+                 modelContext.delete(session)
+             }
+         }
+         
+         // モデルコンテキストの保存
+         do {
+             try modelContext.save()
+         } catch {
+             print("Error deleting old sessions: \(error)")
+         }
+     }
     
     
     func updateTodayTrainingSession(session: TrainingSession){
@@ -58,7 +86,6 @@ class TrainingSessionViewModel: NSObject, ObservableObject{
         }
     }
     
-    // TODO このメソッドの中でエラーが発生していそうなので確認
     func decodeTrainingSession(from jsonString: String) {
         guard let jsonData = jsonString.data(using: .utf8) else {
             print("Failed to convert JSON string to Data")
@@ -67,7 +94,6 @@ class TrainingSessionViewModel: NSObject, ObservableObject{
         
         do {
             let decoder = JSONDecoder()
-            // この辺でエラー？
             let session = try decoder.decode(TrainingSession.self, from: jsonData)
             DispatchQueue.main.async {
                 // ViewModelを更新

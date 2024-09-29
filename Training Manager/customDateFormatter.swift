@@ -17,7 +17,10 @@ public var dateFormatter: DateFormatter {
 
 public var yearMonthFormatter: DateFormatter {
     let formatter = DateFormatter()
-    formatter.dateFormat = "yyyy年M月" // カスタムフォーマットを指定
+    // formatter.dateFormat = "yyyy年M月" // カスタムフォーマットを指定
+    // テンプレートからローカライズされたフォーマットを作成
+    formatter.setLocalizedDateFormatFromTemplate("yMMM")
+    formatter.locale = Locale.current // 現在のロケールを適用
     return formatter
 }
 

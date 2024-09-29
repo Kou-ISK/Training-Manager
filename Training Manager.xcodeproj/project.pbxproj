@@ -23,6 +23,8 @@
 		78CAE3B82CA5695400804F53 /* TrainingSession.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78E8D35C2C8343AD00C23C5A /* TrainingSession.swift */; };
 		78CAE3C22CA56DF700804F53 /* alarm_sound.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 781C08202C8D985B007FF5E3 /* alarm_sound.mp3 */; };
 		78CAE3E72CA625A900804F53 /* ContentViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78CAE3E62CA625A900804F53 /* ContentViewModel.swift */; };
+		78CAE48B2CA9471F00804F53 /* Localizable.xcstrings in Resources */ = {isa = PBXBuildFile; fileRef = 78CAE48A2CA9471F00804F53 /* Localizable.xcstrings */; };
+		78CAE48C2CA9471F00804F53 /* Localizable.xcstrings in Resources */ = {isa = PBXBuildFile; fileRef = 78CAE48A2CA9471F00804F53 /* Localizable.xcstrings */; };
 		78E3FA3028E33BCD002CC7AE /* Training_ManagerApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78E3FA2F28E33BCD002CC7AE /* Training_ManagerApp.swift */; };
 		78E3FA3228E33BCD002CC7AE /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78E3FA3128E33BCD002CC7AE /* ContentView.swift */; };
 		78E3FA3428E33BCE002CC7AE /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 78E3FA3328E33BCE002CC7AE /* Assets.xcassets */; };
@@ -109,6 +111,7 @@
 		78CAE38B2CA44EDF00804F53 /* Watch Training Manager Watch AppTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Watch Training Manager Watch AppTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		78CAE3952CA44EDF00804F53 /* Watch Training Manager Watch AppUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Watch Training Manager Watch AppUITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		78CAE3E62CA625A900804F53 /* ContentViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentViewModel.swift; sourceTree = "<group>"; };
+		78CAE48A2CA9471F00804F53 /* Localizable.xcstrings */ = {isa = PBXFileReference; lastKnownFileType = text.json.xcstrings; path = Localizable.xcstrings; sourceTree = "<group>"; };
 		78E3FA2C28E33BCD002CC7AE /* Training Manager.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Training Manager.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		78E3FA2F28E33BCD002CC7AE /* Training_ManagerApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Training_ManagerApp.swift; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
 		78E3FA3128E33BCD002CC7AE /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -200,6 +203,7 @@
 		78E3FA2328E33BCD002CC7AE = {
 			isa = PBXGroup;
 			children = (
+				78CAE48A2CA9471F00804F53 /* Localizable.xcstrings */,
 				78A877E72CA0288C00BAACA6 /* docs */,
 				78E3FA2E28E33BCD002CC7AE /* Training Manager */,
 				78E3FA3F28E33BCE002CC7AE /* Training ManagerTests */,
@@ -495,6 +499,7 @@
 			knownRegions = (
 				Base,
 				ja,
+				en,
 			);
 			mainGroup = 78E3FA2328E33BCD002CC7AE;
 			packageReferences = (
@@ -518,6 +523,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				78CAE48B2CA9471F00804F53 /* Localizable.xcstrings in Resources */,
 				78CAE3C22CA56DF700804F53 /* alarm_sound.mp3 in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -542,6 +548,7 @@
 			files = (
 				78E3FA3728E33BCE002CC7AE /* Preview Assets.xcassets in Resources */,
 				781C08212C8D985B007FF5E3 /* alarm_sound.mp3 in Resources */,
+				78CAE48C2CA9471F00804F53 /* Localizable.xcstrings in Resources */,
 				78E3FA3428E33BCE002CC7AE /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -684,7 +691,7 @@
 					"@executable_path/Frameworks",
 				);
 				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
-				MARKETING_VERSION = 2.1;
+				MARKETING_VERSION = 2.2;
 				PRODUCT_BUNDLE_IDENTIFIER = "Kou-Isaka.Training-Manager.watchkitapp";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = watchos;
@@ -718,7 +725,7 @@
 					"@executable_path/Frameworks",
 				);
 				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
-				MARKETING_VERSION = 2.1;
+				MARKETING_VERSION = 2.2;
 				PRODUCT_BUNDLE_IDENTIFIER = "Kou-Isaka.Training-Manager.watchkitapp";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = watchos;
@@ -882,6 +889,7 @@
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 			};
 			name = Debug;
@@ -938,6 +946,7 @@
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_OPTIMIZATION_LEVEL = "-O";
 			};
 			name = Release;
@@ -967,7 +976,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 2.1;
+				MARKETING_VERSION = 2.2;
 				PRODUCT_BUNDLE_IDENTIFIER = "Kou-Isaka.Training-Manager";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
@@ -1003,7 +1012,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 2.1;
+				MARKETING_VERSION = 2.2;
 				PRODUCT_BUNDLE_IDENTIFIER = "Kou-Isaka.Training-Manager";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";

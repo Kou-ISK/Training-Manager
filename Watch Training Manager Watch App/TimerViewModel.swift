@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import WatchKit
 import Combine
 import AVFoundation
 import UserNotifications
@@ -123,6 +124,10 @@ class TimerViewModel: ObservableObject {
     private func startAlarm() {
         // アラーム音のループ再生を開始
         isAlarmActive = true
+        
+        // watchOS用のバイブレーション通知
+        WKInterfaceDevice.current().play(.notification)
+        
         guard let soundURL = Bundle.main.url(forResource: "alarm_sound", withExtension: "mp3") else {
             print("Alarm sound file not found.")
             return
@@ -144,6 +149,7 @@ class TimerViewModel: ObservableObject {
         audioPlayer = nil
         self.remainingTime = initialTime
         self.timeString = self.formatTime(self.remainingTime)
+        WKInterfaceDevice.current().play(.stop)
     }
 }
 

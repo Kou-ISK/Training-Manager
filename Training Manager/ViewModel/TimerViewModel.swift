@@ -113,6 +113,10 @@ class TimerViewModel: ObservableObject {
     private func startAlarm() {
         // アラーム音のループ再生を開始
         isAlarmActive = true
+        
+        // バイブレーションを追加
+        AudioServicesPlaySystemSound(kSystemSoundID_Vibrate)
+        
         guard let soundURL = Bundle.main.url(forResource: "alarm_sound", withExtension: "mp3") else {
             print("Alarm sound file not found.")
             return

@@ -65,28 +65,39 @@ struct CreateTrainingMenuView: View {
                     ))
                 }
                 
-                Section(header: Text("備考")){
-                    TextField("備考", text: Binding(
-                        get: { trainingMenu.menuDescription ?? "" },
+                Section(header: Text("備考")) {
+                    TextEditor(text: Binding(
+                        get: { trainingMenu.menuDescription ?? ""},
                         set: { trainingMenu.menuDescription = $0 }
                     ))
+                        .overlay(alignment: .topLeading) {
+                            if trainingMenu.menuDescription?.isEmpty ?? true {
+                                Text("備考")
+                                    .foregroundColor(.gray) // プレースホルダーっぽく見せるために色を変更
+                                    .allowsHitTesting(false)
+                                    .padding(.top, 8) // テキストエディタの内側にマージンを設定
+                            }
+                        }
                 }
-                HStack{
-                    // ドラムロール形式のPickerで分を選択
-                    Picker("Duration (分)", selection: $selectedMinutes) {
-                        ForEach(minutesRange, id: \.self) { minute in
-                            Text("\(minute) 分").tag(minute)
+
+                Section(header: Text("練習時間")){
+                    HStack{
+                        // ドラムロール形式のPickerで分を選択
+                        Picker("Duration (分)", selection: $selectedMinutes) {
+                            ForEach(minutesRange, id: \.self) { minute in
+                                Text("\(minute) 分").tag(minute)
+                            }
                         }
-                    }
-                    .pickerStyle(WheelPickerStyle())
-                    
-                    // ドラムロール形式のPickerで秒を選択
-                    Picker("Duration (秒)", selection: $selectedSeconds) {
-                        ForEach(secondsRange, id: \.self) { second in
-                            Text("\(second) 秒").tag(second)
+                        .pickerStyle(WheelPickerStyle())
+                        
+                        // ドラムロール形式のPickerで秒を選択
+                        Picker("Duration (秒)", selection: $selectedSeconds) {
+                            ForEach(secondsRange, id: \.self) { second in
+                                Text("\(second) 秒").tag(second)
+                            }
                         }
-                    }
-                    .pickerStyle(WheelPickerStyle())
+                        .pickerStyle(WheelPickerStyle())
+                    }.frame(maxHeight: 100)
                 }
                 NavigationLink("既存のメニューから追加", destination: SelectExistingMenu(trainingMenu: trainingMenu, trainingMenuList: contentViewModel.trainingMenuList))
             }

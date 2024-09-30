@@ -31,10 +31,18 @@ struct CreateTrainingSessionView: View {
                     get: { newSession.theme ?? "" },
                     set: { newSession.theme = $0 }
                 ))
-                TextField("備考", text: Binding(
-                    get: { newSession.sessionDescription ?? "" },
-                    set: { newSession.sessionDescription = $0 }
-                ))
+                    TextEditor(text: Binding(
+                        get: { newSession.sessionDescription ?? ""},
+                        set: { newSession.sessionDescription = $0 }
+                    ))
+                        .overlay(alignment: .topLeading) {
+                            if newSession.sessionDescription?.isEmpty ?? true {
+                                Text("備考")
+                                    .foregroundColor(.gray) // プレースホルダーっぽく見せるために色を変更
+                                    .allowsHitTesting(false)
+                                    .padding(.top, 8) // テキストエディタの内側にマージンを設定
+                            }
+                        }
                 
                 NavigationLink("既存のセッションから追加", destination: SelectExistingSessionView(contentViewModel: contentViewModel, trainingSession: newSession, trainingSessionList: trainingSessionList))
                 

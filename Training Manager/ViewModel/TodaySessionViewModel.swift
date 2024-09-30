@@ -22,6 +22,8 @@ class TodaySessionViewModel: ObservableObject {
     @Published var isEditMode: Bool = false
     @Published var isShowDeleteAlart: Bool = false
     @Published var isShowDeleteSessionAlert: Bool = false
+    // 削除対象のメニューを保持するプロパティ
+    @Published var menuToDelete: TrainingMenu?
     
     init(contentViewModel: ContentViewModel) {
         self.contentViewModel = contentViewModel

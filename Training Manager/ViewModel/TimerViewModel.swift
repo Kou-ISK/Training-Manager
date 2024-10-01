@@ -21,6 +21,7 @@ class TimerViewModel: ObservableObject {
     private var initialTime: TimeInterval
     private var audioPlayer: AVAudioPlayer?
     private let soundId: SystemSoundID = 1320
+    private var vibrationTimer: AnyCancellable? // バイブレーション用のタイマー
     @Published var isAlarmActive = false
     
     // イニシャライザで初期化
@@ -111,11 +112,12 @@ class TimerViewModel: ObservableObject {
     }
     
     private func startAlarm() {
+        configureAudioSession()  // バックグラウンドで再生できるようにする
+        
         // アラーム音のループ再生を開始
         isAlarmActive = true
         
-        // バイブレーションを追加
-        AudioServicesPlaySystemSound(kSystemSoundID_Vibrate)
+        startVibrationLoop()  // バイブレーションのループを開始
         
         guard let soundURL = Bundle.main.url(forResource: "alarm_sound", withExtension: "mp3") else {
             print("Alarm sound file not found.")
@@ -136,6 +138,33 @@ class TimerViewModel: ObservableObject {
         isAlarmActive = false
         audioPlayer?.stop()
         audioPlayer = nil
+        stopVibrationLoop()  // バイブレーションのループを停止
     }
+    
+    private func startVibrationLoop() {
+        // 1秒ごとにバイブレーションをトリガーするタイマー
+        vibrationTimer = Timer.publish(every: 1.0, on: .main, in: .common)
+            .autoconnect()
+            .sink { _ in
+                AudioServicesPlaySystemSound(kSystemSoundID_Vibrate)
+            }
+    }
+    
+    private func stopVibrationLoop() {
+        // バイブレーションのタイマーを停止
+        vibrationTimer?.cancel()
+        vibrationTimer = nil
+    }
+    
+    private func configureAudioSession() {
+        do {
+            // バックグラウンド再生を有効にするためにオーディオセッションを設定
+            try AVAudioSession.sharedInstance().setCategory(.playback, options: [.mixWithOthers])
+            try AVAudioSession.sharedInstance().setActive(true)
+        } catch {
+            print("Failed to set audio session category: \(error.localizedDescription)")
+        }
+    }
+
 }
 

@@ -100,6 +100,7 @@
 		781C081E2C8BB20F007FF5E3 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		781C08202C8D985B007FF5E3 /* alarm_sound.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = alarm_sound.mp3; sourceTree = "<group>"; };
 		781C08262C8F34E8007FF5E3 /* SelectExistingMenuView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectExistingMenuView.swift; sourceTree = "<group>"; };
+		782B87D32CACD0F900A3B59B /* Training-Manager-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = "Training-Manager-Info.plist"; sourceTree = SOURCE_ROOT; };
 		78927F542C9CEB04005964EC /* SelectExistingSessionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectExistingSessionView.swift; sourceTree = "<group>"; };
 		78A877E82CA0289400BAACA6 /* EnhancePlan.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = EnhancePlan.md; sourceTree = "<group>"; };
 		78A877EE2CA11CFC00BAACA6 /* CustomCalendarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomCalendarView.swift; sourceTree = "<group>"; };
@@ -231,6 +232,7 @@
 		78E3FA2E28E33BCD002CC7AE /* Training Manager */ = {
 			isa = PBXGroup;
 			children = (
+				782B87D32CACD0F900A3B59B /* Training-Manager-Info.plist */,
 				781C081E2C8BB20F007FF5E3 /* AppDelegate.swift */,
 				78E3FA2F28E33BCD002CC7AE /* Training_ManagerApp.swift */,
 				78C20A112C89C6EE00AF77ED /* customDateFormatter.swift */,
@@ -964,6 +966,7 @@
 				DEVELOPMENT_TEAM = WALU6ZJGAF;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = "Training-Manager-Info.plist";
 				INFOPLIST_KEY_CFBundleDisplayName = "Training Manager";
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.sports";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
@@ -1000,6 +1003,7 @@
 				DEVELOPMENT_TEAM = WALU6ZJGAF;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = "Training-Manager-Info.plist";
 				INFOPLIST_KEY_CFBundleDisplayName = "Training Manager";
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.sports";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;

@@ -32,6 +32,7 @@ class TimerViewModel: ObservableObject {
     
     private var initialTime: TimeInterval
     private var audioPlayer: AVAudioPlayer?
+    private var vibrationTimer: AnyCancellable? // バイブレーション用のタイマー
     @Published var isAlarmActive = false
     
     // イニシャライザで初期化
@@ -122,11 +123,12 @@ class TimerViewModel: ObservableObject {
     }
     
     private func startAlarm() {
+        configureAudioSession()  // バックグラウンドで再生できるようにする
+        
         // アラーム音のループ再生を開始
         isAlarmActive = true
         
-        // watchOS用のバイブレーション通知
-        WKInterfaceDevice.current().play(.notification)
+        startVibrationLoop()  // バイブレーションのループを開始
         
         guard let soundURL = Bundle.main.url(forResource: "alarm_sound", withExtension: "mp3") else {
             print("Alarm sound file not found.")
@@ -150,6 +152,32 @@ class TimerViewModel: ObservableObject {
         self.remainingTime = initialTime
         self.timeString = self.formatTime(self.remainingTime)
         WKInterfaceDevice.current().play(.stop)
+        stopVibrationLoop()  // バイブレーションのループを停止
+    }
+    
+    private func startVibrationLoop() {
+        // 1秒ごとにバイブレーションをトリガーするタイマー
+        vibrationTimer = Timer.publish(every: 1.0, on: .main, in: .common)
+            .autoconnect()
+            .sink { _ in
+                // watchOS用のバイブレーション通知
+                WKInterfaceDevice.current().play(.notification)
+            }
+    }
+    
+    private func stopVibrationLoop() {
+        // バイブレーションのタイマーを停止
+        vibrationTimer?.cancel()
+        vibrationTimer = nil
+    }
+    
+    private func configureAudioSession() {
+        do {
+            // バックグラウンド再生を有効にするためにオーディオセッションを設定
+            try AVAudioSession.sharedInstance().setCategory(.playback, options: [.mixWithOthers])
+            try AVAudioSession.sharedInstance().setActive(true)
+        } catch {
+            print("Failed to set audio session category: \(error.localizedDescription)")
+        }
     }
 }
-

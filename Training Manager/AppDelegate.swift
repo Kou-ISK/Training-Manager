@@ -105,7 +105,9 @@ class iPhoneConnectivityManager: NSObject, WCSessionDelegate {
              // SwiftDataから今日のトレーニングセッションを取得
              if let todaySession = fetchTodaySession() {
                  do {
-                     let jsonData = try JSONEncoder().encode(todaySession)
+                     let encoder = JSONEncoder()
+                     encoder.dateEncodingStrategy = .secondsSince1970
+                     let jsonData = try encoder.encode(todaySession)
                      if let jsonString = String(data: jsonData, encoding: .utf8) {
                          let dataToSend: [String: Any] = ["trainingSession": jsonString]
                          replyHandler(dataToSend)  // Apple Watchにデータを返信

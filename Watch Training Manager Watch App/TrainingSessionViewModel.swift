@@ -51,12 +51,16 @@ class TrainingSessionViewModel: NSObject, ObservableObject {
     }
     
     func updateTodayTrainingSession(session: TrainingSession) {
+        print("Updating today's training session: \(session)")
         todayTrainingSession = session
     }
     
     func selectMenu(menu: TrainingMenu) {
         // もし TimerViewModel が存在している場合は停止する
         timerViewModel?.stop()
+        
+        // デバッグメッセージ
+        print("Menu selected: \(menu.name)")
         
         // 新しいメニューに基づいて TimerViewModel を再初期化
         timerViewModel = TimerViewModel(initialTime: menu.duration ?? 0, menuName: menu.name)
@@ -100,6 +104,7 @@ class TrainingSessionViewModel: NSObject, ObservableObject {
         
         do {
             let decoder = JSONDecoder()
+            decoder.dateDecodingStrategy = .secondsSince1970
             let session = try decoder.decode(TrainingSession.self, from: jsonData)
             DispatchQueue.main.async {
                 // ViewModelを更新

@@ -18,32 +18,39 @@ struct TodaySessionView: View {
     var body: some View {
         VStack {
             if let session = viewModel.todayTrainingSession {
-                if (currentMenu != nil){
+                if let menu = currentMenu {
                     VStack{
                         HStack{
                             VStack{
-                                Text(currentMenu!.name)
+                                Text(menu.name)
                             }
                             TimerView(viewModel: timerViewModel)
                         }
                         ScrollView{
-                            Text(currentMenu!.goal)
-                            ForEach(currentMenu!.focusPoints, id:\.self){point in
+                            Text(menu.goal)
+                            ForEach(menu.focusPoints, id: \.self){ point in
                                 Text("・\(point)")
                             }
                         }.frame(height: 40)
                     }.frame(height: 80)
                 }
                 ZStack{
-                    List(session.menus, id:\.self.id) { menu in
+                    List(session.menus, id: \.self.id) { menu in
                         HStack{
                             HStack{
                                 Text(viewModel.formatDuration(duration: menu.duration ?? 0))
-                            }.foregroundStyle(.white).fontWeight(.bold).padding(3).background(.green).cornerRadius(30)
+                            }
+                            .foregroundStyle(.white)
+                            .fontWeight(.bold)
+                            .padding(3)
+                            .background(.green)
+                            .cornerRadius(30)
+                            
                             Button(action: {
                                 currentMenu = menu
                                 // メニューを選択したらタイマーをセット
                                 timerViewModel.setRemainingTime(time: menu.duration ?? 0, menuName: menu.name)
+                                print("Selected menu: \(menu.name)")
                             }) {
                                 Text(menu.name)
                             }
@@ -57,7 +64,7 @@ struct TodaySessionView: View {
                             Button(action: {
                                 viewModel.sendMessage()
                                 viewModel.deleteOldSessions(modelContext: modelContext)
-                            }){
+                            }) {
                                 Image(systemName: "arrow.clockwise.circle.fill")
                             }.buttonStyle(.borderless)
                         }
@@ -78,7 +85,6 @@ struct TodaySessionView: View {
         }
     }
 }
-
 
 #Preview {
     TodaySessionView()

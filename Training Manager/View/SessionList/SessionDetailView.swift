@@ -28,17 +28,17 @@ struct SessionDetailView: View {
             HStack{
                 // セッションの削除
                 if isEditMode {
-                        Button(action: {
-                            isShowDeleteSessionAlert.toggle()
-                        }, label:{
-                            Image(systemName: "minus.circle.fill").foregroundStyle(.red)
-                        }).buttonStyle(.borderless).background(.clear)
-                            .alert("セッションの削除", isPresented: $isShowDeleteSessionAlert, actions: {
-                                Button("削除", role: .destructive) {
-                                    deleteSession()
-                                }
-                                Button("キャンセル", role: .cancel) {}
-                            })
+                    Button(action: {
+                        isShowDeleteSessionAlert.toggle()
+                    }, label:{
+                        Image(systemName: "minus.circle.fill").foregroundStyle(.red)
+                    }).buttonStyle(.borderless).background(.clear)
+                        .alert("セッションの削除", isPresented: $isShowDeleteSessionAlert, actions: {
+                            Button("削除", role: .destructive) {
+                                deleteSession()
+                            }
+                            Button("キャンセル", role: .cancel) {}
+                        })
                 }
                 // セッションのテーマ、日付、説明をヘッダーとして表示
                 VStack(alignment: .leading, spacing: 8) {
@@ -58,7 +58,7 @@ struct SessionDetailView: View {
             
             // メニューリスト表示
             List {
-                ForEach(session.menus) { menu in
+                ForEach(session.menus.sorted(by: { $0.orderIndex < $1.orderIndex })) { menu in
                     // メニュー名の表示
                     DisclosureGroup(content: {
                         // メニュー詳細を階層的に表示
@@ -133,8 +133,8 @@ struct SessionDetailView: View {
             .listStyle(InsetGroupedListStyle())
         }
         .sheet(isPresented: $isShowAddView) {
-                CreateTrainingMenuView(
-                    session: session, contentViewModel: contentViewModel)
+            CreateTrainingMenuView(
+                session: session, contentViewModel: contentViewModel)
         }
         .toolbar {
             ToolbarItem(placement: .topBarTrailing) {
@@ -170,7 +170,7 @@ struct SessionDetailView: View {
     
     // メニューを削除する処理
     func deleteMenu(menu: TrainingMenu) {
-
+        
         // session からメニューを削除
         if let index = session.menus.firstIndex(where: { $0.id == menu.id }) {
             session.menus.remove(at: index)

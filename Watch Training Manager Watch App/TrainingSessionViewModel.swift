@@ -104,6 +104,7 @@ class TrainingSessionViewModel: NSObject, ObservableObject {
         
         do {
             let decoder = JSONDecoder()
+            decoder.dateDecodingStrategy = .secondsSince1970
             let session = try decoder.decode(TrainingSession.self, from: jsonData)
             DispatchQueue.main.async {
                 // ViewModelを更新

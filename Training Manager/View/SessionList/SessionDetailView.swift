@@ -77,7 +77,7 @@ struct SessionDetailView: View {
                                 Text("フォーカスポイント:")
                                     .font(.headline)
                                 ForEach(menu.focusPoints, id: \.self) { point in
-                                    Text(point)
+                                    Text(point.label)
                                         .font(.body)
                                 }
                                 .padding(.bottom, 4)

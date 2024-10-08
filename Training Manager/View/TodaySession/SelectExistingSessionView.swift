@@ -39,7 +39,7 @@ struct SelectExistingSessionView: View {
                                             name: originalMenu.name,
                                             goal: originalMenu.goal,
                                             duration: originalMenu.duration ?? TimeInterval(0),
-                                            focusPoints: originalMenu.focusPoints,
+                                            focusPoints: originalMenu.focusPoints.compactMap({$0.label}),
                                             menuDescription: originalMenu.menuDescription ??  "",
                                             orderIndex: originalMenu.orderIndex)
                                     }

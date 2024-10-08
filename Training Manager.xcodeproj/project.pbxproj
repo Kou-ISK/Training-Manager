@@ -12,6 +12,8 @@
 		781C081F2C8BB20F007FF5E3 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 781C081E2C8BB20F007FF5E3 /* AppDelegate.swift */; };
 		781C08212C8D985B007FF5E3 /* alarm_sound.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 781C08202C8D985B007FF5E3 /* alarm_sound.mp3 */; };
 		781C08272C8F34E8007FF5E3 /* SelectExistingMenuView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 781C08262C8F34E8007FF5E3 /* SelectExistingMenuView.swift */; };
+		78718A982CB5620600B81579 /* TrainingMenu.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78E8D35B2C8343AD00C23C5A /* TrainingMenu.swift */; };
+		78718A992CB5620600B81579 /* TrainingSession.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78E8D35C2C8343AD00C23C5A /* TrainingSession.swift */; };
 		78927F552C9CEB04005964EC /* SelectExistingSessionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78927F542C9CEB04005964EC /* SelectExistingSessionView.swift */; };
 		78A877EF2CA11CFC00BAACA6 /* CustomCalendarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78A877EE2CA11CFC00BAACA6 /* CustomCalendarView.swift */; };
 		78C20A0C2C87D0A100AF77ED /* CircleProgressBarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78C20A0B2C87D0A100AF77ED /* CircleProgressBarView.swift */; };
@@ -19,8 +21,6 @@
 		78C20A102C89C64000AF77ED /* SessionDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78C20A0F2C89C64000AF77ED /* SessionDetailView.swift */; };
 		78C20A122C89C6EE00AF77ED /* customDateFormatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78C20A112C89C6EE00AF77ED /* customDateFormatter.swift */; };
 		78CAE39F2CA44EDF00804F53 /* Training Manager Watch App.app in Embed Watch Content */ = {isa = PBXBuildFile; fileRef = 78CAE37C2CA44EDE00804F53 /* Training Manager Watch App.app */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
-		78CAE3B72CA5695400804F53 /* TrainingMenu.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78E8D35B2C8343AD00C23C5A /* TrainingMenu.swift */; };
-		78CAE3B82CA5695400804F53 /* TrainingSession.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78E8D35C2C8343AD00C23C5A /* TrainingSession.swift */; };
 		78CAE3C22CA56DF700804F53 /* alarm_sound.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 781C08202C8D985B007FF5E3 /* alarm_sound.mp3 */; };
 		78CAE3E72CA625A900804F53 /* ContentViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78CAE3E62CA625A900804F53 /* ContentViewModel.swift */; };
 		78CAE48B2CA9471F00804F53 /* Localizable.xcstrings in Resources */ = {isa = PBXBuildFile; fileRef = 78CAE48A2CA9471F00804F53 /* Localizable.xcstrings */; };
@@ -576,8 +576,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				78CAE3B72CA5695400804F53 /* TrainingMenu.swift in Sources */,
-				78CAE3B82CA5695400804F53 /* TrainingSession.swift in Sources */,
+				78718A982CB5620600B81579 /* TrainingMenu.swift in Sources */,
+				78718A992CB5620600B81579 /* TrainingSession.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

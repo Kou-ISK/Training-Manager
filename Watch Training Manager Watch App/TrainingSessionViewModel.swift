@@ -101,6 +101,7 @@ class TrainingSessionViewModel: NSObject, ObservableObject {
             print("Error: Failed to convert JSON string to Data.")
             return
         }
+        print("Received JSON: \(jsonString)")
         
         do {
             let decoder = JSONDecoder()

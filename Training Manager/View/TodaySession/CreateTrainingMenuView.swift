@@ -37,9 +37,9 @@ struct CreateTrainingMenuView: View {
                 }
                 
                 Section(header: Text("フォーカスポイント")) {
-                    ForEach(trainingMenu.focusPoints, id: \.self) { point in
+                    ForEach(trainingMenu.focusPoints, id: \.id) { point in
                         HStack {
-                            Text(point)
+                            Text(point.label)
                             Spacer()
                             Button(action: {
                                 removeFocusPoint(point)
@@ -70,16 +70,16 @@ struct CreateTrainingMenuView: View {
                         get: { trainingMenu.menuDescription ?? ""},
                         set: { trainingMenu.menuDescription = $0 }
                     ))
-                        .overlay(alignment: .topLeading) {
-                            if trainingMenu.menuDescription?.isEmpty ?? true {
-                                Text("備考")
-                                    .foregroundColor(.gray) // プレースホルダーっぽく見せるために色を変更
-                                    .allowsHitTesting(false)
-                                    .padding(.top, 8) // テキストエディタの内側にマージンを設定
-                            }
+                    .overlay(alignment: .topLeading) {
+                        if trainingMenu.menuDescription?.isEmpty ?? true {
+                            Text("備考")
+                                .foregroundColor(.gray) // プレースホルダーっぽく見せるために色を変更
+                                .allowsHitTesting(false)
+                                .padding(.top, 8) // テキストエディタの内側にマージンを設定
                         }
+                    }
                 }
-
+                
                 Section(header: Text("練習時間")){
                     HStack{
                         // ドラムロール形式のPickerで分を選択
@@ -127,14 +127,18 @@ struct CreateTrainingMenuView: View {
     
     private func addFocusPoint() {
         if !newFocusPoint.isEmpty {
-            trainingMenu.focusPoints.append(newFocusPoint)  // 直接TrainingMenuに追加
+            // 新しい FocusPoint インスタンスを作成して追加
+            let newFocus = FocusPoint(label: newFocusPoint)
+            trainingMenu.focusPoints.append(newFocus)
             newFocusPoint = "" // 追加後にテキストフィールドをクリア
         }
     }
     
-    private func removeFocusPoint(_ point: String) {
-        trainingMenu.focusPoints.removeAll { $0 == point }
+    private func removeFocusPoint(_ point: FocusPoint) {
+        // FocusPoint をラベルで比較して削除
+        trainingMenu.focusPoints.removeAll { $0.label == point.label }
     }
+    
     
     private func saveAndDismiss() {
         // 最後のフォーカスポイントの追加がまだなら追加

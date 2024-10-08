@@ -9,8 +9,8 @@
 import Foundation
 import SwiftData
 
-
-@Model public class TrainingMenu: Codable {
+@Model public class TrainingMenu: Codable, Identifiable {
+    public var id = UUID()
     var goal: String
     var menuDescription: String?
     var name: String
@@ -19,21 +19,11 @@ import SwiftData
     var duration: TimeInterval?
     var orderIndex: Int // 並び順を保持するためのプロパティ
     
-    // 内部的に保存されるString型のプロパティ
-    private var focusPointsString: String?
-    
-    // カスタムプロパティで、配列をStringに変換して保存し、取り出すときに再度配列に変換
-    var focusPoints: [String] {
-        get {
-            focusPointsString?.components(separatedBy: ",") ?? []
-        }
-        set {
-            focusPointsString = newValue.joined(separator: ",")
-        }
-    }
+    // focusPoints を [FocusPoint] 型で保持
+    @Relationship var focusPoints: [FocusPoint] = []
     
     // TrainingMenu は複数の TrainingSession に属することができる
-    @Relationship var sessions: [TrainingSession] = []
+    var sessions: [TrainingSession] = []
     
     // 必須のイニシャライザ
     public init() {
@@ -42,21 +32,24 @@ import SwiftData
         self.createdAt = Date()
         self.updatedAt = Date()
         self.duration = nil
-        self.orderIndex = 0 // 初期値として 0 を設定
+        self.orderIndex = 0
     }
     
-    public init(name: String, goal: String, duration: TimeInterval, focusPoints: [String], menuDescription: String, orderIndex: Int) {
+    // focusPointsを[String]型で受け取るイニシャライザ
+    public init(name: String, goal: String, duration: TimeInterval, focusPoints: [String], menuDescription: String?, orderIndex: Int) {
         self.name = name
         self.goal = goal
         self.duration = duration
         self.menuDescription = menuDescription
         self.orderIndex = orderIndex
-        self.createdAt = Date() // 初期値として現在日時を設定
-        self.updatedAt = Date() // 初期値として現在日時を設定
-        self.focusPointsString = focusPoints.joined(separator: ",") // focusPointsを文字列に変換して保存
+        self.createdAt = Date()
+        self.updatedAt = Date()
+        
+        // String 型の配列を FocusPoint 型の配列に変換
+        self.focusPoints = focusPoints.map { FocusPoint(label: $0) }
     }
     
-    // カスタムエンコードメソッド（JSON用にfocusPoints配列をエンコード）
+    // カスタムエンコードメソッド
     public func encode(to encoder: Encoder) throws {
         var container = encoder.container(keyedBy: CodingKeys.self)
         
@@ -68,10 +61,13 @@ import SwiftData
         try container.encode(updatedAt, forKey: .updatedAt)
         try container.encode(duration, forKey: .duration)
         try container.encode(orderIndex, forKey: .orderIndex)
-        try container.encode(focusPoints, forKey: .focusPoints) // focusPoints を配列としてエンコード
+        
+        // focusPoints をエンコード
+        let focusPointLabels = focusPoints.map { $0.label }
+        try container.encode(focusPointLabels, forKey: .focusPoints)
     }
     
-    // カスタムデコードメソッド（JSONからfocusPoints配列をデコード）
+    // カスタムデコードメソッド
     public required init(from decoder: Decoder) throws {
         let container = try decoder.container(keyedBy: CodingKeys.self)
         
@@ -84,9 +80,9 @@ import SwiftData
         duration = try container.decodeIfPresent(TimeInterval.self, forKey: .duration)
         orderIndex = try container.decode(Int.self, forKey: .orderIndex)
         
-        // focusPoints配列をデコードし、内部的にfocusPointsStringに変換
-        let focusPoints = try container.decode([String].self, forKey: .focusPoints)
-        self.focusPointsString = focusPoints.joined(separator: ",")
+        // focusPoints をデコードし、FocusPoint インスタンスに変換
+        let focusPointLabels = try container.decode([String].self, forKey: .focusPoints)
+        self.focusPoints = focusPointLabels.map { FocusPoint(label: $0) }
     }
     
     // Codableのためのキー
@@ -99,5 +95,31 @@ import SwiftData
         case duration
         case orderIndex
         case focusPoints
+    }
+}
+
+@Model public class FocusPoint: Codable, Identifiable {
+    public var id = UUID()
+    var label: String
+    
+    public init(label: String) {
+        self.label = label
+    }
+    
+    // カスタムエンコードメソッド
+    public func encode(to encoder: Encoder) throws {
+        var container = encoder.container(keyedBy: CodingKeys.self)
+        try container.encode(label, forKey: .label)
+    }
+    
+    // カスタムデコードメソッド
+    public required init(from decoder: Decoder) throws {
+        let container = try decoder.container(keyedBy: CodingKeys.self)
+        label = try container.decode(String.self, forKey: .label)
+    }
+    
+    // Codableのためのキー
+    enum CodingKeys: String, CodingKey {
+        case label
     }
 }

@@ -29,7 +29,7 @@ struct TodaySessionView: View {
                         ScrollView{
                             Text(menu.goal)
                             ForEach(menu.focusPoints, id: \.self){ point in
-                                Text("・\(point)")
+                                Text("・\(point.label)")
                             }
                         }.frame(height: 40)
                     }.frame(height: 80)

@@ -92,7 +92,8 @@ struct EditTrainingMenuView: View {
                 // 編集中のメニューの情報をセット
                 name = menu.name
                 goal = menu.goal
-                focusPoints = menu.focusPoints
+                // focusPointsをString型の配列に変換して設定
+                focusPoints = menu.focusPoints.map { $0.label }
                 menuDescription = menu.menuDescription ?? ""
                 
                 // trainingMenu.duration を分と秒に分割して初期値を設定
@@ -112,7 +113,8 @@ struct EditTrainingMenuView: View {
                         addFocusPoint()
                         menu.name = name
                         menu.goal = goal
-                        menu.focusPoints = focusPoints
+                        // focusPointsをString型の配列に変換して設定
+                        focusPoints = menu.focusPoints.map { $0.label }
                         menu.duration = TimeInterval(selectedMinutes * 60 + selectedSeconds)
                         menu.menuDescription = menuDescription
                         onSave() // 保存アクションを実行

@@ -57,8 +57,8 @@ struct TodaySessionView: View {
                                 VStack(alignment:.leading){
                                     Text(menu.name).font(.headline)
                                     Text(menu.goal)
-                                    ForEach(menu.focusPoints, id:\.self){point in
-                                        Text(point)
+                                    ForEach(menu.focusPoints, id:\.id){point in
+                                        Text(point.label)
                                     }
                                 }.padding(.horizontal, 20)
                                 
@@ -100,8 +100,8 @@ struct TodaySessionView: View {
                                     }
                                     Text(menu.goal)
                                         .font(.subheadline).underline()
-                                    ForEach(menu.focusPoints, id:\.self){point in
-                                        Text("・\(point)")
+                                    ForEach(menu.focusPoints, id:\.id){point in
+                                        Text("・\(point.label)")
                                     }
                                     if(menu.menuDescription != "" || menu.menuDescription != nil){
                                         Text(menu.menuDescription ?? "").font(.caption).foregroundStyle(.gray)

@@ -15,15 +15,25 @@ struct CustomCalendarView: View {
     // カレンダーの週や月を作成するために必要なヘルパー
     let calendar = Calendar.current
     
-    // 現在の月の全日付を取得
-    var daysInMonth: [Date] {
-        guard let range = calendar.range(of: .day, in: .month, for: selectedDate) else {
+    // 現在の月の全日付を取得（空白日を含む）
+    var daysInMonthWithPadding: [Date] {
+        guard let startOfMonth = calendar.date(from: calendar.dateComponents([.year, .month], from: selectedDate)),
+              let range = calendar.range(of: .day, in: .month, for: selectedDate) else {
             return []
         }
-        let startOfMonth = calendar.date(from: calendar.dateComponents([.year, .month], from: selectedDate))!
-        return range.compactMap { day -> Date? in
+        
+        // 月の最初の日
+        let firstDayOfMonth = calendar.component(.weekday, from: startOfMonth) - 1
+        let daysInMonth = range.compactMap { day -> Date? in
             return calendar.date(byAdding: .day, value: day - 1, to: startOfMonth)
         }
+        
+        // 前の月の日付を空白として追加
+        let paddingDays = (0..<firstDayOfMonth).compactMap { day -> Date? in
+            return calendar.date(byAdding: .day, value: -(firstDayOfMonth - day), to: startOfMonth)
+        }
+        
+        return paddingDays + daysInMonth
     }
     
     var body: some View {
@@ -58,7 +68,7 @@ struct CustomCalendarView: View {
             
             // カレンダーの日付を表示
             LazyVGrid(columns: Array(repeating: GridItem(.flexible()), count: 7)) {
-                ForEach(daysInMonth, id: \.self) { day in
+                ForEach(daysInMonthWithPadding, id: \.self) { day in
                     VStack {
                         ZStack {
                             // セッションがある日付は赤い丸でマーク
@@ -99,6 +109,7 @@ struct CustomCalendarView: View {
         .padding(10)
     }
 }
+
 
 #Preview {
     CustomCalendarView(

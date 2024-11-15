@@ -11,6 +11,7 @@ import WatchConnectivity
 import SwiftData
 import _SwiftData_SwiftUI
 import SwiftUICore
+import FirebaseCore
 
 func requestNotificationAuthorization() {
     let center = UNUserNotificationCenter.current()
@@ -51,6 +52,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
 
         // modelContextをiPhoneConnectivityManagerに渡す
         iPhoneConnectivityManager.shared.setupModelContext(modelContext)
+        
+        // Firebaseの初期化
+        FirebaseApp.configure()
         return true
     }
     

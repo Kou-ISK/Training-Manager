@@ -49,7 +49,7 @@ struct TrainingMenuHistory: View {
                             }
                             Text(menu.goal).font(.subheadline).underline()
                             ForEach(menu.focusPoints, id: \.self){ point in
-                                Text(point).font(.caption)
+                                Text(point.label).font(.caption)
                             }
                             if(menu.menuDescription != "" || menu.menuDescription != nil){
                                 Text(menu.menuDescription ?? "").font(.caption).foregroundStyle(.gray)

@@ -65,6 +65,9 @@
         }
       }
     },
+    "Crash" : {
+
+    },
     "Duration (分)" : {
       "localizations" : {
         "en" : {

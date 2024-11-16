@@ -12,10 +12,13 @@
 		781C081F2C8BB20F007FF5E3 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 781C081E2C8BB20F007FF5E3 /* AppDelegate.swift */; };
 		781C08212C8D985B007FF5E3 /* alarm_sound.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 781C08202C8D985B007FF5E3 /* alarm_sound.mp3 */; };
 		781C08272C8F34E8007FF5E3 /* SelectExistingMenuView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 781C08262C8F34E8007FF5E3 /* SelectExistingMenuView.swift */; };
-		782858502CE75A91001CF03A /* Firebase GoogleService Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 7828584F2CE75A91001CF03A /* Firebase GoogleService Info.plist */; };
-		782858512CE75A91001CF03A /* Firebase GoogleService Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 7828584F2CE75A91001CF03A /* Firebase GoogleService Info.plist */; };
+		782858502CE75A91001CF03A /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 7828584F2CE75A91001CF03A /* GoogleService-Info.plist */; };
+		782858512CE75A91001CF03A /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 7828584F2CE75A91001CF03A /* GoogleService-Info.plist */; };
 		782858542CE75B0C001CF03A /* FirebaseAnalytics in Frameworks */ = {isa = PBXBuildFile; productRef = 782858532CE75B0C001CF03A /* FirebaseAnalytics */; };
 		782858562CE75B27001CF03A /* FirebaseAnalytics in Frameworks */ = {isa = PBXBuildFile; productRef = 782858552CE75B27001CF03A /* FirebaseAnalytics */; };
+		78285B252CE8CD49001CF03A /* FirebaseCrashlytics in Frameworks */ = {isa = PBXBuildFile; productRef = 78285B242CE8CD49001CF03A /* FirebaseCrashlytics */; };
+		78285B272CE8D105001CF03A /* Training-Manager-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 78285B262CE8D105001CF03A /* Training-Manager-Info.plist */; };
+		78285B282CE8D105001CF03A /* Training-Manager-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 78285B262CE8D105001CF03A /* Training-Manager-Info.plist */; };
 		78718A982CB5620600B81579 /* TrainingMenu.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78E8D35B2C8343AD00C23C5A /* TrainingMenu.swift */; };
 		78718A992CB5620600B81579 /* TrainingSession.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78E8D35C2C8343AD00C23C5A /* TrainingSession.swift */; };
 		78927F552C9CEB04005964EC /* SelectExistingSessionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78927F542C9CEB04005964EC /* SelectExistingSessionView.swift */; };
@@ -104,8 +107,8 @@
 		781C081E2C8BB20F007FF5E3 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		781C08202C8D985B007FF5E3 /* alarm_sound.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = alarm_sound.mp3; sourceTree = "<group>"; };
 		781C08262C8F34E8007FF5E3 /* SelectExistingMenuView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectExistingMenuView.swift; sourceTree = "<group>"; };
-		7828584F2CE75A91001CF03A /* Firebase GoogleService Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "Firebase GoogleService Info.plist"; sourceTree = "<group>"; };
-		782B87D32CACD0F900A3B59B /* Training-Manager-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = "Training-Manager-Info.plist"; sourceTree = SOURCE_ROOT; };
+		7828584F2CE75A91001CF03A /* GoogleService-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		78285B262CE8D105001CF03A /* Training-Manager-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "Training-Manager-Info.plist"; sourceTree = "<group>"; };
 		78927F542C9CEB04005964EC /* SelectExistingSessionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectExistingSessionView.swift; sourceTree = "<group>"; };
 		78A877E82CA0289400BAACA6 /* EnhancePlan.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = EnhancePlan.md; sourceTree = "<group>"; };
 		78A877EE2CA11CFC00BAACA6 /* CustomCalendarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomCalendarView.swift; sourceTree = "<group>"; };
@@ -172,6 +175,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				782858542CE75B0C001CF03A /* FirebaseAnalytics in Frameworks */,
+				78285B252CE8CD49001CF03A /* FirebaseCrashlytics in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -192,6 +196,13 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		78285B232CE8CD49001CF03A /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		78A877E32CA0260700BAACA6 /* Components */ = {
 			isa = PBXGroup;
 			children = (
@@ -211,7 +222,8 @@
 		78E3FA2328E33BCD002CC7AE = {
 			isa = PBXGroup;
 			children = (
-				7828584F2CE75A91001CF03A /* Firebase GoogleService Info.plist */,
+				78285B262CE8D105001CF03A /* Training-Manager-Info.plist */,
+				7828584F2CE75A91001CF03A /* GoogleService-Info.plist */,
 				78CAE48A2CA9471F00804F53 /* Localizable.xcstrings */,
 				78A877E72CA0288C00BAACA6 /* docs */,
 				78E3FA2E28E33BCD002CC7AE /* Training Manager */,
@@ -220,6 +232,7 @@
 				78CAE37D2CA44EDE00804F53 /* Watch Training Manager Watch App */,
 				78CAE38E2CA44EDF00804F53 /* Watch Training Manager Watch AppTests */,
 				78CAE3982CA44EDF00804F53 /* Watch Training Manager Watch AppUITests */,
+				78285B232CE8CD49001CF03A /* Frameworks */,
 				78E3FA2D28E33BCD002CC7AE /* Products */,
 			);
 			sourceTree = "<group>";
@@ -240,7 +253,6 @@
 		78E3FA2E28E33BCD002CC7AE /* Training Manager */ = {
 			isa = PBXGroup;
 			children = (
-				782B87D32CACD0F900A3B59B /* Training-Manager-Info.plist */,
 				781C081E2C8BB20F007FF5E3 /* AppDelegate.swift */,
 				78E3FA2F28E33BCD002CC7AE /* Training_ManagerApp.swift */,
 				78C20A112C89C6EE00AF77ED /* customDateFormatter.swift */,
@@ -422,6 +434,7 @@
 				78E3FA2928E33BCD002CC7AE /* Frameworks */,
 				78E3FA2A28E33BCD002CC7AE /* Resources */,
 				78E3FA7B28E33BCF002CC7AE /* Embed Watch Content */,
+				78285B292CE8D1F4001CF03A /* ShellScript */,
 			);
 			buildRules = (
 			);
@@ -535,9 +548,10 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				78285B282CE8D105001CF03A /* Training-Manager-Info.plist in Resources */,
 				78CAE48B2CA9471F00804F53 /* Localizable.xcstrings in Resources */,
 				78CAE3C22CA56DF700804F53 /* alarm_sound.mp3 in Resources */,
-				782858502CE75A91001CF03A /* Firebase GoogleService Info.plist in Resources */,
+				782858502CE75A91001CF03A /* GoogleService-Info.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -559,9 +573,10 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				78285B272CE8D105001CF03A /* Training-Manager-Info.plist in Resources */,
 				78E3FA3728E33BCE002CC7AE /* Preview Assets.xcassets in Resources */,
 				781C08212C8D985B007FF5E3 /* alarm_sound.mp3 in Resources */,
-				782858512CE75A91001CF03A /* Firebase GoogleService Info.plist in Resources */,
+				782858512CE75A91001CF03A /* GoogleService-Info.plist in Resources */,
 				78CAE48C2CA9471F00804F53 /* Localizable.xcstrings in Resources */,
 				78E3FA3428E33BCE002CC7AE /* Assets.xcassets in Resources */,
 			);
@@ -582,6 +597,31 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		78285B292CE8D1F4001CF03A /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${DWARF_DSYM_FOLDER_PATH}/${DWARF_DSYM_FILE_NAME}",
+				"${DWARF_DSYM_FOLDER_PATH}/${DWARF_DSYM_FILE_NAME}/Contents/Resources/DWARF/${PRODUCT_NAME}",
+				"${DWARF_DSYM_FOLDER_PATH}/${DWARF_DSYM_FILE_NAME}/Contents/Info.plist",
+				"$(TARGET_BUILD_DIR)/$(UNLOCALIZED_RESOURCES_FOLDER_PATH)/GoogleService-Info.plist",
+				"$(TARGET_BUILD_DIR)/$(EXECUTABLE_PATH)",
+			);
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "# Type a script or drag a script file from your workspace to insert its path.\n\"${BUILD_DIR%/Build/*}/SourcePackages/checkouts/firebase-ios-sdk/Crashlytics/run\"\n";
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		78CAE3782CA44EDE00804F53 /* Sources */ = {
@@ -994,6 +1034,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 2.7;
+				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_BUNDLE_IDENTIFIER = "Kou-Isaka.Training-Manager";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
@@ -1031,6 +1072,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 2.7;
+				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_BUNDLE_IDENTIFIER = "Kou-Isaka.Training-Manager";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
@@ -1207,6 +1249,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 782858522CE75B0C001CF03A /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
 			productName = FirebaseAnalytics;
+		};
+		78285B242CE8CD49001CF03A /* FirebaseCrashlytics */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 782858522CE75B0C001CF03A /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseCrashlytics;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};

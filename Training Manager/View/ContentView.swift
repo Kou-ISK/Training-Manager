@@ -16,9 +16,6 @@ struct ContentView: View {
     @StateObject private var contentViewModel = ContentViewModel(trainingSessionList: [], trainingMenuList: [])
     
     var body: some View {
-        Button("Crash") {
-          fatalError("Crash was triggered")
-        }
         TabView{
             TodaySessionView(viewModel: TodaySessionViewModel(contentViewModel: contentViewModel))
                 .tabItem {

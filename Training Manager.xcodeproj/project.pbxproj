@@ -19,6 +19,7 @@
 		78285B252CE8CD49001CF03A /* FirebaseCrashlytics in Frameworks */ = {isa = PBXBuildFile; productRef = 78285B242CE8CD49001CF03A /* FirebaseCrashlytics */; };
 		78285B272CE8D105001CF03A /* Training-Manager-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 78285B262CE8D105001CF03A /* Training-Manager-Info.plist */; };
 		78285B282CE8D105001CF03A /* Training-Manager-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 78285B262CE8D105001CF03A /* Training-Manager-Info.plist */; };
+		78285CE12CEB5A16001CF03A /* FirebaseCrashlytics in Frameworks */ = {isa = PBXBuildFile; productRef = 78285CE02CEB5A16001CF03A /* FirebaseCrashlytics */; };
 		78718A982CB5620600B81579 /* TrainingMenu.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78E8D35B2C8343AD00C23C5A /* TrainingMenu.swift */; };
 		78718A992CB5620600B81579 /* TrainingSession.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78E8D35C2C8343AD00C23C5A /* TrainingSession.swift */; };
 		78927F552C9CEB04005964EC /* SelectExistingSessionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78927F542C9CEB04005964EC /* SelectExistingSessionView.swift */; };
@@ -109,6 +110,7 @@
 		781C08262C8F34E8007FF5E3 /* SelectExistingMenuView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectExistingMenuView.swift; sourceTree = "<group>"; };
 		7828584F2CE75A91001CF03A /* GoogleService-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		78285B262CE8D105001CF03A /* Training-Manager-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "Training-Manager-Info.plist"; sourceTree = "<group>"; };
+		78285CDF2CEB5997001CF03A /* Training-Manager-Watch-App-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = "Training-Manager-Watch-App-Info.plist"; sourceTree = "<group>"; };
 		78927F542C9CEB04005964EC /* SelectExistingSessionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectExistingSessionView.swift; sourceTree = "<group>"; };
 		78A877E82CA0289400BAACA6 /* EnhancePlan.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = EnhancePlan.md; sourceTree = "<group>"; };
 		78A877EE2CA11CFC00BAACA6 /* CustomCalendarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomCalendarView.swift; sourceTree = "<group>"; };
@@ -153,6 +155,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				782858562CE75B27001CF03A /* FirebaseAnalytics in Frameworks */,
+				78285CE12CEB5A16001CF03A /* FirebaseCrashlytics in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -222,6 +225,7 @@
 		78E3FA2328E33BCD002CC7AE = {
 			isa = PBXGroup;
 			children = (
+				78285CDF2CEB5997001CF03A /* Training-Manager-Watch-App-Info.plist */,
 				78285B262CE8D105001CF03A /* Training-Manager-Info.plist */,
 				7828584F2CE75A91001CF03A /* GoogleService-Info.plist */,
 				78CAE48A2CA9471F00804F53 /* Localizable.xcstrings */,
@@ -375,6 +379,7 @@
 			name = "Training Manager Watch App";
 			packageProductDependencies = (
 				782858552CE75B27001CF03A /* FirebaseAnalytics */,
+				78285CE02CEB5A16001CF03A /* FirebaseCrashlytics */,
 			);
 			productName = "Watch Training Manager Watch App";
 			productReference = 78CAE37C2CA44EDE00804F53 /* Training Manager Watch App.app */;
@@ -737,6 +742,7 @@
 				ENABLE_PREVIEWS = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu17;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = "Training-Manager-Watch-App-Info.plist";
 				INFOPLIST_KEY_CFBundleDisplayName = "Training Manager";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
 				INFOPLIST_KEY_WKCompanionAppBundleIdentifier = "Kou-Isaka.Training-Manager";
@@ -745,7 +751,7 @@
 					"@executable_path/Frameworks",
 				);
 				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
-				MARKETING_VERSION = 2.7;
+				MARKETING_VERSION = 2.8;
 				PRODUCT_BUNDLE_IDENTIFIER = "Kou-Isaka.Training-Manager.watchkitapp";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = watchos;
@@ -771,6 +777,7 @@
 				ENABLE_PREVIEWS = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu17;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = "Training-Manager-Watch-App-Info.plist";
 				INFOPLIST_KEY_CFBundleDisplayName = "Training Manager";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
 				INFOPLIST_KEY_WKCompanionAppBundleIdentifier = "Kou-Isaka.Training-Manager";
@@ -779,7 +786,7 @@
 					"@executable_path/Frameworks",
 				);
 				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
-				MARKETING_VERSION = 2.7;
+				MARKETING_VERSION = 2.8;
 				PRODUCT_BUNDLE_IDENTIFIER = "Kou-Isaka.Training-Manager.watchkitapp";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = watchos;
@@ -1251,6 +1258,11 @@
 			productName = FirebaseAnalytics;
 		};
 		78285B242CE8CD49001CF03A /* FirebaseCrashlytics */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 782858522CE75B0C001CF03A /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseCrashlytics;
+		};
+		78285CE02CEB5A16001CF03A /* FirebaseCrashlytics */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = 782858522CE75B0C001CF03A /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
 			productName = FirebaseCrashlytics;

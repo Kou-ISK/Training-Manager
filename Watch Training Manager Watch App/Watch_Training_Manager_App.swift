@@ -9,6 +9,7 @@ import SwiftUI
 import SwiftData
 import FirebaseCore
 
+// TODO: CrashlyticsがWatch Appでも動作するように修正する
 class ExtensionDelegate: NSObject, WKExtensionDelegate {
     func applicationDidFinishLaunching() {
         FirebaseApp.configure()

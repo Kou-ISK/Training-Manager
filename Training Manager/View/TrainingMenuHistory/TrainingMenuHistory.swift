@@ -8,17 +8,21 @@
 import SwiftUI
 
 struct TrainingMenuHistory: View {
-    @ObservedObject var contentViewModel: ContentViewModel
     @Environment(\.modelContext) private var modelContext
     
+    var trainingSessionList: [TrainingSession]
     @State private var isEditMode: Bool = false
     @State private var menuToDelete: TrainingMenu?
     @State private var isShowDeleteAlart: Bool = false
     
+    private var trainingMenuList: [TrainingMenu]{
+        return trainingSessionList.flatMap({$0.menus})
+    }
+    
     var body: some View {
         NavigationStack {
             VStack{
-                List(contentViewModel.trainingMenuList.sorted(by: { $0.orderIndex < $1.orderIndex })){ menu in
+                List(trainingMenuList.sorted(by: { $0.orderIndex < $1.orderIndex })){ menu in
                     HStack{
                         if isEditMode {
                             HStack{
@@ -79,7 +83,6 @@ struct TrainingMenuHistory: View {
     
     // メニューを削除する処理
     private func deleteMenu(menu: TrainingMenu) {
-        contentViewModel.trainingMenuList.removeAll(where: {$0.id == menu.id})
         // データベースから削除
         modelContext.delete(menu)
         // データベースに保存
@@ -93,7 +96,5 @@ struct TrainingMenuHistory: View {
 }
 
 #Preview {
-    TrainingMenuHistory(contentViewModel: ContentViewModel(
-        trainingSessionList: [],
-        trainingMenuList: [TrainingMenu(name: "メニュー1", goal: "ゴール1", duration: 300, focusPoints: ["ポイント1-1", "ポイント1-2", "ポイント1-3"], menuDescription: "備考1", orderIndex: 1),TrainingMenu(name: "メニュー2", goal: "ゴール2", duration: 300, focusPoints: ["ポイント2-1", "ポイント2-2", "ポイント2-3"], menuDescription: "備考2", orderIndex: 2)]))
+    TrainingMenuHistory(trainingSessionList: [])
 }

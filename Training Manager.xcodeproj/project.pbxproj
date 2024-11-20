@@ -8,7 +8,6 @@
 
 /* Begin PBXBuildFile section */
 		780E76C22C9586EF006129B9 /* EditTrainingMenuView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 780E76C12C9586EF006129B9 /* EditTrainingMenuView.swift */; };
-		781C081D2C8B3900007FF5E3 /* TodaySessionViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 781C081C2C8B3900007FF5E3 /* TodaySessionViewModel.swift */; };
 		781C081F2C8BB20F007FF5E3 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 781C081E2C8BB20F007FF5E3 /* AppDelegate.swift */; };
 		781C08212C8D985B007FF5E3 /* alarm_sound.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 781C08202C8D985B007FF5E3 /* alarm_sound.mp3 */; };
 		781C08272C8F34E8007FF5E3 /* SelectExistingMenuView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 781C08262C8F34E8007FF5E3 /* SelectExistingMenuView.swift */; };
@@ -29,7 +28,6 @@
 		78C20A122C89C6EE00AF77ED /* customDateFormatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78C20A112C89C6EE00AF77ED /* customDateFormatter.swift */; };
 		78CAE39F2CA44EDF00804F53 /* Training Manager Watch App.app in Embed Watch Content */ = {isa = PBXBuildFile; fileRef = 78CAE37C2CA44EDE00804F53 /* Training Manager Watch App.app */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		78CAE3C22CA56DF700804F53 /* alarm_sound.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 781C08202C8D985B007FF5E3 /* alarm_sound.mp3 */; };
-		78CAE3E72CA625A900804F53 /* ContentViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78CAE3E62CA625A900804F53 /* ContentViewModel.swift */; };
 		78CAE48B2CA9471F00804F53 /* Localizable.xcstrings in Resources */ = {isa = PBXBuildFile; fileRef = 78CAE48A2CA9471F00804F53 /* Localizable.xcstrings */; };
 		78CAE48C2CA9471F00804F53 /* Localizable.xcstrings in Resources */ = {isa = PBXBuildFile; fileRef = 78CAE48A2CA9471F00804F53 /* Localizable.xcstrings */; };
 		78E3FA3028E33BCD002CC7AE /* Training_ManagerApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78E3FA2F28E33BCD002CC7AE /* Training_ManagerApp.swift */; };
@@ -103,7 +101,6 @@
 
 /* Begin PBXFileReference section */
 		780E76C12C9586EF006129B9 /* EditTrainingMenuView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditTrainingMenuView.swift; sourceTree = "<group>"; };
-		781C081C2C8B3900007FF5E3 /* TodaySessionViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodaySessionViewModel.swift; sourceTree = "<group>"; };
 		781C081E2C8BB20F007FF5E3 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		781C08202C8D985B007FF5E3 /* alarm_sound.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = alarm_sound.mp3; sourceTree = "<group>"; };
 		781C08262C8F34E8007FF5E3 /* SelectExistingMenuView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectExistingMenuView.swift; sourceTree = "<group>"; };
@@ -120,7 +117,6 @@
 		78CAE37C2CA44EDE00804F53 /* Training Manager Watch App.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Training Manager Watch App.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		78CAE38B2CA44EDF00804F53 /* Watch Training Manager Watch AppTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Watch Training Manager Watch AppTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		78CAE3952CA44EDF00804F53 /* Watch Training Manager Watch AppUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Watch Training Manager Watch AppUITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
-		78CAE3E62CA625A900804F53 /* ContentViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentViewModel.swift; sourceTree = "<group>"; };
 		78CAE48A2CA9471F00804F53 /* Localizable.xcstrings */ = {isa = PBXFileReference; lastKnownFileType = text.json.xcstrings; path = Localizable.xcstrings; sourceTree = "<group>"; };
 		78E3FA2C28E33BCD002CC7AE /* Training Manager.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Training Manager.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		78E3FA2F28E33BCD002CC7AE /* Training_ManagerApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Training_ManagerApp.swift; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
@@ -333,9 +329,7 @@
 		78FE2A172C9BA13A009BFDD3 /* ViewModel */ = {
 			isa = PBXGroup;
 			children = (
-				781C081C2C8B3900007FF5E3 /* TodaySessionViewModel.swift */,
 				78E8D3842C85CC3200C23C5A /* TimerViewModel.swift */,
-				78CAE3E62CA625A900804F53 /* ContentViewModel.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -686,7 +680,6 @@
 				780E76C22C9586EF006129B9 /* EditTrainingMenuView.swift in Sources */,
 				78C20A102C89C64000AF77ED /* SessionDetailView.swift in Sources */,
 				78E8D35D2C8343AD00C23C5A /* TrainingMenu.swift in Sources */,
-				781C081D2C8B3900007FF5E3 /* TodaySessionViewModel.swift in Sources */,
 				78C20A0C2C87D0A100AF77ED /* CircleProgressBarView.swift in Sources */,
 				78E8D35E2C8343AD00C23C5A /* TrainingSession.swift in Sources */,
 				78E3FA3028E33BCD002CC7AE /* Training_ManagerApp.swift in Sources */,
@@ -694,7 +687,6 @@
 				78C20A0E2C89C4B100AF77ED /* TrainingSessionListView.swift in Sources */,
 				78E8D3852C85CC3200C23C5A /* TimerViewModel.swift in Sources */,
 				781C081F2C8BB20F007FF5E3 /* AppDelegate.swift in Sources */,
-				78CAE3E72CA625A900804F53 /* ContentViewModel.swift in Sources */,
 				78E8D37E2C845D5500C23C5A /* CreateTrainingMenuView.swift in Sources */,
 				781C08272C8F34E8007FF5E3 /* SelectExistingMenuView.swift in Sources */,
 				78A877EF2CA11CFC00BAACA6 /* CustomCalendarView.swift in Sources */,

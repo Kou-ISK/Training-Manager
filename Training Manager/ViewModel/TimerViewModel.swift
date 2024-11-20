@@ -11,6 +11,7 @@ import AudioToolbox
 import AVFoundation
 import UserNotifications
 
+// TODO: 削除
 class TimerViewModel: ObservableObject {
     @Published var remainingTime: TimeInterval // 残り時間（秒単位）
     @Published var timer: AnyCancellable? // タイマー

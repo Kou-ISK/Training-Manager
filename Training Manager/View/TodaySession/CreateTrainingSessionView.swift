@@ -11,8 +11,6 @@ struct CreateTrainingSessionView: View {
     @Environment(\.dismiss) private var dismiss
     @Environment(\.modelContext) private var modelContext
     
-    @State var contentViewModel: ContentViewModel
-    
     var sessionDate: Date
     @State private var newSession = TrainingSession(sessionDate: Date())
     @State private var duration: Int64 = 0
@@ -44,7 +42,7 @@ struct CreateTrainingSessionView: View {
                             }
                         }
                 
-                NavigationLink("既存のセッションから追加", destination: SelectExistingSessionView(contentViewModel: contentViewModel, trainingSession: newSession, trainingSessionList: trainingSessionList))
+                NavigationLink("既存のセッションから追加", destination: SelectExistingSessionView(trainingSession: newSession, trainingSessionList: trainingSessionList))
                 
             }
             .toolbar {
@@ -76,7 +74,7 @@ struct CreateTrainingSessionView: View {
 }
 
 #Preview {
-    CreateTrainingSessionView(contentViewModel: ContentViewModel(trainingSessionList: [], trainingMenuList: []), sessionDate: Date(), trainingSessionList:  [
+    CreateTrainingSessionView(sessionDate: Date(), trainingSessionList:  [
         TrainingSession(theme: "テーマ1", sessionDescription: "備考1", sessionDate: Date(), menus:
                             [TrainingMenu(name: "メニュー1", goal: "ゴール1", duration: TimeInterval(500), focusPoints: ["FP1", "FP2"], menuDescription: "マーカーを置いておく", orderIndex: 0)
                             ]

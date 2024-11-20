@@ -22,9 +22,6 @@ import SwiftData
     // focusPoints を [FocusPoint] 型で保持
     @Relationship var focusPoints: [FocusPoint] = []
     
-    // TrainingMenu は複数の TrainingSession に属することができる
-    var sessions: [TrainingSession] = []
-    
     // 必須のイニシャライザ
     public init() {
         self.name = ""

@@ -7,9 +7,17 @@
 
 import SwiftUI
 import SwiftData
+import FirebaseCore
+
+class ExtensionDelegate: NSObject, WKExtensionDelegate {
+    func applicationDidFinishLaunching() {
+        FirebaseApp.configure()
+    }
+}
 
 @main
 struct Watch_Training_Manager_Watch_App: App {
+    @WKExtensionDelegateAdaptor(ExtensionDelegate.self) var delegate
     @StateObject var viewModel = TrainingSessionViewModel()
     
     var sharedModelContainer: ModelContainer = {

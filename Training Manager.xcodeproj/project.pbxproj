@@ -12,14 +12,13 @@
 		781C081F2C8BB20F007FF5E3 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 781C081E2C8BB20F007FF5E3 /* AppDelegate.swift */; };
 		781C08212C8D985B007FF5E3 /* alarm_sound.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 781C08202C8D985B007FF5E3 /* alarm_sound.mp3 */; };
 		781C08272C8F34E8007FF5E3 /* SelectExistingMenuView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 781C08262C8F34E8007FF5E3 /* SelectExistingMenuView.swift */; };
-		782858502CE75A91001CF03A /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 7828584F2CE75A91001CF03A /* GoogleService-Info.plist */; };
 		782858512CE75A91001CF03A /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 7828584F2CE75A91001CF03A /* GoogleService-Info.plist */; };
 		782858542CE75B0C001CF03A /* FirebaseAnalytics in Frameworks */ = {isa = PBXBuildFile; productRef = 782858532CE75B0C001CF03A /* FirebaseAnalytics */; };
 		782858562CE75B27001CF03A /* FirebaseAnalytics in Frameworks */ = {isa = PBXBuildFile; productRef = 782858552CE75B27001CF03A /* FirebaseAnalytics */; };
 		78285B252CE8CD49001CF03A /* FirebaseCrashlytics in Frameworks */ = {isa = PBXBuildFile; productRef = 78285B242CE8CD49001CF03A /* FirebaseCrashlytics */; };
 		78285B272CE8D105001CF03A /* Training-Manager-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 78285B262CE8D105001CF03A /* Training-Manager-Info.plist */; };
 		78285B282CE8D105001CF03A /* Training-Manager-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 78285B262CE8D105001CF03A /* Training-Manager-Info.plist */; };
-		78285CE12CEB5A16001CF03A /* FirebaseCrashlytics in Frameworks */ = {isa = PBXBuildFile; productRef = 78285CE02CEB5A16001CF03A /* FirebaseCrashlytics */; };
+		78285E2C2CEE2C0C001CF03A /* FirebaseCrashlytics in Frameworks */ = {isa = PBXBuildFile; productRef = 78285E2B2CEE2C0C001CF03A /* FirebaseCrashlytics */; };
 		78718A982CB5620600B81579 /* TrainingMenu.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78E8D35B2C8343AD00C23C5A /* TrainingMenu.swift */; };
 		78718A992CB5620600B81579 /* TrainingSession.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78E8D35C2C8343AD00C23C5A /* TrainingSession.swift */; };
 		78927F552C9CEB04005964EC /* SelectExistingSessionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78927F542C9CEB04005964EC /* SelectExistingSessionView.swift */; };
@@ -155,7 +154,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				782858562CE75B27001CF03A /* FirebaseAnalytics in Frameworks */,
-				78285CE12CEB5A16001CF03A /* FirebaseCrashlytics in Frameworks */,
+				78285E2C2CEE2C0C001CF03A /* FirebaseCrashlytics in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -227,7 +226,6 @@
 			children = (
 				78285CDF2CEB5997001CF03A /* Training-Manager-Watch-App-Info.plist */,
 				78285B262CE8D105001CF03A /* Training-Manager-Info.plist */,
-				7828584F2CE75A91001CF03A /* GoogleService-Info.plist */,
 				78CAE48A2CA9471F00804F53 /* Localizable.xcstrings */,
 				78A877E72CA0288C00BAACA6 /* docs */,
 				78E3FA2E28E33BCD002CC7AE /* Training Manager */,
@@ -266,6 +264,7 @@
 				78E3FA3328E33BCE002CC7AE /* Assets.xcassets */,
 				781C08202C8D985B007FF5E3 /* alarm_sound.mp3 */,
 				78E3FA3528E33BCE002CC7AE /* Preview Content */,
+				7828584F2CE75A91001CF03A /* GoogleService-Info.plist */,
 			);
 			path = "Training Manager";
 			sourceTree = "<group>";
@@ -368,6 +367,7 @@
 				78CAE3782CA44EDE00804F53 /* Sources */,
 				78CAE3792CA44EDE00804F53 /* Frameworks */,
 				78CAE37A2CA44EDE00804F53 /* Resources */,
+				78285E302CEE328B001CF03A /* ShellScript */,
 			);
 			buildRules = (
 			);
@@ -379,7 +379,7 @@
 			name = "Training Manager Watch App";
 			packageProductDependencies = (
 				782858552CE75B27001CF03A /* FirebaseAnalytics */,
-				78285CE02CEB5A16001CF03A /* FirebaseCrashlytics */,
+				78285E2B2CEE2C0C001CF03A /* FirebaseCrashlytics */,
 			);
 			productName = "Watch Training Manager Watch App";
 			productReference = 78CAE37C2CA44EDE00804F53 /* Training Manager Watch App.app */;
@@ -556,7 +556,6 @@
 				78285B282CE8D105001CF03A /* Training-Manager-Info.plist in Resources */,
 				78CAE48B2CA9471F00804F53 /* Localizable.xcstrings in Resources */,
 				78CAE3C22CA56DF700804F53 /* alarm_sound.mp3 in Resources */,
-				782858502CE75A91001CF03A /* GoogleService-Info.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -614,6 +613,28 @@
 			inputPaths = (
 				"${DWARF_DSYM_FOLDER_PATH}/${DWARF_DSYM_FILE_NAME}",
 				"${DWARF_DSYM_FOLDER_PATH}/${DWARF_DSYM_FILE_NAME}/Contents/Resources/DWARF/${PRODUCT_NAME}",
+				"${DWARF_DSYM_FOLDER_PATH}/${DWARF_DSYM_FILE_NAME}/Contents/Info.plist",
+				"$(TARGET_BUILD_DIR)/$(UNLOCALIZED_RESOURCES_FOLDER_PATH)/GoogleService-Info.plist",
+				"$(TARGET_BUILD_DIR)/$(EXECUTABLE_PATH)",
+			);
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "# Type a script or drag a script file from your workspace to insert its path.\n\"${BUILD_DIR%/Build/*}/SourcePackages/checkouts/firebase-ios-sdk/Crashlytics/run\"\n";
+		};
+		78285E302CEE328B001CF03A /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${DWARF_DSYM_FOLDER_PATH}/${DWARF_DSYM_FILE_NAME}/Contents/Resources/DWARF/${PRODUCT_NAME}",
+				"${DWARF_DSYM_FOLDER_PATH}/${DWARF_DSYM_FILE_NAME}",
 				"${DWARF_DSYM_FOLDER_PATH}/${DWARF_DSYM_FILE_NAME}/Contents/Info.plist",
 				"$(TARGET_BUILD_DIR)/$(UNLOCALIZED_RESOURCES_FOLDER_PATH)/GoogleService-Info.plist",
 				"$(TARGET_BUILD_DIR)/$(EXECUTABLE_PATH)",
@@ -949,7 +970,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 17.6;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
-				ONLY_ACTIVE_ARCH = YES;
+				ONLY_ACTIVE_ARCH = NO;
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
@@ -1008,6 +1029,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 17.6;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = NO;
 				SWIFT_COMPILATION_MODE = wholemodule;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_OPTIMIZATION_LEVEL = "-O";
@@ -1262,7 +1284,7 @@
 			package = 782858522CE75B0C001CF03A /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
 			productName = FirebaseCrashlytics;
 		};
-		78285CE02CEB5A16001CF03A /* FirebaseCrashlytics */ = {
+		78285E2B2CEE2C0C001CF03A /* FirebaseCrashlytics */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = 782858522CE75B0C001CF03A /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
 			productName = FirebaseCrashlytics;

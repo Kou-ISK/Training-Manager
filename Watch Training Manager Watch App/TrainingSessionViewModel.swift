@@ -74,31 +74,31 @@ class TrainingSessionViewModel: NSObject, ObservableObject {
     
     // iPhone/iPadからのデータ取得を要求
     func sendMessage() {
+        guard session.isReachable else {
+            print("WCSession is not reachable. Check iPhone connection.")
+            return
+        }
+        
         let messages: [String: Any] = ["request": "getTrainingData"]
         
-        // エラーハンドリングを追加
-        if session.activationState == .activated {
-            self.session.sendMessage(messages, replyHandler: { response in
-                if let trainingSessionData = response["trainingSession"] as? String {
-                    print("Received training session data: \(trainingSessionData)")
-                    
-                    // JSONをデコードしてViewModelに格納
-                    self.decodeTrainingSession(from: trainingSessionData)
-                } else {
-                    print("Error: No valid training session data in response.")
-                }
-            }) { error in
-                print("Error sending message: \(error.localizedDescription)")
+        session.sendMessage(messages, replyHandler: { response in
+            guard let trainingSessionData = response["trainingSession"] as? String else {
+                print("Error: Response does not contain valid training session data.")
+                return
             }
-        } else {
-            print("WCSession is not activated, unable to send message.")
-        }
+            
+            print("Received training session data: \(trainingSessionData)")
+            self.decodeTrainingSession(from: trainingSessionData)
+        }, errorHandler: { error in
+            print("Error sending message: \(error.localizedDescription)")
+        })
     }
+
     
     // JSONデータをデコード
     func decodeTrainingSession(from jsonString: String) {
-        guard let jsonData = jsonString.data(using: .utf8) else {
-            print("Error: Failed to convert JSON string to Data.")
+        guard !jsonString.isEmpty, let jsonData = jsonString.data(using: .utf8) else {
+            print("Error: Invalid or empty JSON string.")
             return
         }
         print("Received JSON: \(jsonString)")
@@ -115,6 +115,7 @@ class TrainingSessionViewModel: NSObject, ObservableObject {
             print("Error decoding JSON: \(error.localizedDescription)")
         }
     }
+
 }
 
 extension TrainingSessionViewModel: WCSessionDelegate {
@@ -123,7 +124,7 @@ extension TrainingSessionViewModel: WCSessionDelegate {
         if let error = error {
             print("WCSession activation error: \(error.localizedDescription)")
         } else {
-            print("WCSession activated successfully.")
+            print("WCSession activated successfully with state: \(activationState.rawValue)")
         }
     }
 }

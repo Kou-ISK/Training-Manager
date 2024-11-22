@@ -18,6 +18,8 @@
 		78285B272CE8D105001CF03A /* Training-Manager-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 78285B262CE8D105001CF03A /* Training-Manager-Info.plist */; };
 		78285B282CE8D105001CF03A /* Training-Manager-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 78285B262CE8D105001CF03A /* Training-Manager-Info.plist */; };
 		78285E2C2CEE2C0C001CF03A /* FirebaseCrashlytics in Frameworks */ = {isa = PBXBuildFile; productRef = 78285E2B2CEE2C0C001CF03A /* FirebaseCrashlytics */; };
+		78285F7D2CF09F3C001CF03A /* TrainingMenuList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78285F7C2CF09F3C001CF03A /* TrainingMenuList.swift */; };
+		78285F7F2CF0B91A001CF03A /* TrainingMenuRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78285F7E2CF0B91A001CF03A /* TrainingMenuRow.swift */; };
 		78718A982CB5620600B81579 /* TrainingMenu.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78E8D35B2C8343AD00C23C5A /* TrainingMenu.swift */; };
 		78718A992CB5620600B81579 /* TrainingSession.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78E8D35C2C8343AD00C23C5A /* TrainingSession.swift */; };
 		78927F552C9CEB04005964EC /* SelectExistingSessionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78927F542C9CEB04005964EC /* SelectExistingSessionView.swift */; };
@@ -107,6 +109,8 @@
 		7828584F2CE75A91001CF03A /* GoogleService-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		78285B262CE8D105001CF03A /* Training-Manager-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "Training-Manager-Info.plist"; sourceTree = "<group>"; };
 		78285CDF2CEB5997001CF03A /* Training-Manager-Watch-App-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = "Training-Manager-Watch-App-Info.plist"; sourceTree = "<group>"; };
+		78285F7C2CF09F3C001CF03A /* TrainingMenuList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrainingMenuList.swift; sourceTree = "<group>"; };
+		78285F7E2CF0B91A001CF03A /* TrainingMenuRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrainingMenuRow.swift; sourceTree = "<group>"; };
 		78927F542C9CEB04005964EC /* SelectExistingSessionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectExistingSessionView.swift; sourceTree = "<group>"; };
 		78A877E82CA0289400BAACA6 /* EnhancePlan.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = EnhancePlan.md; sourceTree = "<group>"; };
 		78A877EE2CA11CFC00BAACA6 /* CustomCalendarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomCalendarView.swift; sourceTree = "<group>"; };
@@ -309,6 +313,8 @@
 				78C20A0B2C87D0A100AF77ED /* CircleProgressBarView.swift */,
 				780E76C12C9586EF006129B9 /* EditTrainingMenuView.swift */,
 				78E6F5C128E71BBA00BAEA24 /* TodaySessionView.swift */,
+				78285F7C2CF09F3C001CF03A /* TrainingMenuList.swift */,
+				78285F7E2CF0B91A001CF03A /* TrainingMenuRow.swift */,
 				781C08262C8F34E8007FF5E3 /* SelectExistingMenuView.swift */,
 				78927F542C9CEB04005964EC /* SelectExistingSessionView.swift */,
 				78E8D37D2C845D5500C23C5A /* CreateTrainingMenuView.swift */,
@@ -688,7 +694,9 @@
 				78E8D3852C85CC3200C23C5A /* TimerViewModel.swift in Sources */,
 				781C081F2C8BB20F007FF5E3 /* AppDelegate.swift in Sources */,
 				78E8D37E2C845D5500C23C5A /* CreateTrainingMenuView.swift in Sources */,
+				78285F7F2CF0B91A001CF03A /* TrainingMenuRow.swift in Sources */,
 				781C08272C8F34E8007FF5E3 /* SelectExistingMenuView.swift in Sources */,
+				78285F7D2CF09F3C001CF03A /* TrainingMenuList.swift in Sources */,
 				78A877EF2CA11CFC00BAACA6 /* CustomCalendarView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

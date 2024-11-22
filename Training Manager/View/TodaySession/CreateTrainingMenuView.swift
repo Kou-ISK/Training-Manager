@@ -11,7 +11,7 @@ struct CreateTrainingMenuView: View {
     @Environment(\.dismiss) private var dismiss
     @Environment(\.modelContext) private var modelContext
     
-    @State var session: TrainingSession
+    @Binding var session: TrainingSession
     @State private var trainingMenu = TrainingMenu()
     var trainingSessionList: [TrainingSession]
     private var trainingMenuList:[TrainingMenu]{
@@ -168,5 +168,5 @@ struct CreateTrainingMenuView: View {
 }
 
 #Preview {
-    CreateTrainingMenuView(session: TrainingSession(), trainingSessionList: [TrainingSession()])
+    CreateTrainingMenuView(session: .constant(TrainingSession()), trainingSessionList: [TrainingSession()])
 }

@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct SessionDetailView: View {
-    var session: TrainingSession
+    @State var session: TrainingSession
     var trainingSessionList: [TrainingSession]
     
     @Environment(\.dismiss) private var dismiss
@@ -133,7 +133,7 @@ struct SessionDetailView: View {
         }
         .sheet(isPresented: $isShowAddView) {
             CreateTrainingMenuView(
-                session: session, trainingSessionList: trainingSessionList)
+                session: $session,trainingSessionList: trainingSessionList)
         }
         .toolbar {
             ToolbarItem(placement: .topBarTrailing) {

@@ -9,7 +9,7 @@ import SwiftUI
 struct TodaySessionView: View {
     @Environment(\.modelContext) private var modelContext
     
-    @State var trainingSessionList: [TrainingSession]
+    var trainingSessionList: [TrainingSession]
     
     @State private var currentTrainingSession: TrainingSession?
     @State private var currentTrainingMenu: TrainingMenu?
@@ -45,7 +45,7 @@ struct TodaySessionView: View {
     }
     
     func addSession(newSession: TrainingSession) {
-        trainingSessionList.append(newSession)
+        modelContext.insert(newSession)
         currentTrainingSession = newSession
         isShowNewSessionView = false
     }
@@ -72,7 +72,6 @@ struct TodaySessionView: View {
     
     // セッションを削除する処理
     func deleteSession(session: TrainingSession) {
-        trainingSessionList.removeAll(where: {$0.id == session.id})
         modelContext.delete(session.self)
         // データベースに保存
         do {

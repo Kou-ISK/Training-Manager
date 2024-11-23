@@ -11,7 +11,7 @@ struct TrainingSessionListView: View {
     @Environment(\.dismiss) private var dismiss
     @Environment(\.modelContext) private var modelContext
     
-    @State var trainingSessionList: [TrainingSession]
+    var trainingSessionList: [TrainingSession]
     
     @State private var selectedDate = Date()
     @State private var isShowNewSessionView:Bool = false
@@ -31,7 +31,7 @@ struct TrainingSessionListView: View {
     
     // 新規セッション追加
     func addSession(newSession: TrainingSession) {
-        trainingSessionList.append(newSession)
+        modelContext.insert(newSession)
         // データベースに保存
         do {
             try modelContext.save() // 変更を保存
@@ -44,7 +44,7 @@ struct TrainingSessionListView: View {
     // セッション削除後にリストを更新
     func removeSession(_ session: TrainingSession) {
         if let index = trainingSessionList.firstIndex(of: session) {
-            trainingSessionList.remove(at: index)
+            modelContext.delete(trainingSessionList[index].self)
         }
     }
     

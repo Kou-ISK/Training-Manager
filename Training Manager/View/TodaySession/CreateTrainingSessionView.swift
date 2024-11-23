@@ -29,18 +29,18 @@ struct CreateTrainingSessionView: View {
                     get: { newSession.theme ?? "" },
                     set: { newSession.theme = $0 }
                 ))
-                    TextEditor(text: Binding(
-                        get: { newSession.sessionDescription ?? ""},
-                        set: { newSession.sessionDescription = $0 }
-                    ))
-                        .overlay(alignment: .topLeading) {
-                            if newSession.sessionDescription?.isEmpty ?? true {
-                                Text("備考")
-                                    .foregroundColor(.gray) // プレースホルダーっぽく見せるために色を変更
-                                    .allowsHitTesting(false)
-                                    .padding(.top, 8) // テキストエディタの内側にマージンを設定
-                            }
-                        }
+                TextEditor(text: Binding(
+                    get: { newSession.sessionDescription ?? ""},
+                    set: { newSession.sessionDescription = $0 }
+                ))
+                .overlay(alignment: .topLeading) {
+                    if newSession.sessionDescription?.isEmpty ?? true {
+                        Text("備考")
+                            .foregroundColor(.gray) // プレースホルダーっぽく見せるために色を変更
+                            .allowsHitTesting(false)
+                            .padding(.top, 8) // テキストエディタの内側にマージンを設定
+                    }
+                }
                 
                 NavigationLink("既存のセッションから追加", destination: SelectExistingSessionView(trainingSession: newSession, trainingSessionList: trainingSessionList))
                 
@@ -75,13 +75,32 @@ struct CreateTrainingSessionView: View {
 
 #Preview {
     CreateTrainingSessionView(sessionDate: Date(), trainingSessionList:  [
-        TrainingSession(theme: "テーマ1", sessionDescription: "備考1", sessionDate: Date(), menus:
-                            [TrainingMenu(name: "メニュー1", goal: "ゴール1", duration: TimeInterval(500), focusPoints: ["FP1", "FP2"], menuDescription: "マーカーを置いておく", orderIndex: 0)
-                            ]
-                       ),
-        TrainingSession(theme: "テーマ2", sessionDescription: "備考2", sessionDate: Date(), menus:
-                            [TrainingMenu(name: "メニュー2", goal: "ゴール2", duration: TimeInterval(500), focusPoints: ["FP1", "FP2"], menuDescription: "マーカーを置いておく", orderIndex: 0)
-                            ]
+        TrainingSession(
+            theme: "テーマ1",
+            sessionDescription: "備考1",
+            sessionDate: Date(),
+            menus: [
+                TrainingMenu(
+                    name: "メニュー1",
+                    goal: "ゴール1",
+                    duration: TimeInterval(500),
+                    focusPoints: ["FP1", "FP2"],
+                    menuDescription: "マーカーを置いておく",
+                    orderIndex: 0)
+            ]
+        ),
+        TrainingSession(theme: "テーマ2",
+                        sessionDescription: "備考2",
+                        sessionDate: Date(),
+                        menus: [
+                            TrainingMenu(
+                                name: "メニュー2",
+                                goal: "ゴール2",
+                                duration: TimeInterval(500),
+                                focusPoints: ["FP1", "FP2"],
+                                menuDescription: "マーカーを置いておく",
+                                orderIndex: 0)
+                        ]
                        )
     ], onSave: { _ in })
 }

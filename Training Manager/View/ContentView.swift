@@ -10,7 +10,6 @@ import SwiftData
 
 struct ContentView: View {
     @Query private var trainingSessionList: [TrainingSession]
-    @Query private var trainingMenuList: [TrainingMenu]
     
     var body: some View {
         TabView{

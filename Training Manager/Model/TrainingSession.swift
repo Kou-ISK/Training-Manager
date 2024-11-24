@@ -25,12 +25,14 @@ import SwiftData
     
     public init(sessionDate: Date) {
         self.sessionDate = sessionDate
+        self.menus = []
     }
     
     public init(theme: String, sessionDescription: String, sessionDate: Date) {
         self.theme = theme
         self.sessionDescription = sessionDescription
         self.sessionDate = sessionDate
+        self.menus = []
     }
     
     public init(theme: String, sessionDescription: String, sessionDate: Date, menus: [TrainingMenu]) {

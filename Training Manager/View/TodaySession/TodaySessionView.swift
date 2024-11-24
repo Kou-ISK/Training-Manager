@@ -9,7 +9,7 @@ import SwiftUI
 struct TodaySessionView: View {
     @Environment(\.modelContext) private var modelContext
     
-    var trainingSessionList: [TrainingSession]
+    @State var trainingSessionList: [TrainingSession]
     
     @State private var currentTrainingSession: TrainingSession?
     @State private var currentTrainingMenu: TrainingMenu?
@@ -45,13 +45,16 @@ struct TodaySessionView: View {
     }
     
     func addSession(newSession: TrainingSession) {
+        trainingSessionList.append(newSession)
         modelContext.insert(newSession)
         currentTrainingSession = newSession
         isShowNewSessionView = false
-    }
-    
-    func addMenu(newMenu: TrainingMenu) {
-        modelContext.insert(newMenu)
+        // データベースに保存
+        do {
+            try modelContext.save() // 変更を保存
+        } catch {
+            print("Failed to save context: \(error)")
+        }
     }
     
     func showAddView() {
@@ -158,7 +161,7 @@ struct TodaySessionView: View {
                         session: Binding(
                             get: { todaySession },
                             set: { currentTrainingSession = $0 }
-                        ), trainingSessionList: trainingSessionList)
+                        ), trainingSessionList: $trainingSessionList)
                 }
             }
             .sheet(isPresented: $isShowNewSessionView) {

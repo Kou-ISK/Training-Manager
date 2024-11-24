@@ -13,7 +13,7 @@ struct CreateTrainingMenuView: View {
     
     @Binding var session: TrainingSession
     @State private var trainingMenu = TrainingMenu()
-    var trainingSessionList: [TrainingSession]
+    @Binding var trainingSessionList: [TrainingSession]
     private var trainingMenuList:[TrainingMenu]{
         trainingSessionList.flatMap({$0.menus})
     }
@@ -168,5 +168,5 @@ struct CreateTrainingMenuView: View {
 }
 
 #Preview {
-    CreateTrainingMenuView(session: .constant(TrainingSession()), trainingSessionList: [TrainingSession()])
+    CreateTrainingMenuView(session: .constant(TrainingSession()), trainingSessionList: .constant([TrainingSession()]))
 }

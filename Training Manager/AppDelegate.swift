@@ -31,8 +31,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
     // ModelContainerの宣言
     var sharedModelContainer: ModelContainer = {
         let schema = Schema([
-            TrainingSession.self,
-            TrainingMenu.self
+            TrainingSession.self
         ])
         let modelConfiguration = ModelConfiguration(schema: schema, isStoredInMemoryOnly: false)
 

@@ -151,10 +151,13 @@ struct CreateTrainingMenuView: View {
         // 分と秒を TimeInterval に変換して保存
         trainingMenu.duration = TimeInterval(selectedMinutes * 60 + selectedSeconds)
         trainingMenu.orderIndex = session.menus.count
+        trainingMenu.trainingSession = session // リレーションを設定
         
+        // 新しいメニューを `modelContext` に挿入
+        modelContext.insert(trainingMenu)
         // 新しいメニューをセッションに追加
         session.menus.append(trainingMenu)  // TrainingSessionにメニューを追加
-        
+
         // データベースに保存
         do {
             try modelContext.save() // TrainingSession の変更を保存

@@ -8,22 +8,22 @@
 import SwiftUI
 
 struct TrainingSessionListView: View {
-    @State var contentViewModel: ContentViewModel
-    
     @Environment(\.dismiss) private var dismiss
     @Environment(\.modelContext) private var modelContext
+    
+    var trainingSessionList: [TrainingSession]
     
     @State private var selectedDate = Date()
     @State private var isShowNewSessionView:Bool = false
     
     // セッションがある日付を抽出
     var sessionDates: [Date] {
-        contentViewModel.trainingSessionList.compactMap { $0.sessionDate }
+        trainingSessionList.compactMap { $0.sessionDate }
     }
     
     // 選択された日付に対応するセッションのフィルター
     var filteredSessions: [TrainingSession] {
-        contentViewModel.trainingSessionList.filter { session in
+        trainingSessionList.filter { session in
             guard let sessionDate = session.sessionDate else { return false }
             return Calendar.current.isDate(sessionDate, inSameDayAs: selectedDate)
         }
@@ -31,7 +31,7 @@ struct TrainingSessionListView: View {
     
     // 新規セッション追加
     func addSession(newSession: TrainingSession) {
-        contentViewModel.trainingSessionList.append(newSession)
+        modelContext.insert(newSession)
         // データベースに保存
         do {
             try modelContext.save() // 変更を保存
@@ -43,8 +43,8 @@ struct TrainingSessionListView: View {
     
     // セッション削除後にリストを更新
     func removeSession(_ session: TrainingSession) {
-        if let index = contentViewModel.trainingSessionList.firstIndex(of: session) {
-            contentViewModel.trainingSessionList.remove(at: index)
+        if let index = trainingSessionList.firstIndex(of: session) {
+            modelContext.delete(trainingSessionList[index].self)
         }
     }
     
@@ -57,7 +57,7 @@ struct TrainingSessionListView: View {
                 // 選択された日付のセッションを表示する部分
                 if !filteredSessions.isEmpty {
                     List(filteredSessions, id: \.self) { session in
-                        NavigationLink(destination: SessionDetailView(session: session, contentViewModel: contentViewModel, onDelete: {
+                        NavigationLink(destination: SessionDetailView(session: session, trainingSessionList: trainingSessionList, onDelete: {
                             removeSession(session)
                         })) {
                             VStack(alignment: .leading) {
@@ -84,8 +84,8 @@ struct TrainingSessionListView: View {
                 }
             }
         }.sheet(isPresented: $isShowNewSessionView) {
-            CreateTrainingSessionView(contentViewModel: contentViewModel, sessionDate: selectedDate,
-                                      trainingSessionList: contentViewModel.trainingSessionList, onSave: { newSession in
+            CreateTrainingSessionView(sessionDate: selectedDate,
+                                      trainingSessionList: trainingSessionList, onSave: { newSession in
                 addSession(newSession: newSession)
             })
         }
@@ -94,11 +94,10 @@ struct TrainingSessionListView: View {
 
 #Preview {
     TrainingSessionListView(
-        contentViewModel: ContentViewModel(
         trainingSessionList: [
         TrainingSession(theme: "テーマ", sessionDescription: "備考", sessionDate: Date()),
         TrainingSession(theme: "テーマ", sessionDescription: "備考", sessionDate: Calendar.current.date(byAdding: .day, value: -1, to: Date())!),
         TrainingSession(theme: "テーマ2", sessionDescription: "備考2", sessionDate: Calendar.current.date(byAdding: .day, value: -1, to: Date())!),
         TrainingSession(theme: "テーマ", sessionDescription: "備考", sessionDate: Calendar.current.date(byAdding: .day, value: +4, to: Date())!)
-        ], trainingMenuList: []))
+        ])
 }

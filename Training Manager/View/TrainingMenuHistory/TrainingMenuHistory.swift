@@ -19,10 +19,19 @@ struct TrainingMenuHistory: View {
         return trainingSessionList.flatMap({$0.menus})
     }
     
+    // 検索用のテキスト
+    @State private var searchText: String = ""
+    // 検索結果
+    private var filteredMenu: [TrainingMenu] {
+        let searchResult = trainingMenuList.filter { $0.name.localizedStandardContains(searchText) }
+
+        return searchText.isEmpty ? trainingMenuList : searchResult
+    }
+    
     var body: some View {
         NavigationStack {
             VStack{
-                List(trainingMenuList.sorted(by: { $0.orderIndex < $1.orderIndex })){ menu in
+                List(filteredMenu.sorted(by: { $0.orderIndex < $1.orderIndex })){ menu in
                     HStack{
                         if isEditMode {
                             HStack{
@@ -60,7 +69,7 @@ struct TrainingMenuHistory: View {
                             }
                         }
                     }
-                }
+                }.searchable(text: $searchText)
             }
             .toolbar {
                 ToolbarItem(placement: .topBarTrailing) {

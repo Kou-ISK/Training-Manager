@@ -114,7 +114,6 @@ struct TrainingMenuList: View {
 }
 
 #Preview {
-    
-    //    TrainingMenuList(session: TrainingSession(), trainingSessionList: [TrainingSession()], isEditMode: true, editingMenu: .constant(TrainingMenu()), currentTrainingMenu: .constant(TrainingMenu()), currentTrainingSession: .constant(TrainingSession()), menuToDelete: .constant(TrainingMenu()), isShowDeleteAlert: .constant(true), selectMenu: { menu in
-    //        print("Selected menu: \(menu.name)")})
+    TrainingMenuList(menus: [TrainingMenu(name: "NAME", goal: "GOAL", duration: TimeInterval(100), focusPoints: ["FP1", "FP2"], menuDescription: "Description", orderIndex: 0),TrainingMenu(name: "NAME-2", goal: "GOAL-2", duration: TimeInterval(100), focusPoints: ["FP1-2", "FP2-2"], menuDescription: "Description-2", orderIndex: 1)], trainingSessionList: [], isEditMode: true, currentTrainingMenu: .constant(TrainingMenu()), currentTrainingSession: .constant(TrainingSession()), selectMenu: { menu in
+        print("Selected menu: \(menu.name)")})
 }

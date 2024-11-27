@@ -52,7 +52,7 @@ struct TrainingMenuList: View {
                     moveMenu(from: source, to: destination)
                 }
             }.moveDisabled(!isEditMode)// 編集モードでない場合はリスト項目を移動できないようにする
-        }
+        }.listStyle(PlainListStyle()) // Listの背景をクリアにする
     }
     
     private func prepareToDelete(menu: TrainingMenu) {

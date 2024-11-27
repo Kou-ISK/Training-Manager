@@ -110,18 +110,8 @@ struct TodaySessionView: View {
                             }
                             ).buttonStyle(.borderless)
                             
-                            HStack(alignment: .top){
-                                VStack(alignment:.leading){
-                                    Text(menu.name).font(.headline)
-                                    Text(menu.goal)
-                                    ForEach(menu.focusPoints, id:\.id){point in
-                                        Text(point.label)
-                                    }
-                                }.padding(.horizontal, 20)
-                                
-                                if let timerVM = timerViewModel {
-                                    TimerView(viewModel: timerVM).padding(.trailing, 20)
-                                }
+                            if let timerVM = timerViewModel {
+                                TimerView(viewModel: timerVM).padding(.trailing, 20)
                             }
                         }
                     }

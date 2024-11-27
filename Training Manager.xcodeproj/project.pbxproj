@@ -47,6 +47,7 @@
 		78E8D3812C8466B700C23C5A /* CreateTrainingSessionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78E8D3802C8466B700C23C5A /* CreateTrainingSessionView.swift */; };
 		78E8D3832C85CBE100C23C5A /* TimerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78E8D3822C85CBE100C23C5A /* TimerView.swift */; };
 		78E8D3852C85CC3200C23C5A /* TimerViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78E8D3842C85CC3200C23C5A /* TimerViewModel.swift */; };
+		78F7266D2CF70BDA0041B3B4 /* TrainingMenuRowHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78F7266C2CF70BDA0041B3B4 /* TrainingMenuRowHeader.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -140,6 +141,7 @@
 		78E8D3802C8466B700C23C5A /* CreateTrainingSessionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateTrainingSessionView.swift; sourceTree = "<group>"; };
 		78E8D3822C85CBE100C23C5A /* TimerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimerView.swift; sourceTree = "<group>"; };
 		78E8D3842C85CC3200C23C5A /* TimerViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimerViewModel.swift; sourceTree = "<group>"; };
+		78F7266C2CF70BDA0041B3B4 /* TrainingMenuRowHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrainingMenuRowHeader.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFileSystemSynchronizedRootGroup section */
@@ -315,6 +317,15 @@
 			path = Timer;
 			sourceTree = "<group>";
 		};
+		78F7266B2CF70BA90041B3B4 /* TrainingMenuRow */ = {
+			isa = PBXGroup;
+			children = (
+				78285F7E2CF0B91A001CF03A /* TrainingMenuRow.swift */,
+				78F7266C2CF70BDA0041B3B4 /* TrainingMenuRowHeader.swift */,
+			);
+			path = TrainingMenuRow;
+			sourceTree = "<group>";
+		};
 		78FE2A152C9BA02E009BFDD3 /* TodaySession */ = {
 			isa = PBXGroup;
 			children = (
@@ -322,7 +333,7 @@
 				780E76C12C9586EF006129B9 /* EditTrainingMenuView.swift */,
 				78E6F5C128E71BBA00BAEA24 /* TodaySessionView.swift */,
 				78285F7C2CF09F3C001CF03A /* TrainingMenuList.swift */,
-				78285F7E2CF0B91A001CF03A /* TrainingMenuRow.swift */,
+				78F7266B2CF70BA90041B3B4 /* TrainingMenuRow */,
 				781C08262C8F34E8007FF5E3 /* SelectExistingMenuView.swift */,
 				78927F542C9CEB04005964EC /* SelectExistingSessionView.swift */,
 				78E8D37D2C845D5500C23C5A /* CreateTrainingMenuView.swift */,
@@ -367,7 +378,6 @@
 				78CAE3782CA44EDE00804F53 /* Sources */,
 				78CAE3792CA44EDE00804F53 /* Frameworks */,
 				78CAE37A2CA44EDE00804F53 /* Resources */,
-				78285E302CEE328B001CF03A /* ShellScript */,
 			);
 			buildRules = (
 			);
@@ -625,28 +635,6 @@
 			shellPath = /bin/sh;
 			shellScript = "# Type a script or drag a script file from your workspace to insert its path.\n\"${BUILD_DIR%/Build/*}/SourcePackages/checkouts/firebase-ios-sdk/Crashlytics/run\"\n";
 		};
-		78285E302CEE328B001CF03A /* ShellScript */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-			);
-			inputPaths = (
-				"${DWARF_DSYM_FOLDER_PATH}/${DWARF_DSYM_FILE_NAME}/Contents/Resources/DWARF/${PRODUCT_NAME}",
-				"${DWARF_DSYM_FOLDER_PATH}/${DWARF_DSYM_FILE_NAME}",
-				"${DWARF_DSYM_FOLDER_PATH}/${DWARF_DSYM_FILE_NAME}/Contents/Info.plist",
-				"$(TARGET_BUILD_DIR)/$(UNLOCALIZED_RESOURCES_FOLDER_PATH)/GoogleService-Info.plist",
-				"$(TARGET_BUILD_DIR)/$(EXECUTABLE_PATH)",
-			);
-			outputFileListPaths = (
-			);
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "# Type a script or drag a script file from your workspace to insert its path.\n\"${BUILD_DIR%/Build/*}/SourcePackages/checkouts/firebase-ios-sdk/Crashlytics/run\"\n";
-		};
 /* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
@@ -681,6 +669,7 @@
 				78C20A122C89C6EE00AF77ED /* customDateFormatter.swift in Sources */,
 				78927F552C9CEB04005964EC /* SelectExistingSessionView.swift in Sources */,
 				78E3FA3228E33BCD002CC7AE /* ContentView.swift in Sources */,
+				78F7266D2CF70BDA0041B3B4 /* TrainingMenuRowHeader.swift in Sources */,
 				78E8D3812C8466B700C23C5A /* CreateTrainingSessionView.swift in Sources */,
 				78E6F5C228E71BBA00BAEA24 /* TodaySessionView.swift in Sources */,
 				780E76C22C9586EF006129B9 /* EditTrainingMenuView.swift in Sources */,

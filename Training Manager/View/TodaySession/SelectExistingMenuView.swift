@@ -24,9 +24,9 @@ struct SelectExistingMenu: View {
                             Text(formatDuration(duration: menu.duration ?? 0)).bold()
                         }
                         Text(menu.goal).font(.headline)
-                            ForEach(menu.focusPoints, id: \.self){point in
-                                Text("・\(point)")
-                            }
+                        ForEach(menu.focusPoints, id: \.self){point in
+                            Text("・\(point)")
+                        }
                     }
                     Spacer()
                     Button("追加") {
@@ -49,6 +49,19 @@ struct SelectExistingMenu: View {
 }
 
 #Preview {
-    SelectExistingMenu(trainingMenu: TrainingMenu(name: "3v2", goal: "Goal", duration: TimeInterval(600), focusPoints: ["kf1", "kf2", "kf3"], menuDescription: "備考", orderIndex: 0),
-                       trainingMenuList: [TrainingMenu(name: "3v2", goal: "Goal", duration: TimeInterval(600), focusPoints: ["kf1", "kf2", "kf3"], menuDescription: "備考", orderIndex: 0)])
+    SelectExistingMenu(
+        trainingMenu: TrainingMenu(
+            name: "3v2",
+            goal: "Goal",
+            duration: TimeInterval(600),
+            focusPoints: ["kf1", "kf2", "kf3"],
+            menuDescription: "備考",
+            orderIndex: 0),
+        trainingMenuList: [TrainingMenu(
+            name: "3v2",
+            goal: "Goal",
+            duration: TimeInterval(600),
+            focusPoints: ["kf1", "kf2", "kf3"],
+            menuDescription: "備考",
+            orderIndex: 0)])
 }

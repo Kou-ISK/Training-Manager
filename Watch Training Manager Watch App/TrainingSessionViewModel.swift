@@ -83,7 +83,9 @@ class TrainingSessionViewModel: NSObject, ObservableObject {
         
         session.sendMessage(messages, replyHandler: { response in
             guard let trainingSessionData = response["trainingSession"] as? String else {
-                print("Error: Response does not contain valid training session data.")
+                let errorMessage = "Error: Response does not contain valid training session data."
+                print(errorMessage)
+                ErrorLogger.shared.logError(message: errorMessage)
                 return
             }
             
@@ -98,7 +100,9 @@ class TrainingSessionViewModel: NSObject, ObservableObject {
     // JSONデータをデコード
     func decodeTrainingSession(from jsonString: String) {
         guard !jsonString.isEmpty, let jsonData = jsonString.data(using: .utf8) else {
-            print("Error: Invalid or empty JSON string.")
+            let errorMessage = "Error: Invalid or empty JSON string."
+            print(errorMessage)
+            ErrorLogger.shared.logError(message: errorMessage)
             return
         }
         print("Received JSON: \(jsonString)")
@@ -112,7 +116,9 @@ class TrainingSessionViewModel: NSObject, ObservableObject {
                 self.updateTodayTrainingSession(session: session)
             }
         } catch {
-            print("Error decoding JSON: \(error.localizedDescription)")
+            let errorMessage = "Error decoding JSON: \(error.localizedDescription)"
+            print(errorMessage)
+            ErrorLogger.shared.logError(message: errorMessage)
         }
     }
 
@@ -122,7 +128,9 @@ extension TrainingSessionViewModel: WCSessionDelegate {
     // セッションのアクティベーション完了時に呼び出される
     func session(_ session: WCSession, activationDidCompleteWith activationState: WCSessionActivationState, error: Error?) {
         if let error = error {
-            print("WCSession activation error: \(error.localizedDescription)")
+            let errorMessage = "WCSession activation error: \(error.localizedDescription)"
+            print(errorMessage)
+            ErrorLogger.shared.logError(message: errorMessage)
         } else {
             print("WCSession activated successfully with state: \(activationState.rawValue)")
         }

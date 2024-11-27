@@ -57,22 +57,6 @@ struct TodaySessionView: View {
         }
     }
     
-    func showAddView() {
-        isShowAddView = true
-    }
-    
-    func showNewSessionView() {
-        isShowNewSessionView = true
-    }
-    
-    func dismissAddView() {
-        isShowAddView = false
-    }
-    
-    func dismissNewSessionView() {
-        isShowNewSessionView = false
-    }
-    
     // セッションを削除する処理
     func deleteSession(session: TrainingSession) {
         modelContext.delete(session.self)
@@ -148,7 +132,7 @@ struct TodaySessionView: View {
                     Text("本日の日付のセッションが見つかりません")
                         .font(.headline)
                     Button("新規作成"){
-                        showNewSessionView()
+                        isShowNewSessionView.toggle()
                     }.buttonStyle(.borderless)
                 }
             }.onAppear{
@@ -172,7 +156,7 @@ struct TodaySessionView: View {
             .toolbar {
                 ToolbarItem(placement: .topBarTrailing) {
                     Button {
-                        showAddView()
+                        isShowAddView.toggle()
                     } label: {
                         Image(systemName: "plus")
                     }.disabled(currentTrainingSession == nil)

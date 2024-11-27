@@ -259,7 +259,6 @@
 				78E3FA2F28E33BCD002CC7AE /* Training_ManagerApp.swift */,
 				78C20A112C89C6EE00AF77ED /* customDateFormatter.swift */,
 				78FE2A192C9BA1DC009BFDD3 /* Model */,
-				78FE2A172C9BA13A009BFDD3 /* ViewModel */,
 				78E8D37B2C83F0F000C23C5A /* View */,
 				78E3FA3328E33BCE002CC7AE /* Assets.xcassets */,
 				781C08202C8D985B007FF5E3 /* alarm_sound.mp3 */,
@@ -306,11 +305,20 @@
 			path = View;
 			sourceTree = "<group>";
 		};
+		78F7262A2CF6F6B90041B3B4 /* Timer */ = {
+			isa = PBXGroup;
+			children = (
+				78C20A0B2C87D0A100AF77ED /* CircleProgressBarView.swift */,
+				78E8D3842C85CC3200C23C5A /* TimerViewModel.swift */,
+				78E8D3822C85CBE100C23C5A /* TimerView.swift */,
+			);
+			path = Timer;
+			sourceTree = "<group>";
+		};
 		78FE2A152C9BA02E009BFDD3 /* TodaySession */ = {
 			isa = PBXGroup;
 			children = (
-				78E8D3822C85CBE100C23C5A /* TimerView.swift */,
-				78C20A0B2C87D0A100AF77ED /* CircleProgressBarView.swift */,
+				78F7262A2CF6F6B90041B3B4 /* Timer */,
 				780E76C12C9586EF006129B9 /* EditTrainingMenuView.swift */,
 				78E6F5C128E71BBA00BAEA24 /* TodaySessionView.swift */,
 				78285F7C2CF09F3C001CF03A /* TrainingMenuList.swift */,
@@ -330,14 +338,6 @@
 				78C20A0D2C89C4B100AF77ED /* TrainingSessionListView.swift */,
 			);
 			path = SessionList;
-			sourceTree = "<group>";
-		};
-		78FE2A172C9BA13A009BFDD3 /* ViewModel */ = {
-			isa = PBXGroup;
-			children = (
-				78E8D3842C85CC3200C23C5A /* TimerViewModel.swift */,
-			);
-			path = ViewModel;
 			sourceTree = "<group>";
 		};
 		78FE2A182C9BA1C3009BFDD3 /* TrainingMenuHistory */ = {

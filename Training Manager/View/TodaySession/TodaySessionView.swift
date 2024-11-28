@@ -72,52 +72,65 @@ struct TodaySessionView: View {
     // TODO: コンポーネントに切り分ける
     var body: some View {
         NavigationStack {
-            VStack {
+            VStack(alignment: .center) {
                 if let session = currentTrainingSession {
-                    HStack{
-                        // セッションの削除
-                        if isEditMode {
-                            Button(action: {
-                                isShowDeleteSessionAlert.toggle()
-                            }, label:{
-                                Image(systemName: "minus.circle.fill").foregroundStyle(.red)
-                            }).buttonStyle(.borderless).background(.clear)
-                                .alert("セッションの削除", isPresented: $isShowDeleteSessionAlert, actions: {
-                                    Button("削除", role: .destructive) {
-                                        deleteSession(session: session)
-                                        isEditMode.toggle()
-                                    }
-                                    Button("キャンセル", role: .cancel) {}
-                                })
+                    ZStack{
+                        VStack(alignment: .leading) {
+                            // ヘッダー部
+                            HStack{
+                                // セッションの削除
+                                if isEditMode {
+                                    Button(action: {
+                                        isShowDeleteSessionAlert.toggle()
+                                    }, label:{
+                                        Image(systemName: "minus.circle.fill").foregroundStyle(.red)
+                                    }).buttonStyle(.borderless).background(.clear)
+                                        .alert("セッションの削除", isPresented: $isShowDeleteSessionAlert, actions: {
+                                            Button("削除", role: .destructive) {
+                                                deleteSession(session: session)
+                                                isEditMode.toggle()
+                                            }
+                                            Button("キャンセル", role: .cancel) {}
+                                        })
+                                }
+                                VStack(alignment: .leading) {
+                                    Text(currentTrainingSession?.sessionDate ?? Date(), formatter: dateFormatter)
+                                    Text("テーマ: \(session.theme ?? "")")
+                                        .font(.subheadline)
+                                    Text("備考: \(session.sessionDescription ?? "")")
+                                }.padding(8)
+                            }
+                            TrainingMenuList(menus: session.menus, trainingSessionList: trainingSessionList, isEditMode: isEditMode, currentTrainingMenu: $currentTrainingMenu, currentTrainingSession: $currentTrainingSession, selectMenu: selectMenu)
                         }
-                        VStack(alignment: .center) {
-                            Text(session.sessionDate ?? Date(), formatter: dateFormatter)
-                                .font(.headline)
-                            Text(session.theme ?? "")
-                                .font(.subheadline)
-                            Text(session.sessionDescription ?? "")
+                        
+                        // フローティングのコントローラー
+                        if currentTrainingMenu != nil {
+                            VStack{
+                                Spacer()
+                                HStack(alignment: .top){
+                                    Spacer().frame(width: 8) // 左側の余白
+                                    HStack(alignment: .top){
+                                        HStack(alignment: .center){
+                                            Text(currentTrainingMenu?.name ?? "").padding(8)
+                                            Spacer()
+                                            if let timerVM = timerViewModel {
+                                                TimerView(viewModel: timerVM)
+                                            }
+                                        }
+                                        Button(action: {
+                                            currentTrainingMenu = nil
+                                        }, label: {
+                                            Image(systemName: "xmark.circle")
+                                        }
+                                        ).buttonStyle(.borderless).padding(4)
+                                    }.frame(maxWidth: .infinity, maxHeight: 64)
+                                        .background(Color.gray.opacity(0.2)) // 背景色を適用
+                                        .cornerRadius(8) // 背景色の角を丸める
+                                    Spacer().frame(width: 8) // 左側の余白
+                                }
+                            }
                         }
                     }
-                    
-                    if currentTrainingMenu != nil {
-                        Divider()
-                        VStack(alignment: .trailing){
-                            
-                            Button(action: {
-                                currentTrainingMenu = nil
-                            }, label: {
-                                Image(systemName: "xmark.circle")
-                            }
-                            ).buttonStyle(.borderless)
-                            
-                            if let timerVM = timerViewModel {
-                                TimerView(viewModel: timerVM).padding(.trailing, 20)
-                            }
-                        }
-                    }
-                    
-                    TrainingMenuList(menus: session.menus, trainingSessionList: trainingSessionList, isEditMode: isEditMode, currentTrainingMenu: $currentTrainingMenu, currentTrainingSession: $currentTrainingSession, selectMenu: selectMenu)
-                    
                 } else {
                     Text("本日の日付のセッションが見つかりません")
                         .font(.headline)
@@ -178,5 +191,11 @@ struct TodaySessionView: View {
                 orderIndex: 0
             )])
         ]
+    )
+}
+
+#Preview{
+    TodaySessionView(
+        trainingSessionList: []
     )
 }

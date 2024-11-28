@@ -18,7 +18,7 @@ struct TrainingMenuRow: View {
     @State private var isExpanded: Bool = false // 詳細表示の状態を管理
     
     var body: some View {
-        VStack {
+        VStack(alignment: .leading) {
             HStack {
                 TrainingMenuRowHeader(menu: menu, isEditMode: isEditMode, isCurrentTraining: isCurrentTraining, onDelete: onDelete, onEdit: onEdit, onSelect: onSelect)
                 Button(action: { isExpanded.toggle() }, label: {

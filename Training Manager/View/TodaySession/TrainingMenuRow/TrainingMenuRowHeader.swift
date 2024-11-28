@@ -8,6 +8,8 @@
 import SwiftUI
 
 struct TrainingMenuRowHeader: View {
+    @Environment(\.colorScheme) var colorScheme
+    
     let menu: TrainingMenu
     let isEditMode: Bool
     let isCurrentTraining: Bool
@@ -34,7 +36,7 @@ struct TrainingMenuRowHeader: View {
             Button(action: { onSelect() }, label: {
                 Text(isCurrentTraining ? "実施中" : "開始")
                     .bold()
-                    .foregroundStyle(.white)
+                    .foregroundStyle(colorScheme == .dark || isCurrentTraining ? .white : .black)
                     .padding(8)
                     .background(isCurrentTraining ? .blue : .clear)
                     .cornerRadius(8)

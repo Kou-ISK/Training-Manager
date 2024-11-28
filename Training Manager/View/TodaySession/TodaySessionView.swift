@@ -99,7 +99,7 @@ struct TodaySessionView: View {
                         }
                     }
                     
-                    if let menu = currentTrainingMenu {
+                    if currentTrainingMenu != nil {
                         Divider()
                         VStack(alignment: .trailing){
                             

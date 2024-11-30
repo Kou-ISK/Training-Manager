@@ -238,6 +238,7 @@
 				78CAE3982CA44EDF00804F53 /* Watch Training Manager Watch AppUITests */,
 				78285B232CE8CD49001CF03A /* Frameworks */,
 				78E3FA2D28E33BCD002CC7AE /* Products */,
+				7828584F2CE75A91001CF03A /* GoogleService-Info.plist */,
 			);
 			sourceTree = "<group>";
 		};
@@ -265,7 +266,6 @@
 				78E3FA3328E33BCE002CC7AE /* Assets.xcassets */,
 				781C08202C8D985B007FF5E3 /* alarm_sound.mp3 */,
 				78E3FA3528E33BCE002CC7AE /* Preview Content */,
-				7828584F2CE75A91001CF03A /* GoogleService-Info.plist */,
 			);
 			path = "Training Manager";
 			sourceTree = "<group>";
@@ -761,7 +761,7 @@
 					"@executable_path/Frameworks",
 				);
 				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
-				MARKETING_VERSION = 2.8;
+				MARKETING_VERSION = 2.9;
 				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_BUNDLE_IDENTIFIER = "Kou-Isaka.Training-Manager.watchkitapp";
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -797,7 +797,7 @@
 					"@executable_path/Frameworks",
 				);
 				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
-				MARKETING_VERSION = 2.8;
+				MARKETING_VERSION = 2.9;
 				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_BUNDLE_IDENTIFIER = "Kou-Isaka.Training-Manager.watchkitapp";
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -1053,7 +1053,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 2.8;
+				MARKETING_VERSION = 2.9;
 				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_BUNDLE_IDENTIFIER = "Kou-Isaka.Training-Manager";
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -1091,7 +1091,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 2.8;
+				MARKETING_VERSION = 2.9;
 				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_BUNDLE_IDENTIFIER = "Kou-Isaka.Training-Manager";
 				PRODUCT_NAME = "$(TARGET_NAME)";

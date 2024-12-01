@@ -211,6 +211,7 @@
 			isa = PBXGroup;
 			children = (
 				78A877EE2CA11CFC00BAACA6 /* CustomCalendarView.swift */,
+				78F7266B2CF70BA90041B3B4 /* TrainingMenuRow */,
 			);
 			path = Components;
 			sourceTree = "<group>";
@@ -333,7 +334,6 @@
 				780E76C12C9586EF006129B9 /* EditTrainingMenuView.swift */,
 				78E6F5C128E71BBA00BAEA24 /* TodaySessionView.swift */,
 				78285F7C2CF09F3C001CF03A /* TrainingMenuList.swift */,
-				78F7266B2CF70BA90041B3B4 /* TrainingMenuRow */,
 				781C08262C8F34E8007FF5E3 /* SelectExistingMenuView.swift */,
 				78927F542C9CEB04005964EC /* SelectExistingSessionView.swift */,
 				78E8D37D2C845D5500C23C5A /* CreateTrainingMenuView.swift */,

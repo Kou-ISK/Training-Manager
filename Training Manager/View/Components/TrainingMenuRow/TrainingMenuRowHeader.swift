@@ -12,6 +12,7 @@ struct TrainingMenuRowHeader: View {
     
     let menu: TrainingMenu
     let isEditMode: Bool
+    let isTodaySession: Bool
     let isCurrentTraining: Bool
     let onDelete: () -> Void
     let onEdit: () -> Void
@@ -33,18 +34,20 @@ struct TrainingMenuRowHeader: View {
             .buttonStyle(.borderless)
         } else {
             durationView
-            Button(action: { onSelect() }, label: {
-                Text(isCurrentTraining ? "実施中" : "開始")
-                    .bold()
-                    .foregroundStyle(colorScheme == .dark || isCurrentTraining ? .white : .black)
-                    .padding(8)
-                    .background(isCurrentTraining ? .blue : .clear)
-                    .cornerRadius(8)
-                    .overlay(
-                        RoundedRectangle(cornerRadius: 8) // Create a rounded rectangle border
-                            .stroke(isCurrentTraining ? Color.blue : Color.gray, lineWidth: 1)
-                    )
-            }).buttonStyle(.borderless)
+            if isTodaySession {
+                Button(action: { onSelect() }, label: {
+                    Text(isCurrentTraining ? "実施中" : "開始")
+                        .bold()
+                        .foregroundStyle(colorScheme == .dark || isCurrentTraining ? .white : .black)
+                        .padding(8)
+                        .background(isCurrentTraining ? .blue : .clear)
+                        .cornerRadius(8)
+                        .overlay(
+                            RoundedRectangle(cornerRadius: 8) // Create a rounded rectangle border
+                                .stroke(isCurrentTraining ? Color.blue : Color.gray, lineWidth: 1)
+                        )
+                }).buttonStyle(.borderless)
+            }
         }
     }
     
@@ -68,5 +71,9 @@ struct TrainingMenuRowHeader: View {
 }
 
 #Preview {
-    TrainingMenuRowHeader(menu: TrainingMenu(name: "Name", goal: "Goal", duration: TimeInterval(100), focusPoints: ["FP"], menuDescription: "Description", orderIndex: 1), isEditMode: false, isCurrentTraining: true, onDelete: {print("Save")}, onEdit: {print("Delete")}, onSelect: {print("Select")})
+    TrainingMenuRowHeader(menu: TrainingMenu(name: "Name", goal: "Goal", duration: TimeInterval(100), focusPoints: ["FP"], menuDescription: "Description", orderIndex: 1), isEditMode: false, isTodaySession: true, isCurrentTraining: true, onDelete: {print("Save")}, onEdit: {print("Delete")}, onSelect: {print("Select")})
+}
+
+#Preview {
+    TrainingMenuRowHeader(menu: TrainingMenu(name: "Name", goal: "Goal", duration: TimeInterval(100), focusPoints: ["FP"], menuDescription: "Description", orderIndex: 1), isEditMode: false, isTodaySession: false, isCurrentTraining: true, onDelete: {print("Save")}, onEdit: {print("Delete")}, onSelect: {print("Select")})
 }

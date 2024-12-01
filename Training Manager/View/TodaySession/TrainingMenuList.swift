@@ -39,6 +39,7 @@ struct TrainingMenuList: View {
                 TrainingMenuRow(
                     menu: menu,
                     isEditMode: isEditMode,
+                    isTodaySession: true,
                     isCurrentTraining: currentTrainingMenu?.id == menu.id,
                     onDelete: { prepareToDelete(menu: menu) },
                     onEdit: { editingMenu = menu },

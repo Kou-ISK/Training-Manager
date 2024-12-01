@@ -33,64 +33,16 @@ struct TrainingMenuHistory: View {
             VStack{
                 List(filteredMenu.sorted(by: { $0.orderIndex < $1.orderIndex })){ menu in
                     // TODO: TodaySessionViewかSessionDetailViewのメニューリストと共通化出来るか検討
-                    // メニュー名の表示
-                    DisclosureGroup(content: {
-                        // メニュー詳細を階層的に表示
-                        VStack(alignment: .leading, spacing: 8) {
-                            // 練習のゴール
-                            if !menu.goal.isEmpty {
-                                Text("練習のゴール:")
-                                    .font(.headline)
-                                Text(menu.goal)
-                                    .font(.body)
-                                    .padding(.bottom, 4)
-                            }
-                            
-                            // フォーカスポイント
-                            if !menu.focusPoints.isEmpty {
-                                Text("フォーカスポイント:")
-                                    .font(.headline)
-                                ForEach(menu.focusPoints, id: \.self) { point in
-                                    Text(point.label)
-                                        .font(.body)
-                                }
-                                .padding(.bottom, 4)
-                            }
-                            
-                            // 備考
-                            if let description = menu.menuDescription, !description.isEmpty {
-                                Text("備考:")
-                                    .font(.headline)
-                                Text(description)
-                                    .font(.body)
-                            }
-                        }
-                        .padding(.vertical, 8)
-                    }){
-                        if isEditMode {
-                            HStack{
-                                Button(action: {
-                                    isShowDeleteAlart.toggle()
-                                }, label:{
-                                    Image(systemName: "minus.circle.fill").foregroundStyle(.red)
-                                }).buttonStyle(.borderless).background(.clear)
-                                    .alert("メニューの削除", isPresented: $isShowDeleteAlart, actions: {
-                                        Button("削除", role: .destructive) {
-                                            print(menu)
-                                            deleteMenu(menu: menu)
-                                        }
-                                        Button("キャンセル", role: .cancel) {}
-                                    })
-                            }
-                        }
-                        Text(menu.name)
-                        Spacer()
-                        HStack{
-                            Image(systemName: "stopwatch")
-                            Text(formatDuration(duration: menu.duration ?? 0))
-                        }.foregroundStyle(.white).fontWeight(.bold).padding(5).background(.green).cornerRadius(30)
-                    }
-                }.searchable(text: $searchText)
+                    TrainingMenuRow(
+                        menu: menu,
+                        isEditMode: isEditMode,
+                        isTodaySession: false,
+                        isCurrentTraining: false,
+                        onDelete: { deleteMenu(menu: menu) },
+                        onEdit: {},
+                        onSelect: {}
+                    )
+                }.searchable(text: $searchText).listStyle(PlainListStyle())
             }
             .toolbar {
                 ToolbarItem(placement: .topBarTrailing) {

@@ -10,6 +10,7 @@ import SwiftUI
 struct TrainingMenuRow: View {
     let menu: TrainingMenu
     let isEditMode: Bool
+    let isTodaySession: Bool
     let isCurrentTraining: Bool
     let onDelete: () -> Void
     let onEdit: () -> Void
@@ -20,7 +21,7 @@ struct TrainingMenuRow: View {
     var body: some View {
         VStack(alignment: .leading) {
             HStack {
-                TrainingMenuRowHeader(menu: menu, isEditMode: isEditMode, isCurrentTraining: isCurrentTraining, onDelete: onDelete, onEdit: onEdit, onSelect: onSelect)
+                TrainingMenuRowHeader(menu: menu, isEditMode: isEditMode, isTodaySession: isTodaySession, isCurrentTraining: isCurrentTraining, onDelete: onDelete, onEdit: onEdit, onSelect: onSelect)
                 Button(action: { isExpanded.toggle() }, label: {
                     Image(systemName: isExpanded ? "chevron.down" : "chevron.right").padding(4)
                 }).buttonStyle(.borderless)
@@ -65,5 +66,10 @@ struct TrainingMenuRow: View {
 }
 
 #Preview {
-    TrainingMenuRow(menu: TrainingMenu(name: "Name", goal: "Goal", duration: TimeInterval(100), focusPoints: ["FP"], menuDescription: "Description", orderIndex: 1), isEditMode: false, isCurrentTraining: true, onDelete: {print("Save")}, onEdit: {print("Delete")}, onSelect: {print("Select")})
+    TrainingMenuRow(menu: TrainingMenu(name: "Name", goal: "Goal", duration: TimeInterval(100), focusPoints: ["FP"], menuDescription: "Description", orderIndex: 1), isEditMode: false, isTodaySession: true, isCurrentTraining: true, onDelete: {print("Save")}, onEdit: {print("Delete")}, onSelect: {print("Select")})
 }
+
+#Preview {
+    TrainingMenuRow(menu: TrainingMenu(name: "Name", goal: "Goal", duration: TimeInterval(100), focusPoints: ["FP"], menuDescription: "Description", orderIndex: 1), isEditMode: false, isTodaySession: false, isCurrentTraining: true, onDelete: {print("Save")}, onEdit: {print("Delete")}, onSelect: {print("Select")})
+}
+

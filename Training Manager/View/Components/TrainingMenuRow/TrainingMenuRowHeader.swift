@@ -18,6 +18,8 @@ struct TrainingMenuRowHeader: View {
     let onEdit: () -> Void
     let onSelect: () -> Void
     
+    @State private var isMenuEditing: Bool = false
+    
     var body: some View {
         if isEditMode {
             Button(action: onDelete) {
@@ -27,11 +29,22 @@ struct TrainingMenuRowHeader: View {
         }
         Text(menu.name)
         Spacer()
-        if isEditMode {
-            Button(action: onEdit) {
-                Text("編集").fontWeight(.bold).foregroundColor(.blue)
-            }
+        if(isEditMode){
+            Button(action: {
+                print("Edit button pressed")
+                isMenuEditing.toggle()
+            }, label: {
+                Text("編集")
+                    .fontWeight(.bold)
+                    .foregroundColor(.blue)
+            })
             .buttonStyle(.borderless)
+            .sheet(isPresented: $isMenuEditing) {
+                EditTrainingMenuView(menu: menu, onSave: {
+                    // onSave クロージャー内で保存処理を実行
+                    onEdit()
+                })
+            }
         } else {
             durationView
             if isTodaySession {

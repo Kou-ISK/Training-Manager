@@ -27,12 +27,10 @@ struct TrainingMenuList: View {
     @State private var isShowDeleteAlert = false
     // 削除対象のメニューを保持するプロパティ
     @State private var menuToDelete: TrainingMenu? = nil
-    // 編集中のメニューを保持
-    @State private var editingMenu: TrainingMenu? = nil
     
     var selectMenu: ((TrainingMenu)->Void)
     
-    // TODO: コンポーネントに切り分け
+    // TODO: 共通コンポーネント化出来るか検討
     var body: some View {
         List{
             ForEach(sortedMenus, id: \.id) { menu in
@@ -42,7 +40,7 @@ struct TrainingMenuList: View {
                     isTodaySession: true,
                     isCurrentTraining: currentTrainingMenu?.id == menu.id,
                     onDelete: { prepareToDelete(menu: menu) },
-                    onEdit: { editingMenu = menu },
+                    onEdit: { updateMenu(menu: menu) },
                     onSelect: { selectMenu(menu) }
                 )
                 .alert("メニューの削除", isPresented: $isShowDeleteAlert) {

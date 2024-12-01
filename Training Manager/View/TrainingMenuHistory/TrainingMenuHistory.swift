@@ -32,7 +32,6 @@ struct TrainingMenuHistory: View {
         NavigationStack {
             VStack{
                 List(filteredMenu.sorted(by: { $0.orderIndex < $1.orderIndex })){ menu in
-                    // TODO: TodaySessionViewかSessionDetailViewのメニューリストと共通化出来るか検討
                     TrainingMenuRow(
                         menu: menu,
                         isEditMode: isEditMode,

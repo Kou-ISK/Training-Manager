@@ -10,7 +10,7 @@ import SwiftUI
 struct TrainingMenuHistory: View {
     @Environment(\.modelContext) private var modelContext
     
-    var trainingSessionList: [TrainingSession]
+    @State var trainingSessionList: [TrainingSession]
     @State private var isEditMode: Bool = false
     @State private var menuToDelete: TrainingMenu?
     @State private var isShowDeleteAlart: Bool = false
@@ -72,7 +72,6 @@ struct TrainingMenuHistory: View {
         } catch {
             print("Failed to save context: \(error)")
         }
-        self.isEditMode = false
     }
 }
 

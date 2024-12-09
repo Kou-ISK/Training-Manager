@@ -69,7 +69,7 @@ struct SessionDetailView: View {
                     )
                 }
             }
-            .listStyle(InsetGroupedListStyle())
+            .listStyle(PlainListStyle())
         }
         .sheet(isPresented: $isShowAddView) {
             CreateTrainingMenuView(

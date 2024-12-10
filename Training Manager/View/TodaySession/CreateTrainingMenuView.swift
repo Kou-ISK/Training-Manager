@@ -68,16 +68,14 @@ struct CreateTrainingMenuView: View {
                 }
                 
                 Section(header: Text("備考")) {
-                    TextEditor(text: Binding(
-                        get: { trainingMenu.menuDescription ?? ""},
-                        set: { trainingMenu.menuDescription = $0 }
-                    ))
-                    .overlay(alignment: .topLeading) {
-                        if trainingMenu.menuDescription?.isEmpty ?? true {
-                            Text("備考")
-                                .foregroundColor(.gray) // プレースホルダーっぽく見せるために色を変更
+                    ZStack(alignment: .topLeading){
+                        TextEditor(text: Binding(
+                            get: { trainingMenu.menuDescription ?? ""},
+                            set: { trainingMenu.menuDescription = $0 }
+                        )).padding(.horizontal, -4)
+                        if(trainingMenu.menuDescription == nil){
+                            Text("備考").foregroundStyle(Color(uiColor: .placeholderText)).padding(.vertical, 8)
                                 .allowsHitTesting(false)
-                                .padding(.top, 8) // テキストエディタの内側にマージンを設定
                         }
                     }
                 }
@@ -99,7 +97,7 @@ struct CreateTrainingMenuView: View {
                             }
                         }
                         .pickerStyle(WheelPickerStyle())
-                    }.frame(maxHeight: 100)
+                    }.frame(maxHeight: 200)
                 }
                 NavigationLink("既存のメニューから追加", destination: SelectExistingMenu(trainingMenu: trainingMenu, trainingMenuList: trainingMenuList))
             }
@@ -157,7 +155,7 @@ struct CreateTrainingMenuView: View {
         modelContext.insert(trainingMenu)
         // 新しいメニューをセッションに追加
         session.menus.append(trainingMenu)  // TrainingSessionにメニューを追加
-
+        
         // データベースに保存
         do {
             try modelContext.save() // TrainingSession の変更を保存

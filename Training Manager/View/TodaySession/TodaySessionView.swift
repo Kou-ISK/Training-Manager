@@ -77,6 +77,7 @@ struct TodaySessionView: View {
                     ZStack{
                         VStack(alignment: .leading) {
                             // ヘッダー部
+                            // TODO: ヘッダー部をSessionDetailViewのものと共通に出来るか検討
                             HStack{
                                 // セッションの削除
                                 if isEditMode {
@@ -99,8 +100,9 @@ struct TodaySessionView: View {
                                         .font(.subheadline)
                                     Text("備考: \(session.sessionDescription ?? "")")
                                 }.padding(8)
-                            }
+                            }.padding(.horizontal, 8)
                             TrainingMenuList(menus: session.menus, trainingSessionList: trainingSessionList, isEditMode: isEditMode, currentTrainingMenu: $currentTrainingMenu, currentTrainingSession: $currentTrainingSession, selectMenu: selectMenu)
+                            Spacer()
                         }
                         
                         // フローティングのコントローラー

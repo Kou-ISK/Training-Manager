@@ -42,7 +42,7 @@ struct TrainingMenuList: View {
                     onDelete: { prepareToDelete(menu: menu) },
                     onEdit: { updateMenu(menu: menu) },
                     onSelect: { selectMenu(menu) }
-                )
+                ).listRowSeparator(.hidden) // セパレータを非表示
                 .alert("メニューの削除", isPresented: $isShowDeleteAlert) {
                     deleteAlertActions()
                 }

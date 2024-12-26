@@ -23,7 +23,7 @@ struct SessionDetailView: View {
     var onDelete: (() -> Void)?  // 削除時のコールバック
     
     var body: some View {
-        VStack {
+        VStack(alignment: .leading) {
             HStack{
                 // セッションの削除
                 if isEditMode {
@@ -40,7 +40,7 @@ struct SessionDetailView: View {
                         })
                 }
                 // セッションのテーマ、日付、説明をヘッダーとして表示
-                VStack(alignment: .leading, spacing: 8) {
+                VStack(alignment: .leading) {
                     Text(session.sessionDate ?? Date(), formatter: dateFormatter)
                         .font(.headline)
                     if let theme = session.theme, !theme.isEmpty {
@@ -53,7 +53,7 @@ struct SessionDetailView: View {
                             .font(.body)
                     }
                 }
-            }
+            }.padding(.horizontal, 8)
             
             // メニューリスト表示
             List {
@@ -66,7 +66,7 @@ struct SessionDetailView: View {
                         onDelete: { deleteMenu(menu: menu) },
                         onEdit: { updateMenu(menu: menu) },
                         onSelect: {}
-                    )
+                    ).listRowSeparator(.hidden) // セパレータを非表示
                 }
             }
             .listStyle(PlainListStyle())

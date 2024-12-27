@@ -24,36 +24,15 @@ struct SessionDetailView: View {
     
     var body: some View {
         VStack(alignment: .leading) {
-            HStack{
-                // セッションの削除
-                if isEditMode {
-                    Button(action: {
-                        isShowDeleteSessionAlert.toggle()
-                    }, label:{
-                        Image(systemName: "minus.circle.fill").foregroundStyle(.red)
-                    }).buttonStyle(.borderless).background(.clear)
-                        .alert("セッションの削除", isPresented: $isShowDeleteSessionAlert, actions: {
-                            Button("削除", role: .destructive) {
-                                deleteSession()
-                            }
-                            Button("キャンセル", role: .cancel) {}
-                        })
+            // ヘッダー部
+            SessionHeaderView(
+                session: session,
+                isEditMode: isEditMode,
+                onDelete: {
+                    deleteSession()
+                    isEditMode.toggle()
                 }
-                // セッションのテーマ、日付、説明をヘッダーとして表示
-                VStack(alignment: .leading) {
-                    Text(session.sessionDate ?? Date(), formatter: dateFormatter)
-                        .font(.headline)
-                    if let theme = session.theme, !theme.isEmpty {
-                        Text("テーマ: \(theme)")
-                            .font(.headline)
-                    }
-                    
-                    if let description = session.sessionDescription, !description.isEmpty {
-                        Text("備考: \(description)")
-                            .font(.body)
-                    }
-                }
-            }.padding(.horizontal, 8)
+            )
             
             // メニューリスト表示
             List {

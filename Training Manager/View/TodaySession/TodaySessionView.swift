@@ -77,30 +77,14 @@ struct TodaySessionView: View {
                     ZStack{
                         VStack(alignment: .leading) {
                             // ヘッダー部
-                            // TODO: ヘッダー部をSessionDetailViewのものと共通に出来るか検討
-                            HStack{
-                                // セッションの削除
-                                if isEditMode {
-                                    Button(action: {
-                                        isShowDeleteSessionAlert.toggle()
-                                    }, label:{
-                                        Image(systemName: "minus.circle.fill").foregroundStyle(.red)
-                                    }).buttonStyle(.borderless).background(.clear)
-                                        .alert("セッションの削除", isPresented: $isShowDeleteSessionAlert, actions: {
-                                            Button("削除", role: .destructive) {
-                                                deleteSession(session: session)
-                                                isEditMode.toggle()
-                                            }
-                                            Button("キャンセル", role: .cancel) {}
-                                        })
+                            SessionHeaderView(
+                                session: session,
+                                isEditMode: isEditMode,
+                                onDelete: {
+                                    deleteSession(session: session)
+                                    isEditMode.toggle()
                                 }
-                                VStack(alignment: .leading) {
-                                    Text(currentTrainingSession?.sessionDate ?? Date(), formatter: dateFormatter)
-                                    Text("テーマ: \(session.theme ?? "")")
-                                        .font(.subheadline)
-                                    Text("備考: \(session.sessionDescription ?? "")")
-                                }.padding(8)
-                            }.padding(.horizontal, 8)
+                            )
                             TrainingMenuList(menus: session.menus, trainingSessionList: trainingSessionList, isEditMode: isEditMode, currentTrainingMenu: $currentTrainingMenu, currentTrainingSession: $currentTrainingSession, selectMenu: selectMenu)
                             Spacer()
                         }

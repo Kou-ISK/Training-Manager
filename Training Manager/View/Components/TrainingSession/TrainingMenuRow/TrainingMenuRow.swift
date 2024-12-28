@@ -60,7 +60,7 @@ struct TrainingMenuRow: View {
         .cornerRadius(8) // 背景色の角を丸める
         .overlay(
             RoundedRectangle(cornerRadius: 8)
-                .stroke(isCurrentTraining ? Color.blue : Color.gray, lineWidth: 1) // 境界線を追加
+                .stroke(isCurrentTraining ? Color.blue : Color.gray, lineWidth: 0.5) // 境界線を追加
         )
     }
 }

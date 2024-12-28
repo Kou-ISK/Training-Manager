@@ -128,7 +128,6 @@ struct TodaySessionView: View {
                 filterTodaySessions()
             }
             .sheet(isPresented: $isShowAddView) {
-                // TODO: メニュー追加されない事象に対応
                 if let todaySession = currentTrainingSession {
                     CreateTrainingMenuView(
                         session: Binding(

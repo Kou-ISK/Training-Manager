@@ -30,7 +30,6 @@ struct TrainingMenuList: View {
     
     var selectMenu: ((TrainingMenu)->Void)
     
-    // TODO: 共通コンポーネント化出来るか検討
     var body: some View {
         List{
             ForEach(sortedMenus, id: \.id) { menu in

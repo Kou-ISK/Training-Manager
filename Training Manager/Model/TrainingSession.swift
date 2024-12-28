@@ -17,20 +17,24 @@ import SwiftData
     var createdAt: Date?
     var updatedAt: Date?
     
-    // 多対多のリレーションシップ
-    @Relationship var menus: [TrainingMenu] = []
+    @Relationship
+    var menus: [TrainingMenu]
     
     public init() {
+        self.sessionDate = Date()
+        self.menus = []
     }
     
     public init(sessionDate: Date) {
         self.sessionDate = sessionDate
+        self.menus = []
     }
     
     public init(theme: String, sessionDescription: String, sessionDate: Date) {
         self.theme = theme
         self.sessionDescription = sessionDescription
         self.sessionDate = sessionDate
+        self.menus = []
     }
     
     public init(theme: String, sessionDescription: String, sessionDate: Date, menus: [TrainingMenu]) {

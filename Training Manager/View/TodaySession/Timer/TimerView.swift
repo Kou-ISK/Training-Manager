@@ -26,7 +26,7 @@ struct TimerView: View {
                             .font(.headline)
                             .padding(5)
                     }.onReceive(viewModel.$timeString) { newValue in}
-                    CircleProgressBarView(progress: $viewModel.progress).frame(maxWidth: 80)
+                    CircleProgressBarView(progress: $viewModel.progress).frame(maxWidth: 70)
                 }
             }
             Button(action: {

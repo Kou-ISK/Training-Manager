@@ -10,28 +10,20 @@ import SwiftData
 
 struct ContentView: View {
     @Query private var trainingSessionList: [TrainingSession]
-    @Query private var trainingMenuList: [TrainingMenu]
-    
-    // ContentViewModel を @StateObject として宣言
-    @StateObject private var contentViewModel = ContentViewModel(trainingSessionList: [], trainingMenuList: [])
     
     var body: some View {
         TabView{
-            TodaySessionView(viewModel: TodaySessionViewModel(contentViewModel: contentViewModel))
+            TodaySessionView(trainingSessionList: trainingSessionList)
                 .tabItem {
                     Label("今日のセッション", systemImage: "figure.run.circle.fill")
                 }
-            TrainingMenuHistory(contentViewModel: contentViewModel)
+            TrainingMenuHistory(trainingSessionList: trainingSessionList)
                 .tabItem {
                     Label("メニュー履歴", systemImage: "doc.text")
                 }
-            TrainingSessionListView(contentViewModel: contentViewModel).tabItem {
+            TrainingSessionListView(trainingSessionList: trainingSessionList).tabItem {
                 Label("セッション管理", systemImage: "calendar.circle")
             }
-        }.onAppear {
-            // 初期データを ViewModel にセット
-            contentViewModel.trainingSessionList = trainingSessionList
-            contentViewModel.trainingMenuList = trainingMenuList
         }
     }
 }

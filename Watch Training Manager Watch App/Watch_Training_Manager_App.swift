@@ -26,9 +26,21 @@ struct Watch_Training_Manager_Watch_App: App {
         }
     }()
     
+    private func setupCrashHandler() {
+        NSSetUncaughtExceptionHandler { exception in
+            let stackTrace = exception.callStackSymbols.joined(separator: "\n")
+            let message = "Exception: \(exception.name)\nReason: \(exception.reason ?? "Unknown")\n\(stackTrace)"
+            
+            // ログの保存や送信
+            ErrorLogger.shared.logError(message: message)
+        }
+    }
+    
     var body: some Scene {
         WindowGroup {
-            ContentView().environmentObject(viewModel).modelContainer(sharedModelContainer)
+            ContentView().environmentObject(viewModel).modelContainer(sharedModelContainer).onAppear {
+                setupCrashHandler()
+            }
         }
     }
 }

@@ -8,25 +8,29 @@
 
 /* Begin PBXBuildFile section */
 		780E76C22C9586EF006129B9 /* EditTrainingMenuView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 780E76C12C9586EF006129B9 /* EditTrainingMenuView.swift */; };
-		781C081D2C8B3900007FF5E3 /* TodaySessionViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 781C081C2C8B3900007FF5E3 /* TodaySessionViewModel.swift */; };
 		781C081F2C8BB20F007FF5E3 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 781C081E2C8BB20F007FF5E3 /* AppDelegate.swift */; };
 		781C08212C8D985B007FF5E3 /* alarm_sound.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 781C08202C8D985B007FF5E3 /* alarm_sound.mp3 */; };
 		781C08272C8F34E8007FF5E3 /* SelectExistingMenuView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 781C08262C8F34E8007FF5E3 /* SelectExistingMenuView.swift */; };
-		782858502CE75A91001CF03A /* Firebase GoogleService Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 7828584F2CE75A91001CF03A /* Firebase GoogleService Info.plist */; };
-		782858512CE75A91001CF03A /* Firebase GoogleService Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 7828584F2CE75A91001CF03A /* Firebase GoogleService Info.plist */; };
+		782858512CE75A91001CF03A /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 7828584F2CE75A91001CF03A /* GoogleService-Info.plist */; };
 		782858542CE75B0C001CF03A /* FirebaseAnalytics in Frameworks */ = {isa = PBXBuildFile; productRef = 782858532CE75B0C001CF03A /* FirebaseAnalytics */; };
 		782858562CE75B27001CF03A /* FirebaseAnalytics in Frameworks */ = {isa = PBXBuildFile; productRef = 782858552CE75B27001CF03A /* FirebaseAnalytics */; };
+		78285B252CE8CD49001CF03A /* FirebaseCrashlytics in Frameworks */ = {isa = PBXBuildFile; productRef = 78285B242CE8CD49001CF03A /* FirebaseCrashlytics */; };
+		78285B272CE8D105001CF03A /* Training-Manager-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 78285B262CE8D105001CF03A /* Training-Manager-Info.plist */; };
+		78285B282CE8D105001CF03A /* Training-Manager-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 78285B262CE8D105001CF03A /* Training-Manager-Info.plist */; };
+		78285E2C2CEE2C0C001CF03A /* FirebaseCrashlytics in Frameworks */ = {isa = PBXBuildFile; productRef = 78285E2B2CEE2C0C001CF03A /* FirebaseCrashlytics */; };
+		78285F7D2CF09F3C001CF03A /* TrainingMenuList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78285F7C2CF09F3C001CF03A /* TrainingMenuList.swift */; };
+		78285F7F2CF0B91A001CF03A /* TrainingMenuRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78285F7E2CF0B91A001CF03A /* TrainingMenuRow.swift */; };
 		78718A982CB5620600B81579 /* TrainingMenu.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78E8D35B2C8343AD00C23C5A /* TrainingMenu.swift */; };
 		78718A992CB5620600B81579 /* TrainingSession.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78E8D35C2C8343AD00C23C5A /* TrainingSession.swift */; };
 		78927F552C9CEB04005964EC /* SelectExistingSessionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78927F542C9CEB04005964EC /* SelectExistingSessionView.swift */; };
 		78A877EF2CA11CFC00BAACA6 /* CustomCalendarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78A877EE2CA11CFC00BAACA6 /* CustomCalendarView.swift */; };
+		78B7DFF12D1E7EB3007FD9C4 /* SessionHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78B7DFF02D1E7EB3007FD9C4 /* SessionHeaderView.swift */; };
 		78C20A0C2C87D0A100AF77ED /* CircleProgressBarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78C20A0B2C87D0A100AF77ED /* CircleProgressBarView.swift */; };
 		78C20A0E2C89C4B100AF77ED /* TrainingSessionListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78C20A0D2C89C4B100AF77ED /* TrainingSessionListView.swift */; };
 		78C20A102C89C64000AF77ED /* SessionDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78C20A0F2C89C64000AF77ED /* SessionDetailView.swift */; };
 		78C20A122C89C6EE00AF77ED /* customDateFormatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78C20A112C89C6EE00AF77ED /* customDateFormatter.swift */; };
 		78CAE39F2CA44EDF00804F53 /* Training Manager Watch App.app in Embed Watch Content */ = {isa = PBXBuildFile; fileRef = 78CAE37C2CA44EDE00804F53 /* Training Manager Watch App.app */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		78CAE3C22CA56DF700804F53 /* alarm_sound.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 781C08202C8D985B007FF5E3 /* alarm_sound.mp3 */; };
-		78CAE3E72CA625A900804F53 /* ContentViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78CAE3E62CA625A900804F53 /* ContentViewModel.swift */; };
 		78CAE48B2CA9471F00804F53 /* Localizable.xcstrings in Resources */ = {isa = PBXBuildFile; fileRef = 78CAE48A2CA9471F00804F53 /* Localizable.xcstrings */; };
 		78CAE48C2CA9471F00804F53 /* Localizable.xcstrings in Resources */ = {isa = PBXBuildFile; fileRef = 78CAE48A2CA9471F00804F53 /* Localizable.xcstrings */; };
 		78E3FA3028E33BCD002CC7AE /* Training_ManagerApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78E3FA2F28E33BCD002CC7AE /* Training_ManagerApp.swift */; };
@@ -44,6 +48,7 @@
 		78E8D3812C8466B700C23C5A /* CreateTrainingSessionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78E8D3802C8466B700C23C5A /* CreateTrainingSessionView.swift */; };
 		78E8D3832C85CBE100C23C5A /* TimerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78E8D3822C85CBE100C23C5A /* TimerView.swift */; };
 		78E8D3852C85CC3200C23C5A /* TimerViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78E8D3842C85CC3200C23C5A /* TimerViewModel.swift */; };
+		78F7266D2CF70BDA0041B3B4 /* TrainingMenuRowHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78F7266C2CF70BDA0041B3B4 /* TrainingMenuRowHeader.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -100,15 +105,18 @@
 
 /* Begin PBXFileReference section */
 		780E76C12C9586EF006129B9 /* EditTrainingMenuView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditTrainingMenuView.swift; sourceTree = "<group>"; };
-		781C081C2C8B3900007FF5E3 /* TodaySessionViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodaySessionViewModel.swift; sourceTree = "<group>"; };
 		781C081E2C8BB20F007FF5E3 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		781C08202C8D985B007FF5E3 /* alarm_sound.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = alarm_sound.mp3; sourceTree = "<group>"; };
 		781C08262C8F34E8007FF5E3 /* SelectExistingMenuView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectExistingMenuView.swift; sourceTree = "<group>"; };
-		7828584F2CE75A91001CF03A /* Firebase GoogleService Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "Firebase GoogleService Info.plist"; sourceTree = "<group>"; };
-		782B87D32CACD0F900A3B59B /* Training-Manager-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = "Training-Manager-Info.plist"; sourceTree = SOURCE_ROOT; };
+		7828584F2CE75A91001CF03A /* GoogleService-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		78285B262CE8D105001CF03A /* Training-Manager-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "Training-Manager-Info.plist"; sourceTree = "<group>"; };
+		78285CDF2CEB5997001CF03A /* Training-Manager-Watch-App-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = "Training-Manager-Watch-App-Info.plist"; sourceTree = "<group>"; };
+		78285F7C2CF09F3C001CF03A /* TrainingMenuList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrainingMenuList.swift; sourceTree = "<group>"; };
+		78285F7E2CF0B91A001CF03A /* TrainingMenuRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrainingMenuRow.swift; sourceTree = "<group>"; };
 		78927F542C9CEB04005964EC /* SelectExistingSessionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectExistingSessionView.swift; sourceTree = "<group>"; };
 		78A877E82CA0289400BAACA6 /* EnhancePlan.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = EnhancePlan.md; sourceTree = "<group>"; };
 		78A877EE2CA11CFC00BAACA6 /* CustomCalendarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomCalendarView.swift; sourceTree = "<group>"; };
+		78B7DFF02D1E7EB3007FD9C4 /* SessionHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SessionHeaderView.swift; sourceTree = "<group>"; };
 		78C20A0B2C87D0A100AF77ED /* CircleProgressBarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CircleProgressBarView.swift; sourceTree = "<group>"; };
 		78C20A0D2C89C4B100AF77ED /* TrainingSessionListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrainingSessionListView.swift; sourceTree = "<group>"; };
 		78C20A0F2C89C64000AF77ED /* SessionDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SessionDetailView.swift; sourceTree = "<group>"; };
@@ -116,7 +124,6 @@
 		78CAE37C2CA44EDE00804F53 /* Training Manager Watch App.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Training Manager Watch App.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		78CAE38B2CA44EDF00804F53 /* Watch Training Manager Watch AppTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Watch Training Manager Watch AppTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		78CAE3952CA44EDF00804F53 /* Watch Training Manager Watch AppUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Watch Training Manager Watch AppUITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
-		78CAE3E62CA625A900804F53 /* ContentViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentViewModel.swift; sourceTree = "<group>"; };
 		78CAE48A2CA9471F00804F53 /* Localizable.xcstrings */ = {isa = PBXFileReference; lastKnownFileType = text.json.xcstrings; path = Localizable.xcstrings; sourceTree = "<group>"; };
 		78E3FA2C28E33BCD002CC7AE /* Training Manager.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Training Manager.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		78E3FA2F28E33BCD002CC7AE /* Training_ManagerApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Training_ManagerApp.swift; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
@@ -136,6 +143,7 @@
 		78E8D3802C8466B700C23C5A /* CreateTrainingSessionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateTrainingSessionView.swift; sourceTree = "<group>"; };
 		78E8D3822C85CBE100C23C5A /* TimerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimerView.swift; sourceTree = "<group>"; };
 		78E8D3842C85CC3200C23C5A /* TimerViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimerViewModel.swift; sourceTree = "<group>"; };
+		78F7266C2CF70BDA0041B3B4 /* TrainingMenuRowHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrainingMenuRowHeader.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFileSystemSynchronizedRootGroup section */
@@ -150,6 +158,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				782858562CE75B27001CF03A /* FirebaseAnalytics in Frameworks */,
+				78285E2C2CEE2C0C001CF03A /* FirebaseCrashlytics in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -172,6 +181,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				782858542CE75B0C001CF03A /* FirebaseAnalytics in Frameworks */,
+				78285B252CE8CD49001CF03A /* FirebaseCrashlytics in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -192,9 +202,17 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		78285B232CE8CD49001CF03A /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		78A877E32CA0260700BAACA6 /* Components */ = {
 			isa = PBXGroup;
 			children = (
+				78B7DFF22D1E8A74007FD9C4 /* TrainingSession */,
 				78A877EE2CA11CFC00BAACA6 /* CustomCalendarView.swift */,
 			);
 			path = Components;
@@ -208,10 +226,20 @@
 			path = docs;
 			sourceTree = "<group>";
 		};
+		78B7DFF22D1E8A74007FD9C4 /* TrainingSession */ = {
+			isa = PBXGroup;
+			children = (
+				78F7266B2CF70BA90041B3B4 /* TrainingMenuRow */,
+				78B7DFF02D1E7EB3007FD9C4 /* SessionHeaderView.swift */,
+			);
+			path = TrainingSession;
+			sourceTree = "<group>";
+		};
 		78E3FA2328E33BCD002CC7AE = {
 			isa = PBXGroup;
 			children = (
-				7828584F2CE75A91001CF03A /* Firebase GoogleService Info.plist */,
+				78285CDF2CEB5997001CF03A /* Training-Manager-Watch-App-Info.plist */,
+				78285B262CE8D105001CF03A /* Training-Manager-Info.plist */,
 				78CAE48A2CA9471F00804F53 /* Localizable.xcstrings */,
 				78A877E72CA0288C00BAACA6 /* docs */,
 				78E3FA2E28E33BCD002CC7AE /* Training Manager */,
@@ -220,7 +248,9 @@
 				78CAE37D2CA44EDE00804F53 /* Watch Training Manager Watch App */,
 				78CAE38E2CA44EDF00804F53 /* Watch Training Manager Watch AppTests */,
 				78CAE3982CA44EDF00804F53 /* Watch Training Manager Watch AppUITests */,
+				78285B232CE8CD49001CF03A /* Frameworks */,
 				78E3FA2D28E33BCD002CC7AE /* Products */,
+				7828584F2CE75A91001CF03A /* GoogleService-Info.plist */,
 			);
 			sourceTree = "<group>";
 		};
@@ -240,12 +270,10 @@
 		78E3FA2E28E33BCD002CC7AE /* Training Manager */ = {
 			isa = PBXGroup;
 			children = (
-				782B87D32CACD0F900A3B59B /* Training-Manager-Info.plist */,
 				781C081E2C8BB20F007FF5E3 /* AppDelegate.swift */,
 				78E3FA2F28E33BCD002CC7AE /* Training_ManagerApp.swift */,
 				78C20A112C89C6EE00AF77ED /* customDateFormatter.swift */,
 				78FE2A192C9BA1DC009BFDD3 /* Model */,
-				78FE2A172C9BA13A009BFDD3 /* ViewModel */,
 				78E8D37B2C83F0F000C23C5A /* View */,
 				78E3FA3328E33BCE002CC7AE /* Assets.xcassets */,
 				781C08202C8D985B007FF5E3 /* alarm_sound.mp3 */,
@@ -291,13 +319,32 @@
 			path = View;
 			sourceTree = "<group>";
 		};
+		78F7262A2CF6F6B90041B3B4 /* Timer */ = {
+			isa = PBXGroup;
+			children = (
+				78C20A0B2C87D0A100AF77ED /* CircleProgressBarView.swift */,
+				78E8D3842C85CC3200C23C5A /* TimerViewModel.swift */,
+				78E8D3822C85CBE100C23C5A /* TimerView.swift */,
+			);
+			path = Timer;
+			sourceTree = "<group>";
+		};
+		78F7266B2CF70BA90041B3B4 /* TrainingMenuRow */ = {
+			isa = PBXGroup;
+			children = (
+				78285F7E2CF0B91A001CF03A /* TrainingMenuRow.swift */,
+				78F7266C2CF70BDA0041B3B4 /* TrainingMenuRowHeader.swift */,
+			);
+			path = TrainingMenuRow;
+			sourceTree = "<group>";
+		};
 		78FE2A152C9BA02E009BFDD3 /* TodaySession */ = {
 			isa = PBXGroup;
 			children = (
-				78E8D3822C85CBE100C23C5A /* TimerView.swift */,
-				78C20A0B2C87D0A100AF77ED /* CircleProgressBarView.swift */,
+				78F7262A2CF6F6B90041B3B4 /* Timer */,
 				780E76C12C9586EF006129B9 /* EditTrainingMenuView.swift */,
 				78E6F5C128E71BBA00BAEA24 /* TodaySessionView.swift */,
+				78285F7C2CF09F3C001CF03A /* TrainingMenuList.swift */,
 				781C08262C8F34E8007FF5E3 /* SelectExistingMenuView.swift */,
 				78927F542C9CEB04005964EC /* SelectExistingSessionView.swift */,
 				78E8D37D2C845D5500C23C5A /* CreateTrainingMenuView.swift */,
@@ -313,16 +360,6 @@
 				78C20A0D2C89C4B100AF77ED /* TrainingSessionListView.swift */,
 			);
 			path = SessionList;
-			sourceTree = "<group>";
-		};
-		78FE2A172C9BA13A009BFDD3 /* ViewModel */ = {
-			isa = PBXGroup;
-			children = (
-				781C081C2C8B3900007FF5E3 /* TodaySessionViewModel.swift */,
-				78E8D3842C85CC3200C23C5A /* TimerViewModel.swift */,
-				78CAE3E62CA625A900804F53 /* ContentViewModel.swift */,
-			);
-			path = ViewModel;
 			sourceTree = "<group>";
 		};
 		78FE2A182C9BA1C3009BFDD3 /* TrainingMenuHistory */ = {
@@ -363,6 +400,7 @@
 			name = "Training Manager Watch App";
 			packageProductDependencies = (
 				782858552CE75B27001CF03A /* FirebaseAnalytics */,
+				78285E2B2CEE2C0C001CF03A /* FirebaseCrashlytics */,
 			);
 			productName = "Watch Training Manager Watch App";
 			productReference = 78CAE37C2CA44EDE00804F53 /* Training Manager Watch App.app */;
@@ -422,6 +460,7 @@
 				78E3FA2928E33BCD002CC7AE /* Frameworks */,
 				78E3FA2A28E33BCD002CC7AE /* Resources */,
 				78E3FA7B28E33BCF002CC7AE /* Embed Watch Content */,
+				78285B292CE8D1F4001CF03A /* ShellScript */,
 			);
 			buildRules = (
 			);
@@ -535,9 +574,9 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				78285B282CE8D105001CF03A /* Training-Manager-Info.plist in Resources */,
 				78CAE48B2CA9471F00804F53 /* Localizable.xcstrings in Resources */,
 				78CAE3C22CA56DF700804F53 /* alarm_sound.mp3 in Resources */,
-				782858502CE75A91001CF03A /* Firebase GoogleService Info.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -559,9 +598,10 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				78285B272CE8D105001CF03A /* Training-Manager-Info.plist in Resources */,
 				78E3FA3728E33BCE002CC7AE /* Preview Assets.xcassets in Resources */,
 				781C08212C8D985B007FF5E3 /* alarm_sound.mp3 in Resources */,
-				782858512CE75A91001CF03A /* Firebase GoogleService Info.plist in Resources */,
+				782858512CE75A91001CF03A /* GoogleService-Info.plist in Resources */,
 				78CAE48C2CA9471F00804F53 /* Localizable.xcstrings in Resources */,
 				78E3FA3428E33BCE002CC7AE /* Assets.xcassets in Resources */,
 			);
@@ -582,6 +622,31 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		78285B292CE8D1F4001CF03A /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${DWARF_DSYM_FOLDER_PATH}/${DWARF_DSYM_FILE_NAME}",
+				"${DWARF_DSYM_FOLDER_PATH}/${DWARF_DSYM_FILE_NAME}/Contents/Resources/DWARF/${PRODUCT_NAME}",
+				"${DWARF_DSYM_FOLDER_PATH}/${DWARF_DSYM_FILE_NAME}/Contents/Info.plist",
+				"$(TARGET_BUILD_DIR)/$(UNLOCALIZED_RESOURCES_FOLDER_PATH)/GoogleService-Info.plist",
+				"$(TARGET_BUILD_DIR)/$(EXECUTABLE_PATH)",
+			);
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "# Type a script or drag a script file from your workspace to insert its path.\n\"${BUILD_DIR%/Build/*}/SourcePackages/checkouts/firebase-ios-sdk/Crashlytics/run\"\n";
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		78CAE3782CA44EDE00804F53 /* Sources */ = {
@@ -611,16 +676,17 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				78B7DFF12D1E7EB3007FD9C4 /* SessionHeaderView.swift in Sources */,
 				78E8D3832C85CBE100C23C5A /* TimerView.swift in Sources */,
 				78C20A122C89C6EE00AF77ED /* customDateFormatter.swift in Sources */,
 				78927F552C9CEB04005964EC /* SelectExistingSessionView.swift in Sources */,
 				78E3FA3228E33BCD002CC7AE /* ContentView.swift in Sources */,
+				78F7266D2CF70BDA0041B3B4 /* TrainingMenuRowHeader.swift in Sources */,
 				78E8D3812C8466B700C23C5A /* CreateTrainingSessionView.swift in Sources */,
 				78E6F5C228E71BBA00BAEA24 /* TodaySessionView.swift in Sources */,
 				780E76C22C9586EF006129B9 /* EditTrainingMenuView.swift in Sources */,
 				78C20A102C89C64000AF77ED /* SessionDetailView.swift in Sources */,
 				78E8D35D2C8343AD00C23C5A /* TrainingMenu.swift in Sources */,
-				781C081D2C8B3900007FF5E3 /* TodaySessionViewModel.swift in Sources */,
 				78C20A0C2C87D0A100AF77ED /* CircleProgressBarView.swift in Sources */,
 				78E8D35E2C8343AD00C23C5A /* TrainingSession.swift in Sources */,
 				78E3FA3028E33BCD002CC7AE /* Training_ManagerApp.swift in Sources */,
@@ -628,9 +694,10 @@
 				78C20A0E2C89C4B100AF77ED /* TrainingSessionListView.swift in Sources */,
 				78E8D3852C85CC3200C23C5A /* TimerViewModel.swift in Sources */,
 				781C081F2C8BB20F007FF5E3 /* AppDelegate.swift in Sources */,
-				78CAE3E72CA625A900804F53 /* ContentViewModel.swift in Sources */,
 				78E8D37E2C845D5500C23C5A /* CreateTrainingMenuView.swift in Sources */,
+				78285F7F2CF0B91A001CF03A /* TrainingMenuRow.swift in Sources */,
 				781C08272C8F34E8007FF5E3 /* SelectExistingMenuView.swift in Sources */,
+				78285F7D2CF09F3C001CF03A /* TrainingMenuList.swift in Sources */,
 				78A877EF2CA11CFC00BAACA6 /* CustomCalendarView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -697,6 +764,7 @@
 				ENABLE_PREVIEWS = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu17;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = "Training-Manager-Watch-App-Info.plist";
 				INFOPLIST_KEY_CFBundleDisplayName = "Training Manager";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
 				INFOPLIST_KEY_WKCompanionAppBundleIdentifier = "Kou-Isaka.Training-Manager";
@@ -705,7 +773,8 @@
 					"@executable_path/Frameworks",
 				);
 				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
-				MARKETING_VERSION = 2.7;
+				MARKETING_VERSION = 2.10;
+				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_BUNDLE_IDENTIFIER = "Kou-Isaka.Training-Manager.watchkitapp";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = watchos;
@@ -731,6 +800,7 @@
 				ENABLE_PREVIEWS = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu17;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = "Training-Manager-Watch-App-Info.plist";
 				INFOPLIST_KEY_CFBundleDisplayName = "Training Manager";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
 				INFOPLIST_KEY_WKCompanionAppBundleIdentifier = "Kou-Isaka.Training-Manager";
@@ -739,7 +809,8 @@
 					"@executable_path/Frameworks",
 				);
 				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
-				MARKETING_VERSION = 2.7;
+				MARKETING_VERSION = 2.10;
+				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_BUNDLE_IDENTIFIER = "Kou-Isaka.Training-Manager.watchkitapp";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = watchos;
@@ -902,7 +973,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 17.6;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
-				ONLY_ACTIVE_ARCH = YES;
+				ONLY_ACTIVE_ARCH = NO;
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
@@ -961,6 +1032,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 17.6;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = NO;
 				SWIFT_COMPILATION_MODE = wholemodule;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_OPTIMIZATION_LEVEL = "-O";
@@ -993,7 +1065,8 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 2.7;
+				MARKETING_VERSION = 2.10;
+				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_BUNDLE_IDENTIFIER = "Kou-Isaka.Training-Manager";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
@@ -1030,7 +1103,8 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 2.7;
+				MARKETING_VERSION = 2.10;
+				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_BUNDLE_IDENTIFIER = "Kou-Isaka.Training-Manager";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
@@ -1207,6 +1281,16 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 782858522CE75B0C001CF03A /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
 			productName = FirebaseAnalytics;
+		};
+		78285B242CE8CD49001CF03A /* FirebaseCrashlytics */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 782858522CE75B0C001CF03A /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseCrashlytics;
+		};
+		78285E2B2CEE2C0C001CF03A /* FirebaseCrashlytics */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 782858522CE75B0C001CF03A /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseCrashlytics;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};

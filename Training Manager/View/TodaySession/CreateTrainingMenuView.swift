@@ -11,10 +11,12 @@ struct CreateTrainingMenuView: View {
     @Environment(\.dismiss) private var dismiss
     @Environment(\.modelContext) private var modelContext
     
-    @State var session: TrainingSession
+    @Binding var session: TrainingSession
     @State private var trainingMenu = TrainingMenu()
-    
-    @ObservedObject var contentViewModel: ContentViewModel  // ContentViewModelを注入
+    @Binding var trainingSessionList: [TrainingSession]
+    private var trainingMenuList:[TrainingMenu]{
+        trainingSessionList.flatMap({$0.menus})
+    }
     
     @State private var newFocusPoint: String = ""
     
@@ -66,16 +68,14 @@ struct CreateTrainingMenuView: View {
                 }
                 
                 Section(header: Text("備考")) {
-                    TextEditor(text: Binding(
-                        get: { trainingMenu.menuDescription ?? ""},
-                        set: { trainingMenu.menuDescription = $0 }
-                    ))
-                    .overlay(alignment: .topLeading) {
-                        if trainingMenu.menuDescription?.isEmpty ?? true {
-                            Text("備考")
-                                .foregroundColor(.gray) // プレースホルダーっぽく見せるために色を変更
+                    ZStack(alignment: .topLeading){
+                        TextEditor(text: Binding(
+                            get: { trainingMenu.menuDescription ?? ""},
+                            set: { trainingMenu.menuDescription = $0 }
+                        )).padding(.horizontal, -4)
+                        if(trainingMenu.menuDescription == nil){
+                            Text("備考").foregroundStyle(Color(uiColor: .placeholderText)).padding(.vertical, 8)
                                 .allowsHitTesting(false)
-                                .padding(.top, 8) // テキストエディタの内側にマージンを設定
                         }
                     }
                 }
@@ -97,9 +97,9 @@ struct CreateTrainingMenuView: View {
                             }
                         }
                         .pickerStyle(WheelPickerStyle())
-                    }.frame(maxHeight: 100)
+                    }.frame(maxHeight: 200)
                 }
-                NavigationLink("既存のメニューから追加", destination: SelectExistingMenu(trainingMenu: trainingMenu, trainingMenuList: contentViewModel.trainingMenuList))
+                NavigationLink("既存のメニューから追加", destination: SelectExistingMenu(trainingMenu: trainingMenu, trainingMenuList: trainingMenuList))
             }
             .navigationTitle("メニューの追加")
             .onAppear {
@@ -149,20 +149,10 @@ struct CreateTrainingMenuView: View {
         // 分と秒を TimeInterval に変換して保存
         trainingMenu.duration = TimeInterval(selectedMinutes * 60 + selectedSeconds)
         trainingMenu.orderIndex = session.menus.count
+        trainingMenu.trainingSession = session // リレーションを設定
         
-        // contentViewModelに保存
-        contentViewModel.trainingMenuList.append(trainingMenu)
-        
-        // データベースに挿入して、まず trainingMenu を保存
+        // 新しいメニューを `modelContext` に挿入
         modelContext.insert(trainingMenu)
-        
-        do {
-            try modelContext.save() // まず trainingMenu を保存
-        } catch {
-            print("Failed to save trainingMenu: \(error)")
-            return
-        }
-        
         // 新しいメニューをセッションに追加
         session.menus.append(trainingMenu)  // TrainingSessionにメニューを追加
         
@@ -179,5 +169,5 @@ struct CreateTrainingMenuView: View {
 }
 
 #Preview {
-    CreateTrainingMenuView(session: TrainingSession(), contentViewModel: ContentViewModel(trainingSessionList: [], trainingMenuList: []))
+    CreateTrainingMenuView(session: .constant(TrainingSession()), trainingSessionList: .constant([TrainingSession()]))
 }

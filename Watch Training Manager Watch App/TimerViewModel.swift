@@ -13,17 +13,17 @@ import UserNotifications
 
 class TimerViewModel: ObservableObject {
     @Published var remainingTime: TimeInterval {
-            didSet {
-                UserDefaults.standard.set(remainingTime, forKey: "remainingTime")
-            }
+        didSet {
+            UserDefaults.standard.set(remainingTime, forKey: "remainingTime")
         }
-        
+    }
+    
     init(menuName: String, initialTime: TimeInterval) {
-            // UserDefaultsからタイマーの残り時間を読み込み
-            self.remainingTime = UserDefaults.standard.double(forKey: "remainingTime")
-            self.menuName = menuName
+        // UserDefaultsからタイマーの残り時間を読み込み
+        self.remainingTime = UserDefaults.standard.double(forKey: "remainingTime")
+        self.menuName = menuName
         self.initialTime = initialTime
-        }
+    }
     
     @Published var timer: AnyCancellable? // タイマー
     @Published var progress: CGFloat = 0.0 // プログレスバーの進行度

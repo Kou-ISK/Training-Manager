@@ -19,11 +19,11 @@ import SwiftData
     var duration: TimeInterval?
     var orderIndex: Int // 並び順を保持するためのプロパティ
     
-    // focusPoints を [FocusPoint] 型で保持
-    @Relationship var focusPoints: [FocusPoint] = []
+    @Relationship
+    var trainingSession: TrainingSession?
     
-    // TrainingMenu は複数の TrainingSession に属することができる
-    var sessions: [TrainingSession] = []
+    // focusPoints を [FocusPoint] 型で保持
+    var focusPoints: [FocusPoint] = []
     
     // 必須のイニシャライザ
     public init() {

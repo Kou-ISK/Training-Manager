@@ -14,8 +14,7 @@ struct Training_ManagerApp: App {
     
     var sharedModelContainer: ModelContainer = {
         let schema = Schema([
-            TrainingSession.self,
-            TrainingMenu.self
+            TrainingSession.self
         ])
         let modelConfiguration = ModelConfiguration(schema: schema, isStoredInMemoryOnly: false)
 

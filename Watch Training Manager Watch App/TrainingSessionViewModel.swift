@@ -12,15 +12,37 @@ import SwiftData
 
 class TrainingSessionViewModel: NSObject, ObservableObject {
     @Published var todayTrainingSession: TrainingSession?
+    @Published var isReachable: Bool = false
+    @Published var connectionStatus: String = "Checking connection..."
     @Published var timerViewModel: TimerViewModel? = nil
     
-    var session: WCSession
+    private let session: WCSession
+    private let modelContext: ModelContext
     
-    init(session: WCSession = .default) {
+    init(session: WCSession = .default, modelContext: ModelContext) {
         self.session = session
+        self.modelContext = modelContext
         super.init()
+        
         self.session.delegate = self
-        session.activate()
+        self.session.activate()
+        self.isReachable = session.isReachable
+        self.updateConnectionStatus()
+    }
+    
+    private func updateConnectionStatus() {
+        let status = session.activationState
+        switch status {
+        case .notActivated:
+            connectionStatus = "Not activated"
+        case .inactive:
+            connectionStatus = "Inactive"
+        case .activated:
+            connectionStatus = session.isReachable ? "Connected" : "Not reachable"
+        @unknown default:
+            connectionStatus = "Unknown state"
+        }
+        print("Watch Connectivity Status: \(connectionStatus)")
     }
     
     // 当日の日付以外のTrainingSessionを削除するメソッド
@@ -72,67 +94,98 @@ class TrainingSessionViewModel: NSObject, ObservableObject {
         return String(format: "%02d:%02d", minutes, seconds)
     }
     
-    // iPhone/iPadからのデータ取得を要求
-    func sendMessage() {
-        guard session.isReachable else {
-            print("WCSession is not reachable. Check iPhone connection.")
+    func checkAndReconnectSession() {
+        guard WCSession.isSupported() else {
+            connectionStatus = "WCSession not supported"
             return
         }
         
-        let messages: [String: Any] = ["request": "getTrainingData"]
+        if session.activationState != .activated {
+            session.activate()
+        }
         
-        session.sendMessage(messages, replyHandler: { response in
-            guard let trainingSessionData = response["trainingSession"] as? String else {
-                let errorMessage = "Error: Response does not contain valid training session data."
-                print(errorMessage)
-                ErrorLogger.shared.logError(message: errorMessage)
-                return
+        isReachable = session.isReachable
+        updateConnectionStatus()
+    }
+    
+    func sendMessage() {
+        checkAndReconnectSession()
+        
+        guard session.isReachable else {
+            let errorMessage = "WCSession is not reachable"
+            ErrorLogger.shared.logError(message: errorMessage)
+            return
+        }
+        
+        print("Sending message to iPhone...")
+        let message: [String: Any] = ["request": "getTrainingData"]
+        
+        session.sendMessage(message, replyHandler: { [weak self] response in
+            DispatchQueue.main.async {
+                print("Received response from iPhone")
+                if let error = response["error"] as? String {
+                    ErrorLogger.shared.logError(message: "Error from iPhone: \(error)")
+                    return
+                }
+                
+                guard let trainingSessionData = response["trainingSession"] as? String else {
+                    ErrorLogger.shared.logError(message: "Invalid response format")
+                    return
+                }
+                
+                self?.decodeTrainingSession(from: trainingSessionData)
             }
-            
-            print("Received training session data: \(trainingSessionData)")
-            self.decodeTrainingSession(from: trainingSessionData)
         }, errorHandler: { error in
-            print("Error sending message: \(error.localizedDescription)")
+            DispatchQueue.main.async {
+                ErrorLogger.shared.logError(message: "Message sending failed: \(error.localizedDescription)")
+            }
         })
     }
-
     
     // JSONデータをデコード
     func decodeTrainingSession(from jsonString: String) {
-        guard !jsonString.isEmpty, let jsonData = jsonString.data(using: .utf8) else {
-            let errorMessage = "Error: Invalid or empty JSON string."
-            print(errorMessage)
-            ErrorLogger.shared.logError(message: errorMessage)
-            return
-        }
-        print("Received JSON: \(jsonString)")
-        
         do {
+            guard let jsonData = jsonString.data(using: .utf8) else {
+                throw NSError(domain: "JSONDecoding", code: -1, userInfo: [NSLocalizedDescriptionKey: "Invalid JSON string"])
+            }
+            
             let decoder = JSONDecoder()
-            decoder.dateDecodingStrategy = .secondsSince1970
+            decoder.dateDecodingStrategy = .iso8601
+            
             let session = try decoder.decode(TrainingSession.self, from: jsonData)
+            
             DispatchQueue.main.async {
-                // ViewModelを更新
                 self.updateTodayTrainingSession(session: session)
             }
         } catch {
-            let errorMessage = "Error decoding JSON: \(error.localizedDescription)"
-            print(errorMessage)
-            ErrorLogger.shared.logError(message: errorMessage)
+            ErrorLogger.shared.logError(message: "Decoding error: \(error.localizedDescription)\nJSON: \(jsonString)")
         }
     }
-
 }
 
 extension TrainingSessionViewModel: WCSessionDelegate {
-    // セッションのアクティベーション完了時に呼び出される
     func session(_ session: WCSession, activationDidCompleteWith activationState: WCSessionActivationState, error: Error?) {
-        if let error = error {
-            let errorMessage = "WCSession activation error: \(error.localizedDescription)"
-            print(errorMessage)
-            ErrorLogger.shared.logError(message: errorMessage)
-        } else {
-            print("WCSession activated successfully with state: \(activationState.rawValue)")
+        DispatchQueue.main.async {
+            if let error = error {
+                let errorMessage = "WCSession activation error: \(error.localizedDescription)"
+                print(errorMessage)
+                ErrorLogger.shared.logError(message: errorMessage)
+            } else {
+                print("WCSession activated successfully with state: \(activationState.rawValue)")
+                self.isReachable = session.isReachable
+                if self.isReachable {
+                    self.sendMessage()
+                }
+            }
+        }
+    }
+    
+    func sessionReachabilityDidChange(_ session: WCSession) {
+        DispatchQueue.main.async {
+            self.isReachable = session.isReachable
+            if self.isReachable {
+                self.sendMessage()
+            }
         }
     }
 }

@@ -10,37 +10,30 @@ import SwiftData
 
 @main
 struct Watch_Training_Manager_Watch_App: App {
-    @StateObject var viewModel = TrainingSessionViewModel()
+    let modelContainer: ModelContainer
+    @StateObject private var viewModel: TrainingSessionViewModel
     
-    var sharedModelContainer: ModelContainer = {
+    init() {
         let schema = Schema([
             TrainingSession.self,
             TrainingMenu.self
         ])
         let modelConfiguration = ModelConfiguration(schema: schema, isStoredInMemoryOnly: false)
-
         do {
-            return try ModelContainer(for: schema, configurations: [modelConfiguration])
+            let container = try ModelContainer(for: schema, configurations: [modelConfiguration])
+            self.modelContainer = container
+            let context = ModelContext(container)
+            self._viewModel = StateObject(wrappedValue: TrainingSessionViewModel(modelContext: context))
         } catch {
             fatalError("Could not create ModelContainer: \(error)")
-        }
-    }()
-    
-    private func setupCrashHandler() {
-        NSSetUncaughtExceptionHandler { exception in
-            let stackTrace = exception.callStackSymbols.joined(separator: "\n")
-            let message = "Exception: \(exception.name)\nReason: \(exception.reason ?? "Unknown")\n\(stackTrace)"
-            
-            // ログの保存や送信
-            ErrorLogger.shared.logError(message: message)
         }
     }
     
     var body: some Scene {
         WindowGroup {
-            ContentView().environmentObject(viewModel).modelContainer(sharedModelContainer).onAppear {
-                setupCrashHandler()
-            }
+            ContentView()
+                .environmentObject(viewModel)
+                .modelContainer(modelContainer)
         }
     }
 }

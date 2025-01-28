@@ -25,8 +25,9 @@ func requestNotificationAuthorization() {
 }
 
 
-class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterDelegate {
-    var modelContext: ModelContext!
+class AppDelegate: NSObject, UIApplicationDelegate, UNUserNotificationCenterDelegate {
+    private var modelContext: ModelContext?
+    private var connectivityManager: iPhoneConnectivityManager?
     
     // ModelContainerの宣言
     var sharedModelContainer: ModelContainer = {
@@ -34,23 +35,24 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
             TrainingSession.self
         ])
         let modelConfiguration = ModelConfiguration(schema: schema, isStoredInMemoryOnly: false)
-
+        
         do {
             return try ModelContainer(for: schema, configurations: [modelConfiguration])
         } catch {
             fatalError("Could not create ModelContainer: \(error)")
         }
     }()
-
-    func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
+    
+    func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey : Any]? = nil) -> Bool {
         UNUserNotificationCenter.current().delegate = self
         requestNotificationAuthorization()
-        // アプリ起動時にWatchConnectivityを有効化
+        
         // SwiftDataのモデルコンテキストを初期化
         modelContext = ModelContext(sharedModelContainer)
-
-        // modelContextをiPhoneConnectivityManagerに渡す
-        iPhoneConnectivityManager.shared.setupModelContext(modelContext)
+        
+        // ConnectivityManagerの初期化
+        connectivityManager = iPhoneConnectivityManager.shared
+        connectivityManager?.setupModelContext(modelContext!)
         
         // Firebaseの初期化
         FirebaseApp.configure()
@@ -63,86 +65,99 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
     }
 }
 
-class iPhoneConnectivityManager: NSObject, WCSessionDelegate {
+@objc class iPhoneConnectivityManager: NSObject, WCSessionDelegate {
     static let shared = iPhoneConnectivityManager()
-        private var modelContext: ModelContext!
-
-        private override init() {
-            super.init()
-            if WCSession.isSupported() {
-                WCSession.default.delegate = self
-                WCSession.default.activate()
-            }
-        }
-
-        // AppDelegateからmodelContextをセットアップ
-        func setupModelContext(_ context: ModelContext) {
-            self.modelContext = context
-        }
+    private var modelContext: ModelContext!
+    private var session: WCSession?
     
-    // 必須のWCSessionDelegateメソッド
-    func sessionDidBecomeInactive(_ session: WCSession) {
-        // ここには、必要に応じて処理を記述します
+    private override init() {
+        super.init()
+        if WCSession.isSupported() {
+            session = WCSession.default
+            session?.delegate = self
+            session?.activate()
+        }
     }
     
-    func sessionDidDeactivate(_ session: WCSession) {
-        // ここには、必要に応じて処理を記述します
-        // セッションが無効になったら、新しいセッションをアクティブにする
+    func setupModelContext(_ context: ModelContext) {
+        self.modelContext = context
+    }
+    
+    // MARK: - WCSessionDelegate Methods
+    @objc func session(_ session: WCSession, activationDidCompleteWith activationState: WCSessionActivationState, error: Error?) {
+        DispatchQueue.main.async {
+            if let error = error {
+                print("WCSession activation failed with error: \(error.localizedDescription)")
+            } else {
+                print("WCSession activated successfully with state: \(activationState.rawValue)")
+                print("isPaired: \(session.isPaired)")
+                print("isWatchAppInstalled: \(session.isWatchAppInstalled)")
+            }
+        }
+    }
+    
+    @objc func sessionDidBecomeInactive(_ session: WCSession) {
+        print("WCSession became inactive")
+    }
+    
+    @objc func sessionDidDeactivate(_ session: WCSession) {
+        print("WCSession deactivated")
         WCSession.default.activate()
     }
     
-    func session(_ session: WCSession, activationDidCompleteWith activationState: WCSessionActivationState, error: Error?) {
-        // セッションのアクティベーションが完了したときに呼ばれる
-        if let error = error {
-            print("WCSession activation failed with error: \(error.localizedDescription)")
-        } else {
-            print("WCSession activated successfully with state: \(activationState.rawValue)")
+    @objc func session(_ session: WCSession, didReceiveMessage message: [String: Any], replyHandler: @escaping ([String: Any]) -> Void) {
+        DispatchQueue.main.async { [weak self] in
+            guard let self = self else {
+                replyHandler(["error": "Internal error"])
+                return
+            }
+            
+            guard message["request"] as? String == "getTrainingData" else {
+                replyHandler(["error": "Invalid request type"])
+                return
+            }
+            
+            guard let todaySession = self.fetchTodaySession() else {
+                replyHandler(["error": "No session found for today"])
+                return
+            }
+            
+            do {
+                let encoder = JSONEncoder()
+                encoder.dateEncodingStrategy = .iso8601
+                let jsonData = try encoder.encode(todaySession)
+                
+                guard let jsonString = String(data: jsonData, encoding: .utf8) else {
+                    replyHandler(["error": "Failed to encode session data"])
+                    return
+                }
+                
+                print("Sending training session data to Watch")
+                replyHandler(["trainingSession": jsonString])
+            } catch {
+                replyHandler(["error": "Encoding error: \(error.localizedDescription)"])
+            }
         }
     }
     
-    // Apple Watchからのメッセージを受信
-     func session(_ session: WCSession, didReceiveMessage message: [String: Any], replyHandler: @escaping ([String: Any]) -> Void) {
-         if message["request"] as? String == "getTrainingData" {
-             print("Received request from Apple Watch")
-             
-             // SwiftDataから今日のトレーニングセッションを取得
-             if let todaySession = fetchTodaySession() {
-                 do {
-                     let encoder = JSONEncoder()
-                     encoder.dateEncodingStrategy = .secondsSince1970
-                     let jsonData = try encoder.encode(todaySession)
-                     if let jsonString = String(data: jsonData, encoding: .utf8) {
-                         let dataToSend: [String: Any] = ["trainingSession": jsonString]
-                         replyHandler(dataToSend)  // Apple Watchにデータを返信
-                     }
-                 } catch {
-                     print("Error encoding TrainingSession: \(error)")
-                     replyHandler(["error": "Failed to encode session data"])
-                 }
-             } else {
-                 replyHandler(["error": "No session found for today"])
-             }
-         }
-     }
-
-     // SwiftDataから今日のトレーニングセッションを取得
-     func fetchTodaySession() -> TrainingSession? {
-         let today = Calendar.current.startOfDay(for: Date())
-         
-         // SwiftDataからデータを取得
-         let fetchRequest = FetchDescriptor<TrainingSession>()
-
-         do {
-             let trainingSessions = try modelContext.fetch(fetchRequest) // 全てのトレーニングセッションをフェッチ
-             // 今日の日付に対応するセッションを取得
-             return trainingSessions.first { session in
-                 guard let sessionDate = session.sessionDate else { return false }
-                 return Calendar.current.isDate(sessionDate, inSameDayAs: today)
-             }
-         } catch {
-             print("Error fetching training sessions: \(error)")
-             return nil
-         }
-     }
+    // SwiftDataから今日のトレーニングセッションを取得
+    func fetchTodaySession() -> TrainingSession? {
+        let today = Calendar.current.startOfDay(for: Date())
+        
+        // SwiftDataからデータを取得
+        let fetchRequest = FetchDescriptor<TrainingSession>()
+        
+        do {
+            let trainingSessions = try modelContext.fetch(fetchRequest) // 全てのトレーニングセッションをフェッチ
+            // 今日の日付に対応するセッションを取得
+            return trainingSessions.first { session in
+                guard let sessionDate = session.sessionDate else { return false }
+                return Calendar.current.isDate(sessionDate, inSameDayAs: today)
+            }
+        } catch {
+            print("Error fetching training sessions: \(error)")
+            return nil
+        }
+    }
 }
 

@@ -40,7 +40,9 @@ struct TodaySessionView: View {
                         }.frame(height: 80)
                     }
                     ZStack{
-                        List(session.menus, id: \.self.id) { menu in
+                        List(session.menus.sorted(by: { firstMenu, secondMenu in
+                            return firstMenu.orderIndex < secondMenu.orderIndex
+                        }), id: \.self.id) { menu in
                             HStack{
                                 HStack{
                                     Text(viewModel.formatDuration(duration: menu.duration ?? 0))

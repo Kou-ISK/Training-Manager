@@ -247,6 +247,9 @@
         }
       }
     },
+    "データを同期中..." : {
+
+    },
     "テーマ" : {
       "extractionState" : "manual",
       "localizations" : {

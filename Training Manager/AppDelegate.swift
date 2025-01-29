@@ -104,8 +104,15 @@ class AppDelegate: NSObject, UIApplicationDelegate, UNUserNotificationCenterDele
         print("WCSession deactivated")
         WCSession.default.activate()
     }
+
+        // 重要: このメソッドを追加
+    @objc func session(_ session: WCSession, didReceiveMessage message: [String: Any]) {
+        print("Received message without reply handler: \(message)")
+    }
     
     @objc func session(_ session: WCSession, didReceiveMessage message: [String: Any], replyHandler: @escaping ([String: Any]) -> Void) {
+        print("iPhone: メッセージ受信")
+        print(message)
         DispatchQueue.main.async { [weak self] in
             guard let self = self else {
                 replyHandler(["error": "Internal error"])

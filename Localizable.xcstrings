@@ -248,7 +248,20 @@
       }
     },
     "データを同期中..." : {
-
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Fetching Data"
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "データを同期中..."
+          }
+        }
+      }
     },
     "テーマ" : {
       "extractionState" : "manual",

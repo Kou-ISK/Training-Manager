@@ -23,3 +23,9 @@ public var yearMonthFormatter: DateFormatter {
     return formatter
 }
 
+public func formatTrainingDuration(_ duration: TimeInterval) -> String {
+    let minutes = Int(duration) / 60
+    let seconds = Int(duration) % 60
+    return String(format: "%02d:%02d", minutes, seconds)
+}
+
